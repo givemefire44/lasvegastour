@@ -1,0 +1,14 @@
+import Database from 'better-sqlite3';
+const db = new Database('./colosseum-corpus.db');
+const cols = db.prepare('PRAGMA table_info(insights)').all();
+console.log('COLUMNAS:');
+cols.forEach(c => console.log('  ' + c.name + ' | ' + c.type));
+console.log('');
+const types = db.prepare('SELECT insight_type, COUNT(*) as n FROM insights GROUP BY insight_type').all();
+console.log('TIPOS:');
+types.forEach(t => console.log('  ' + t.insight_type + ' | ' + t.n));
+console.log('');
+const sample = db.prepare('SELECT * FROM insights LIMIT 1').get();
+console.log('MUESTRA:');
+console.log(sample);
+db.close();

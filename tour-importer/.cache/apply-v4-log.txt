@@ -1,0 +1,5 @@
+=== APPLY-CITABLES v4 LOG — 2026-04-28T17:49:56.722Z ===
+
+WOULD_PATCH colosseum-roman-forum-palatine-hill-tour
+  pattern: most_reviewed_anchor, score: 781
+  new: "$81 mid-priced tour with 80,474 reviews (most-reviewed in 78-tour catalog), covering 3 sites in 2.5 hours but excluding arena floor that 51% of catalog includes."

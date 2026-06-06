@@ -1,0 +1,143 @@
+═══════════════════════════════════════════════════════════════════════
+  SANITY DIAGNOSTIC REPORT — Coliseo
+  Generated: 2026-04-27T21:48:20.473Z
+  Project: ptigxfcf | Dataset: production
+  Total docs: 152
+═══════════════════════════════════════════════════════════════════════
+
+
+─────────────────────────────────────────────────────────────────────
+  TIPO: post  (77 docs)
+─────────────────────────────────────────────────────────────────────
+
+  Campos top-level: aiCitable, body, bookingUrl, category, editorialDate, editorialRating, editorialReview, faqs, getYourGuideData, getYourGuideTourId, getYourGuideUrl, heroGallery, publishedAt, seoDescription, seoImage, seoKeywords, seoTitle, slug, title, tourFeatures, tourInfo
+  Con "Quick Answer" en body: 75/77
+
+  Slugs de ejemplo (primeros 5):
+    - colosseum-night-tour-underground-and-arena-floor             | Colosseum Night Tour Underground & Arena Floor 
+    - guided-tour-of-the-colosseum-palatine-hill-and-roman-forum   | Guided Tour of the Colosseum Palatine Hill and Roman Forum
+    - colosseum-arena-floor-tour-with-roman-forum-access           | Colosseum Arena Floor Tour with Roman Forum Access
+    - colosseum-arena-forum-and-hill-tour-optional-underground     | Colosseum Arena, Forum & Hill Tour – Optional Underground
+    - skip-the-ticket-line-colosseum-express-guided-tour           | Skip the ticket line, Colosseum Express Guided Tour
+
+─────────────────────────────────────────────────────────────────────
+  TIPO: page  (51 docs)
+─────────────────────────────────────────────────────────────────────
+
+  Campos top-level: author, category, content, heroImage, pageSettings, pageType, publishedAt, richSnippets, seoDescription, seoImage, seoTitle, showInFooter, showInMenu, sidebarWidget, slug, title
+  Body field: NO
+
+  Slugs de ejemplo (primeros 5):
+    - colosseum-in-rain-what-changes-what-closes                   | Colosseum in Rain: What Changes, What Closes, and What to Do
+    - gladiators-beasts-and-executions-what-really-happened-in-the-colosseum-arena | Gladiators, Beasts, and Executions: What Really Happened in 
+    - colosseum-vs-vatican-which-to-visit-first                    | Colosseum vs Vatican: Which to Visit First, How to Combine, 
+    - do-more-expensive-tours-get-better-reviews-we-analyzed-433-tours | Do More Expensive Tours Get Better Reviews? We Analyzed 433 
+    - colosseum-underground-tour-ticket                            | Colosseum Underground Tour
+
+─────────────────────────────────────────────────────────────────────
+  TIPO: mosaicCard  (6 docs)
+─────────────────────────────────────────────────────────────────────
+
+  Campos top-level: active, image, location, name, order, seoTitle, slug, url
+  Body field: NO
+
+  Slugs de ejemplo (primeros 5):
+    - (sin slug)                                                   | Colosseum Tours
+    - (sin slug)                                                   | Roman Forum
+    - (sin slug)                                                   | Palatine Hill
+    - (sin slug)                                                   | Vatican
+    - (sin slug)                                                   | Underground Colosseum 
+
+─────────────────────────────────────────────────────────────────────
+  TIPO: pageCategory  (4 docs)
+─────────────────────────────────────────────────────────────────────
+
+  Campos top-level: color, description, image, seoDescription, seoTitle, showInNavigation, slug, sortOrder, title
+  Body field: NO
+
+  Slugs de ejemplo (primeros 5):
+    - colosseum-guides-and-stories                                 | Colosseum Guides & Stories
+    - real-rome-stories                                            | Real Rome Stories
+    - secrets-history                                              | Colosseum  Secrets - History 
+    - guides                                                       | Guides
+
+─────────────────────────────────────────────────────────────────────
+  TIPO: destinationCard  (4 docs)
+─────────────────────────────────────────────────────────────────────
+
+  Campos top-level: active, image, nombre, order, seoTitle, slug, url
+  Body field: NO
+
+  Slugs de ejemplo (primeros 5):
+    - (sin slug)                                                   | (sin título)
+    - (sin slug)                                                   | (sin título)
+    - (sin slug)                                                   | (sin título)
+    - (sin slug)                                                   | (sin título)
+
+─────────────────────────────────────────────────────────────────────
+  TIPO: pageNew  (3 docs)
+─────────────────────────────────────────────────────────────────────
+
+  Campos top-level: content, heroImage, pageSettings, pageType, publishedAt, seoTitle, showInFooter, showInMenu, slug, title
+  Body field: NO
+
+  Slugs de ejemplo (primeros 5):
+    - skip-the-line                                                | Skip the line 
+    - (sin slug)                                                   | S
+    - about-us                                                     | About us
+
+─────────────────────────────────────────────────────────────────────
+  TIPO: homepage  (2 docs)
+─────────────────────────────────────────────────────────────────────
+
+  Campos top-level: content, hero, seo, slug, structuredData
+  Body field: NO
+
+  Slugs de ejemplo (primeros 5):
+    - (sin slug)                                                   | (sin título)
+    - (sin slug)                                                   | (sin título)
+
+─────────────────────────────────────────────────────────────────────
+  TIPO: category  (2 docs)
+─────────────────────────────────────────────────────────────────────
+
+  Campos top-level: description, faqs, image, seoDescription, seoImage, seoTitle, slug, title
+  Body field: NO
+
+  Slugs de ejemplo (primeros 5):
+    - rome-tours                                                   | Rome Tours
+    - colosseum                                                    | Roman Colosseum Tours & Tickets
+
+─────────────────────────────────────────────────────────────────────
+  TIPO: author  (1 docs)
+─────────────────────────────────────────────────────────────────────
+
+  Campos top-level: image, name, slug
+  Body field: NO
+
+  Slugs de ejemplo (primeros 5):
+    - guides                                                       | Guides
+
+─────────────────────────────────────────────────────────────────────
+  TIPO: system.retention  (1 docs)
+─────────────────────────────────────────────────────────────────────
+
+  Campos top-level: days, maximum, preferShorter, slug
+  Body field: NO
+
+  Slugs de ejemplo (primeros 5):
+    - (sin slug)                                                   | (sin título)
+
+─────────────────────────────────────────────────────────────────────
+  TIPO: system.schema  (1 docs)
+─────────────────────────────────────────────────────────────────────
+
+  Campos top-level: schema, slug, version, workspace
+  Body field: NO
+
+  Slugs de ejemplo (primeros 5):
+    - (sin slug)                                                   | (sin título)
+
+═══════════════════════════════════════════════════════════════════════
+  FIN DEL REPORTE
+═══════════════════════════════════════════════════════════════════════

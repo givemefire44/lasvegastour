@@ -1,0 +1,37 @@
+{
+  "name": "ColosseumRoman-tour-importer",
+  "version": "1.0.0",
+  "description": "Tour importer for colosseumroman.com - imports tours from GetYourGuide with AI-generated content",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "import": "node src/index.js",
+    "import:dry": "DRY_RUN=true node src/index.js",
+    "test": "echo \"No tests yet\""
+  },
+  "keywords": [
+    "colosseum",
+    "vatican",
+    "rome",
+    "tours",
+    "getyourguide",
+    "sanity",
+    "cms"
+  ],
+  "author": "Mario",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.68.0",
+    "@sanity/client": "^7.12.1",
+    "better-sqlite3": "^12.9.0",
+    "dotenv": "^16.4.5",
+    "puppeteer": "^24.0.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "sharp": "^0.34.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

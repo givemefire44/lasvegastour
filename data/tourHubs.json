@@ -1,0 +1,209 @@
+{
+  "hubs": [
+    {
+      "slug": "best-colosseum-underground-tours",
+      "title": "Colosseum Underground Tours — Hypogeum Access, Prices & Reviews",
+      "shortTitle": "Underground Tours",
+      "destination": "colosseum",
+      "matchKeywords": [
+        "underground",
+        "hypogeum",
+        "subterranean",
+        "beneath"
+      ],
+      "matchFeatures": {},
+      "icon": "🌑",
+      "type": "underground"
+    },
+    {
+      "slug": "colosseum-and-vatican-tours",
+      "title": "Colosseum & Vatican Tours — Compare Combo Options 2026",
+      "shortTitle": "Colosseum + Vatican Tours",
+      "destination": "colosseum-vatican",
+      "matchKeywords": ["vatican", "sistine", "st peter"],
+      "matchFeatures": {},
+      "icon": "⛪",
+      "type": "combo"
+    },
+    {
+      "slug": "best-colosseum-night-tours",
+      "title": "Colosseum Night Tours — After-Dark Access, Prices & Is the Evening Visit Worth It?",
+      "shortTitle": "Night Tours",
+      "destination": "colosseum",
+      "matchKeywords": [
+        "night",
+        "evening",
+        "after dark",
+        "twilight",
+        "moonlight"
+      ],
+      "matchFeatures": {},
+      "icon": "🌙",
+      "type": "night"
+    },
+    {
+      "slug": "best-colosseum-arena-floor-tours",
+      "title": "Colosseum Arena Floor Tours — Gladiator Gate Access, Prices & Tips",
+      "shortTitle": "Arena Floor Tours",
+      "destination": "colosseum",
+      "matchKeywords": [
+        "arena floor",
+        "arena",
+        "gladiator floor"
+      ],
+      "matchFeatures": {},
+      "icon": "⭕",
+      "type": "arena"
+    },
+    {
+      "slug": "best-colosseum-private-tours",
+      "title": "Private Colosseum Tours — VIP Access, Flexible Schedules & Prices",
+      "shortTitle": "Private Tours",
+      "destination": "colosseum",
+      "matchKeywords": [
+        "private",
+        "exclusive",
+        "vip"
+      ],
+      "matchFeatures": {},
+      "icon": "💎",
+      "type": "private"
+    },
+    {
+      "slug": "best-colosseum-skip-the-line-tours",
+      "title": "Skip the Line Colosseum Tours — Priority Access, Prices & Booking Tips",
+      "shortTitle": "Skip the Line Tours",
+      "destination": "colosseum",
+      "matchKeywords": [
+        "skip the line",
+        "skip-the-line",
+        "priority access",
+        "fast track"
+      ],
+      "matchFeatures": {
+        "skipTheLine": true
+      },
+      "icon": "⏩",
+      "type": "skip-the-line"
+    },
+    {
+      "slug": "best-colosseum-small-group-tours",
+      "title": "Small Group Colosseum Tours — Max 6–15 Guests, Arena Access & Reviews",
+      "shortTitle": "Small Group Tours",
+      "destination": "colosseum",
+      "matchKeywords": [
+        "small group",
+        "small-group",
+        "max 15",
+        "max 10",
+        "max 7"
+      ],
+      "matchFeatures": {
+        "smallGroupAvailable": true
+      },
+      "icon": "👥",
+      "type": "small-group"
+    },
+    {
+      "slug": "best-colosseum-guided-tours",
+      "title": "Guided Colosseum Tours — Archaeologist-Led Experiences Compared",
+      "shortTitle": "Guided Tours",
+      "destination": "colosseum",
+      "matchKeywords": [
+        "guided",
+        "guide",
+        "expert guide",
+        "archaeologist"
+      ],
+      "matchFeatures": {},
+      "icon": "🧑‍🏫",
+      "type": "guided"
+    },
+    {
+      "slug": "best-roman-forum-tours",
+      "title": "Roman Forum Tours — Skip-the-Line Access, Prices & Guided Options",
+      "shortTitle": "Roman Forum Tours",
+      "destination": "roman-forum",
+      "matchKeywords": [
+        "roman forum",
+        "forum"
+      ],
+      "matchFeatures": {},
+      "icon": "🏛️",
+      "type": "destination"
+    },
+    {
+      "slug": "best-palatine-hill-tours",
+      "title": "Palatine Hill Tours — Views, History & Ticket Guide",
+      "shortTitle": "Palatine Hill Tours",
+      "destination": "palatine-hill",
+      "matchKeywords": ["palatine"],
+      "matchFeatures": {},
+      "icon": "⛰️",
+      "type": "destination"
+    },
+    {
+      "slug": "colosseum-full-experience-tours",
+      "title": "Colosseum Full Experience Tours — Underground, Arena & More",
+      "shortTitle": "Full Experience Tours",
+      "destination": "colosseum",
+      "matchKeywords": ["underground", "VIP", "exclusive", "complete"],
+      "matchFeatures": {},
+      "icon": "🎟️",
+      "type": "full-experience"
+    },
+    {
+      "slug": "best-colosseum-underground-and-arena-tours",
+      "title": "Colosseum Underground & Arena Floor Tours — Combined Access, Prices & Reviews",
+      "shortTitle": "Underground + Arena Tours",
+      "destination": "colosseum",
+      "matchKeywords": [
+        "underground",
+        "arena",
+        "hypogeum",
+        "arena floor",
+        "underground and arena",
+        "full access"
+      ],
+      "matchFeatures": {},
+      "icon": "🔥",
+      "type": "underground-arena"
+    },
+    {
+      "slug": "best-colosseum-tours-under-100",
+      "title": "Best Colosseum Tours Under $100 — Budget-Friendly Options Compared",
+      "shortTitle": "Tours Under $100",
+      "destination": "colosseum",
+      "matchKeywords": [],
+      "matchPrice": { "max": 100 },
+      "matchFeatures": {},
+      "icon": "💰",
+      "type": "budget"
+    },
+  
+    {
+      "slug": "colosseum-budget-tours-under-50",
+      "title": "Colosseum Tours Under $50 – Best Budget Options, What's Included & Prices",
+      "shortTitle": "Tours Under $50",
+      "destination": "Colosseum, Rome",
+      "matchKeywords": [],
+      "matchFeatures": {},
+      "matchPrice": { "max": 50 },
+      "icon": "💰",
+      "type": "budget"
+    },
+    {
+      "slug": "colosseum-audio-self-guided-tours",
+      "title": "Colosseum Self-Guided & Audio Tours – Apps, Audio Guides & Entry Tickets",
+      "shortTitle": "Audio & Self-Guided",
+      "destination": "Colosseum, Rome",
+      "matchKeywords": ["audio guide", "audio-guide", "self-guided", "self guided", "audio tour", "audioguide", "entry ticket", "admission ticket", "ticket only", "app"],
+      "matchFeatures": {},
+      "icon": "🎧",
+      "type": "self-guided"
+    }
+
+
+
+  ]
+}

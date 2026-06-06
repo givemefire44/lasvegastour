@@ -1,0 +1,456 @@
+{
+  "generated_at": "2026-05-10T03:25:19.395Z",
+  "hub": {
+    "id": "ticket-tiers-comparison",
+    "name": "Colosseum Ticket Tiers & Skip-the-Line Reality",
+    "sanity_category": "colosseum-ticket-tiers"
+  },
+  "article": {
+    "title": "Is the Colosseum Upper Tier (Belvedere) Worth Booking? Views, Crowds, and Access",
+    "type": "supporting",
+    "category": "comparison"
+  },
+  "keywords_used": [
+    "colosseum",
+    "underground",
+    "arena",
+    "skip-the-line",
+    "ticket",
+    "booking",
+    "crowd",
+    "night",
+    "belvedere"
+  ],
+  "evidence_stats": {
+    "total_reviews": 125,
+    "by_source": {
+      "gyg": 25,
+      "youtube": 25,
+      "tripadvisor": 25,
+      "googlemaps": 25,
+      "trustpilot": 25
+    },
+    "pain_points": 30,
+    "claims": 30,
+    "questions": 30
+  },
+  "generation": {
+    "model": "claude-opus-4-7",
+    "cost_usd": 0.3201,
+    "input_tokens": 20371,
+    "output_tokens": 8729,
+    "duration_seconds": 144.1
+  },
+  "reviews_pool": {
+    "gyg": [
+      {
+        "id": 170,
+        "rating": 5,
+        "country": "United States",
+        "date": "2026-03-22",
+        "url": "https://www.getyourguide.com/rome-l33/rome-colosseum-arena-floor-roman-forum-palatine-tour-t356300/",
+        "excerpt": "Excellent tour with Eleanora (Nora) for nearly 3.5 to 4 hours during the store. She was full of so much energy, patience, and facts. She engaged all the children and really watched out for anybody who was elderly or having difficulty keeping up. Real"
+      },
+      {
+        "id": 176,
+        "rating": 5,
+        "country": "United Kingdom",
+        "date": "2026-01-16",
+        "url": "https://www.getyourguide.com/rome-l33/rome-colosseum-arena-floor-roman-forum-palatine-tour-t356300/",
+        "excerpt": "★★★★★ BEST GUIDE EVER - Don't Miss This Tour! Just got back from our excursion to the Colossus and it was absolutely brilliant – so enlightening to discover all the stories behind this incredible landmark. Our guide Mickarl was a total standout. He's"
+      },
+      {
+        "id": 534,
+        "rating": 5,
+        "country": "United States",
+        "date": "2026-03-16",
+        "url": "https://www.getyourguide.com/rome-l33/colosseum-underground-roman-forum-palatine-max-7-ppl-t1039459/",
+        "excerpt": "What an unforgettable experience! This tour was the highlight of our trip to Rome. Amanda guided us through Palatine Hill and the Roman Forum with the perfect mix of knowledge, humor, and storytelling. Then our small group split, and we met Renata fo"
+      },
+      {
+        "id": 326,
+        "rating": 5,
+        "country": null,
+        "date": "2019-08-17",
+        "url": "https://www.getyourguide.com/rome-l33/full-day-vatican-museums-and-colosseum-tours-t33587/",
+        "excerpt": "Emily August 17, 2019 Actually really enjoyed this. The guide at the Vatican was probably my favourite, he was quite funny! We saw all the main parts and he was incredibly informative without rambling. The break between the Vatican and the colosseum "
+      },
+      {
+        "id": 288,
+        "rating": 5,
+        "country": "United States",
+        "date": "2026-04-17",
+        "url": "https://www.getyourguide.com/roma-l33/roma-tour-subterraneo-y-por-la-arena-del-coliseo-t528437/",
+        "excerpt": "Our guide, Sara, was so wonderful! We learned so much from her thoughtful tour. Our group was small (7 people), which was nice and made the experience even more tailored to us. Our school-aged kids were engaged the whole time. The underground experie"
+      },
+      {
+        "id": 405,
+        "rating": 5,
+        "country": "Czech Republic",
+        "date": "2026-01-04",
+        "url": "https://www.getyourguide.com/rome-l33/colosseum-underground-and-ancient-rome-guided-tour-t661314/",
+        "excerpt": "This tour was quite expensive, and at first I wasn’t sure it would be worth the money (especially for a family of four). But it turned out to be the best experience we had in Rome. Our guide, Amanda, was amazing — funny, engaging, and full of fascina"
+      },
+      {
+        "id": 204,
+        "rating": 5,
+        "country": "United Kingdom",
+        "date": "2026-03-30",
+        "url": "https://www.getyourguide.com/rome-l33/rome-colosseum-forum-with-audioguide-app-optional-arena-t653623",
+        "excerpt": "March 30, 2026 The guide was very easy to find and gave clear instructions. The colosseum is incredible. I paid for the arena upgrade and thought it was well worth it. I would just advise that the time you book the tour may not be the time you enter "
+      },
+      {
+        "id": 154,
+        "rating": 5,
+        "country": "United Kingdom",
+        "date": "2026-04-18",
+        "url": "https://www.getyourguide.com/rome-l33/rome-colosseum-underground-small-group-guided-tour-t217308/",
+        "excerpt": "April 18, 2026 The tour was interesting and very worth paying extra for a small group if you can, as you have more chances to ask questions and it's easier to hear (headphones are provided but my 9 year old son couldn't get on with his, so it really "
+      },
+      {
+        "id": 140,
+        "rating": 5,
+        "country": "United Kingdom",
+        "date": "2026-02-08",
+        "url": "https://www.getyourguide.com/rome-l33/rome-colosseum-roman-forum-and-palatine-hill-guided-tour-t84141/",
+        "excerpt": "February 8, 2026 (Our tour was upgraded to include the arena floor) Despite the intermittent rain the tour was very good. The meeting point was a few hundred metres from the Coliseum and 15 to 20 minutes (downhill) walk from Rome Termini station or 5"
+      },
+      {
+        "id": 523,
+        "rating": 3,
+        "country": "Germany",
+        "date": "2019-07-03",
+        "url": "https://www.getyourguide.com/rome-l33/one-day-in-rome-vatican-museums-colosseum-t9297/",
+        "excerpt": "Morgens worden wir fast 1 Stunde später abgeholt haben ganze Zeit draußen gewartet. Nachdem Mittagessen hats ewig gedauert bis wir zum kolosseum gebracht wurden sind. Es waren erst sehr viele Menschen die wurden morgens wie nachmittags erst später in"
+      }
+    ],
+    "youtube": [
+      {
+        "id": 1200,
+        "rating": null,
+        "country": null,
+        "date": "2025-03-01",
+        "url": "https://www.youtube.com/watch?v=4JOnS7hpegE&lc=UgzvlxylA67Y3FU0UQl4AaABAg",
+        "excerpt": "They should fully restore it, and do MMA fights, concerns, and random easy to set up pop up sports events like tennis. Like honestly I get wanting to preserve history, but you can do that by rebuilding it to its former glory on top of the existing st"
+      },
+      {
+        "id": 1780,
+        "rating": null,
+        "country": null,
+        "date": "2025-02-01",
+        "url": "https://www.youtube.com/watch?v=2smbjy9lwhg&lc=UgxMWYJwCKGerS9QP5J4AaABAg",
+        "excerpt": "In this short, I'm at the Colosseum. \nGoing to Italy? You will love our tour partners at LivTours, Tour Guy, and Viator. Check them out:\r\n\r\nLivTours (semi-private/private tours): https://livtours.com/destinations/rome-tours?af_code=E1DDN61\r\n\r\nTourGuy"
+      },
+      {
+        "id": 1221,
+        "rating": null,
+        "country": null,
+        "date": "2023-12-03",
+        "url": "https://www.youtube.com/watch?v=qew8RFRCJ7M&lc=Ugx65sXLQ0_66-CMcIN4AaABAg.9nj3wCaWw979xqMLZJTIdy",
+        "excerpt": "The very worst and most depraved aspects of human nature?  Not hardly.  The Colosseum was in use for 400 years (most people have no idea it was in use for centuries).  It's estimated that 400,000 people were killed during that time.  That is 1000 peo"
+      },
+      {
+        "id": 1653,
+        "rating": null,
+        "country": null,
+        "date": "2024-08-17",
+        "url": "https://www.youtube.com/watch?v=utBko5G6udY&lc=UgyACVaoAaCiT1QJm6N4AaABAg",
+        "excerpt": "Hi Just think you have a great “product” and love your website, YouTube posts and your invaluable advice and the selfless manner in which you present the same…thank uou! …just wonderful! We’re subscribed and spreading awareness of your great posts.\n\n"
+      },
+      {
+        "id": 3580,
+        "rating": null,
+        "country": null,
+        "date": "2024-03-16",
+        "url": "https://www.youtube.com/watch?v=fr9W2bkd_sA&lc=UgxZ2m7ohs_ue56oy_h4AaABAg.A10MEBIOKfDA11Yilw2b_S",
+        "excerpt": "Thank you for watching and for letting me know you find my videos helpful. Yes, I think you will love the night tour. It's so different from visiting during the day.\n\nYes, as I've said in other videos, the guides at the Colosseum can be great or not,"
+      },
+      {
+        "id": 1728,
+        "rating": null,
+        "country": null,
+        "date": "2025-10-27",
+        "url": "https://www.youtube.com/watch?v=T0R5qeZtJmk&lc=UgyFdd-iAwvd9B4ts-t4AaABAg",
+        "excerpt": "I found that the Hypogeum and Attic tickets were unavailable within seconds of release. I think the third party sites use automated bots to scoop them up.\n\nI found the standard ticket was fine as you had mentioned in a previous video. Unlike the Acro"
+      },
+      {
+        "id": 1893,
+        "rating": null,
+        "country": null,
+        "date": "2024-06-14",
+        "url": "https://www.youtube.com/watch?v=STmtoKagL1M&lc=UgxKaZ2Bzk5mN_FKnFB4AaABAg.A4YNzah5WQiA4e8fl0JKmo",
+        "excerpt": "Thanks for watching. These tickets are quite different from each other.\n\nThese are the similarities:\n\nBoth tickets include a single-access entry to the Roman Forum Palatine Hill\nBoth tickets allow you to visit the inside of the Colosseum\nBoth tickets"
+      },
+      {
+        "id": 3739,
+        "rating": null,
+        "country": null,
+        "date": "2024-09-04",
+        "url": "https://www.youtube.com/watch?v=vYgaXoGz9Vo&lc=UgzWKtzRF8qQ03PFSyl4AaABAg.A7weMT5RoiVA7xJ__pvLG_",
+        "excerpt": "Thanks for letting me know you find my videos helpful.\n\nMy first piece of advice to you is to purchase standard entry tickets to the Colosseum. They are readily available even for same-day purchase, and you remove all the stress of buying tickets. Wi"
+      },
+      {
+        "id": 4447,
+        "rating": null,
+        "country": null,
+        "date": "2023-10-29",
+        "url": "https://www.youtube.com/watch?v=CVyuqIoB7qg&lc=UgwS1QGiAw4rp-gjENx4AaABAg",
+        "excerpt": "Really nice tour.  The guide should think about using laser pointers though to pinpoint what he is talking about.  \"The emperor sat over there\" (with a point in that direction) was pretty vague.  They make commercial laser pointers for that purpose ("
+      },
+      {
+        "id": 3770,
+        "rating": null,
+        "country": null,
+        "date": "2024-09-04",
+        "url": "https://www.youtube.com/watch?v=vYgaXoGz9Vo&lc=UgzjCIVMIhdPZeNhjeN4AaABAg.A7r1mTA1eE5A7xLufFYvIW",
+        "excerpt": "Standard entry tickets are available nearly every day for the next 30 days. They are easy to find and easy to purchase.\n\nMost other tickets are also available up to 30 days in advance.\n\nThe exceptions are:\n\nNight tickets are only available one week i"
+      }
+    ],
+    "tripadvisor": [
+      {
+        "id": 7868,
+        "rating": 2,
+        "country": "Norwich",
+        "date": "2019-04-22",
+        "url": "https://www.tripadvisor.com/ShowUserReviews-g187791-d192285-r668319912-Colosseum-Rome_Lazio.html",
+        "excerpt": "'Skip the line' - to then have to get in more lines. Pfft.\nYes, a tick off of the bucket list, but wow was it hassle getting in, and was it worth it?...\n\nLines were incredibly long and we were getting conflicting information from 'helpers'. We had pr"
+      },
+      {
+        "id": 8535,
+        "rating": 5,
+        "country": "Maassluis",
+        "date": "2026-02-28",
+        "url": "https://www.tripadvisor.com/ShowUserReviews-g187791-d34159987-r1051431086-Vatican_Skip_the_Line_Guided_Tour_Museums_and_Sistine_Chapel-Rome_Lazio.html",
+        "excerpt": "Well-organized tour with knowledgeable guide, despite the crowds\nI joined this guided tour of the Vatican Museums in January as a solo traveler and had a very positive experience. The group was relatively small, which made it easy to follow the guide"
+      },
+      {
+        "id": 10427,
+        "rating": 2,
+        "country": "United States",
+        "date": "2025-05-28",
+        "url": "https://www.tripadvisor.com/ShowUserReviews-g187793-d191000-r1010002347-Vatican_Museums-Vatican_City_Lazio.html",
+        "excerpt": "What's the point?\nI would love to say I enjoyed my time sat the Vatican museums, but the truth is it was really just one big hassle. The museum is basically a very long, narrow hallway, lined with exhibits on both sides with an ornate ceiling above. "
+      },
+      {
+        "id": 7649,
+        "rating": 1,
+        "country": null,
+        "date": "2019-06-01",
+        "url": "https://www.tripadvisor.com/ShowUserReviews-g187791-d192285-r678012709-Colosseum-Rome_Lazio.html",
+        "excerpt": "What to avoid at the Colloseum\nWe loved the tour of this extraordinary piece of ancient architecture. It is what happened afterwards that was disappointing and left a bad taste in our mouths. When we came out of the Colloseum we noticed 3 blokes dres"
+      },
+      {
+        "id": 6948,
+        "rating": 1,
+        "country": "Curiglia con Monteviasco",
+        "date": "2020-02-07",
+        "url": "https://www.tripadvisor.com/ShowUserReviews-g187791-d192285-r743610278-Colosseum-Rome_Lazio.html",
+        "excerpt": "algunas advertencias\nComo ya fue dicho, es un lugar que emana historia, aparece representado en muchas películas, etc. etc.\n\nEn invierno no conviene comprar el ingreso anticipadamente. Las filas son de 5 a 7 minutos como máximo. Existen muchas advert"
+      },
+      {
+        "id": 9023,
+        "rating": 5,
+        "country": "London",
+        "date": "2025-11-17",
+        "url": "https://www.tripadvisor.com/ShowUserReviews-g187791-d2154770-r1039416968-Roman_Forum-Rome_Lazio.html",
+        "excerpt": "⭐️⭐️⭐️⭐️⭐️ A stunning walk through history – beautifully organised and surprisingly peaceful!\nOur visit to the Roman Forum was absolutely incredible from start to finish. Just like our Colosseum experience, everything was very organised, with clear d"
+      },
+      {
+        "id": 9338,
+        "rating": 5,
+        "country": "London",
+        "date": "2025-09-27",
+        "url": "https://www.tripadvisor.com/ShowUserReviews-g187791-d2154770-r1032322744-Roman_Forum-Rome_Lazio.html",
+        "excerpt": "One of the most spectacular heritage sites in Europe!\nThe Roman Forum is one of the most iconic heritage sites in Italy. For centuries it was the centre of daily Roman life where public speeches took place, statues were erected to honour Rome's leade"
+      },
+      {
+        "id": 6733,
+        "rating": 1,
+        "country": null,
+        "date": "2021-10-12",
+        "url": "https://www.tripadvisor.com/ShowUserReviews-g187791-d21086211-r814223912-Colosseum-Rome_Lazio.html",
+        "excerpt": "COOPCULTURA DISPONIBILITA' ZERO!!!\nCoopcultura disponibilità zero!!!\nPrenoto online visita colosseo e palatino per il pomeriggio,  purtroppo in mattinata mio marito viene derubato di documenti , carte di credito e cellulare, di conseguenza oltre al d"
+      },
+      {
+        "id": 9650,
+        "rating": 2,
+        "country": null,
+        "date": "2025-11-08",
+        "url": "https://www.tripadvisor.com/ShowUserReviews-g187793-d191000-r1038231960-Vatican_Museums-Vatican_City_Lazio.html",
+        "excerpt": "Not a good experience\nA few years ago we took an evening tour of the Sistine Chapel that was so amazing. We didn’t get to see the museum on that trip (only a quick walk through the halls on the way out) so we wanted to go back to see the museum. We a"
+      },
+      {
+        "id": 10842,
+        "rating": 4,
+        "country": null,
+        "date": "2022-06-16",
+        "url": "https://www.tripadvisor.com/ShowUserReviews-g187793-d190130-r843104367-Sistine_Chapel-Vatican_City_Lazio.html",
+        "excerpt": "Very beautiful place but crowded!\nI booked a small group guided tour for the early afternoon as that is what was available on the day of our visit.  First of all the tour location or meeting point was hard to find.  Turns out the morning tour meets i"
+      }
+    ],
+    "googlemaps": [
+      {
+        "id": 5367,
+        "rating": 5,
+        "country": null,
+        "date": null,
+        "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT21rdFJUWXlkVmM0UWxWWFVGTlFWRGMwVVUxb1NWRRAB!2m1!1s0x0:0x28f1c82e908503c4!3m1!1s2@1:CAIQACodChtycF9oOmktRTYydVc4QlVXUFNQVDc0UU1oSVE%7C%7C?hl=en",
+        "excerpt": "Đấu trường La Mã hay Đại hý trường La Mã được biết đến đầu tiên dưới cái tên Amphitheatrum Flavium theo tiếng Latinh hoặc Anfitea tro Flavio tiếng Ý, sau này gọi là Colosseum hay Colosseo, là một đấu trường lớn ở thành phố Roma. Công suất chứa lúc mớ"
+      },
+      {
+        "id": 6076,
+        "rating": 5,
+        "country": null,
+        "date": null,
+        "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2t4a1ZDMWpWRVZrWDB0SFJXZFVXR05vT0ZOSlVuYxAB!2m1!1s0x0:0x28f1c82e908503c4!3m1!1s2@1:CAIQACodChtycF9oOkxkVC1jVEVkX0tHRWdUWGNoOFNJUnc%7C%7C?hl=en",
+        "excerpt": "Colosseum is a well-known destination that attracts visitors for its unique appeal and overall\nexperience. The location is generally well maintained, and facilities such as seating areas,\naccessibility, and nearby services make it convenient for trav"
+      },
+      {
+        "id": 5835,
+        "rating": 5,
+        "country": null,
+        "date": null,
+        "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT25wc2NUZG1hbGwzV1ZKWGFEWm1SbkZVVFVOS00zYxAB!2m1!1s0x0:0x28f1c82e908503c4!3m1!1s2@1:CAIQACodChtycF9oOnpscTdmall3WVJXaDZmRnFUTUNKM3c%7C%7C?hl=en",
+        "excerpt": "The Colosseum remains the beating heart of Rome, a colossal testament to human ingenuity and the dark complexities of our nature. I have had the privilege of visiting it across all seasons, and its majesty never fades. Whether I am exploring its laby"
+      },
+      {
+        "id": 5705,
+        "rating": 5,
+        "country": null,
+        "date": null,
+        "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2xWaGVGaFhSMnM1TFhWelNGbGhiRTEyUTNONU5rRRAB!2m1!1s0x0:0x28f1c82e908503c4!3m1!1s2@1:CAIQACodChtycF9oOlVheFhXR2s5LXVzSFlhbE12Q3N5NkE%7C%7C?hl=en",
+        "excerpt": "Questo monumento non ha bisogno di recensioni, lo conoscono tutti per la sua bellezza. Vorrei invece dare delle indicazioni per le prenotazioni e le visite, visto che non è proprio facile districarsi tra i vari pacchetti che si trovano in rete.\nComin"
+      },
+      {
+        "id": 5976,
+        "rating": 5,
+        "country": null,
+        "date": null,
+        "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT200d2FsQXRjekpKZG1oUU1qWlRWalpoYWxoWVlWRRAB!2m1!1s0x0:0x28f1c82e908503c4!3m1!1s2@1:CAIQACodChtycF9oOm4walAtczJJdmhQMjZTVjZhalhYYVE%7C%7C?hl=en",
+        "excerpt": "Colosseum looks grand and easily accessible via MRT/metro station and bus stop right outside it.\n\nColosseum with access to Arena along with Roman Forum, Palatine Hille & other SUPER sites are sold only a week in advance, but others like Colosseum wit"
+      },
+      {
+        "id": 5837,
+        "rating": 5,
+        "country": null,
+        "date": null,
+        "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT200NVNFbGZjMWRwUVdsdlNWaEhZbkJ0WW1WbVluYxAB!2m1!1s0x0:0x28f1c82e908503c4!3m1!1s2@1:CAIQACodChtycF9oOm45SElfc1dpQWlvSVhHYnBtYmVmYnc%7C%7C?hl=en",
+        "excerpt": "Wir haben über Getyourguide gebucht und uns einen Audioguide runtergeladen.\nDie App an sich ist etwas gewöhnungsbedürftig da man hier immer nur eine Sehenswürdigkeit speichern kann.\nMan geht frei herum und hört sich die dementsprechenden Erklärungen "
+      },
+      {
+        "id": 5908,
+        "rating": 4,
+        "country": null,
+        "date": null,
+        "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT21WUWJFdGlkRGxwVTFGWlZHbERTV3B5ZW10SlFtYxAB!2m1!1s0x0:0x28f1c82e908503c4!3m1!1s2@1:CAIQACodChtycF9oOmVQbEtidDlpU1FZVGlDSWpyemtJQmc%7C%7C?hl=en",
+        "excerpt": "There is certainly a lot to see here.\nIt is also extremely busy it appears at all times. My wife purchased an audio tour before our travel date and we needed to meet at a storefront near the Colosseum and get a QR code that only gave her access to au"
+      },
+      {
+        "id": 5426,
+        "rating": 5,
+        "country": null,
+        "date": null,
+        "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2tWNlYzWnRNbXRGZGtkcVdYZFBWelZuZDJ4cU9HYxAB!2m1!1s0x0:0x28f1c82e908503c4!3m1!1s2@1:CAIQACodChtycF9oOkV6V3ZtMmtFdkdqWXdPVzVnd2xqOGc%7C%7C?hl=en",
+        "excerpt": "The Colosseum is an absolutely breathtaking place that truly brings history to life. Walking through this iconic structure feels like stepping back in time, imagining the grand spectacles and events that once took place here. The architecture is incr"
+      },
+      {
+        "id": 5340,
+        "rating": 5,
+        "country": null,
+        "date": null,
+        "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2tOYVFWZEVYMGxHZDB4R1owODNkblowZURCME4wRRAB!2m1!1s0x0:0x28f1c82e908503c4!3m1!1s2@1:CAIQACodChtycF9oOkNaQVdEX0lGd0xGZ083dnZ0eDB0N0E%7C%7C?hl=en",
+        "excerpt": "Koloseum w Rzymie to absolutny klasyk – wygląda tak epicko, że aż człowiek spodziewa się, że za rogiem wyskoczy gladiator z mieczem i zapyta, czy masz bilet 😄🏛️\n\nAle kiedy już wejdziesz do środka… zaczyna się prawdziwa arena walki. Tylko zamiast lw"
+      },
+      {
+        "id": 6033,
+        "rating": 5,
+        "country": null,
+        "date": null,
+        "url": "https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2xkRE5HaEtUalE1UlZCS2RtVkdWbWh4Ymt4QmJIYxAB!2m1!1s0x0:0x28f1c82e908503c4!3m1!1s2@1:CAIQACodChtycF9oOldDNGhKTjQ5RVBKdmVGVmhxbkxBbHc%7C%7C?hl=en",
+        "excerpt": "The scale of the Colosseum is heard to comprehend without actually seeing it yourself. Imprivement to the Underground tour since my last visit are welcome, adding both capacity and education but tickets still remain frustratingly hard to find close t"
+      }
+    ],
+    "trustpilot": [
+      {
+        "id": 4841,
+        "rating": 1,
+        "country": "US",
+        "date": "2023-11-13",
+        "url": "https://www.trustpilot.com/reviews/6552581a205133473d9f5d1c",
+        "excerpt": "HUGE SCAM DONT GO HERE\nHUGE SCAM DONT GO HERE. They dont actually have or buy tickets for you, they only give you their fake internally created tickets, so if lets say the guide is an a-@!% (WHICH OURS WAS, OUR ONLY TWO INTERACTIONS WAS HER YELLING A"
+      },
+      {
+        "id": 4852,
+        "rating": 1,
+        "country": "DE",
+        "date": "2023-05-23",
+        "url": "https://www.trustpilot.com/reviews/646c8bb3f45303b955519d26",
+        "excerpt": "Don't book City Wonders private guided tours\nWe booked a 1,5 hour private guided tour (150 €!) for Uffici Museum in Florence; we missed the guide at the crowded meeting point only for 5 (!) minutes and immediately called the agency for help. They did"
+      },
+      {
+        "id": 4773,
+        "rating": 3,
+        "country": "CA",
+        "date": "2026-01-09",
+        "url": "https://www.trustpilot.com/reviews/6960385702944028b73276c4",
+        "excerpt": "Torn - 3-star mishap, 5-star guides.\nI am a little torn is giving that rating. We completed 3 Walks of Italy tours with some good and some less than perfect experiences.\n\nThe 5-star experience\n-Reservation easy online, with lots of details on where t"
+      },
+      {
+        "id": 4823,
+        "rating": 1,
+        "country": "CA",
+        "date": "2024-08-27",
+        "url": "https://www.trustpilot.com/reviews/66ce28c2ec57dbc610012e2b",
+        "excerpt": "Horrible customer service and business practices.\nThe worst customer service. Wanted to buy a couple of day tours for my family trip, got a promo code online for 5% discount. Couldn’t use it at first, because had to confirm the dates of the trip. Whe"
+      },
+      {
+        "id": 4737,
+        "rating": 2,
+        "country": "SI",
+        "date": "2026-02-25",
+        "url": "https://www.trustpilot.com/reviews/699ebf53ee0a8e17caf8a72f",
+        "excerpt": "Paid extra for “luxury”  still had to pay for heating \nWe were satisfied with the general organization of the Sahara trip, but what happened with transport and the “luxury” desert camp was completely unacceptable.\nWe traveled in February, when mornin"
+      },
+      {
+        "id": 4798,
+        "rating": 1,
+        "country": "US",
+        "date": "2025-10-14",
+        "url": "https://www.trustpilot.com/reviews/68ed81760a85da8acdc0f496",
+        "excerpt": "Chaotic, Unprofessional, and Costly – Avoid City Wonders and VIATOR\n\nWe had a deeply frustrating experience with City Wonders that ruined a long-anticipated tour from Rome to Pompeii. Despite arriving early (6:42 AM) at Piazza del Popolo for our 7:15"
+      },
+      {
+        "id": 4783,
+        "rating": 1,
+        "country": "GB",
+        "date": "2026-05-05",
+        "url": "https://www.trustpilot.com/reviews/69f9b4ea96b470745345208d",
+        "excerpt": "Scam... 180 pound sterling for 2 tickets and no tickets...We bought 2 tickets for today at…\nWe bought 2 tickets for today at 10:30am for 180 pound sterling and we arrived 10 minutes late and nobody was there to give us our tickets while there are sti"
+      },
+      {
+        "id": 4514,
+        "rating": 1,
+        "country": "AU",
+        "date": "2024-04-06",
+        "url": "https://www.trustpilot.com/review/citywonders.com?page=5",
+        "excerpt": "AVOID THIS COMPANY IF POSSIBLE!!\nAVOID THIS COMPANY IF POSSIBLE!!! The instruction of meeting point was not clear and NO SIGNAGE to direct people where to meet  especially for tourist which can be confusing. We were half an hour early waiting until 1"
+      },
+      {
+        "id": 4838,
+        "rating": 1,
+        "country": "AU",
+        "date": "2024-04-06",
+        "url": "https://www.trustpilot.com/reviews/661166e7d9a814542ff294a7",
+        "excerpt": "AVOID THIS COMPANY IF POSSIBLE!!\nAVOID THIS COMPANY IF POSSIBLE!!! The instruction of meeting point was not clear and NO SIGNAGE to direct people where to meet  especially for tourist which can be confusing. We were half an hour early waiting until 1"
+      },
+      {
+        "id": 4900,
+        "rating": 1,
+        "country": "IE",
+        "date": "2026-05-03",
+        "url": "https://www.trustpilot.com/reviews/69f7b3f1f57873e5b58cca07",
+        "excerpt": "Avoid GetYourGuide at all costs.\nAvoid GetYourGuide at all costs.\n\nWe booked a beer bike in Lisbon for a stag group of 27 people. The original booking was for 1pm, but the time was officially changed to 2pm beforehand. The GetYourGuide app confirmed "
+      }
+    ]
+  }
+}

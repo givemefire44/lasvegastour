@@ -1,0 +1,130 @@
+{
+  "slug": "colosseum-night-tour-underground-and-arena-floor",
+  "title": "Colosseum Night Tour Underground & Arena Floor ",
+  "format": "modern",
+  "sectionsFound": [
+    "quickAnswer",
+    "byNumbers",
+    "included",
+    "notIncluded",
+    "whatMakesDifferent",
+    "whatYoullSee",
+    "itinerary",
+    "practicalInfo",
+    "tourFormat",
+    "bestFor",
+    "insiderTip"
+  ],
+  "extracted": {
+    "quickAnswer": {
+      "raw": "1.5-hour Colosseum night tour with underground and arena floor access, priced from $217 per person. Covers the hypogeum tunnels where gladiators and animals waited before combat, the reconstructed arena floor, and amphitheater seating areas with after-hours lighting and expert commentary on gladiatorial history. Best for travelers who want exclusive access to restricted areas with fewer crowds than daytime visits allow.",
+      "sentenceCount": 3
+    },
+    "byNumbers": {
+      "rating": 4.6,
+      "reviews": 13,
+      "duration": "1.5 hours",
+      "price": "$217 per person",
+      "groupSize": "Not specified",
+      "guide": "English-speaking guide",
+      "meetingPoint": "Colosseum entrance",
+      "sitesCovered": [
+        "Underground hypogeum",
+        "arena floor"
+      ],
+      "operator": "Rome with Silvia",
+      "languages": [
+        "English"
+      ]
+    },
+    "included": [
+      "Headsets to hear the tour guide clearly",
+      "English-speaking guide",
+      "Access to Colosseum underground hypogeum",
+      "Access to arena floor reconstruction"
+    ],
+    "notIncluded": [
+      "Hotel pickup and drop-off",
+      "Food and beverages",
+      "Gratuities",
+      "Transportation to meeting point"
+    ],
+    "whatMakesDifferent": {
+      "raw": "This night tour provides exclusive after-hours access to the Colosseum's most restricted areas when the monument is closed to general visitors. Unlike daytime underground tours that cost $57-65, this evening experience combines hypogeum and arena floor access with illuminated views of the amphitheater under moonlight for $217.",
+      "selfComparisons": [
+        {
+          "type": "unlike",
+          "raw": "Unlike daytime underground tours that cost $57-65,",
+          "target": "daytime underground tours that cost $57-65"
+        },
+        {
+          "type": "price_references",
+          "values": [
+            "$57-65",
+            "$217"
+          ]
+        }
+      ]
+    },
+    "whatYoullSee": [
+      "Underground hypogeum tunnels with narrow corridors and travertine blocks where gladiators prepared for combat",
+      "Original holding cells and chambers beneath the arena floor",
+      "Arena floor reconstruction offering 360-degree views of the amphitheater seating",
+      "Colosseum exterior illuminated by streetlights and moonlight",
+      "Mechanical systems that lifted animals and scenery during games. The hypogeum's complex elevator and pulley networks transported exotic beasts from Africa and condemned prisoners to the arena above, feeding Rome's appetite for spectacular public entertainment."
+    ],
+    "itinerary": {
+      "raw": "The tour begins at the Colosseum entrance after standard closing hours with guide check-in and headset distribution. You'll descend into the underground hypogeum tunnels, spending approximately 45 minutes exploring the gladiator preparation areas and animal holding chambers. The group then ascends to the reconstructed arena floor for 360-degree amphitheater views, spending the remaining 45 minutes examining the wooden platform where games occurred. Standing on the arena floor reconstruction, you'll see the illuminated stone seating tiers rising in perfect symmetry around you, creating an intimate connection with ancient Rome's most dramatic stage."
+    },
+    "practicalInfo": {
+      "footwear_required": "Comfortable walking shoes with good grip for uneven underground surfaces",
+      "sun_protection": "Not needed for evening tour",
+      "water": "Bring water bottle as none provided during 1.5-hour tour",
+      "accessibility": "Not wheelchair accessible due to underground stairs and narrow passages",
+      "best_time_to_visit": "Evening tours available year-round, weather permitting",
+      "free_cancellation": "Available according to operator policy",
+      "what_to_bring": "Valid ID, comfortable clothing, small bag only",
+      "restrooms": "Available at Colosseum entrance before tour begins",
+      "luggage_storage": "Large bags not permitted in underground areas"
+    },
+    "tourFormat": {
+      "raw": "This is a small-group guided walking tour with exclusive after-hours access to restricted underground and arena floor areas of the Colosseum."
+    },
+    "bestFor": [
+      "History enthusiasts who want intimate access to the Colosseum's most exclusive areas without crowds",
+      "Travelers seeking unique evening experiences beyond standard daytime sightseeing",
+      "Photography enthusiasts interested in capturing the illuminated amphitheater from restricted viewpoints",
+      "Visitors who prefer detailed historical commentary in smaller group settings"
+    ],
+    "insiderTip": {
+      "raw": "Evening tours operate year-round but check weather conditions before booking, as underground areas can be cooler than expected and the tour continues in light rain."
+    },
+    "finalWord": null,
+    "reviewSnapshot": null
+  },
+  "claims": {
+    "explicit": [
+      "headsets_included",
+      "underground_included",
+      "arena_floor_included",
+      "evening_recommended",
+      "free_cancellation_available",
+      "walking_tour",
+      "small_group_format",
+      "evening_format"
+    ],
+    "explicitNegative": [
+      "no_hotel_pickup",
+      "no_food",
+      "no_gratuities",
+      "no_transport",
+      "not_wheelchair_accessible"
+    ],
+    "interpretive": [
+      "best_for_history_enthusiasts",
+      "best_for_crowd_avoiders",
+      "best_for_evening_seekers",
+      "best_for_photographers"
+    ]
+  }
+}

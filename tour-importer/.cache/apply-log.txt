@@ -1,0 +1,396 @@
+=== APPLY-CITABLES v4.1 LOG — 2026-04-28T18:17:40.205Z ===
+
+PATCHED roman-forum-and-colosseum-arena-floor-tour
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Combo tour covering Colosseum, Roman Forum, and Palatine Hill in 3 hours at $41, trading deeper Colosseum exploration for broader Rome coverage."
+
+PATCHED ancient-history-and-colosseum-underground-tour
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "The only catalog tour combining underground access, Palatine Hill, and wheelchair access in 1.5–3 hours at $166, broadening the Roman experience at the expense of single-site depth."
+
+PATCHED ancient-rome-guided-tour-and-colosseum-underground
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Underground-access guided experience in 3 hours at $188, prioritizing comprehensive Colosseum coverage over external Rome sites."
+
+PATCHED audio-guide-app-colosseum-and-forum-optional-arena
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Tour combining Colosseum interior with Roman Forum and Palatine Hill in 3 hours at $47, without paying for a live guide."
+
+PATCHED colosseum-arena-floor-tour-with-roman-forum-access
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Wheelchair-accessible guided visit in 2.5 hours at $93."
+
+PATCHED colosseum-arena-tour-guide-forum-and-palatine
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Three-site visit including Palatine Hill in 2.5–3 hours at $63, covering more Roman sites instead of focusing exclusively on the Colosseum."
+
+PATCHED colosseum-arena-twilight-tour-and-roman-forum
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Premium tour with arena floor access in 2.5 hours at $163, but without underground access."
+
+PATCHED colosseum-arena-forum-and-hill-tour-optional-underground
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Mid-range single-site amphitheater visit in 2.5 hours at $111, prioritizing comprehensive Colosseum coverage over external Rome sites."
+
+PATCHED colosseum-arena-palatine-hill-and-forum-guided-tour
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Arena-floor guided experience in 2.5 hours at $117, but without underground access."
+
+PATCHED colosseum-arena-palatine-hill-forum-guided-tour
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Arena-floor guided experience in 3 hours at $117, but without underground access."
+
+PATCHED colosseum-arena-and-optional-underground-tour
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Multi-level guided experience including arena floor, underground hypogeum, Roman Forum and Palatine Hill in 3 hours at $111, trading deeper Colosseum exploration for broader Rome coverage."
+
+PATCHED colosseum-gladiator-gate-underground-and-arena-tour
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "The only catalog tour combining underground access, Palatine Hill, and gladiator history focus in 2.5 hours at $94, broadening the Roman experience at the expense of single-site depth."
+
+PATCHED colosseum-night-tour-underground-and-arena-floor
+  pattern: subset_extremo_self_comparison, score: 1175
+  new: "$217 evening tour with underground and arena floor access in 90 minutes — shortest in both arena floor and underground subsets, but 3.6x the daytime tier ($57-65)."
+  old: "The shortest catalog tour with arena floor access at 90 minutes at $217, prioritizing comprehensive Colosseum coverage over external Rome sites."
+
+PATCHED colosseum-roman-forum-audioapp-optional-arena
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Self-guided tour with downloadable audio app in 3 hours at $47, without paying for a live guide."
+
+PATCHED colosseum-roman-forum-palatine-hill-tour
+  pattern: most_reviewed_anchor, score: 781
+  new: "$81 mid-priced tour with 80,474 reviews (most-reviewed in 78-tour catalog), covering 3 sites in 2.5 hours but excluding arena floor that 51% of catalog includes."
+  old: "The most-reviewed tour in the catalog with 80,474 reviews in 2.5 hours at $81, trading deeper Colosseum exploration for broader Rome coverage."
+
+PATCHED colosseum-roman-forum-palatine-hill
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Three-site visit including Palatine Hill in 2.5 hours at $46, covering more Roman sites instead of focusing exclusively on the Colosseum."
+
+PATCHED colosseum-underground-hypogeum-guided-tour
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Premium tour with underground access in 3 hours at $188, prioritizing comprehensive Colosseum coverage over external Rome sites."
+
+PATCHED colosseum-underground-roman-forum-exclusive-tour
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Exclusive small-group visit in 3 hours at $83, prioritizing comprehensive Colosseum coverage over external Rome sites."
+
+PATCHED colosseum-underground-small-group-guided-tour
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Mid-range single-site guided visit in 90 minutes at $104, prioritizing comprehensive Colosseum coverage over external Rome sites."
+
+PATCHED colosseum-underground-and-arena-tour
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Full-coverage tour combining Colosseum interior with arena floor, underground, Roman Forum and Palatine Hill in 2.5 hours at $94, covering more Roman sites instead of focusing exclusively on the Colosseum."
+
+PATCHED colosseum-vip-tour-top-floor-guided-tour
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Mid-range single-site amphitheater visit in 90 minutes at $115, but without arena floor or underground access."
+
+PATCHED colosseum-forum-palatine-hill-optional-arena
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Guided tour spanning Colosseum, Forum, and Palatine in 2.5 hours at $46, spanning multiple Roman landmarks rather than diving deep into one."
+
+PATCHED colosseum-forum-palatine-hill-entry-audioguide-app-tickets
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Tour combining Colosseum interior with Roman Forum and Palatine Hill at $30, without paying for a live guide."
+
+PATCHED colosseum-forum-palatine-hill-entry-audioguide-app
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Tour combining Colosseum interior with Roman Forum and Palatine Hill in 75 minutes at $30, without paying for a live guide."
+
+PATCHED colosseum-roman-forum-palatine-hill-tour-arena-option
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Combo tour covering Colosseum, Roman Forum, and Palatine Hill in 3 hours at $69, trading deeper Colosseum exploration for broader Rome coverage."
+
+PATCHED colosseum-roman-forum-and-palatine-hill-guided-tour
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Three-site visit including Palatine Hill in 2 hours at $47, covering more Roman sites instead of focusing exclusively on the Colosseum."
+
+PATCHED complete-colosseum-tour-with-arena-floor-access
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Mid-range single-site guided visit in 1.5–3.5 hours at $81."
+
+PATCHED exclusive-colosseum-underground-roman-forum-tour
+  pattern: double_cheapest_concession, score: 1170
+  new: "$34 — cheapest catalog tour combining arena floor and underground access, undercutting the $69 budget tier (p25) by 51%, but excluding Palatine Hill that 48% of catalog covers."
+  old: "The catalog's most affordable tour with arena floor access in 3 hours at $34, prioritizing comprehensive Colosseum coverage over external Rome sites."
+
+PATCHED exclusive-tour-colosseum-underground-and-arena-floor
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Multi-level guided experience including arena floor, underground hypogeum, Roman Forum and Palatine Hill in 3 hours at $178, broadening the Roman experience at the expense of single-site depth."
+
+PATCHED exclusive-tour-colosseum-underground-and-roman-forum
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Exclusive small-group visit in 3 hours at $34, prioritizing comprehensive Colosseum coverage over external Rome sites."
+
+PATCHED guided-tour-colosseum-roman-forum-palatine-hill
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Tour combining Colosseum interior with Roman Forum and Palatine Hill in 2.5 hours at $59, broadening the Roman experience at the expense of single-site depth."
+
+PATCHED guided-tour-colosseum-arena-palatine-hill-and-forum
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Arena-floor guided experience in 2.5–3 hours at $117, but without underground access."
+
+PATCHED guided-tour-colosseum-roman-forum-and-palatine-hill
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Three-site visit including Palatine Hill in 2.5–3 hours at $52, covering more Roman sites instead of focusing exclusively on the Colosseum."
+
+PATCHED guided-tour-of-the-colosseum-palatine-hill-and-roman-forum
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Tour combining Colosseum interior with Roman Forum and Palatine Hill in 2.5 hours at $69, broadening the Roman experience at the expense of single-site depth."
+
+PATCHED image
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Mid-range single-site standard guided tour, but without arena floor or underground access."
+
+PATCHED mamertine-prison-ludus-magnus-colosseum-exclusive-tour
+  pattern: premium_with_rare_stack, score: 643
+  new: "$199, 1.9x catalog median ($104), private-themed tour combining 3 rare features: small group, free cancellation, and afternoon."
+  old: "Exclusive small-group visit in 2 hours at $199."
+
+PATCHED colosseum-night-tour-with-arena-underground-access
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Hypogeum-access guided tour in 90 minutes at $183, prioritizing comprehensive Colosseum coverage over external Rome sites."
+
+PATCHED official-roman-colosseum-forum-and-palatine-hill-tour
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Combo tour covering Colosseum, Roman Forum, and Palatine Hill in 2.5–3 hours at $69, trading deeper Colosseum exploration for broader Rome coverage."
+
+PATCHED private-colosseum-top-floor-tour-with-roman-forum-access
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Private guided experience in 90 minutes at $57, but without arena floor or underground access."
+
+PATCHED private-colosseum-underground-arena-floor-tour
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "The highest-priced tour in the catalog including underground access in 3 hours at $454, prioritizing comprehensive Colosseum coverage over external Rome sites."
+
+PATCHED private-tour-roman-colosseum-forum-and-palatine-hill
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "The highest-priced tour in the catalog including arena floor access in 3 hours at $534, but without underground access."
+
+PATCHED roman-colosseum-arena-ancient-rome-and-optional-underground-tour
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Full-coverage tour combining Colosseum interior with arena floor, underground, Roman Forum and Palatine Hill in 3 hours at $83, covering more Roman sites instead of focusing exclusively on the Colosseum."
+
+PATCHED roman-colosseum-guided-tour-forum-and-palatine-hill
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Tour combining Colosseum interior with Roman Forum and Palatine Hill in 2.5 hours at $81, broadening the Roman experience at the expense of single-site depth."
+
+PATCHED roman-colosseum-tour-with-audio-guide-arena-optional
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Three-site visit including Palatine Hill in 3 hours at $56, without paying for a live guide."
+
+PATCHED roman-colosseum-underground-experience-with-roman-forum
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Mid-range single-site guided visit in 2.5–3 hours at $94, prioritizing comprehensive Colosseum coverage over external Rome sites."
+
+PATCHED roman-colosseum-underground-and-ancient-rome-tour
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Multi-level guided experience including arena floor, underground hypogeum, Roman Forum and Palatine Hill in 3 hours at $178, trading deeper Colosseum exploration for broader Rome coverage."
+
+PATCHED roman-forum-and-palatine-hill-colosseum-tour
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Guided tour spanning Colosseum, Forum, and Palatine in 2.5 hours at $81, spanning multiple Roman landmarks rather than diving deep into one."
+
+PATCHED roman-forum-palatine-guided-tour
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Guided tour spanning Colosseum, Forum, and Palatine in 2.5 hours at $81, spanning multiple Roman landmarks rather than diving deep into one."
+
+PATCHED roman-forum-exclusive-tour-and-colosseum-underground
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Exclusive small-group visit in 3 hours at $83, prioritizing comprehensive Colosseum coverage over external Rome sites."
+
+PATCHED rome-art-historian-tour-colosseum-vatican-walking
+  pattern: premium_with_rare_stack, score: 655
+  new: "$585, 5.6x catalog median ($104), full-day tour combining 3 rare features: private format, Vatican, and free cancellation."
+  old: "Combo tour covering the Colosseum and Vatican in 6 hours at $585, spanning multiple Roman landmarks rather than diving deep into one."
+
+PATCHED rome-colosseum-express-tour-with-forum-palatine
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Combo tour covering Colosseum, Roman Forum, and Palatine Hill in 1–2.5 hours at $74, trading deeper Colosseum exploration for broader Rome coverage."
+
+PATCHED rome-colosseum-forum-palatine-guided-tour-pre-reserved
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Guided tour spanning Colosseum, Forum, and Palatine in 1–3 hours at $46, spanning multiple Roman landmarks rather than diving deep into one."
+
+PATCHED rome-colosseum-underground-chambers-guided-tour
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Hypogeum-access guided tour in 3 hours at $159, but without arena floor access."
+
+PATCHED rome-colosseum-underground-hypogeum-guided-tour
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Premium tour with underground access in 90 minutes at $139, but without arena floor access."
+
+PATCHED rome-colosseum-vatican-combo-tour-same-day-access
+  pattern: premium_with_rare_stack, score: 700
+  new: "$188, 1.8x catalog median ($104), full-day tour combining 4 rare features: Vatican, small group, small group format, and afternoon."
+  old: "Multi-site tour combining Colosseum and Vatican in 7 hours at $188, spanning multiple Roman landmarks rather than diving deep into one."
+
+PATCHED rome-colosseum-vatican-combo-tour-with-multimedia-intro
+  pattern: premium_with_rare_stack, score: 581
+  new: "$258, 2.5x catalog median ($104) combining 3 rare features: Vatican, free cancellation, and afternoon."
+  old: "Combo tour covering the Colosseum and Vatican at $258, broadening the Roman experience at the expense of single-site depth."
+
+PATCHED rome-colosseum-vatican-full-day-tour-with-transfers
+  pattern: premium_with_rare_stack, score: 654
+  new: "$408, 3.9x catalog median ($104), full-day tour combining 3 rare features: transport, Vatican, and free cancellation."
+  old: "Combo tour covering the Colosseum and Vatican in 7 hours at $408, broadening the Roman experience at the expense of single-site depth."
+
+PATCHED rome-colosseum-vatican-same-day-guided-combo-tour
+  pattern: subset_extremo_self_comparison, score: 1014
+  new: "$210 tour with Vatican access in 5 hours — shortest in Vatican subset, but 1.6x the daytime tier ($120-150)."
+  old: "The shortest catalog tour with Vatican at 5 hours at $210, trading deeper Colosseum exploration for broader Rome coverage."
+
+PATCHED rome-colosseum-roman-forum-and-palatine-hill-guided-tour
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Tour combining Colosseum interior with Roman Forum and Palatine Hill in 2.5–3 hours at $69, broadening the Roman experience at the expense of single-site depth."
+
+PATCHED rome-full-day-colosseum-vatican-museums-combo-tour
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Combo tour covering the Colosseum and Vatican in 8.5–10 hours at $181, spanning multiple Roman landmarks rather than diving deep into one."
+
+PATCHED rome-full-day-tour-colosseum-vatican-historic-center
+  pattern: premium_with_rare_stack, score: 843
+  new: "$209, 2.0x catalog median ($104), full-day tour combining 4 rare features: private format, transport, Vatican, and small group."
+  old: "Multi-site tour combining Colosseum and Vatican in 7.5 hours at $209, broadening the Roman experience at the expense of single-site depth."
+
+PATCHED rome-full-day-vatican-colosseum-tour-with-transfers
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Combo tour covering the Colosseum and Vatican in 7 hours at $175, broadening the Roman experience at the expense of single-site depth."
+
+PATCHED rome-historian-guided-tour-colosseum-forum-palatine
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Three-site visit including Palatine Hill in 1.5–3 hours at $79, covering more Roman sites instead of focusing exclusively on the Colosseum."
+
+PATCHED rome-night-tour-with-dinner-wine-pairing-luxury-vehicle
+  pattern: premium_with_rare_stack, score: 1174
+  new: "$293, 2.8x catalog median ($104), night-themed tour combining 4 rare features: evening format, hotel pickup, evening, and private format."
+  old: "Evening visit when the Colosseum is illuminated and crowds are smaller in 5 hours at $293, covering more Roman sites instead of focusing exclusively on the Colosseum."
+
+PATCHED rome-private-car-tour-vatican-colosseum-with-lunch
+  pattern: vs_median_unique_combo, score: 1262
+  new: "$1060, 10.2x catalog median ($104), but private option combining food, hotel pickup, and wheelchair access."
+  old: "Multi-site tour combining Colosseum and Vatican in 7.5–10 hours at $1060, broadening the Roman experience at the expense of single-site depth."
+
+PATCHED rome-private-tour-vatican-colosseum-with-car-transfers
+  pattern: vs_median_unique_combo, score: 1061
+  new: "$941, 9.0x catalog median ($104), but private option combining food, hotel pickup, and wheelchair access."
+  old: "Multi-site tour combining Colosseum and Vatican at $941, broadening the Roman experience at the expense of single-site depth."
+
+PATCHED rome-vatican-colosseum-full-day-combined-guided-tour
+  pattern: premium_with_rare_stack, score: 711
+  new: "$206, 2.0x catalog median ($104), full-day tour combining 4 rare features: transport, Vatican, free cancellation, and afternoon."
+  old: "Two-monument visit pairing Colosseum and Vatican in 9 hours at $206, trading deeper Colosseum exploration for broader Rome coverage."
+
+PATCHED rome-vatican-colosseum-full-day-combo-tour-guide
+  pattern: premium_with_rare_stack, score: 845
+  new: "$406, 3.9x catalog median ($104), full-day tour combining 4 rare features: hotel pickup, transport, Vatican, and small group."
+  old: "Two-monument visit pairing Colosseum and Vatican in 6.5 hours at $406, broadening the Roman experience at the expense of single-site depth."
+
+PATCHED rome-vatican-colosseum-full-day-tour-with-hotel-pickup
+  pattern: vs_median_unique_combo, score: 976
+  new: "$430, 4.1x catalog median ($104), but full-day option combining hotel pickup, evening, and wheelchair access."
+  old: "Combo tour covering the Colosseum and Vatican in 7 hours at $430, spanning multiple Roman landmarks rather than diving deep into one."
+
+PATCHED rome-vatican-colosseum-tour-with-lunch-transfers
+  pattern: outlier_max_stack, score: 1546
+  new: "$1442 — most expensive catalog tour (13.9x median, $104), combining 6 rare features: food, wheelchair access, private format, transport, Vatican, and free cancellation."
+  old: "The highest-priced tour in the catalog including Vatican in 6.5 hours at $1442, covering more Roman sites instead of focusing exclusively on the Colosseum."
+
+PATCHED rome-colosseum-underground-and-arena-floor-max-6-people
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Wheelchair-accessible guided visit in 90 minutes at $104, prioritizing comprehensive Colosseum coverage over external Rome sites."
+
+PATCHED skip-the-line-colosseum-underground-small-group-tour
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Mid-range single-site guided visit in 90 minutes at $104."
+
+PATCHED skip-the-line-colosseum-exclusive-tour
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Exclusive small-group visit in 3 hours at $306."
+
+PATCHED skip-the-ticket-line-colosseum-express-guided-tour
+  pattern: subset_extremo_self_comparison, score: 1004
+  new: "$59 tour with Palatine access in 60 minutes — shortest in Palatine subset."
+  old: "The shortest catalog tour with Palatine Hill at 60 minutes at $59, broadening the Roman experience at the expense of single-site depth."
+
+PATCHED super-pass-entry-with-audio-guide-app-roman-forum
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "The catalog's most affordable tour with Palatine Hill in 90 minutes at $26, without paying for a live guide."
+
+PATCHED tour-colosseum-palatine-hill-and-roman-forum-guided-tour
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Guided tour spanning Colosseum, Forum, and Palatine in 2.5 hours at $64, spanning multiple Roman landmarks rather than diving deep into one."
+
+PATCHED tour-with-access-to-the-gladiator-arena
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Premium tour with arena floor access in 90 minutes at $104, but without underground access."
+
+PATCHED underground-and-arena-colosseum-small-group-tour-max-7
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "Multi-level guided experience including arena floor, underground hypogeum, Roman Forum and Palatine Hill in 3 hours at $198, spanning multiple Roman landmarks rather than diving deep into one."
+
+PATCHED vatican-museums-colosseum-combo-tour-self-guided
+  pattern: no_match, score: 0
+  new: "(null)"
+  old: "The catalog's most affordable tour with Vatican in 7 hours at $159, without paying for a live guide."

@@ -1,0 +1,654 @@
+{
+  "generatedAt": "2026-04-17T01:35:17.291Z",
+  "methodology": "Price vs rating analysis of 433 tours across 5 European monuments. Rating and review data sourced from GetYourGuide via automated biweekly tracking. Pearson correlation calculated between tour price and average rating. Tours grouped by price range for comparative analysis.",
+  "correlation": 0.155,
+  "rangeStats": [
+    {
+      "label": "Budget ($0–$50)",
+      "min": 0,
+      "max": 50,
+      "count": 42,
+      "avgRating": 4.36,
+      "medianRating": 4.4,
+      "avgReviews": 5125,
+      "medianReviews": 221
+    },
+    {
+      "label": "Mid-range ($51–$100)",
+      "min": 51,
+      "max": 100,
+      "count": 146,
+      "avgRating": 4.57,
+      "medianRating": 4.6,
+      "avgReviews": 4120,
+      "medianReviews": 393
+    },
+    {
+      "label": "Premium ($101–$200)",
+      "min": 101,
+      "max": 200,
+      "count": 156,
+      "avgRating": 4.59,
+      "medianRating": 4.7,
+      "avgReviews": 1266,
+      "medianReviews": 135
+    },
+    {
+      "label": "Luxury ($201–$500)",
+      "min": 201,
+      "max": 500,
+      "count": 68,
+      "avgRating": 4.7,
+      "medianRating": 4.9,
+      "avgReviews": 56,
+      "medianReviews": 8
+    },
+    {
+      "label": "Ultra-luxury ($500+)",
+      "min": 501,
+      "max": null,
+      "count": 21,
+      "avgRating": 4.7,
+      "medianRating": 4.9,
+      "avgReviews": 68,
+      "medianReviews": 12
+    }
+  ],
+  "siteComparison": [
+    {
+      "site": "Last Supper",
+      "count": 35,
+      "avgPrice": 162,
+      "avgRating": 4.72,
+      "avgReviews": 1353
+    },
+    {
+      "site": "Colosseum",
+      "count": 73,
+      "avgPrice": 177,
+      "avgRating": 4.6,
+      "avgReviews": 8219
+    },
+    {
+      "site": "Pompeii",
+      "count": 158,
+      "avgPrice": 162,
+      "avgRating": 4.58,
+      "avgReviews": 649
+    },
+    {
+      "site": "Sagrada Familia",
+      "count": 78,
+      "avgPrice": 126,
+      "avgRating": 4.54,
+      "avgReviews": 2326
+    },
+    {
+      "site": "Louvre",
+      "count": 89,
+      "avgPrice": 195,
+      "avgRating": 4.53,
+      "avgReviews": 991
+    }
+  ],
+  "topRated": [
+    {
+      "duration": "5 hours",
+      "price": 147,
+      "provider": "Benedetto Tourist Guide",
+      "rating": 5,
+      "reviewCount": 241,
+      "slug": "pompeii-and-herculaneum-dual-site-archaeologist-tour",
+      "title": "Pompeii and Herculaneum Dual-Site Archaeologist Tour",
+      "site": "Pompeii",
+      "monument": "Pompeii Archaeological Park"
+    },
+    {
+      "duration": "2 hours",
+      "price": 65,
+      "provider": "Benedetto Tourist Guide",
+      "rating": 5,
+      "reviewCount": 164,
+      "slug": "pompeii-guided-archaeologist-tour-small-group",
+      "title": "Pompeii Archaeologist Tour with 12-Person Groups",
+      "site": "Pompeii",
+      "monument": "Pompeii Archaeological Park"
+    },
+    {
+      "duration": "2 - 2.5 hours",
+      "price": 58,
+      "provider": "Exploring Tours and Services",
+      "rating": 5,
+      "reviewCount": 69,
+      "slug": "louvre-certified-guide-tour-mona-lisa-masterpieces",
+      "title": "Louvre Certified Guide Tour: Mona Lisa & Masterpieces",
+      "site": "Louvre",
+      "monument": "Louvre Museum"
+    },
+    {
+      "duration": "1.5 hours",
+      "price": 94,
+      "provider": "Crown Tours",
+      "rating": 4.9,
+      "reviewCount": 5359,
+      "slug": "sagrada-familia-priority-access-tour-with-museum-visit",
+      "title": "Sagrada Familia Priority Access Tour with Museum Visit",
+      "site": "Sagrada Familia",
+      "monument": "Sagrada Familia"
+    },
+    {
+      "duration": "10 - 10.5 hours",
+      "price": 153,
+      "provider": "Memento | Italy In Style",
+      "rating": 4.9,
+      "reviewCount": 1001,
+      "slug": "last-supper-and-lake-como-milan-tour",
+      "title": "Last Supper & Lake Como Milan Tour",
+      "site": "Last Supper",
+      "monument": "Leonardo's Last Supper"
+    },
+    {
+      "duration": "10 - 10.5 hours",
+      "price": 153,
+      "provider": "Memento | Italy In Style",
+      "rating": 4.9,
+      "reviewCount": 1001,
+      "slug": "small-group-lake-como-tour-from-milan-with-last-supper-option",
+      "title": "Da Vinci Last Supper Lake Como Full Day Tour",
+      "site": "Last Supper",
+      "monument": "Leonardo's Last Supper"
+    },
+    {
+      "duration": "2 hours",
+      "price": 127,
+      "provider": "CONNECTING FRANCE",
+      "rating": 4.9,
+      "reviewCount": 840,
+      "slug": "louvre-museum-tour-pre-booked-tickets-expert-guide",
+      "title": "Louvre Museum Tour: Pre-Booked Tickets & Expert Guide",
+      "site": "Louvre",
+      "monument": "Louvre Museum"
+    },
+    {
+      "duration": "2 - 3 hours",
+      "price": 55,
+      "provider": "Enjoy Pompeii",
+      "rating": 4.9,
+      "reviewCount": 819,
+      "slug": "pompeii-skip-the-line-tour-with-new-antiquarium-access",
+      "title": "Pompeii Skip-the-Line Tour with New Antiquarium Access",
+      "site": "Pompeii",
+      "monument": "Pompeii Archaeological Park"
+    },
+    {
+      "duration": "2.5 hours",
+      "price": 58,
+      "provider": "Enjoy Pompeii",
+      "rating": 4.9,
+      "reviewCount": 484,
+      "slug": "pompeii-afternoon-to-sunset-tour-with-archaeologist",
+      "title": "Pompeii Afternoon to Sunset Tour with Archaeologist",
+      "site": "Pompeii",
+      "monument": "Pompeii Archaeological Park"
+    },
+    {
+      "duration": "3 Hours",
+      "price": 538,
+      "provider": "Crazy4rome srls",
+      "rating": 4.9,
+      "reviewCount": 295,
+      "slug": "private-tour-roman-colosseum-forum-and-palatine-hill",
+      "title": "Private Tour Roman Colosseum, Forum and Palatine Hill ",
+      "site": "Colosseum",
+      "monument": "Roman Colosseum"
+    }
+  ],
+  "worstRated": [
+    {
+      "duration": "",
+      "price": 57,
+      "provider": "CITY CRUSH",
+      "rating": 3.6,
+      "reviewCount": 370,
+      "slug": "louvre-audio-guide-7-immersive-tours-museum-entry",
+      "title": "Louvre Audio Guide: 7 Immersive Tours & Museum Entry",
+      "site": "Louvre",
+      "monument": "Louvre Museum"
+    },
+    {
+      "duration": "3 Hours ",
+      "price": 54,
+      "provider": "Vivicos International Travel",
+      "rating": 3.7,
+      "reviewCount": 1718,
+      "slug": "colosseum-roman-forum-audioapp-optional-arena",
+      "title": "Colosseum Roman Forum AudioApp + Optional Arena",
+      "site": "Colosseum",
+      "monument": "Roman Colosseum"
+    },
+    {
+      "duration": "3 Hours",
+      "price": 54,
+      "provider": "Vivicos International Travel",
+      "rating": 3.7,
+      "reviewCount": 1718,
+      "slug": "audio-guide-app-colosseum-and-forum-optional-arena",
+      "title": "Audio Guide App , Colosseum and Forum + Optional Arena",
+      "site": "Colosseum",
+      "monument": "Roman Colosseum"
+    },
+    {
+      "duration": "2 Hours",
+      "price": 54,
+      "provider": "Vivicos International Travel",
+      "rating": 3.7,
+      "reviewCount": 1718,
+      "slug": "colosseum-roman-forum-and-palatine-hill-guided-tour",
+      "title": "Colosseum, Roman Forum, and Palatine Hill Guided Tour",
+      "site": "Colosseum",
+      "monument": "Roman Colosseum"
+    },
+    {
+      "duration": "",
+      "price": 211,
+      "provider": "Go City - EMEA",
+      "rating": 3.8,
+      "reviewCount": 595,
+      "slug": "paris-pass-plus-55-attractions-including-louvre-eiffel",
+      "title": "Paris Pass Plus: 55+ Attractions Including Louvre & Eiffel",
+      "site": "Louvre",
+      "monument": "Louvre Museum"
+    },
+    {
+      "duration": "10 hours",
+      "price": 141,
+      "provider": "Green Line Tours",
+      "rating": 3.8,
+      "reviewCount": 260,
+      "slug": "rome-to-pompeii-bus-day-trip-with-lunch-and-factory-visit",
+      "title": "Rome to Pompeii Bus Day Trip with Lunch and Factory Visit",
+      "site": "Pompeii",
+      "monument": "Pompeii Archaeological Park"
+    },
+    {
+      "duration": "",
+      "price": 4,
+      "provider": "ITGUIDES",
+      "rating": 3.9,
+      "reviewCount": 221,
+      "slug": "pompeii-60-point-audio-guide-app-with-geolocated-tours",
+      "title": "Pompeii 60-Point Audio Guide App with Geolocated Tours",
+      "site": "Pompeii",
+      "monument": "Pompeii Archaeological Park"
+    },
+    {
+      "duration": "8 - 8.5 hours",
+      "price": 147,
+      "provider": "VISITING CAMPANIA S.R.L.",
+      "rating": 3.9,
+      "reviewCount": 154,
+      "slug": "herculaneum-vesuvius-pompeii-full-day-combo-tour",
+      "title": "Herculaneum Vesuvius Pompeii Full Day Combo Tour",
+      "site": "Pompeii",
+      "monument": "Pompeii Archaeological Park"
+    },
+    {
+      "duration": "3 hours",
+      "price": 44,
+      "provider": "Tempio Travel Pompei Tickets",
+      "rating": 4,
+      "reviewCount": 3173,
+      "slug": "pompeii-self-guided-tour-with-official-audio",
+      "title": "Pompeii Self-Guided Tour with Official Audio",
+      "site": "Pompeii",
+      "monument": "Pompeii Archaeological Park"
+    },
+    {
+      "duration": "8 - 8.5 hours",
+      "price": 147,
+      "provider": "Around Vesuvio",
+      "rating": 4,
+      "reviewCount": 882,
+      "slug": "pompeii-herculaneum-vesuvius-combo-from-naples",
+      "title": "Pompeii Herculaneum Vesuvius Combo from Naples",
+      "site": "Pompeii",
+      "monument": "Pompeii Archaeological Park"
+    }
+  ],
+  "bestValue": [
+    {
+      "duration": "",
+      "price": 20,
+      "provider": "Wander Italy",
+      "rating": 4.6,
+      "reviewCount": 1822,
+      "slug": "milan-last-supper-guided-tour-skip-the-line-access",
+      "title": "Leonardo Last Supper Tickets Milan Expert Tour",
+      "site": "Last Supper",
+      "monument": "Leonardo's Last Supper"
+    },
+    {
+      "duration": "2.5 hours",
+      "price": 29,
+      "provider": "Mauro Ferrara",
+      "rating": 4.9,
+      "reviewCount": 83,
+      "slug": "pompeii-local-expert-guided-walking-tour",
+      "title": "Pompeii Local Expert Guided Walking Tour",
+      "site": "Pompeii",
+      "monument": "Pompeii Archaeological Park"
+    },
+    {
+      "duration": "55 minutes",
+      "price": 31,
+      "provider": "Crown Tours",
+      "rating": 4.7,
+      "reviewCount": 5144,
+      "slug": "park-g-ell-fast-track-tour-gaud-mosaics-city-views",
+      "title": "Park Güell Fast-Track Tour: Gaudí Mosaics & City Views",
+      "site": "Sagrada Familia",
+      "monument": "Sagrada Familia"
+    },
+    {
+      "duration": "2 hours",
+      "price": 35,
+      "provider": "inStazione",
+      "rating": 4.7,
+      "reviewCount": 280,
+      "slug": "pompeii-french-walking-tour-with-local-pompeian-guide",
+      "title": "Pompeii French Walking Tour with Local Pompeian Guide",
+      "site": "Pompeii",
+      "monument": "Pompeii Archaeological Park"
+    },
+    {
+      "duration": "",
+      "price": 40,
+      "provider": "Distributor: GetYourGuide Tours & Tickets GmbH",
+      "rating": 4.6,
+      "reviewCount": 109040,
+      "slug": "sagrada-familia-audio-guide-entry-ticket-barcelona",
+      "title": "Sagrada Familia Audio Guide Entry Ticket Barcelona",
+      "site": "Sagrada Familia",
+      "monument": "Sagrada Familia"
+    },
+    {
+      "duration": "3 hours",
+      "price": 41,
+      "provider": "the tour guy",
+      "rating": 4.7,
+      "reviewCount": 2286,
+      "slug": "roman-forum-and-colosseum-arena-floor-tour",
+      "title": " Roman Forum & Colosseum  Arena Floor Tour",
+      "site": "Colosseum",
+      "monument": "Roman Colosseum"
+    },
+    {
+      "duration": "2.5 hours",
+      "price": 41,
+      "provider": "Nostos Tours",
+      "rating": 4.8,
+      "reviewCount": 256,
+      "slug": "barcelona-gothic-quarter-gaud-houses-walking-tour-2-5h",
+      "title": "Barcelona Gothic Quarter & Gaudí Houses Walking Tour 2.5h",
+      "site": "Sagrada Familia",
+      "monument": "Sagrada Familia"
+    },
+    {
+      "duration": "2.5 Hours",
+      "price": 46,
+      "provider": "Enjoy Rome",
+      "rating": 4.5,
+      "reviewCount": 21702,
+      "slug": "colosseum-forum-palatine-hill-optional-arena",
+      "title": "Colosseum, Forum -Palatine hill- Optional Arena",
+      "site": "Colosseum",
+      "monument": "Roman Colosseum"
+    },
+    {
+      "duration": "2 - 5 hours",
+      "price": 48,
+      "provider": "Tastethexperience",
+      "rating": 4.7,
+      "reviewCount": 72,
+      "slug": "pompeii-flexible-duration-tour-with-archaeologist",
+      "title": "Pompeii Flexible Duration Tour with Archaeologist",
+      "site": "Pompeii",
+      "monument": "Pompeii Archaeological Park"
+    },
+    {
+      "duration": "3 hours",
+      "price": 52,
+      "provider": "HP TRAVEL",
+      "rating": 4.6,
+      "reviewCount": 171,
+      "slug": "naples-to-pompeii-guided-tour-with-transport",
+      "title": "Naples to Pompeii Guided Tour with Transport",
+      "site": "Pompeii",
+      "monument": "Pompeii Archaeological Park"
+    }
+  ],
+  "worstValue": [
+    {
+      "duration": "3 hours",
+      "price": 295,
+      "provider": "TourUpinEurope",
+      "rating": 4,
+      "reviewCount": 41,
+      "slug": "private-louvre-guide-renaissance-masters-focus",
+      "title": "Private Louvre Guide: Renaissance Masters Focus",
+      "site": "Louvre",
+      "monument": "Louvre Museum"
+    },
+    {
+      "duration": "",
+      "price": 211,
+      "provider": "Go City - EMEA",
+      "rating": 3.8,
+      "reviewCount": 595,
+      "slug": "paris-pass-plus-55-attractions-including-louvre-eiffel",
+      "title": "Paris Pass Plus: 55+ Attractions Including Louvre & Eiffel",
+      "site": "Louvre",
+      "monument": "Louvre Museum"
+    },
+    {
+      "duration": "1.5 hours",
+      "price": 176,
+      "provider": "LivTours - We craft tours, you live them",
+      "rating": 4.2,
+      "reviewCount": 21,
+      "slug": "first-access-louvre-tour-mona-lisa-semi-private-guide",
+      "title": "First Access Louvre Tour: Mona Lisa Semi-Private Guide",
+      "site": "Louvre",
+      "monument": "Louvre Museum"
+    },
+    {
+      "duration": "8 - 8.5 hours",
+      "price": 147,
+      "provider": "MOTORENT S.R.L.",
+      "rating": 3.8,
+      "reviewCount": 20,
+      "slug": "pompeii-herculaneum-vesuvius-full-day-combo-tour",
+      "title": "Pompeii Herculaneum Vesuvius Full Day Combo Tour",
+      "site": "Pompeii",
+      "monument": "Pompeii Archaeological Park"
+    },
+    {
+      "duration": "8 - 8.5 hours",
+      "price": 147,
+      "provider": "Around Vesuvio",
+      "rating": 4,
+      "reviewCount": 882,
+      "slug": "pompeii-herculaneum-vesuvius-combo-from-naples",
+      "title": "Pompeii Herculaneum Vesuvius Combo from Naples",
+      "site": "Pompeii",
+      "monument": "Pompeii Archaeological Park"
+    },
+    {
+      "duration": "8 - 8.5 hours",
+      "price": 147,
+      "provider": "VISITING CAMPANIA S.R.L.",
+      "rating": 3.9,
+      "reviewCount": 154,
+      "slug": "herculaneum-vesuvius-pompeii-full-day-combo-tour",
+      "title": "Herculaneum Vesuvius Pompeii Full Day Combo Tour",
+      "site": "Pompeii",
+      "monument": "Pompeii Archaeological Park"
+    },
+    {
+      "duration": "8 - 8.5 hours",
+      "price": 147,
+      "provider": "Around Vesuvio",
+      "rating": 3.4,
+      "reviewCount": 28,
+      "slug": "pompeii-herculaneum-vesuvius-full-day-combo",
+      "title": "Pompeii Herculaneum Vesuvius Combo with Audio",
+      "site": "Pompeii",
+      "monument": "Pompeii Archaeological Park"
+    },
+    {
+      "duration": "10 hours",
+      "price": 141,
+      "provider": "Green Line Tours",
+      "rating": 3.8,
+      "reviewCount": 260,
+      "slug": "rome-to-pompeii-bus-day-trip-with-lunch-and-factory-visit",
+      "title": "Rome to Pompeii Bus Day Trip with Lunch and Factory Visit",
+      "site": "Pompeii",
+      "monument": "Pompeii Archaeological Park"
+    },
+    {
+      "duration": "9 hours",
+      "price": 140,
+      "provider": "ParisCityVision",
+      "rating": 4.2,
+      "reviewCount": 8025,
+      "slug": "paris-full-day-cultural-tour-4-sites-electric-transfer",
+      "title": "Paris Full-Day Cultural Tour: 4 Sites & Electric Transfer",
+      "site": "Louvre",
+      "monument": "Louvre Museum"
+    },
+    {
+      "duration": "",
+      "price": 130,
+      "provider": "Mon Petit Paris",
+      "rating": 4.1,
+      "reviewCount": 4448,
+      "slug": "paris-museum-pass-60-museums-skip-the-line-access",
+      "title": "Paris Museum Pass: 60+ Museums & Skip-the-Line Access",
+      "site": "Louvre",
+      "monument": "Louvre Museum"
+    }
+  ],
+  "mostReviewed": [
+    {
+      "duration": "",
+      "price": 40,
+      "provider": "Distributor: GetYourGuide Tours & Tickets GmbH",
+      "rating": 4.6,
+      "reviewCount": 109040,
+      "slug": "sagrada-familia-audio-guide-entry-ticket-barcelona",
+      "title": "Sagrada Familia Audio Guide Entry Ticket Barcelona",
+      "site": "Sagrada Familia",
+      "monument": "Sagrada Familia"
+    },
+    {
+      "duration": "2.5 hours",
+      "price": 58,
+      "provider": "Crown Tours",
+      "rating": 4.8,
+      "reviewCount": 79629,
+      "slug": "roman-forum-and-palatine-hill-colosseum-tour",
+      "title": "Roman Forum & Palatine Hill Colosseum Tour",
+      "site": "Colosseum",
+      "monument": "Roman Colosseum"
+    },
+    {
+      "duration": "2.5 Hours",
+      "price": 81,
+      "provider": "Crown Tours  ",
+      "rating": 4.8,
+      "reviewCount": 79629,
+      "slug": "roman-colosseum-guided-tour-forum-and-palatine-hill",
+      "title": "Roman Colosseum Guided Tour, Forum & Palatine Hill",
+      "site": "Colosseum",
+      "monument": "Roman Colosseum"
+    },
+    {
+      "duration": "2.5 hours",
+      "price": 81,
+      "provider": "Crown Tours",
+      "rating": 4.8,
+      "reviewCount": 79629,
+      "slug": "roman-forum-palatine-guided-tour",
+      "title": "Roman Forum - Palatine Guided Tour ",
+      "site": "Colosseum",
+      "monument": "Roman Colosseum"
+    },
+    {
+      "duration": "2.5 hours",
+      "price": 58,
+      "provider": "Crown Tours",
+      "rating": 4.8,
+      "reviewCount": 79629,
+      "slug": "colosseum-roman-forum-palatine-hill-tour",
+      "title": "Colosseum Roman Forum Palatine Hill Tour",
+      "site": "Colosseum",
+      "monument": "Roman Colosseum"
+    },
+    {
+      "duration": "2.5 Hours",
+      "price": 55,
+      "provider": "Rutas Romanas",
+      "rating": 4.8,
+      "reviewCount": 34020,
+      "slug": "tour-colosseum-palatine-hill-and-roman-forum-guided-tour",
+      "title": "Tour Colosseum Palatine Hill and Roman Forum Guided Tour",
+      "site": "Colosseum",
+      "monument": "Roman Colosseum"
+    },
+    {
+      "duration": "2.5 Hours",
+      "price": 64,
+      "provider": "City Walkers Tours",
+      "rating": 4.7,
+      "reviewCount": 28256,
+      "slug": "guided-tour-colosseum-roman-forum-palatine-hill",
+      "title": "Guided Tour Colosseum Roman Forum Palatine Hill",
+      "site": "Colosseum",
+      "monument": "Roman Colosseum"
+    },
+    {
+      "duration": "3 Hours",
+      "price": 26,
+      "provider": "Tours And Tours",
+      "rating": 4.2,
+      "reviewCount": 26348,
+      "slug": "roman-colosseum-tour-with-audio-guide-arena-optional",
+      "title": "Roman Colosseum Tour with Audio Guide – Arena Optional",
+      "site": "Colosseum",
+      "monument": "Roman Colosseum"
+    },
+    {
+      "duration": "2.5 Hours",
+      "price": 46,
+      "provider": "Enjoy Rome",
+      "rating": 4.5,
+      "reviewCount": 21702,
+      "slug": "colosseum-forum-palatine-hill-optional-arena",
+      "title": "Colosseum, Forum -Palatine hill- Optional Arena",
+      "site": "Colosseum",
+      "monument": "Roman Colosseum"
+    },
+    {
+      "duration": "2 hours",
+      "price": 58,
+      "provider": "Askos Tours",
+      "rating": 4.8,
+      "reviewCount": 20209,
+      "slug": "pompeii-archaeologist-local-guide-tour",
+      "title": "Pompeii Archaeologist & Local Guide Tour",
+      "site": "Pompeii",
+      "monument": "Pompeii Archaeological Park"
+    }
+  ]
+}

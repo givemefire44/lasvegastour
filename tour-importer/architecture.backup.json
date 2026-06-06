@@ -1,0 +1,607 @@
+{
+  "rationale": "I consolidated 51 clusters (many duplicates across analysis passes) into 9 hubs organized by user intent + journey stage: pre-purchase skepticism (booking system + scam narrative), product comparison (ticket tiers), premium upgrades (underground/arena/night), combo decisions, on-site logistics, guide economy, physical comfort/safety, special audiences (families/accessibility), and operator/value evaluation. Hubs prioritize commercial-decision moments where YouTube skepticism meets GYG purchase intent — the highest-conversion content moat. Cross-hub linking reflects the natural buyer journey: research → tier selection → operator choice → logistics prep.",
+  "total_hubs": 9,
+  "total_articles": 52,
+  "hubs": [
+    {
+      "id": "tickets-booking-system",
+      "name": "Colosseum Tickets & The Booking System",
+      "description": "The foundational hub explaining how Colosseum ticketing actually works, why the official site fails, and why third-party operators dominate — the entry point for skeptical YouTube-stage researchers.",
+      "priority_score": 98,
+      "rationale": "Merges clusters 1, 18, 35 (official site dysfunction), 2, 19, 37 (reseller/scalper narrative), and 43, 15 (price shock) — all share the same user intent: 'why is this so confusing and am I being scammed?' This is the trust-establishment hub.",
+      "clusters_included": [
+        "Official Site Booking Nightmare",
+        "Official Site Booking Dysfunction",
+        "Reseller/Scalper Scam Narrative",
+        "Reseller Markup & Scam Perception",
+        "Reseller / Markup Scam Narrative",
+        "Price Shock & Value Perception",
+        "Price Transparency & Value"
+      ],
+      "pillar": {
+        "title": "How Colosseum Tickets Actually Work: Official Site, Resellers, and the €24 vs €170 Reality",
+        "category": "informational",
+        "covers_clusters": [
+          "Official Site Booking Dysfunction",
+          "Reseller Markup & Scam Perception",
+          "Price Shock & Value Perception"
+        ],
+        "rationale": "The single explainer that resolves the dominant pre-purchase skepticism — why the official site fails, why operator markup exists, and what you're actually paying for. Anchors all commercial content."
+      },
+      "supporting_articles": [
+        {
+          "title": "Why the Official Colosseum Ticket Website Sells Out Before Tickets Are Even Listed",
+          "category": "informational",
+          "covers_gap_or_cluster": "How official Colosseum ticketing actually works (release windows, allocations, why it sells out instantly)",
+          "intent": "informational"
+        },
+        {
+          "title": "€24 Ticket, €170 Tour: A Line-by-Line Breakdown of Where Your Money Goes",
+          "category": "informational",
+          "covers_gap_or_cluster": "Honest price-anatomy breakdown: ticket vs guide vs operator margin",
+          "intent": "informational"
+        },
+        {
+          "title": "Are Colosseum Tour Resellers a Scam? An Honest Answer for the YouTube Skeptic",
+          "category": "warning",
+          "covers_gap_or_cluster": "Why operator markup exists and how to evaluate value vs pure resale",
+          "intent": "informational"
+        },
+        {
+          "title": "Official Colosseum Ticket Release Calendar: When Inventory Drops and How to Time Your Purchase",
+          "category": "guide",
+          "covers_gap_or_cluster": "Official ticket release calendar — when monthly inventory drops",
+          "intent": "informational"
+        },
+        {
+          "title": "How to Spot a Real Colosseum Tour vs a Street Scalper Outside the Monument",
+          "category": "warning",
+          "covers_gap_or_cluster": "Reseller/scalper distinction at the physical site",
+          "intent": "informational"
+        },
+        {
+          "title": "The Real Cost of a 'Cheap' Colosseum Ticket: Why €24 Tickets Are Functionally Unavailable",
+          "category": "informational",
+          "covers_gap_or_cluster": "Price transparency cluster + supply scarcity",
+          "intent": "informational"
+        }
+      ],
+      "cross_hub_links": [
+        {
+          "to_hub": "ticket-tiers-comparison",
+          "reason": "Once users trust the system, they need to choose a tier"
+        },
+        {
+          "to_hub": "operator-selection",
+          "reason": "Trust pillar leads directly to 'which operator do I choose?'"
+        }
+      ]
+    },
+    {
+      "id": "ticket-tiers-comparison",
+      "name": "Colosseum Ticket Tiers & Skip-the-Line Reality",
+      "description": "Comparison hub for choosing between Standard, Arena Floor, Underground, Night, and Full Experience tickets — and understanding what skip-the-line actually delivers.",
+      "priority_score": 96,
+      "rationale": "Highest-evidence gap in the entire corpus (35 + 18 evidence). Merges all skip-the-line clusters (3, 20, 36) with tier-comparison demand. This is the central commercial decision page.",
+      "clusters_included": [
+        "Skip-the-Line Reality Gap",
+        "Skip-the-Line Reality vs Promise",
+        "Arena Floor Access Confusion",
+        "Arena Floor Access Tier"
+      ],
+      "pillar": {
+        "title": "Colosseum Ticket Tiers Compared: Standard vs Arena Floor vs Underground vs Night vs Full Experience",
+        "category": "comparison",
+        "covers_clusters": [
+          "Skip-the-Line Reality Gap",
+          "Arena Floor Access Tier"
+        ],
+        "rationale": "Directly answers the highest-evidence gap (35 mentions) — the definitive tier comparison matrix that every undecided buyer needs."
+      },
+      "supporting_articles": [
+        {
+          "title": "Colosseum 'Skip-the-Line' Explained: Why You'll Still Wait and What Timed Entry Actually Means",
+          "category": "warning",
+          "covers_gap_or_cluster": "Skip-the-line reframing as guaranteed timed entry",
+          "intent": "informational"
+        },
+        {
+          "title": "Arena Floor vs Underground: Which Premium Upgrade Is Actually Worth €30 More?",
+          "category": "comparison",
+          "covers_gap_or_cluster": "Arena Floor Access Confusion + Underground Premium",
+          "intent": "commercial"
+        },
+        {
+          "title": "What Happens If You Arrive Outside Your Colosseum Timed Entry Window",
+          "category": "warning",
+          "covers_gap_or_cluster": "What happens if you arrive outside your timed-entry window",
+          "intent": "informational"
+        },
+        {
+          "title": "Is the Colosseum Upper Tier (Belvedere) Worth Booking? Views, Crowds, and Access",
+          "category": "comparison",
+          "covers_gap_or_cluster": "Lesser-known tier coverage",
+          "intent": "commercial"
+        },
+        {
+          "title": "Is a Guided Colosseum Tour Worth It, or Should You Go In Alone? What Guide Quality and Crowds Reveal",
+          "category": "decision",
+          "covers_gap_or_cluster": "Whether paying for a guided tour is worth it over a self-guided ticket: guide quality and crowds drive value perception more than price; when the guide and crowd-timing justify the cost vs when visitors feel they wasted money",
+          "intent": "transactional"
+        }
+      ],
+      "cross_hub_links": [
+        {
+          "to_hub": "premium-experiences",
+          "reason": "Tier comparison flows into deep-dives on Underground and Night tours"
+        },
+        {
+          "to_hub": "combo-tours",
+          "reason": "Tier choice intersects with combo packaging decisions"
+        },
+        {
+          "to_hub": "tickets-booking-system",
+          "reason": "Tier value depends on understanding pricing"
+        }
+      ]
+    },
+    {
+      "id": "premium-experiences",
+      "name": "Underground, Arena Floor & Night Tours",
+      "description": "Deep-dive hub on the supply-constrained premium experiences — what's actually included, what to expect, and how to access them.",
+      "priority_score": 92,
+      "rationale": "Underground appears 4x in clusters (4, 21, 38) — strongest single product signal in corpus. Night tours (11, 31) are emerging premium with 'limited information' explicitly flagged. These share intent: 'I want the best experience, what is it really like?'",
+      "clusters_included": [
+        "Underground Access Premium",
+        "Night Tour Niche",
+        "Night & Sunset Tour Niche"
+      ],
+      "pillar": {
+        "title": "The Colosseum Underground Tour: Honest Guide to What 20 Minutes Below the Arena Looks Like",
+        "category": "guide",
+        "covers_clusters": [
+          "Underground Access Premium"
+        ],
+        "rationale": "Underground is the strongest product signal AND has documented disappointment factor (20-min cap). The pillar must set honest expectations to convert without buyer's remorse."
+      },
+      "supporting_articles": [
+        {
+          "title": "Why Colosseum Underground Tickets Are Sold Out Before They List: The Supply Reality",
+          "category": "informational",
+          "covers_gap_or_cluster": "Why underground is operator-mediated and supply-constrained",
+          "intent": "informational"
+        },
+        {
+          "title": "Colosseum Night & Sunset Tours: What 'Behind the Curtain' Access Actually Includes",
+          "category": "guide",
+          "covers_gap_or_cluster": "Night/sunset tour clarity: what 'behind the curtain' access means",
+          "intent": "commercial"
+        },
+        {
+          "title": "Colosseum Underground in Spring: Avoiding the Student Group Crush",
+          "category": "guide",
+          "covers_gap_or_cluster": "Crowd management specific to underground experience",
+          "intent": "informational"
+        }
+      ],
+      "cross_hub_links": [
+        {
+          "to_hub": "ticket-tiers-comparison",
+          "reason": "Premium tours are tier upgrades"
+        },
+        {
+          "to_hub": "guides-quality",
+          "reason": "Underground tours are guide-led; guide quality matters most here"
+        },
+        {
+          "to_hub": "timing-crowds",
+          "reason": "Premium availability varies by season"
+        }
+      ]
+    },
+    {
+      "id": "combo-tours",
+      "name": "Combo Tours: Forum, Palatine & Vatican",
+      "description": "Decision hub for buyers weighing Colosseum-only vs combo packages with Roman Forum, Palatine Hill, or Vatican — including duration, value, and physical realism.",
+      "priority_score": 90,
+      "rationale": "Combo confusion is consistently high-evidence (clusters 6, 27, 39 + 7, 47). Two distinct combo decisions share the same intent — 'is the combo worth it for me?' — and benefit from shared comparison framework.",
+      "clusters_included": [
+        "Combo Tour Decision Anxiety (Forum + Palatine)",
+        "Combo Tour Value (Colosseum + Forum + Palatine)",
+        "Combo Tour Confusion (Forum + Palatine + Colosseum)",
+        "Vatican + Colosseum Same-Day Combo"
+      ],
+      "pillar": {
+        "title": "Colosseum Combo Tickets Decoded: The Inclusion Matrix for Forum, Palatine, Arena, Underground, and Vatican",
+        "category": "comparison",
+        "covers_clusters": [
+          "Combo Tour Confusion (Forum + Palatine + Colosseum)"
+        ],
+        "rationale": "Highest-evidence combo gap (22 + 18 evidence). The matrix prevents double-purchases and clarifies what every package actually includes."
+      },
+      "supporting_articles": [
+        {
+          "title": "Combo Math: Is Colosseum + Forum + Palatine Cheaper Than Buying Separately?",
+          "category": "comparison",
+          "covers_gap_or_cluster": "Combo math: cheaper or more expensive than separate?",
+          "intent": "commercial"
+        },
+        {
+          "title": "Vatican + Colosseum Same-Day: Is 6 Hours of Walking Realistic for You?",
+          "category": "warning",
+          "covers_gap_or_cluster": "Vatican + Colosseum same-day combo realistic feasibility",
+          "intent": "commercial"
+        },
+        {
+          "title": "Avoid Double-Paying: How Travelers Accidentally Buy the Same Colosseum Site Twice",
+          "category": "warning",
+          "covers_gap_or_cluster": "Combo confusion leading to duplicate bookings",
+          "intent": "informational"
+        },
+        {
+          "title": "Forum + Palatine Without the Colosseum: A Cheaper, Quieter Alternative",
+          "category": "comparison",
+          "covers_gap_or_cluster": "Alternative combo for crowd-averse travelers",
+          "intent": "commercial"
+        },
+        {
+          "title": "How Long Is a Colosseum Tour Really? 2.5h vs 3h vs 4h vs 6h Tours Compared",
+          "category": "comparison",
+          "covers_gap_or_cluster": "Tour Duration & Group Size Variability",
+          "intent": "commercial"
+        }
+      ],
+      "cross_hub_links": [
+        {
+          "to_hub": "ticket-tiers-comparison",
+          "reason": "Combos are a tier-stacking decision"
+        },
+        {
+          "to_hub": "physical-comfort",
+          "reason": "Combo length amplifies heat/walking concerns"
+        },
+        {
+          "to_hub": "on-site-logistics",
+          "reason": "Meeting-point gap most acute on combo tours"
+        }
+      ]
+    },
+    {
+      "id": "guides-quality",
+      "name": "Tour Guides: Quality, Names & Booking by Person",
+      "description": "Hub on the named-guide economy — who the top-rated guides are, whether they can be requested, and how operator guide rosters differ.",
+      "priority_score": 82,
+      "rationale": "Clusters 8, 23, 40 all show the same strong, underserved signal: users want to book specific named guides. Three separate gaps mention this (15, 12, 5 evidence). Highly differentiated content opportunity.",
+      "clusters_included": [
+        "Named Guide Economy",
+        "Named Guide Trust Economy",
+        "Guide Quality as Differentiator"
+      ],
+      "pillar": {
+        "title": "The Best-Rated Colosseum Tour Guides by Name: A Review-Based Ranking of Leo, Diane, Natalia, Alessandra & More",
+        "category": "review-aggregation",
+        "covers_clusters": [
+          "Named Guide Trust Economy",
+          "Guide Quality as Differentiator"
+        ],
+        "rationale": "Aggregating named-guide signals from 2,200+ reviews creates a defensible content moat that no operator publishes."
+      },
+      "supporting_articles": [
+        {
+          "title": "How to Request a Specific Colosseum Guide at Booking (And Which Operators Allow It)",
+          "category": "guide",
+          "covers_gap_or_cluster": "How to request a specific named guide",
+          "intent": "commercial"
+        },
+        {
+          "title": "Private Colosseum Tour vs Group Tour: When the Premium Is Actually Worth It",
+          "category": "comparison",
+          "covers_gap_or_cluster": "Group size and personalization decision",
+          "intent": "commercial"
+        },
+        {
+          "title": "Colosseum Tour Group Sizes Compared: Does 17 vs 20 vs 25 People Really Matter?",
+          "category": "comparison",
+          "covers_gap_or_cluster": "Group Size & Pace cluster",
+          "intent": "commercial"
+        }
+      ],
+      "cross_hub_links": [
+        {
+          "to_hub": "operator-selection",
+          "reason": "Guide consistency is an operator-level differentiator"
+        },
+        {
+          "to_hub": "premium-experiences",
+          "reason": "Premium tours rely most on guide quality"
+        }
+      ]
+    },
+    {
+      "id": "operator-selection",
+      "name": "Choosing a Tour Operator: GetYourGuide, Viator, The Tour Guy & Others",
+      "description": "Comparative hub for evaluating major Colosseum tour operators on guide consistency, group size, inclusions, and trust signals.",
+      "priority_score": 88,
+      "rationale": "Direct commercial-intent hub. Gap evidence 10 for operator-by-operator comparison + reseller-trust clusters demand a transparent operator comparison page. Highest revenue conversion potential.",
+      "clusters_included": [
+        "Reseller Markup & Scam Perception",
+        "Cancellation & Lost Ticket Recovery"
+      ],
+      "pillar": {
+        "title": "GetYourGuide vs Viator vs The Tour Guy vs CoopCulture: Which Colosseum Booking Platform Actually Works",
+        "category": "comparison",
+        "covers_clusters": [
+          "Reseller Markup & Scam Perception"
+        ],
+        "rationale": "The transactional money page. Compares the operators users are already searching for, with honest trade-offs."
+      },
+      "supporting_articles": [
+        {
+          "title": "Is The Tour Guy / GetYourGuide / Viator Trustworthy? A Reseller Reality Check",
+          "category": "review-aggregation",
+          "covers_gap_or_cluster": "Reseller trust evaluation",
+          "intent": "commercial"
+        },
+        {
+          "title": "Colosseum Tour Reviews Aggregated: What 5-Star and 1-Star Reviews Actually Reveal",
+          "category": "review-aggregation",
+          "covers_gap_or_cluster": "Synthesized review patterns across platforms",
+          "intent": "commercial"
+        },
+        {
+          "title": "Lost Voucher, Cancelled Tour, Power Cut: How Each Operator Handles Disruption",
+          "category": "warning",
+          "covers_gap_or_cluster": "Cancellation & Lost Ticket Recovery + refund policy",
+          "intent": "informational"
+        }
+      ],
+      "cross_hub_links": [
+        {
+          "to_hub": "tickets-booking-system",
+          "reason": "Operator selection follows trust foundation"
+        },
+        {
+          "to_hub": "guides-quality",
+          "reason": "Operators differ on guide consistency"
+        }
+      ]
+    },
+    {
+      "id": "on-site-logistics",
+      "name": "On-Site Logistics: Meeting Points, Audio Guides & Re-Entry",
+      "description": "Operational hub covering everything between booking and entering the monument — meeting points, audio guide setup, headsets, bag checks, and re-entry rules.",
+      "priority_score": 78,
+      "rationale": "Merges clusters 12/28/44 (audio guide friction), 13/25/45 (meeting points), 26 (time gap), 33/51 (re-entry), 30 (cancellation). All share intent: 'how do I avoid screwing up the day-of logistics?'",
+      "clusters_included": [
+        "Audio Guide App Friction",
+        "Audio Guide & Headset Friction",
+        "Queue & Multi-Checkpoint Logistics",
+        "Meeting-Point & Ticket Pickup Confusion",
+        "Logistics: Ticket Pickup & Meeting Points",
+        "Time Window Anxiety (Meeting-vs-Entry Gap)",
+        "Single-Entry & Re-Entry Restrictions",
+        "Re-entry & Single-Use Restrictions"
+      ],
+      "pillar": {
+        "title": "The Complete Colosseum Day-Of Logistics Guide: Meeting Points, Tickets, Audio, and Entry",
+        "category": "guide",
+        "covers_clusters": [
+          "Meeting-Point & Ticket Pickup Confusion",
+          "Queue & Multi-Checkpoint Logistics"
+        ],
+        "rationale": "Single source-of-truth for the operational confusion that creates 1-star reviews even on great tours."
+      },
+      "supporting_articles": [
+        {
+          "title": "Where to Pick Up Your Colosseum Ticket: Meeting Points vs Entry Points (With Maps)",
+          "category": "guide",
+          "covers_gap_or_cluster": "Exact location/maps for ticket pickup vs tour entry",
+          "intent": "navigational"
+        },
+        {
+          "title": "The Colosseum Audio Guide App vs a Live Guide: Which Actually Helps You Understand the Forum?",
+          "category": "comparison",
+          "covers_gap_or_cluster": "Audio guide app vs guided tour comparison",
+          "intent": "commercial"
+        },
+        {
+          "title": "Colosseum Audio Guide App: Pre-Download Steps, Signal Tips, and Troubleshooting",
+          "category": "guide",
+          "covers_gap_or_cluster": "Audio guide app technical guide",
+          "intent": "informational"
+        },
+        {
+          "title": "Colosseum Tour Headset Problems: Wind Muffling, Bad Signal, and What to Do",
+          "category": "warning",
+          "covers_gap_or_cluster": "Audio Guide & Headset Friction",
+          "intent": "informational"
+        },
+        {
+          "title": "Colosseum Re-Entry Rules: Why Single-Entry Per Area Surprises Almost Everyone",
+          "category": "warning",
+          "covers_gap_or_cluster": "Re-entry rules per ticket type, 24-hour Forum re-entry",
+          "intent": "informational"
+        },
+        {
+          "title": "Why You'll Feel Rushed at the Roman Forum (and How the Meeting-Time Gap Causes It)",
+          "category": "warning",
+          "covers_gap_or_cluster": "Meeting-point-to-entry gap and Forum-rushing",
+          "intent": "informational"
+        },
+        {
+          "title": "Colosseum Bag Check Rules: What Slows Entry and What's Banned",
+          "category": "guide",
+          "covers_gap_or_cluster": "Multi-checkpoint logistics",
+          "intent": "informational"
+        }
+      ],
+      "cross_hub_links": [
+        {
+          "to_hub": "timing-crowds",
+          "reason": "Meeting-time choice intersects with crowd timing"
+        },
+        {
+          "to_hub": "combo-tours",
+          "reason": "Logistics most painful on combo tours"
+        }
+      ]
+    },
+    {
+      "id": "timing-crowds",
+      "name": "When to Visit: Times, Seasons & Crowd Strategy",
+      "description": "Decision hub for choosing the optimal time slot, day of week, and season — combining heat, crowds, and ticket availability.",
+      "priority_score": 80,
+      "rationale": "Strong consensus signal across clusters 10, 42 (time-of-day) plus crowd clusters 29, 46. Best-time-to-visit gap has 16+11 evidence. Pure pre-booking informational intent that captures top-of-funnel traffic.",
+      "clusters_included": [
+        "Time-of-Day Strategy",
+        "Early Morning vs Late Day Strategy",
+        "Crowd Management & Group Navigation",
+        "Crowds & Crowd Management",
+        "Photography & Memory-Making",
+        "Photography Time Constraints",
+        "Photography & Pacing Constraints"
+      ],
+      "pillar": {
+        "title": "Best Time to Visit the Colosseum: A Decision Matrix Combining Heat, Crowds, and Ticket Availability",
+        "category": "guide",
+        "covers_clusters": [
+          "Early Morning vs Late Day Strategy",
+          "Crowds & Crowd Management"
+        ],
+        "rationale": "Synthesizes the strongest consensus signal in the corpus (8:45–9am slot) into a definitive decision framework."
+      },
+      "supporting_articles": [
+        {
+          "title": "9am vs 8:45am vs 12pm Colosseum Slots: Which Time Slot Actually Works Best",
+          "category": "comparison",
+          "covers_gap_or_cluster": "Best time-of-day with hourly crowd data",
+          "intent": "informational"
+        },
+        {
+          "title": "Best Months to Visit the Colosseum: Heat, Crowds, and Underground Availability by Season",
+          "category": "guide",
+          "covers_gap_or_cluster": "Seasonal decision matrix",
+          "intent": "informational"
+        },
+        {
+          "title": "Colosseum Crowds by Hour: When Student Groups, Cruise Tours, and Religious Groups Arrive",
+          "category": "informational",
+          "covers_gap_or_cluster": "Crowd timing by group type",
+          "intent": "informational"
+        },
+        {
+          "title": "Saturday vs Weekday at the Colosseum: How Much Worse Are Weekend Crowds?",
+          "category": "comparison",
+          "covers_gap_or_cluster": "Day-of-week decision",
+          "intent": "informational"
+        },
+        {
+          "title": "Best Colosseum Tour for Photography: Where You'll Have Time and Where You Won't",
+          "category": "guide",
+          "covers_gap_or_cluster": "Photography & Pacing Constraints",
+          "intent": "informational"
+        }
+      ],
+      "cross_hub_links": [
+        {
+          "to_hub": "physical-comfort",
+          "reason": "Timing is the primary heat-mitigation lever"
+        },
+        {
+          "to_hub": "premium-experiences",
+          "reason": "Underground availability varies by season"
+        }
+      ]
+    },
+    {
+      "id": "physical-comfort",
+      "name": "Heat, Accessibility & Visiting With Kids",
+      "description": "Hub for the physical realities of visiting — heat survival, accessibility, family logistics, footwear, and bathroom planning.",
+      "priority_score": 75,
+      "rationale": "Merges heat clusters (9, 24, 41), accessibility (16, 34, 48), and family-with-kids clusters. All share intent: 'will I/my group physically be able to enjoy this?' High-evidence underserved gaps.",
+      "clusters_included": [
+        "Heat, Shade & Physical Discomfort",
+        "Heat, Shade & Weather Logistics",
+        "Heat, Shade & Weather Exposure",
+        "Families, Kids & Accessibility",
+        "Family & Accessibility Considerations",
+        "Accessibility & Mobility"
+      ],
+      "pillar": {
+        "title": "The Colosseum Survival Guide: Heat, Walking, Accessibility, and Visiting With Kids",
+        "category": "guide",
+        "covers_clusters": [
+          "Heat, Shade & Weather Exposure",
+          "Accessibility & Mobility"
+        ],
+        "rationale": "Heat exhaustion is the most consistent physical pain point with documented medical incidents. The pillar consolidates all bodily-experience concerns."
+      },
+      "supporting_articles": [
+        {
+          "title": "Heat Survival at the Colosseum: Water Fountain Map, Shade Points, and Best Seasons",
+          "category": "guide",
+          "covers_gap_or_cluster": "Heat survival guide: water fountain map, shade points",
+          "intent": "informational"
+        },
+        {
+          "title": "Colosseum Accessibility: Lifts, Step-Free Routes, Stroller Policy, and Advance Notice",
+          "category": "guide",
+          "covers_gap_or_cluster": "Accessibility guide: lift availability, stroller policy, step-free routes",
+          "intent": "informational"
+        },
+        {
+          "title": "Colosseum Tours With Young Kids: Headset Fit, Attention Span, and Bathroom Reality",
+          "category": "guide",
+          "covers_gap_or_cluster": "Family with young children playbook",
+          "intent": "informational"
+        },
+        {
+          "title": "Best Footwear for the Colosseum, Forum, and Palatine Hill",
+          "category": "guide",
+          "covers_gap_or_cluster": "Footwear and dress code recommendations",
+          "intent": "informational"
+        },
+        {
+          "title": "Bathroom Breaks During Colosseum Underground and Combo Tours: When and Where",
+          "category": "guide",
+          "covers_gap_or_cluster": "Bathroom and break logistics",
+          "intent": "informational"
+        },
+        {
+          "title": "Booking a Colosseum Tour in Spanish, Italian, or Other Non-English Languages",
+          "category": "informational",
+          "covers_gap_or_cluster": "Non-English language tour availability",
+          "intent": "informational"
+        }
+      ],
+      "cross_hub_links": [
+        {
+          "to_hub": "timing-crowds",
+          "reason": "Time-of-day is the primary heat mitigation"
+        },
+        {
+          "to_hub": "combo-tours",
+          "reason": "Combo tours amplify physical demands"
+        }
+      ]
+    }
+  ],
+  "orphan_articles": [
+    {
+      "title": "Why You're Standing in the Sun Waiting for Latecomers — and How to Avoid It",
+      "reason": "Too narrow as a standalone article; content can be merged into the meeting-points logistics article and timing matrix instead."
+    }
+  ],
+  "production_order": [
+    "tickets-booking-system",
+    "ticket-tiers-comparison",
+    "operator-selection",
+    "combo-tours",
+    "premium-experiences",
+    "guides-quality",
+    "timing-crowds",
+    "on-site-logistics",
+    "physical-comfort"
+  ],
+  "production_rationale": "Build the trust foundation first (tickets-booking-system) — without resolving the scam-narrative skepticism, no commercial content converts. Next, ticket-tiers-comparison captures the highest-evidence gap (35 mentions) and serves the central commercial decision. Operator-selection and combo-tours are the two highest-revenue commercial-intent hubs and should follow immediately. Premium-experiences and guides-quality build defensible differentiation moats that competitors can't easily replicate (named-guide aggregation, honest underground expectations). Timing and on-site logistics are top-of-funnel SEO traffic capture once the commercial spine exists. Physical-comfort closes the long-tail and serves underserved segments (families, accessibility) — high-trust, lower-volume content best built once the hub network can internally link to it."
+}

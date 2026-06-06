@@ -1,0 +1,311 @@
+{
+  "generatedAt": "2026-04-12T01:30:13.485Z",
+  "methodology": "Data extracted from 505 tours across 5 European monuments. Prices tracked via automated cron jobs scraping GetYourGuide. Duration parsed from tour listings. Cost per minute calculated as tour price divided by tour duration in minutes.",
+  "sites": [
+    {
+      "site": "Colosseum",
+      "monument": "Roman Colosseum",
+      "city": "Rome",
+      "domain": "colosseumroman.com",
+      "totalTours": 76,
+      "toursWithDuration": 74,
+      "prices": {
+        "min": 26,
+        "max": 1434,
+        "average": 173.62,
+        "median": 99
+      },
+      "duration": {
+        "averageMinutes": 201,
+        "averageHours": 3.4
+      },
+      "pricePerMinute": {
+        "average": 0.79,
+        "mostExpensive": {
+          "title": "Rome Vatican Colosseum Tour with Lunch & Transfers",
+          "value": 3.68,
+          "price": 1434,
+          "duration": "6.5 hours"
+        },
+        "cheapest": {
+          "title": "Colosseum Roman Forum AudioApp + Optional Arena",
+          "value": 0.21,
+          "price": 38,
+          "duration": "3 Hours "
+        }
+      },
+      "officialTicket": {
+        "price": 18,
+        "currency": "EUR",
+        "avgTourVsOfficial": 9.6
+      },
+      "topProviders": [
+        [
+          "The Ultimate Italy",
+          6
+        ],
+        [
+          "Unknown",
+          4
+        ],
+        [
+          "Crown Tours",
+          4
+        ],
+        [
+          "Vivicos International Travel",
+          4
+        ],
+        [
+          "ROME WITH SILVIA",
+          3
+        ]
+      ],
+      "topProviderConcentration": 18
+    },
+    {
+      "site": "Sagrada Familia",
+      "monument": "Sagrada Familia",
+      "city": "Barcelona",
+      "domain": "sagradafamiliatourguide.com",
+      "totalTours": 81,
+      "toursWithDuration": 80,
+      "prices": {
+        "min": 12,
+        "max": 787,
+        "average": 130.43,
+        "median": 104
+      },
+      "duration": {
+        "averageMinutes": 177,
+        "averageHours": 2.9
+      },
+      "pricePerMinute": {
+        "average": 1.04,
+        "mostExpensive": {
+          "title": "Sagrada Familia Guided Basilica Tour with Optional Tower",
+          "value": 6.79,
+          "price": 611,
+          "duration": "1.5 hours"
+        },
+        "cheapest": {
+          "title": "Sagrada Familia Exterior Architecture Walking Tour",
+          "value": 0.2,
+          "price": 12,
+          "duration": "1 hour"
+        }
+      },
+      "officialTicket": {
+        "price": 26,
+        "currency": "EUR",
+        "avgTourVsOfficial": 5
+      },
+      "topProviders": [
+        [
+          "In Out Barcelona Tours",
+          5
+        ],
+        [
+          "Julia Travel Gray Line Spain",
+          4
+        ],
+        [
+          "Barcelona Local Experiences",
+          4
+        ],
+        [
+          "Amigo Tours Spain",
+          4
+        ],
+        [
+          "Walks France-Spain",
+          4
+        ]
+      ],
+      "topProviderConcentration": 16
+    },
+    {
+      "site": "Last Supper",
+      "monument": "Leonardo's Last Supper",
+      "city": "Milan",
+      "domain": "milanlastsupper.com",
+      "totalTours": 35,
+      "toursWithDuration": 33,
+      "prices": {
+        "min": 20,
+        "max": 507,
+        "average": 160.71,
+        "median": 115
+      },
+      "duration": {
+        "averageMinutes": 165,
+        "averageHours": 2.8
+      },
+      "pricePerMinute": {
+        "average": 1.36,
+        "mostExpensive": {
+          "title": "Da Vinci Last Supper Limited Group Milan Tour",
+          "value": 3.05,
+          "price": 183,
+          "duration": "1 hour"
+        },
+        "cheapest": {
+          "title": "Small Group Last Supper Milan Skip the Line",
+          "value": 0.51,
+          "price": 92,
+          "duration": "3 hours"
+        }
+      },
+      "officialTicket": {
+        "price": 15,
+        "currency": "EUR",
+        "avgTourVsOfficial": 10.7
+      },
+      "topProviders": [
+        [
+          "Wander Italy",
+          5
+        ],
+        [
+          "Memento | Italy In Style",
+          5
+        ],
+        [
+          "YOUR TRAVEL DIARY",
+          3
+        ],
+        [
+          "YNT Your Next Tour srl",
+          3
+        ],
+        [
+          "Eyes of Rome Private Tours",
+          3
+        ]
+      ],
+      "topProviderConcentration": 37
+    },
+    {
+      "site": "Louvre",
+      "monument": "Louvre Museum",
+      "city": "Paris",
+      "domain": "louvretourguide.com",
+      "totalTours": 94,
+      "toursWithDuration": 80,
+      "prices": {
+        "min": 34,
+        "max": 776,
+        "average": 193.79,
+        "median": 128
+      },
+      "duration": {
+        "averageMinutes": 156,
+        "averageHours": 2.6
+      },
+      "pricePerMinute": {
+        "average": 1.6,
+        "mostExpensive": {
+          "title": "Family Louvre Treasure Hunt: Interactive Kids Museum Tour",
+          "value": 6.13,
+          "price": 735,
+          "duration": "2 hours"
+        },
+        "cheapest": {
+          "title": "Louvre Certified Guide Tour: Mona Lisa & Masterpieces",
+          "value": 0.38,
+          "price": 57,
+          "duration": "2 - 2.5 hours"
+        }
+      },
+      "officialTicket": {
+        "price": 22,
+        "currency": "EUR",
+        "avgTourVsOfficial": 8.8
+      },
+      "topProviders": [
+        [
+          "Dayin",
+          7
+        ],
+        [
+          "ParisCityVision",
+          5
+        ],
+        [
+          "Global Tours And Tickets",
+          4
+        ],
+        [
+          "City Wonders Ltd.",
+          4
+        ],
+        [
+          "LivTours - We craft tours, you live them",
+          4
+        ]
+      ],
+      "topProviderConcentration": 17
+    },
+    {
+      "site": "Pompeii",
+      "monument": "Pompeii Archaeological Park",
+      "city": "Naples",
+      "domain": "pompeiitourguides.com",
+      "totalTours": 219,
+      "toursWithDuration": 203,
+      "prices": {
+        "min": 4,
+        "max": 2322,
+        "average": 175.59,
+        "median": 121
+      },
+      "duration": {
+        "averageMinutes": 294,
+        "averageHours": 4.9
+      },
+      "pricePerMinute": {
+        "average": 0.7,
+        "mostExpensive": {
+          "title": "Pompeii Private Tour with Hotel Transfer and Guide",
+          "value": 4.38,
+          "price": 525,
+          "duration": "2 hours"
+        },
+        "cheapest": {
+          "title": "Naples Pompeii Shuttle Bus with Audio Guide",
+          "value": 0.1,
+          "price": 25,
+          "duration": "4 hours"
+        }
+      },
+      "officialTicket": {
+        "price": 18,
+        "currency": "EUR",
+        "avgTourVsOfficial": 9.8
+      },
+      "topProviders": [
+        [
+          "Askos Tours",
+          15
+        ],
+        [
+          "Enjoy Pompeii",
+          12
+        ],
+        [
+          "inStazione",
+          10
+        ],
+        [
+          "Tempio Travel Pompei Tickets",
+          9
+        ],
+        [
+          "WORLDTOURS S.r.l.",
+          8
+        ]
+      ],
+      "topProviderConcentration": 17
+    }
+  ]
+}

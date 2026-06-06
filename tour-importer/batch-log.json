@@ -1,0 +1,451 @@
+{
+  "started_at": "2026-05-10T02:56:18.811Z",
+  "finished_at": "2026-05-10T05:06:35.821Z",
+  "total_minutes": 130.3,
+  "total_tasks": 49,
+  "successful": 49,
+  "failed": 0,
+  "results": [
+    {
+      "n": 1,
+      "hub": "tickets-booking-system",
+      "type": "supporting",
+      "title": "Why the Official Colosseum Ticket Website Sells Out Before Tickets Are Even Listed",
+      "ok": true,
+      "elapsed_seconds": 160.8,
+      "error": null
+    },
+    {
+      "n": 2,
+      "hub": "tickets-booking-system",
+      "type": "supporting",
+      "title": "€24 Ticket, €170 Tour: A Line-by-Line Breakdown of Where Your Money Goes",
+      "ok": true,
+      "elapsed_seconds": 165.1,
+      "error": null
+    },
+    {
+      "n": 3,
+      "hub": "tickets-booking-system",
+      "type": "supporting",
+      "title": "Are Colosseum Tour Resellers a Scam? An Honest Answer for the YouTube Skeptic",
+      "ok": true,
+      "elapsed_seconds": 155.1,
+      "error": null
+    },
+    {
+      "n": 4,
+      "hub": "tickets-booking-system",
+      "type": "supporting",
+      "title": "Official Colosseum Ticket Release Calendar: When Inventory Drops and How to Time Your Purchase",
+      "ok": true,
+      "elapsed_seconds": 155.5,
+      "error": null
+    },
+    {
+      "n": 5,
+      "hub": "tickets-booking-system",
+      "type": "supporting",
+      "title": "How to Spot a Real Colosseum Tour vs a Street Scalper Outside the Monument",
+      "ok": true,
+      "elapsed_seconds": 148,
+      "error": null
+    },
+    {
+      "n": 6,
+      "hub": "tickets-booking-system",
+      "type": "supporting",
+      "title": "The Real Cost of a 'Cheap' Colosseum Ticket: Why €24 Tickets Are Functionally Unavailable",
+      "ok": true,
+      "elapsed_seconds": 141.4,
+      "error": null
+    },
+    {
+      "n": 7,
+      "hub": "ticket-tiers-comparison",
+      "type": "pillar",
+      "title": "Colosseum Ticket Tiers Compared: Standard vs Arena Floor vs Underground vs Night vs Full Experience",
+      "ok": true,
+      "elapsed_seconds": 193.7,
+      "error": null
+    },
+    {
+      "n": 8,
+      "hub": "ticket-tiers-comparison",
+      "type": "supporting",
+      "title": "Colosseum 'Skip-the-Line' Explained: Why You'll Still Wait and What Timed Entry Actually Means",
+      "ok": true,
+      "elapsed_seconds": 150.3,
+      "error": null
+    },
+    {
+      "n": 9,
+      "hub": "ticket-tiers-comparison",
+      "type": "supporting",
+      "title": "Arena Floor vs Underground: Which Premium Upgrade Is Actually Worth €30 More?",
+      "ok": true,
+      "elapsed_seconds": 160.5,
+      "error": null
+    },
+    {
+      "n": 10,
+      "hub": "ticket-tiers-comparison",
+      "type": "supporting",
+      "title": "What Happens If You Arrive Outside Your Colosseum Timed Entry Window",
+      "ok": true,
+      "elapsed_seconds": 135.6,
+      "error": null
+    },
+    {
+      "n": 11,
+      "hub": "ticket-tiers-comparison",
+      "type": "supporting",
+      "title": "Is the Colosseum Upper Tier (Belvedere) Worth Booking? Views, Crowds, and Access",
+      "ok": true,
+      "elapsed_seconds": 144.6,
+      "error": null
+    },
+    {
+      "n": 12,
+      "hub": "premium-experiences",
+      "type": "pillar",
+      "title": "The Colosseum Underground Tour: Honest Guide to What 20 Minutes Below the Arena Looks Like",
+      "ok": true,
+      "elapsed_seconds": 204.4,
+      "error": null
+    },
+    {
+      "n": 13,
+      "hub": "premium-experiences",
+      "type": "supporting",
+      "title": "Why Colosseum Underground Tickets Are Sold Out Before They List: The Supply Reality",
+      "ok": true,
+      "elapsed_seconds": 137,
+      "error": null
+    },
+    {
+      "n": 14,
+      "hub": "premium-experiences",
+      "type": "supporting",
+      "title": "Colosseum Night & Sunset Tours: What 'Behind the Curtain' Access Actually Includes",
+      "ok": true,
+      "elapsed_seconds": 145,
+      "error": null
+    },
+    {
+      "n": 15,
+      "hub": "premium-experiences",
+      "type": "supporting",
+      "title": "Colosseum Underground in Spring: Avoiding the Student Group Crush",
+      "ok": true,
+      "elapsed_seconds": 144.2,
+      "error": null
+    },
+    {
+      "n": 16,
+      "hub": "combo-tours",
+      "type": "pillar",
+      "title": "Colosseum Combo Tickets Decoded: The Inclusion Matrix for Forum, Palatine, Arena, Underground, and Vatican",
+      "ok": true,
+      "elapsed_seconds": 200.3,
+      "error": null
+    },
+    {
+      "n": 17,
+      "hub": "combo-tours",
+      "type": "supporting",
+      "title": "Combo Math: Is Colosseum + Forum + Palatine Cheaper Than Buying Separately?",
+      "ok": true,
+      "elapsed_seconds": 148.1,
+      "error": null
+    },
+    {
+      "n": 18,
+      "hub": "combo-tours",
+      "type": "supporting",
+      "title": "Vatican + Colosseum Same-Day: Is 6 Hours of Walking Realistic for You?",
+      "ok": true,
+      "elapsed_seconds": 143.8,
+      "error": null
+    },
+    {
+      "n": 19,
+      "hub": "combo-tours",
+      "type": "supporting",
+      "title": "Avoid Double-Paying: How Travelers Accidentally Buy the Same Colosseum Site Twice",
+      "ok": true,
+      "elapsed_seconds": 142.7,
+      "error": null
+    },
+    {
+      "n": 20,
+      "hub": "combo-tours",
+      "type": "supporting",
+      "title": "Forum + Palatine Without the Colosseum: A Cheaper, Quieter Alternative",
+      "ok": true,
+      "elapsed_seconds": 149.2,
+      "error": null
+    },
+    {
+      "n": 21,
+      "hub": "combo-tours",
+      "type": "supporting",
+      "title": "How Long Is a Colosseum Tour Really? 2.5h vs 3h vs 4h vs 6h Tours Compared",
+      "ok": true,
+      "elapsed_seconds": 146.4,
+      "error": null
+    },
+    {
+      "n": 22,
+      "hub": "guides-quality",
+      "type": "supporting",
+      "title": "How to Request a Specific Colosseum Guide at Booking (And Which Operators Allow It)",
+      "ok": true,
+      "elapsed_seconds": 152.3,
+      "error": null
+    },
+    {
+      "n": 23,
+      "hub": "guides-quality",
+      "type": "supporting",
+      "title": "Private Colosseum Tour vs Group Tour: When the Premium Is Actually Worth It",
+      "ok": true,
+      "elapsed_seconds": 145.5,
+      "error": null
+    },
+    {
+      "n": 24,
+      "hub": "guides-quality",
+      "type": "supporting",
+      "title": "Colosseum Tour Group Sizes Compared: Does 17 vs 20 vs 25 People Really Matter?",
+      "ok": true,
+      "elapsed_seconds": 139.3,
+      "error": null
+    },
+    {
+      "n": 25,
+      "hub": "operator-selection",
+      "type": "pillar",
+      "title": "GetYourGuide vs Viator vs The Tour Guy vs CoopCulture: Which Colosseum Booking Platform Actually Works",
+      "ok": true,
+      "elapsed_seconds": 202.5,
+      "error": null
+    },
+    {
+      "n": 26,
+      "hub": "operator-selection",
+      "type": "supporting",
+      "title": "Is The Tour Guy / GetYourGuide / Viator Trustworthy? A Reseller Reality Check",
+      "ok": true,
+      "elapsed_seconds": 159,
+      "error": null
+    },
+    {
+      "n": 27,
+      "hub": "operator-selection",
+      "type": "supporting",
+      "title": "Colosseum Tour Reviews Aggregated: What 5-Star and 1-Star Reviews Actually Reveal",
+      "ok": true,
+      "elapsed_seconds": 141.9,
+      "error": null
+    },
+    {
+      "n": 28,
+      "hub": "operator-selection",
+      "type": "supporting",
+      "title": "Lost Voucher, Cancelled Tour, Power Cut: How Each Operator Handles Disruption",
+      "ok": true,
+      "elapsed_seconds": 146.1,
+      "error": null
+    },
+    {
+      "n": 29,
+      "hub": "on-site-logistics",
+      "type": "pillar",
+      "title": "The Complete Colosseum Day-Of Logistics Guide: Meeting Points, Tickets, Audio, and Entry",
+      "ok": true,
+      "elapsed_seconds": 180,
+      "error": null
+    },
+    {
+      "n": 30,
+      "hub": "on-site-logistics",
+      "type": "supporting",
+      "title": "Where to Pick Up Your Colosseum Ticket: Meeting Points vs Entry Points (With Maps)",
+      "ok": true,
+      "elapsed_seconds": 168.9,
+      "error": null
+    },
+    {
+      "n": 31,
+      "hub": "on-site-logistics",
+      "type": "supporting",
+      "title": "The Colosseum Audio Guide App vs a Live Guide: Which Actually Helps You Understand the Forum?",
+      "ok": true,
+      "elapsed_seconds": 163.6,
+      "error": null
+    },
+    {
+      "n": 32,
+      "hub": "on-site-logistics",
+      "type": "supporting",
+      "title": "Colosseum Audio Guide App: Pre-Download Steps, Signal Tips, and Troubleshooting",
+      "ok": true,
+      "elapsed_seconds": 150.3,
+      "error": null
+    },
+    {
+      "n": 33,
+      "hub": "on-site-logistics",
+      "type": "supporting",
+      "title": "Colosseum Tour Headset Problems: Wind Muffling, Bad Signal, and What to Do",
+      "ok": true,
+      "elapsed_seconds": 153,
+      "error": null
+    },
+    {
+      "n": 34,
+      "hub": "on-site-logistics",
+      "type": "supporting",
+      "title": "Colosseum Re-Entry Rules: Why Single-Entry Per Area Surprises Almost Everyone",
+      "ok": true,
+      "elapsed_seconds": 159.6,
+      "error": null
+    },
+    {
+      "n": 35,
+      "hub": "on-site-logistics",
+      "type": "supporting",
+      "title": "Why You'll Feel Rushed at the Roman Forum (and How the Meeting-Time Gap Causes It)",
+      "ok": true,
+      "elapsed_seconds": 145.5,
+      "error": null
+    },
+    {
+      "n": 36,
+      "hub": "on-site-logistics",
+      "type": "supporting",
+      "title": "Colosseum Bag Check Rules: What Slows Entry and What's Banned",
+      "ok": true,
+      "elapsed_seconds": 153.2,
+      "error": null
+    },
+    {
+      "n": 37,
+      "hub": "timing-crowds",
+      "type": "pillar",
+      "title": "Best Time to Visit the Colosseum: A Decision Matrix Combining Heat, Crowds, and Ticket Availability",
+      "ok": true,
+      "elapsed_seconds": 172.1,
+      "error": null
+    },
+    {
+      "n": 38,
+      "hub": "timing-crowds",
+      "type": "supporting",
+      "title": "9am vs 8:45am vs 12pm Colosseum Slots: Which Time Slot Actually Works Best",
+      "ok": true,
+      "elapsed_seconds": 265.1,
+      "error": null
+    },
+    {
+      "n": 39,
+      "hub": "timing-crowds",
+      "type": "supporting",
+      "title": "Best Months to Visit the Colosseum: Heat, Crowds, and Underground Availability by Season",
+      "ok": true,
+      "elapsed_seconds": 139.3,
+      "error": null
+    },
+    {
+      "n": 40,
+      "hub": "timing-crowds",
+      "type": "supporting",
+      "title": "Colosseum Crowds by Hour: When Student Groups, Cruise Tours, and Religious Groups Arrive",
+      "ok": true,
+      "elapsed_seconds": 144.1,
+      "error": null
+    },
+    {
+      "n": 41,
+      "hub": "timing-crowds",
+      "type": "supporting",
+      "title": "Saturday vs Weekday at the Colosseum: How Much Worse Are Weekend Crowds?",
+      "ok": true,
+      "elapsed_seconds": 147,
+      "error": null
+    },
+    {
+      "n": 42,
+      "hub": "timing-crowds",
+      "type": "supporting",
+      "title": "Best Colosseum Tour for Photography: Where You'll Have Time and Where You Won't",
+      "ok": true,
+      "elapsed_seconds": 136.5,
+      "error": null
+    },
+    {
+      "n": 43,
+      "hub": "physical-comfort",
+      "type": "pillar",
+      "title": "The Colosseum Survival Guide: Heat, Walking, Accessibility, and Visiting With Kids",
+      "ok": true,
+      "elapsed_seconds": 167.6,
+      "error": null
+    },
+    {
+      "n": 44,
+      "hub": "physical-comfort",
+      "type": "supporting",
+      "title": "Heat Survival at the Colosseum: Water Fountain Map, Shade Points, and Best Seasons",
+      "ok": true,
+      "elapsed_seconds": 124.3,
+      "error": null
+    },
+    {
+      "n": 45,
+      "hub": "physical-comfort",
+      "type": "supporting",
+      "title": "Colosseum Accessibility: Lifts, Step-Free Routes, Stroller Policy, and Advance Notice",
+      "ok": true,
+      "elapsed_seconds": 161.1,
+      "error": null
+    },
+    {
+      "n": 46,
+      "hub": "physical-comfort",
+      "type": "supporting",
+      "title": "Colosseum Tours With Young Kids: Headset Fit, Attention Span, and Bathroom Reality",
+      "ok": true,
+      "elapsed_seconds": 146.2,
+      "error": null
+    },
+    {
+      "n": 47,
+      "hub": "physical-comfort",
+      "type": "supporting",
+      "title": "Best Footwear for the Colosseum, Forum, and Palatine Hill",
+      "ok": true,
+      "elapsed_seconds": 147.4,
+      "error": null
+    },
+    {
+      "n": 48,
+      "hub": "physical-comfort",
+      "type": "supporting",
+      "title": "Bathroom Breaks During Colosseum Underground and Combo Tours: When and Where",
+      "ok": true,
+      "elapsed_seconds": 139.1,
+      "error": null
+    },
+    {
+      "n": 49,
+      "hub": "physical-comfort",
+      "type": "supporting",
+      "title": "Booking a Colosseum Tour in Spanish, Italian, or Other Non-English Languages",
+      "ok": true,
+      "elapsed_seconds": 150.4,
+      "error": null
+    }
+  ]
+}

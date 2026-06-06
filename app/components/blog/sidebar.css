@@ -1,0 +1,170 @@
+/* ESTRUCTURA PRINCIPAL DEL SIDEBAR */
+.tour-sidebar-widget {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* CTA BOX */
+.sidebar-cta-box {
+  background: linear-gradient(135deg, #8B4513 0%, #D2691E 50%, #D4AF37 100%);
+  color: white;
+  padding: 25px 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.sidebar-cta-box h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.sidebar-cta-box p {
+  margin-bottom: 15px;
+  opacity: 0.9;
+  font-size: 0.9rem;
+}
+
+.sidebar-cta-button {
+  background: white;
+  color: #8B4513;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.sidebar-price {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* POSTS RECIENTES */
+.sidebar-recent-posts {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.sidebar-recent-posts h4 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #8B4513;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #D4AF37;
+  padding-bottom: 8px;
+}
+
+/* INFORMACIÓN DEL TOUR */
+.sidebar-tour-info {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.sidebar-tour-info h4 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #8B4513;
+  margin-bottom: 12px;
+}
+
+.sidebar-tour-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-tour-info li {
+  padding: 6px 0;
+  font-size: 0.9rem;
+  color: #333;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.sidebar-tour-info li:last-child {
+  border-bottom: none;
+}
+
+.tour-sidebar-widget h3 { 
+    color: #000 !important; 
+  }
+  
+  .tour-sidebar-widget h4 { 
+    color: #8B4513 !important; 
+  }
+  
+  .tour-sidebar-widget h5 { 
+    color: #000 !important; 
+  }
+  
+  .tour-sidebar-widget p { 
+    color: #000 !important; 
+  }
+  
+  .tour-sidebar-widget li { 
+    color: #000 !important; 
+  }
+  
+  .sidebar-cta-box h3 { 
+    color: white !important; 
+  }
+  
+  .sidebar-cta-box p { 
+    color: white !important; 
+  }
+  
+  .sidebar-read-more { 
+    color: #D2691E !important; 
+  }
+  /* NUEVOS BLOQUES - AGREGAR AL FINAL */
+.sidebar-post-item {
+  padding: 15px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.sidebar-post-item:last-child {
+  border-bottom: none;
+}
+
+.sidebar-post-content h5 {
+  margin-bottom: 8px;
+}
+
+.sidebar-post-title {
+  color: #8B4513 !important;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.sidebar-post-title:hover {
+  color: #D4AF37 !important;
+}
+
+.sidebar-post-description {
+  color: #666 !important;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.sidebar-read-more {
+  color: #D2691E !important;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.sidebar-read-more:hover {
+  color: #B8860B !important;
+}

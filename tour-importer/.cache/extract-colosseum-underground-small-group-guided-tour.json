@@ -1,0 +1,101 @@
+{
+  "slug": "colosseum-underground-small-group-guided-tour",
+  "title": "Colosseum Underground Small Group Guided Tour",
+  "format": "legacy",
+  "sectionsFound": [
+    "quickAnswer",
+    "whatMakesDifferent",
+    "itinerary",
+    "whatYoullSee",
+    "included",
+    "notIncluded",
+    "insiderTip",
+    "reviewSnapshot",
+    "finalWord"
+  ],
+  "extracted": {
+    "quickAnswer": {
+      "raw": "Is the Colosseum Underground Worth It? Yes, this Colosseum Underground Small Group Guided Tour is worth it for visitors who want access to the hypogeum underground chambers, areas not accessible with standard tickets. Visitors explore the subterranean network where gladiators and wild animals were prepared before entering the arena above. The experience lasts approximately 1.5 hours and includes guided access at the Colosseum. Priced from $104 and rated 4.7/5 by over 4,500 visitors, it is an accessible option for those seeking restricted area tours with small group benefits.",
+      "sentenceCount": 4
+    },
+    "byNumbers": {},
+    "included": [
+      "Guided access to Colosseum Underground and Arena Floor",
+      "Entry tickets to Roman Forum and Palatine Hill",
+      "Licensed English-speaking guide for Colosseum portion",
+      "Professional headsets for clear audio",
+      "All taxes and mandatory fees",
+      "Small group format with maximum 8 participants"
+    ],
+    "notIncluded": [
+      "Hotel pickup or transportation to meeting point",
+      "Food, drinks, or refreshments",
+      "Guided commentary inside Roman Forum and Palatine Hill (self-guided with entry)",
+      "Gratuities for guide",
+      "Personal expenses or souvenirs"
+    ],
+    "whatMakesDifferent": {
+      "raw": "This exclusive small group experience provides access to the Colosseum's most restricted areas, including the underground chambers where gladiators once prepared for battle. The tour costs $104 per person for 1.5 hours of guided exploration, including access to the Colosseum Underground, Arena Floor, Roman Forum, and Palatine Hill with a licensed English-speaking guide. You'll explore the restricted Hypogeum chambers, walk onto the Arena Floor through the gladiator gate, and enjoy full access to the Roman Forum and Palatine Hill archaeological sites. While standard Colosseum tickets restrict visitors to the upper levels only, this guided experience adds underground access, arena floor access, and expert historical commentary that transforms ancient ruins into vivid stories of Roman civilization. The intimate group size of maximum 8 people ensures clear communication with your guide and allows for a more personal connection to the sites.",
+      "selfComparisons": [
+        {
+          "type": "price_references",
+          "values": [
+            "$104"
+          ]
+        }
+      ]
+    },
+    "whatYoullSee": [
+      "Exclusive access to the restricted Hypogeum underground chambers where gladiators prepared",
+      "Walk through the same gladiator gate onto the Arena Floor platform",
+      "360-degree views of the Colosseum including the emperor's box and underground network",
+      "Small group experience limited to maximum 8 people for intimate atmosphere",
+      "Professional headsets ensuring clear audio throughout the guided portion",
+      "Full access to Roman Forum landmarks including Temple of Saturn and Basilica of Maxentius",
+      "Self-guided exploration of Palatine Hill's imperial palaces and panoramic terraces"
+    ],
+    "itinerary": {
+      "raw": "Your journey begins in the underground Hypogeum, where you'll walk through original stone corridors and see the ancient elevator systems that lifted wild animals into the arena. From there, you emerge onto the Arena Floor platform, gaining a 360-degree perspective of the amphitheater including views of the emperor's box and underground network. The experience concludes with self-guided exploration of the Roman Forum's temples and basilicas, plus Palatine Hill's imperial palaces and panoramic viewpoints. This tour is designed for travelers who value depth over speed, with small groups of maximum 8 people and English-language commentary that welcomes questions and encourages engagement. The booking is non-refundable with no free cancellation policy, requires passport or ID for all participants, and tour times may shift up to 30 minutes due to site regulations. Meeting coordination takes place near the Colosseum metro station with staff assistance provided."
+    },
+    "practicalInfo": null,
+    "tourFormat": null,
+    "bestFor": [
+      "History enthusiasts seeking authentic experiences",
+      "travelers wanting exclusive access beyond standard tickets",
+      "small group preferences over mass tourism",
+      "visitors planning comprehensive ancient Rome exploration"
+    ],
+    "insiderTip": {
+      "raw": "Bring only very small bags as Colosseum security is exceptionally strict with larger items often refused entry. The underground chambers can be dimly lit and uneven, so wear comfortable walking shoes with good grip. Photography is allowed throughout, but the most dramatic shots come from the Arena Floor looking up at the amphitheater's full structure."
+    },
+    "finalWord": {
+      "raw": "This represents one of the premier Colosseum experiences available, combining restricted underground access with intimate group dynamics and expert storytelling. The tour delivers exceptional depth without overcrowding, making it ideal for travelers seeking authentic historical immersion beyond standard tourist access. While the non-refundable policy requires commitment, the consistently high ratings reflect strong value for the exclusive areas and comprehensive ancient Roman sites included. Recommended for: History enthusiasts seeking authentic experiences, travelers wanting exclusive access beyond standard tickets, small group preferences over mass tourism, visitors planning comprehensive ancient Rome exploration"
+    },
+    "reviewSnapshot": {
+      "raw": "Travelers consistently praise the underground access as \"surreal\" and \"the closest you can get to real Roman history,\" with many highlighting the cinematic feel of walking through gladiator corridors. The small group size receives frequent mention for enhancing emotional impact and allowing meaningful interaction with guides. The Arena Floor moment is regularly described as \"absolutely unforgettable\" with the 360-degree perspective being a standout feature. Some reviews note that the guided portion focuses on the Colosseum, with Forum and Palatine Hill being self-guided, though most appreciate the comprehensive historical context provided."
+    }
+  },
+  "claims": {
+    "explicit": [
+      "arena_floor_included",
+      "underground_included",
+      "palatine_included",
+      "forum_included",
+      "licensed_guide",
+      "headsets_included",
+      "small_group_included",
+      "small_group_format"
+    ],
+    "explicitNegative": [
+      "no_hotel_pickup",
+      "no_transport",
+      "no_food",
+      "no_palatine",
+      "no_forum",
+      "no_gratuities"
+    ],
+    "interpretive": [
+      "best_for_history_enthusiasts"
+    ]
+  }
+}

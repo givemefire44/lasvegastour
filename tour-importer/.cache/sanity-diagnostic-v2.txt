@@ -1,0 +1,77 @@
+═══════════════════════════════════════════════════════════════════════
+  SANITY DIAGNOSTIC v2 — Coliseo / pages
+  Generated: 2026-04-27T21:51:52.813Z
+  Total pages: 51
+═══════════════════════════════════════════════════════════════════════
+
+🏷️  VALORES DE pageType:
+   hero                           45 pages
+   simple                         6 pages
+
+📝 QUICK ANSWER:
+   Con QA:    0
+   Sin QA:    51
+
+
+─────────────────────────────────────────────────────────────────────
+  pageType: hero  (45 pages)
+─────────────────────────────────────────────────────────────────────
+
+       7-mistakes-people-make-when-booking-colosseum-tickets        | 7 mistakes people make when booking Colosseum tickets 
+       best-colosseum-tour-for-every-type-of-traveler               | Best Colosseum Tour for Every Type of Traveler
+       best-colosseum-tour-under-eur50                              | Best Colosseum Tour Under €50: What You Get Without Overpaying
+       book-your-colosseum-roman-tour-tickets-in-advance            | Colosseum Tickets Book in Advance 
+       colosseum-arena-tour                                         | Colosseum Arena Tour
+       colosseum-free-entry-days-2026-who-qualifies                 | Colosseum Free Entry Days 2026: Who Qualifies, When, and Is It Worth t
+       colosseum-full-experience-vs-standard-ticket                 | Colosseum Full Experience vs Standard Ticket: What You Actually Get
+       colosseum-in-rain-what-changes-what-closes                   | Colosseum in Rain: What Changes, What Closes, and What to Do Instead
+       colosseum-myths-busted-what-really-happened-in-ancient-rome  | Colosseum Myths Busted: What Really Happened in Ancient Rome
+       colosseum-night-tour-is-the-evening-visit-worth-it           | Colosseum Night Tour: Is the Evening Visit Worth It?
+       colosseum-opening-hours-and-best-time-to-visit-in-2026       | Colosseum Opening Hours and Best Time to Visit in 2026
+       colosseum-rome-faq-visitor-tips-or-colosseumroman-com        | Colosseum Rome FAQ – Visitor Tips | ColosseumRoman.com
+       colosseum-tickets-sold-out-what-to-do-next                   | Colosseum Tickets Sold Out? What to Do Next
+       colosseum-tickets-what-s-really-included-and-what-isn-t-in-each-option |  Colosseum tickets: what’s really included (and what isn’t) in each op
+       colosseum-tours-and-tickets-how-to-book-and-fix-common-problems | Colosseum Tours & Tickets: How to Book & Fix Common Problems
+       colosseum-underground-tour-ticket                            | Colosseum Underground Tour
+       colosseum-underground-vs-arena-floor                         | Colosseum Underground vs Arena Floor: Which Special Access Is Worth Yo
+       colosseum-vs-vatican-which-to-visit-first                    | Colosseum vs Vatican: Which to Visit First, How to Combine, and Time N
+       colosseum-with-kids-age-guide-rules-stroller                 | Colosseum with Kids: Age Guide, Rules, Stroller Policy and Best Tour O
+       commodus-passage-colosseum-secret-tunnel-2025                | The Commodus Passage: Walking Through the Emperor's Secret Tunnel Afte
+       complete-guide-to-visiting-the-roman-colosseum-step-by-step  | Complete guide to visiting the Roman Colosseum Step by Step
+       do-more-expensive-tours-get-better-reviews-we-analyzed-433-tours | Do More Expensive Tours Get Better Reviews? We Analyzed 433 Tours and 
+       gladiators-beasts-and-executions-what-really-happened-in-the-colosseum-arena | Gladiators, Beasts, and Executions: What Really Happened in the Coloss
+       how-long-do-you-need-at-the-colosseum                        | How Long Do You Need at the Colosseum? Timing Guide by Visit Type
+       how-to-get-to-the-colosseum-from-termini-vatican-and-trastevere | How to Get to the Colosseum from Termini, Vatican, and Trastevere
+       myths-of-the-colosseum-christians-naval-battles-and-the-emperor-s-thumb |  Myths of the Colosseum: Christians, Naval Battles, and the Emperor’s 
+       myths-of-the-colosseum-christians-naval-battles-and-the-emperor-s-thumb |  Myths of the Colosseum: Christians, Naval Battles, and the Emperor’s 
+       palatine-hill                                                | Palatine Hill Tours
+       private-colosseum-tour                                       | Private Colosseum Tour: Skip the Crowds, Set Your Pace
+       roman-forum                                                  | Roman Forum  Guide Tours and Tickets
+       rome-in-one-day-colosseum-forum-vatican-itinerary            | Rome in One Day: Colosseum, Forum, Vatican Itinerary
+       seeing-the-colosseum-in-photos-doesn-t-count-as-having-seen-it | Seeing the Colosseum in Photos Doesn’t Count as Having Seen It
+       seeing-the-colosseum-in-photos-doesn-t-count-as-having-seen-it | Seeing the Colosseum in Photos Doesn’t Count as Having Seen It
+       skip-the-colosseum-roman-tour-line                           | How to Skip the Line at the Colosseum: Every Option Compared by Price,
+       skip-the-line-colosseum-do-you-really-need-it                | Skip the Line Colosseum: Do You Really Need It?
+       skip-the-line-isn-t-magic-my-honest-colosseum-experience     | Skip-the-Line Isn’t Magic: My Honest Colosseum Experience
+       skip-the-line-vatican-museum-sistine-chapel-and-basilica-tour | Skip The Line Vatican Museum, Sistine Chapel & Basilica Tour
+       the-eur18-colosseum-ticket-that-costs-usd174                 | The €18 Colosseum Ticket That Costs $174: New Data Reveals Real Touris
+       the-incredible-engineering-of-the-colosseum-how-it-was-built-and-how-it-worked | The Incredible Engineering of the Colosseum: How It Was Built and How 
+       top-10-tips-for-visiting-the-colosseum-in-rome               | Top 10 Tips for Visiting the Colosseum in Rome
+       vatican-and-colosseum-tours-in-one-day-how-to-see-both       | Vatican and Colosseum Tours in One Day: How to See Both
+       why-a-guided-colosseum-tour-is-worth-it-1-817-reviews        | Why a Guided Colosseum Tour Is Worth It: 1,817 Reviews Show the Guide 
+       why-was-the-colosseum-built-the-story-guides-don-t-tell-you  | Why Was the Colosseum Built? The Story Guides Don’t Tell You
+       why-was-the-roman-colosseum-built-the-untold-story           | Why was the Roman Colosseum Built? The Untold Story.
+       (sin slug)                                                   | (sin título)
+
+─────────────────────────────────────────────────────────────────────
+  pageType: simple  (6 pages)
+─────────────────────────────────────────────────────────────────────
+
+       about-us                                                     | About us
+       contact-us                                                   | Contact Us
+       cookies-privacy-policy                                       | Cookies - Privacy Policy
+       terms-conditions                                             | Terms - Conditions
+       (sin slug)                                                   | prueba 
+       (sin slug)                                                   | (sin título)
+
+═══════════════════════════════════════════════════════════════════════
