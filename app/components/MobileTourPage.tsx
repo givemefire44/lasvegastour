@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { urlFor } from '@/sanity/lib/image';
 import SanityContent from './blog/SanityContent';
+import TourComparisonTable from './blog/TourComparisonTable';
 import RecommendedTours from './blog/RecommendedTours';
 import Breadcrumbs from './Breadcrumbs';
 import RatingDisplay from './RatingDisplay';
@@ -222,115 +223,6 @@ export default function MobileTourPage({
 
         {/* PANEL TOUR DETAILS AUTOMÁTICO */}
         <div className="tour-details-panel">
-          <div className="details-header">
-            <span className="details-icon">📋</span>
-            <h3 className="details-title">Tour Details</h3>
-          </div>
-          
-          <div className="details-grid">
-            {post.tourInfo?.duration && (
-              <div className="detail-item">
-                <div className="detail-icon">⏱️</div>
-                <div className="detail-content">
-                  <div className="detail-label">Duration</div>
-                  <div className="detail-value">{post.tourInfo.duration}</div>
-                </div>
-              </div>
-            )}
-
-            {post.tourInfo?.location && (
-              <div className="detail-item">
-                <div className="detail-icon">📍</div>
-                <div className="detail-content">
-                  <div className="detail-label">Location</div>
-                  <div className="detail-value">{post.tourInfo.location}</div>
-                </div>
-              </div>
-            )}
-
-            {post.tourFeatures?.freeCancellation && (
-              <div className="detail-item">
-                <div className="detail-icon">✅</div>
-                <div className="detail-content">
-                  <div className="detail-label">Cancellation</div>
-                  <div className="detail-value">Free cancellation available</div>
-                </div>
-              </div>
-            )}
-
-            {post.tourFeatures?.skipTheLine && (
-              <div className="detail-item">
-                <div className="detail-icon">⚡</div>
-                <div className="detail-content">
-                  <div className="detail-label">Access</div>
-                  <div className="detail-value">Skip the line entry</div>
-                </div>
-              </div>
-            )}
-
-            {post.tourFeatures?.wheelchairAccessible && (
-              <div className="detail-item">
-                <div className="detail-icon">♿</div>
-                <div className="detail-content">
-                  <div className="detail-label">Accessibility</div>
-                  <div className="detail-value">Wheelchair accessible</div>
-                </div>
-              </div>
-            )}
-
-            {post.tourFeatures?.hostGuide && (
-              <div className="detail-item">
-                <div className="detail-icon">👨‍🏫</div>
-                <div className="detail-content">
-                  <div className="detail-label">Guide Languages</div>
-                  <div className="detail-value">{post.tourFeatures.hostGuide}</div>
-                </div>
-              </div>
-            )}
-
-            {post.tourFeatures?.audioGuide && (
-              <div className="detail-item">
-                <div className="detail-icon">🎧</div>
-                <div className="detail-content">
-                  <div className="detail-label">Audio Guide</div>
-                  <div className="detail-value">{post.tourFeatures.audioGuide}</div>
-                </div>
-              </div>
-            )}
-
-            {post.tourFeatures?.smallGroupAvailable && (
-              <div className="detail-item">
-                <div className="detail-icon">👥</div>
-                <div className="detail-content">
-                  <div className="detail-label">Group Size</div>
-                  <div className="detail-value">Small groups available</div>
-                </div>
-              </div>
-            )}
-
-            {post.tourInfo?.price && (
-              <div className="detail-item">
-                <div className="detail-icon">💰</div>
-                <div className="detail-content">
-                  <div className="detail-label">Price</div>
-                  <div className="detail-value">
-                    {post.tourInfo.currency === 'USD' && '$'}
-                    {post.tourInfo.currency === 'EUR' && '€'}
-                    {post.tourInfo.currency === 'ARS' && 'AR$'}
-                    {post.tourInfo.price}
-                    <span style={{ 
-                      fontSize: '0.85rem', 
-                      fontWeight: 'normal',
-                      color: '#666',
-                      marginLeft: '8px'
-                    }}>
-                      per person
-                    </span>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
           
 {/* LasVegasTour EDITORIAL REVIEW */}
 {post.editorialRating && post.editorialReview && (
@@ -479,6 +371,12 @@ export default function MobileTourPage({
                 </details>
               ))}
             </div>
+          </div>
+        )}
+
+        {relatedTours && relatedTours.length > 0 && (
+          <div style={{ padding: '0 20px', marginBottom: '25px' }}>
+            <TourComparisonTable currentTour={post} relatedTours={relatedTours} />
           </div>
         )}
 

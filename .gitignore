@@ -55,3 +55,8 @@ tmp/
 # logs
 logs/
 *.log
+
+tour-importer/node_modules/
+tour-importer/corpus/
+*.tar.gz
+*.zip

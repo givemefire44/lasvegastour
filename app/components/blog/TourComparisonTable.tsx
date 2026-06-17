@@ -71,14 +71,14 @@ interface TourComparisonTableProps {
                           style={{ 
                             color: isCurrentTour ? '#e91e63' : '#1a73e8', 
                             textDecoration: 'none', 
-                            fontWeight: isCurrentTour ? '700' : '500',
+                            fontWeight: isCurrentTour ? '700' : '600',
                             display: 'flex',
                             alignItems: 'center',
                             gap: '8px'
                           }}
                         >
                           {getThumb(tour) && (
-                            <span style={{ width: '56px', height: '56px', borderRadius: '8px', flexShrink: 0, display: 'inline-block', backgroundImage: `url("${getThumb(tour)}")`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
+                            <span style={{ width: '80px', height: '80px', borderRadius: '8px', flexShrink: 0, display: 'inline-block', backgroundImage: `url("${getThumb(tour)}")`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
                           )}
                           {isCurrentTour && <span>👉</span>}
                           <span style={{

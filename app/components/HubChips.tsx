@@ -43,7 +43,7 @@ export default function HubChips({ activeSlug, tourTitle, tourFeatures }: HubChi
   return (
     <div style={{ padding: '30px 0' }}>
       <h2 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '20px', color: '#333' }}>
-        {contextual ? '🏷️ This tour appears in' : '🏛️ Browse Colosseum Tours'}
+      {contextual ? '🏷️ This tour appears in' : '🗺️ Browse Las Vegas Tours'}
       </h2>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
         {displayHubs.map((h: any) => (

@@ -2,10 +2,11 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { urlFor } from '@/sanity/lib/image';
 import { proTips } from '@/app/utils/proTips';
 import TourFinderBanner from '@/app/components/TourFinderBanner';
+import { rankTours } from '@/lib/rankTours';
 
 interface RecommendedToursProps {
   tours: Array<{
@@ -42,7 +43,7 @@ function extractDescription(body: any): string {
       }
     }
   }
-  return 'Descubrí este increíble tour por Roma...';
+  return 'Discover this Las Vegas tour...';
 }
 
 // Función para obtener la mejor imagen disponible
@@ -60,8 +61,8 @@ function getBestImage(tour: RecommendedToursProps['tours'][0]) {
 
 export default function RecommendedTours({ 
   tours, 
-  initialCount = 10,     // 🎯 Mostrar 6 inicialmente
-  loadMoreCount = 6     // 🚀 Cargar 4 más cada vez
+  initialCount = 12,     // 🎯 Mostrar 6 inicialmente
+  loadMoreCount = 12     // 🚀 Cargar 4 más cada vez
 }: RecommendedToursProps) {
   
   // 📊 ESTADO PARA LOAD MORE
@@ -80,10 +81,13 @@ export default function RecommendedTours({
     setIsLoading(false);
   }, [loadMoreCount]);
 
-  // 📊 CALCULAR ESTADO
-  const visibleTours = tours.slice(0, visibleCount);
-  const hasMoreTours = visibleCount < tours.length;
-  const remainingCount = tours.length - visibleCount;
+ // 🏆 RANKING: helis arriba, después Grand Canyon, después el resto (por calidad)
+ const rankedTours = useMemo(() => rankTours(tours), [tours]);
+
+ // 📊 CALCULAR ESTADO
+ const visibleTours = rankedTours.slice(0, visibleCount);
+ const hasMoreTours = visibleCount < rankedTours.length;
+ const remainingCount = rankedTours.length - visibleCount;
 
   if (!tours || tours.length === 0) {
     return null;
@@ -95,7 +99,7 @@ export default function RecommendedTours({
         <div className="recommended-tours-container">
         <TourFinderBanner />
           <h2 className="recommended-tours-title">
-            Our most recommended Colosseum Tours
+            Our most recommended Las Vegas Tours
           </h2>
 
           {/* 🎯 TOURS GRID */}

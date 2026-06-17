@@ -74,9 +74,12 @@ export default function HubPage({ hub, tours, content, allHubs, recommendedTours
   });
 
   const topTours = sortedTours.slice(0, 3);
-  const prices = tours.filter(t => t.tourInfo?.price).map(t => t.tourInfo!.price!);
-  const minPrice = prices.length ? Math.min(...prices) : null;
-  const maxPrice = prices.length ? Math.max(...prices) : null;
+  const prices = tours.filter(t => t.tourInfo?.price).map(t => t.tourInfo!.price!).sort((a, b) => a - b);
+  const minPrice = prices.length ? Math.floor(prices[0]) : null;
+  // Descartar dislates (bodas en heli, charters VIP): un precio > 8× la mediana del hub no define el techo.
+  const _median = prices.length ? prices[Math.floor(prices.length / 2)] : 0;
+  const _sane = prices.filter(p => p <= _median * 8);
+  const maxPrice = _sane.length ? Math.round(_sane[_sane.length - 1]) : (prices.length ? Math.round(prices[prices.length - 1]) : null);
   const qa = content?.quickAnswer;
   const intro = content?.intro;
   const faqs = content?.faqs || [];
@@ -96,7 +99,6 @@ export default function HubPage({ hub, tours, content, allHubs, recommendedTours
 
         <Breadcrumbs noSchema={true} items={[
           { label: 'Home', href: '/' },
-          { label: 'Colosseum Tours', href: '/tours/colosseum' },
           { label: hub.shortTitle, isActive: true }
         ]} />
 
@@ -168,6 +170,82 @@ export default function HubPage({ hub, tours, content, allHubs, recommendedTours
         </Container>
       )}
 
+      {/* Top Picks */}
+      {topTours.length > 0 && (
+        <Container>
+          <div style={{ padding: '40px 0' }}>
+            <h2 style={{ fontSize: '2rem', fontWeight: '700', marginBottom: '40px', color: '#333' }}>
+              🏆 Top {hub.shortTitle}
+            </h2>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px, 100%), 1fr))',
+              gap: '20px'
+            }}>
+              {topTours.map((tour, i) => {
+                const image = getBestImage(tour);
+                return (
+                  <div key={tour._id} style={{
+                    background: '#fff', borderRadius: '12px', overflow: 'hidden',
+                    boxShadow: '0 2px 15px rgba(0,0,0,0.08)', cursor: 'pointer',
+                    minWidth: '260px', maxWidth: '300px', justifySelf: 'center',
+                    position: 'relative'
+                  }}>
+                    <div style={{
+                      position: 'absolute', top: '10px', left: '10px', zIndex: 2,
+                      width: '28px', height: '28px', borderRadius: '50%',
+                      background: i === 0 ? '#FFD700' : i === 1 ? '#C0C0C0' : '#CD7F32',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      fontWeight: 700, fontSize: '14px', color: '#fff',
+                      boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
+                    }}>
+                      {i + 1}
+                    </div>
+                    <a href={`/tour/${tour.slug.current}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                      <div style={{ position: 'relative', height: '160px' }}>
+                        {image ? (
+                          <Image
+                            src={urlFor(image).width(350).height(160).format('webp').quality(80).fit('crop').url()}
+                            alt={image.alt || tour.title} fill style={{ objectFit: 'cover' }}
+                            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                            loading="lazy"
+                          />
+                        ) : (
+                          <div style={{ width: '100%', height: '100%', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '1.5rem' }}>🏜️</div>
+                        )}
+                      </div>
+                      <div style={{ padding: '16px' }}>
+                        <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '8px', color: '#333', lineHeight: '1.3', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', minHeight: '2.6rem' }}>{tour.title}</h3>
+                        {tour.getYourGuideData?.rating && (
+                          <div style={{ marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                            <div style={{ display: 'flex', gap: '2px' }}>
+                              {[...Array(5)].map((_, i) => (
+                                <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill={i < Math.floor(tour.getYourGuideData!.rating!) ? '#FBBF24' : '#E5E7EB'}><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" /></svg>
+                              ))}
+                            </div>
+                            <span style={{ fontSize: '0.85rem', fontWeight: '600', color: '#333' }}>{tour.getYourGuideData.rating.toFixed(1)}</span>
+                            {tour.getYourGuideData.reviewCount ? <span style={{ fontSize: '0.75rem', color: '#6b7280' }}>({tour.getYourGuideData.reviewCount})</span> : null}
+                          </div>
+                        )}
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '10px' }}>
+                          {tour.tourFeatures?.skipTheLine && <span style={{ fontSize: '0.7rem', padding: '3px 8px', borderRadius: '12px', background: '#dcfce7', color: '#16a34a', fontWeight: '600', whiteSpace: 'nowrap' }}>⚡ Skip the line</span>}
+                          {tour.tourFeatures?.smallGroupAvailable && <span style={{ fontSize: '0.7rem', padding: '3px 8px', borderRadius: '12px', background: '#dbeafe', color: '#2563eb', fontWeight: '600', whiteSpace: 'nowrap' }}>👥 Small group</span>}
+                          {tour.tourFeatures?.freeCancellation && <span style={{ fontSize: '0.7rem', padding: '3px 8px', borderRadius: '12px', background: '#fef3c7', color: '#d97706', fontWeight: '600', whiteSpace: 'nowrap' }}>🔄 Free cancel</span>}
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                          {tour.tourInfo?.duration && <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#666', fontSize: '0.8rem' }}><span>🕒</span><span>{tour.tourInfo.duration}</span></div>}
+                          {tour.tourInfo?.price && <div style={{ fontSize: '1.1rem', fontWeight: '700', color: '#e91e63' }}>{tour.tourInfo.currency === 'EUR' ? '€' : '$'}{tour.tourInfo.price}</div>}
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </Container>
+      )}
+
       {/* Intro - 4 micro blocks with autolinks */}
       {intro && (
         <Container>
@@ -229,82 +307,6 @@ export default function HubPage({ hub, tours, content, allHubs, recommendedTours
                 </ul>
               </div>
             )}
-          </div>
-        </Container>
-      )}
-
-      {/* Top Picks */}
-      {topTours.length > 0 && (
-        <Container>
-          <div style={{ padding: '40px 0' }}>
-            <h2 style={{ fontSize: '2rem', fontWeight: '700', marginBottom: '40px', color: '#333' }}>
-              🏆 Top {hub.shortTitle}
-            </h2>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px, 100%), 1fr))',
-              gap: '20px'
-            }}>
-              {topTours.map((tour, i) => {
-                const image = getBestImage(tour);
-                return (
-                  <div key={tour._id} style={{
-                    background: '#fff', borderRadius: '12px', overflow: 'hidden',
-                    boxShadow: '0 2px 15px rgba(0,0,0,0.08)', cursor: 'pointer',
-                    minWidth: '260px', maxWidth: '300px', justifySelf: 'center',
-                    position: 'relative'
-                  }}>
-                    <div style={{
-                      position: 'absolute', top: '10px', left: '10px', zIndex: 2,
-                      width: '28px', height: '28px', borderRadius: '50%',
-                      background: i === 0 ? '#FFD700' : i === 1 ? '#C0C0C0' : '#CD7F32',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontWeight: 700, fontSize: '14px', color: '#fff',
-                      boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
-                    }}>
-                      {i + 1}
-                    </div>
-                    <a href={`/tour/${tour.slug.current}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                      <div style={{ position: 'relative', height: '160px' }}>
-                        {image ? (
-                          <Image
-                            src={urlFor(image).width(350).height(160).format('webp').quality(80).fit('crop').url()}
-                            alt={image.alt || tour.title} fill style={{ objectFit: 'cover' }}
-                            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                            loading="lazy"
-                          />
-                        ) : (
-                          <div style={{ width: '100%', height: '100%', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '1.5rem' }}>🏛️</div>
-                        )}
-                      </div>
-                      <div style={{ padding: '16px' }}>
-                        <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '8px', color: '#333', lineHeight: '1.3', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', minHeight: '2.6rem' }}>{tour.title}</h3>
-                        {tour.getYourGuideData?.rating && (
-                          <div style={{ marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                            <div style={{ display: 'flex', gap: '2px' }}>
-                              {[...Array(5)].map((_, i) => (
-                                <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill={i < Math.floor(tour.getYourGuideData!.rating!) ? '#FBBF24' : '#E5E7EB'}><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" /></svg>
-                              ))}
-                            </div>
-                            <span style={{ fontSize: '0.85rem', fontWeight: '600', color: '#333' }}>{tour.getYourGuideData.rating.toFixed(1)}</span>
-                            {tour.getYourGuideData.reviewCount ? <span style={{ fontSize: '0.75rem', color: '#6b7280' }}>({tour.getYourGuideData.reviewCount})</span> : null}
-                          </div>
-                        )}
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '10px' }}>
-                          {tour.tourFeatures?.skipTheLine && <span style={{ fontSize: '0.7rem', padding: '3px 8px', borderRadius: '12px', background: '#dcfce7', color: '#16a34a', fontWeight: '600', whiteSpace: 'nowrap' }}>⚡ Skip the line</span>}
-                          {tour.tourFeatures?.smallGroupAvailable && <span style={{ fontSize: '0.7rem', padding: '3px 8px', borderRadius: '12px', background: '#dbeafe', color: '#2563eb', fontWeight: '600', whiteSpace: 'nowrap' }}>👥 Small group</span>}
-                          {tour.tourFeatures?.freeCancellation && <span style={{ fontSize: '0.7rem', padding: '3px 8px', borderRadius: '12px', background: '#fef3c7', color: '#d97706', fontWeight: '600', whiteSpace: 'nowrap' }}>🔄 Free cancel</span>}
-                        </div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                          {tour.tourInfo?.duration && <div style={{ display: 'flex', alignItems: 'center', gap: '4px', color: '#666', fontSize: '0.8rem' }}><span>🕒</span><span>{tour.tourInfo.duration}</span></div>}
-                          {tour.tourInfo?.price && <div style={{ fontSize: '1.1rem', fontWeight: '700', color: '#e91e63' }}>{tour.tourInfo.currency === 'EUR' ? '€' : '$'}{tour.tourInfo.price}</div>}
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                );
-              })}
-            </div>
           </div>
         </Container>
       )}
@@ -412,7 +414,7 @@ export default function HubPage({ hub, tours, content, allHubs, recommendedTours
       <Container>
         <div style={{ padding: '30px 0' }}>
           <h2 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '20px', color: '#333' }}>
-            🏛️ Browse Colosseum Tours
+          🗺️ Browse Las Vegas Tours
           </h2>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
             {allHubs.map(h => (

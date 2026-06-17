@@ -204,8 +204,8 @@ export default function RelatedTours({ tours }: RelatedToursProps) {
 
         {/* BOTÓN VER MÁS - LINKEABLE */}
         <div className="tours-footer">
-          <Link href="/tours/colosseum" className="view-all-button">
-            See All Colosseum Tours
+          <Link href="/tours" className="view-all-button">
+            See All Las Vegas Tours
           </Link>
         </div>
       </div>

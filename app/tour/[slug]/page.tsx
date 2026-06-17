@@ -4,6 +4,7 @@ import { Metadata } from 'next';
 import TourPageClient from './TourPageClient';
 import { permanentRedirect } from 'next/navigation';
 import { findHubForTour } from '@/lib/tourHubs';
+import { orderTourBody } from '@/lib/orderTourBody';
 
 // ========================================
 // CONFIGURACIÓN
@@ -230,9 +231,11 @@ export default async function TourPage({ params }: { params: Promise<{ slug: str
     *[_type == "post" && slug.current == $slug][0]{
       title,
       slug,
+      "categorySlug": category->slug.current,
       discontinued,
       redirectTo,
       seoTitle,
+      quickAnswerQuestion,
       seoDescription,
       seoKeywords,
       seoImage{
@@ -295,8 +298,13 @@ export default async function TourPage({ params }: { params: Promise<{ slug: str
   }
   
 
+  const categorySlug = post?.categorySlug || null;
+
+  // Orden canonico garantizado en cada carga (server). El dato puede estar como sea.
+  if (post?.body) post.body = orderTourBody(post.body, categorySlug);
+
   const relatedPosts = await client.fetch(`
-    *[_type == "post" && slug.current != $slug && discontinued != true][0...20]{
+    *[_type == "post" && slug.current != $slug && discontinued != true && category->slug.current == $categorySlug] | order(getYourGuideData.reviewCount desc)[0...20]{
       _id,
       title,
       slug,
@@ -323,33 +331,29 @@ export default async function TourPage({ params }: { params: Promise<{ slug: str
         reviewCount
       }
     }
-  `, { slug }, cacheConfig);
+  `, { slug, categorySlug }, cacheConfig);
 
   const recommendedPosts = await client.fetch(`
-   *[_type == "post" && slug.current != $slug && discontinued != true] | order(_createdAt desc)[0...60]{
-      _id,
-      title,
-      slug,
-      mainImage{
-        asset->{ url },
-        alt
-      },
-      "heroGallery": heroGallery[0..0]{
-        asset->{ url },
-        alt
-      },
-      "body": body[0...1]
-    }
-  `, { slug }, cacheConfig);
-
-  if (!post) {
-    return (
-      <div style={{ padding: 40, textAlign: 'center' }}>
-        <h1>Tour not found</h1>
-        <p>This tour doesn't exist.</p>
-      </div>
-    );
-  }
+    *[_type == "post" && slug.current != $slug && discontinued != true]{
+       _id,
+       title,
+       slug,
+       "categorySlug": category->slug.current,
+       mainImage{
+         asset->{ url },
+         alt
+       },
+       "heroGallery": heroGallery[0..0]{
+         asset->{ url },
+         alt
+       },
+       "body": body[0...1],
+       getYourGuideData{
+         rating,
+         reviewCount
+       }
+     }
+   `, { slug }, cacheConfig);
 
   // ========================================
   // ✅ STRUCTURED DATA - PRODUCT UNIFICADO
@@ -549,7 +553,7 @@ export default async function TourPage({ params }: { params: Promise<{ slug: str
               '@context': 'https://schema.org',
               '@type': 'ItemList',
               'name': 'Compare Similar Tours',
-              'description': 'Compare top-rated Colosseum tours in Rome',
+              'description': 'Compare top-rated Las Vegas tours',
               'numberOfItems': relatedPosts.filter((t: any, i: number, arr: any[]) => t.tourInfo?.price && t.getYourGuideData?.rating && t.slug?.current !== post.slug?.current && t.title !== post.title && arr.findIndex((x: any) => x.title === t.title) === i).slice(0, 3).length,
               'itemListElement': relatedPosts.filter((t: any, i: number, arr: any[]) => t.tourInfo?.price && t.getYourGuideData?.rating && t.slug?.current !== post.slug?.current && t.title !== post.title && arr.findIndex((x: any) => x.title === t.title) === i).sort((a: any, b: any) => (a.tourInfo?.price || 999) - (b.tourInfo?.price || 999)).slice(0, 3).map((tour: any, i: number) => ({
                 '@type': 'ListItem',
@@ -558,7 +562,7 @@ export default async function TourPage({ params }: { params: Promise<{ slug: str
                   '@type': 'Product',
                   'name': tour.title,
                   'url': `https://lasvegastour.com/tour/${tour.slug?.current}`,
-                  'description': tour.seoDescription || `${tour.title} - Expert-guided tour in Rome`,
+                  'description': tour.seoDescription || `${tour.title} - Expert-guided tour in Las Vegas`,
                   'image': tour.seoImage?.asset?.url || tour.heroGallery?.[0]?.asset?.url || tour.mainImage?.asset?.url,
                   ...(tour.tourInfo?.price ? {
                     'offers': {

@@ -1,11 +1,11 @@
 'use client'
 import { PortableText } from '@portabletext/react';
-import TourComparisonTable from '@/app/components/blog/TourComparisonTable';
 import { urlFor } from '@/sanity/lib/image';
 import Image from 'next/image';
 import { useEffect } from 'react';
 import UnifiedAutoLinker, { autoLinkerStyles } from '@/app/components/UnifiedAutoLinker';
 import { resetPageCounters } from '@/app/utils/autoLinker';
+import TourImageRow from './TourImageRow';
 
 
 
@@ -43,6 +43,8 @@ function hasFormattedContent(children: any): boolean {
 interface SanityContentProps {
   post: {
     title: string;
+    seoTitle?: string;
+    quickAnswerQuestion?: string;
     slug?: {
       current: string;
     };
@@ -53,6 +55,7 @@ interface SanityContentProps {
       alt?: string;
     };
     body?: any;
+    heroGallery?: any;
     content?: any;
     tourInfo?: any;
     tourFeatures?: any;
@@ -149,7 +152,33 @@ export default function SanityContent({ post, relatedTours = [], noTableSchema =
       })
       : contentToRender;
 
-  const components = {
+  // Agrupa el cuerpo de "Why People Book This" y "Is It Worth It?" en una caja gris (#E8EDF3).
+  const GRAY_HEADER_RX = /why people book this|is it worth it/i;
+  const isHeadingBlock = (b: any) => b?._type === 'block' && ['h1', 'h2', 'h3', 'h4'].includes(b.style);
+  const blockHeadingText = (b: any) => (b?.children?.map((c: any) => c.text || '').join('') || '');
+  const finalContent = Array.isArray(processedContent)
+    ? (() => {
+        const out: any[] = [];
+        for (let i = 0; i < processedContent.length; i++) {
+          const b = processedContent[i];
+          if (isHeadingBlock(b) && GRAY_HEADER_RX.test(blockHeadingText(b))) {
+            const isWorthIt = /is it worth it/i.test(blockHeadingText(b));
+            out.push(b);
+            const inner: any[] = [];
+            let j = i + 1;
+            while (j < processedContent.length && !isHeadingBlock(processedContent[j])) {
+              inner.push(processedContent[j]); j++;
+            }
+            if (inner.length) out.push({ _type: 'grayBox', _key: `graybox-${i}`, blocks: inner });
+            if (isWorthIt) out.push({ _type: 'imageRow', _key: `imagerow-${i}` });
+            i = j - 1;
+          } else { out.push(b); }
+        }
+        return out;
+      })()
+    : processedContent;
+
+  const components: any = {
     types: {
       image: ({ value }: any) => {
         if (!value?.asset?._ref && !value?.asset?._id && !value?.asset?.url) { 
@@ -273,12 +302,37 @@ export default function SanityContent({ post, relatedTours = [], noTableSchema =
           </div>
         );
       },
+
+      grayBox: ({ value }: any) => (
+        <div className="why-worth-graybox" style={{ background: '#E8EDF3', borderRadius: '10px', padding: '20px 28px', margin: '0 0 1.5rem 0' }}>
+          <PortableText value={value.blocks} components={components} />
+        </div>
+      ),
+      imageRow: () => (
+        <TourImageRow images={(post.heroGallery || []).slice(1)} title={post.title} />
+      ),
     },
     block: {
       h1: ({ children }: any) => {
         const id = generateSectionId(children);
         return <h2 id={id || undefined} className="content-h1">{children}</h2>;
       },
+      blockquote: ({ children }: any) => (
+        <blockquote style={{
+          borderLeft: '4px solid #5f6368',
+          background: '#e8eaed',
+          margin: '28px 0',
+          padding: '12px 22px',
+          fontSize: '1rem',
+          lineHeight: '1.7',
+          fontWeight: 400,
+          color: '#333',
+          fontStyle: 'normal',
+          borderRadius: '0 8px 8px 0',
+        }}>
+          {children}
+        </blockquote>
+      ),
       h2: ({ children }: any) => {
         const id = generateSectionId(children);
         return <h3 id={id || undefined} className="content-h2">{children}</h3>;
@@ -308,18 +362,22 @@ export default function SanityContent({ post, relatedTours = [], noTableSchema =
           // Nuevo formato: header vacío, contenido en párrafo siguiente
           if (!content) {
             return (
-              <h3 style={{
+              <div style={{
                 margin: '1.5rem 0 0 0',
-                padding: '1rem 1.25rem 0.5rem 1.25rem',
-                background: '#fef9e7',
-                borderLeft: '4px solid #f4d03f',
+                padding: '14px 20px 9px 20px',
+                background: '#1e3a5f',
                 borderRadius: '8px 8px 0 0',
-                fontSize: '1.1rem',
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: '8px',
+                fontSize: '1.02rem',
                 fontWeight: 700,
-                color: '#000000'
+                color: '#ffffff',
+                lineHeight: 1.4
               }}>
-                💡 Quick Answer
-              </h3>
+                <span style={{ fontSize: '1.05rem' }}>💡</span>
+                <span>{post.quickAnswerQuestion || `What is the ${post.seoTitle || post.title}?`}</span>
+              </div>
             );
           }
 
@@ -392,14 +450,13 @@ export default function SanityContent({ post, relatedTours = [], noTableSchema =
         if (value?._isQuickAnswerBody) {
           return (
             <>
-              <div style={{
+              <div className="qa-body-navy" style={{
                 margin: '0 0 0 0',
                 padding: '0.75rem 1.25rem 1rem 1.25rem',
-                background: '#f0fdf4',
-                borderLeft: '4px solid #22c55e',
+                background: '#1e3a5f',
                 borderRadius: '0 0 8px 8px',
                 lineHeight: 1.7,
-                color: '#333'
+                color: '#eef2f7'
               }}>
                 {children}
               </div>
@@ -470,31 +527,9 @@ export default function SanityContent({ post, relatedTours = [], noTableSchema =
           </div>
         )}
 
-        {processedContent && (() => {
-          const blocks = Array.isArray(processedContent) ? processedContent : [];
-          const showTable = relatedTours && relatedTours.length > 0;
-
-          if (!showTable) {
-            return <PortableText value={processedContent} components={components} />;
-          }
-
-          let splitIndex = blocks.length;
-          for (let i = 0; i < blocks.length; i++) {
-            const text = blocks[i].children?.[0]?.text?.toLowerCase() || '';   
-            if ((blocks[i].style === 'h2' || blocks[i].style === 'h3') && text.match(/(what makes|what's included|what is included)/i)) {
-              splitIndex = i;
-              break;
-            }
-          }
-
-          return (
-            <>
-              <PortableText value={blocks.slice(0, splitIndex)} components={components} />
-              <TourComparisonTable currentTour={post} relatedTours={relatedTours} />
-              <PortableText value={blocks.slice(splitIndex)} components={components} />
-            </>
-          );
-        })()}
+{finalContent && (
+          <PortableText value={finalContent} components={components} />
+        )}
 
         <style jsx global>{`
           ${autoLinkerStyles}
@@ -511,10 +546,12 @@ export default function SanityContent({ post, relatedTours = [], noTableSchema =
             color: #333;
           }
 
-          .content-paragraph {
+       .content-paragraph {
             margin: 1rem 0;
             line-height: 1.6;
           }
+          .why-worth-graybox > :first-child { margin-top: 0; }
+          .why-worth-graybox > :last-child { margin-bottom: 0; }
 
           .content-h1, .content-h2, .content-h3, .content-h4 {
             margin: 1.5rem 0 1rem 0;
@@ -525,6 +562,7 @@ export default function SanityContent({ post, relatedTours = [], noTableSchema =
           .content-h1 { font-size: 2rem; }
           .content-h2 { font-size: 1.75rem; }
           .content-h3 { font-size: 1.5rem; }
+          .qa-body-navy strong { color: #f4c95d; }
           .content-h4 { font-size: 1.25rem; }
 
           .image-caption, .gallery-caption {
@@ -579,12 +617,29 @@ export default function SanityContent({ post, relatedTours = [], noTableSchema =
 
           .table-container .simple-table {
             width: 100% !important;
+            max-width: 580px !important;
+            margin: 0 auto !important;
+            table-layout: fixed !important;
             border-collapse: collapse !important;
             background: white !important;
             border-radius: 12px !important;
             overflow: hidden !important;
             box-shadow: 0 2px 12px rgba(0,0,0,0.08) !important;
             font-size: 0.95rem !important;
+          }
+
+          .table-container .simple-table th:first-child,
+          .table-container .simple-table td:first-child {
+            width: 40% !important;
+          }
+
+          .table-container .simple-table th:nth-child(2),
+          .table-container .simple-table td:nth-child(2) {
+            width: 60% !important;
+          }
+
+          .table-container .simple-table tbody td:first-child {
+            font-weight: 600 !important;
           }
 
           .table-container .simple-table th {
@@ -773,6 +828,9 @@ export default function SanityContent({ post, relatedTours = [], noTableSchema =
     </div>
   );
 }
+
+
+
 
 
 

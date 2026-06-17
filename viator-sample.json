@@ -1,0 +1,1271 @@
+﻿{
+    "status":  "ACTIVE",
+    "productCode":  "132218P75",
+    "language":  "en",
+    "createdAt":  "2019-08-13T16:46:42.880733Z",
+    "lastUpdatedAt":  "2026-06-08T08:32:53Z",
+    "title":  "Grand Canyon West, Hoover Dam Stop and Optional Lunch and Skywalk",
+    "ticketInfo":  {
+                       "ticketTypes":  [
+                                           "MOBILE_ONLY"
+                                       ],
+                       "ticketTypeDescription":  "Mobile or paper ticket accepted",
+                       "ticketsPerBooking":  "ONE_PER_BOOKING",
+                       "ticketsPerBookingDescription":  "One per booking"
+                   },
+    "pricingInfo":  {
+                        "type":  "PER_PERSON",
+                        "ageBands":  [
+                                         {
+                                             "ageBand":  "INFANT",
+                                             "startAge":  0,
+                                             "endAge":  0,
+                                             "minTravelersPerBooking":  0,
+                                             "maxTravelersPerBooking":  12
+                                         },
+                                         {
+                                             "ageBand":  "CHILD",
+                                             "startAge":  1,
+                                             "endAge":  12,
+                                             "minTravelersPerBooking":  0,
+                                             "maxTravelersPerBooking":  12
+                                         },
+                                         {
+                                             "ageBand":  "ADULT",
+                                             "startAge":  13,
+                                             "endAge":  100,
+                                             "minTravelersPerBooking":  1,
+                                             "maxTravelersPerBooking":  12
+                                         }
+                                     ]
+                    },
+    "images":  [
+                   {
+                       "imageSource":  "SUPPLIER_PROVIDED",
+                       "caption":  "",
+                       "isCover":  true,
+                       "variants":  [
+                                        {
+                                            "height":  100,
+                                            "width":  100,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-100x100/17/0f/e7/07.jpg"
+                                        },
+                                        {
+                                            "height":  200,
+                                            "width":  200,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-200x200/17/0f/e7/07.jpg"
+                                        },
+                                        {
+                                            "height":  400,
+                                            "width":  400,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-400x400/17/0f/e7/07.jpg"
+                                        },
+                                        {
+                                            "height":  240,
+                                            "width":  360,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-360x240/17/0f/e7/07.jpg"
+                                        },
+                                        {
+                                            "height":  320,
+                                            "width":  480,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-480x320/17/0f/e7/07.jpg"
+                                        },
+                                        {
+                                            "height":  360,
+                                            "width":  540,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-540x360/17/0f/e7/07.jpg"
+                                        },
+                                        {
+                                            "height":  446,
+                                            "width":  674,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/17/0f/e7/07.jpg"
+                                        },
+                                        {
+                                            "height":  480,
+                                            "width":  720,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/0f/e7/07.jpg"
+                                        },
+                                        {
+                                            "height":  118,
+                                            "width":  210,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-210x118/17/0f/e7/07.jpg"
+                                        },
+                                        {
+                                            "height":  75,
+                                            "width":  75,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-75x75/17/0f/e7/07.jpg"
+                                        }
+                                    ]
+                   },
+                   {
+                       "imageSource":  "SUPPLIER_PROVIDED",
+                       "caption":  "",
+                       "isCover":  false,
+                       "variants":  [
+                                        {
+                                            "height":  100,
+                                            "width":  100,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-100x100/15/71/0f/6b.jpg"
+                                        },
+                                        {
+                                            "height":  200,
+                                            "width":  200,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-200x200/15/71/0f/6b.jpg"
+                                        },
+                                        {
+                                            "height":  400,
+                                            "width":  400,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-400x400/15/71/0f/6b.jpg"
+                                        },
+                                        {
+                                            "height":  240,
+                                            "width":  360,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-360x240/15/71/0f/6b.jpg"
+                                        },
+                                        {
+                                            "height":  320,
+                                            "width":  480,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-480x320/15/71/0f/6b.jpg"
+                                        },
+                                        {
+                                            "height":  360,
+                                            "width":  540,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-540x360/15/71/0f/6b.jpg"
+                                        },
+                                        {
+                                            "height":  446,
+                                            "width":  674,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/15/71/0f/6b.jpg"
+                                        },
+                                        {
+                                            "height":  480,
+                                            "width":  720,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/15/71/0f/6b.jpg"
+                                        },
+                                        {
+                                            "height":  118,
+                                            "width":  210,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-210x118/15/71/0f/6b.jpg"
+                                        },
+                                        {
+                                            "height":  75,
+                                            "width":  75,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-75x75/15/71/0f/6b.jpg"
+                                        }
+                                    ]
+                   },
+                   {
+                       "imageSource":  "SUPPLIER_PROVIDED",
+                       "caption":  "",
+                       "isCover":  false,
+                       "variants":  [
+                                        {
+                                            "height":  100,
+                                            "width":  100,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-100x100/13/c8/f5/14.jpg"
+                                        },
+                                        {
+                                            "height":  200,
+                                            "width":  200,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-200x200/13/c8/f5/14.jpg"
+                                        },
+                                        {
+                                            "height":  400,
+                                            "width":  400,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-400x400/13/c8/f5/14.jpg"
+                                        },
+                                        {
+                                            "height":  240,
+                                            "width":  360,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-360x240/13/c8/f5/14.jpg"
+                                        },
+                                        {
+                                            "height":  320,
+                                            "width":  480,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-480x320/13/c8/f5/14.jpg"
+                                        },
+                                        {
+                                            "height":  360,
+                                            "width":  540,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-540x360/13/c8/f5/14.jpg"
+                                        },
+                                        {
+                                            "height":  446,
+                                            "width":  674,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/13/c8/f5/14.jpg"
+                                        },
+                                        {
+                                            "height":  480,
+                                            "width":  720,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/13/c8/f5/14.jpg"
+                                        },
+                                        {
+                                            "height":  118,
+                                            "width":  210,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-210x118/13/c8/f5/14.jpg"
+                                        },
+                                        {
+                                            "height":  75,
+                                            "width":  75,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-75x75/13/c8/f5/14.jpg"
+                                        }
+                                    ]
+                   },
+                   {
+                       "imageSource":  "SUPPLIER_PROVIDED",
+                       "caption":  "",
+                       "isCover":  false,
+                       "variants":  [
+                                        {
+                                            "height":  100,
+                                            "width":  100,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-100x100/16/d6/31/53.jpg"
+                                        },
+                                        {
+                                            "height":  200,
+                                            "width":  200,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-200x200/16/d6/31/53.jpg"
+                                        },
+                                        {
+                                            "height":  400,
+                                            "width":  400,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-400x400/16/d6/31/53.jpg"
+                                        },
+                                        {
+                                            "height":  240,
+                                            "width":  360,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-360x240/16/d6/31/53.jpg"
+                                        },
+                                        {
+                                            "height":  320,
+                                            "width":  480,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-480x320/16/d6/31/53.jpg"
+                                        },
+                                        {
+                                            "height":  360,
+                                            "width":  540,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-540x360/16/d6/31/53.jpg"
+                                        },
+                                        {
+                                            "height":  446,
+                                            "width":  674,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/16/d6/31/53.jpg"
+                                        },
+                                        {
+                                            "height":  480,
+                                            "width":  720,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/16/d6/31/53.jpg"
+                                        },
+                                        {
+                                            "height":  118,
+                                            "width":  210,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-210x118/16/d6/31/53.jpg"
+                                        },
+                                        {
+                                            "height":  75,
+                                            "width":  75,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-75x75/16/d6/31/53.jpg"
+                                        }
+                                    ]
+                   },
+                   {
+                       "imageSource":  "SUPPLIER_PROVIDED",
+                       "caption":  "",
+                       "isCover":  false,
+                       "variants":  [
+                                        {
+                                            "height":  100,
+                                            "width":  100,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-100x100/16/d6/31/50.jpg"
+                                        },
+                                        {
+                                            "height":  200,
+                                            "width":  200,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-200x200/16/d6/31/50.jpg"
+                                        },
+                                        {
+                                            "height":  400,
+                                            "width":  400,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-400x400/16/d6/31/50.jpg"
+                                        },
+                                        {
+                                            "height":  240,
+                                            "width":  360,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-360x240/16/d6/31/50.jpg"
+                                        },
+                                        {
+                                            "height":  320,
+                                            "width":  480,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-480x320/16/d6/31/50.jpg"
+                                        },
+                                        {
+                                            "height":  360,
+                                            "width":  540,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-540x360/16/d6/31/50.jpg"
+                                        },
+                                        {
+                                            "height":  446,
+                                            "width":  674,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/16/d6/31/50.jpg"
+                                        },
+                                        {
+                                            "height":  480,
+                                            "width":  720,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/16/d6/31/50.jpg"
+                                        },
+                                        {
+                                            "height":  118,
+                                            "width":  210,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-210x118/16/d6/31/50.jpg"
+                                        },
+                                        {
+                                            "height":  75,
+                                            "width":  75,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-75x75/16/d6/31/50.jpg"
+                                        }
+                                    ]
+                   },
+                   {
+                       "imageSource":  "SUPPLIER_PROVIDED",
+                       "caption":  "",
+                       "isCover":  false,
+                       "variants":  [
+                                        {
+                                            "height":  100,
+                                            "width":  100,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-100x100/13/c8/f5/13.jpg"
+                                        },
+                                        {
+                                            "height":  200,
+                                            "width":  200,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-200x200/13/c8/f5/13.jpg"
+                                        },
+                                        {
+                                            "height":  400,
+                                            "width":  400,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-400x400/13/c8/f5/13.jpg"
+                                        },
+                                        {
+                                            "height":  240,
+                                            "width":  360,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-360x240/13/c8/f5/13.jpg"
+                                        },
+                                        {
+                                            "height":  320,
+                                            "width":  480,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-480x320/13/c8/f5/13.jpg"
+                                        },
+                                        {
+                                            "height":  360,
+                                            "width":  540,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-540x360/13/c8/f5/13.jpg"
+                                        },
+                                        {
+                                            "height":  446,
+                                            "width":  674,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/13/c8/f5/13.jpg"
+                                        },
+                                        {
+                                            "height":  480,
+                                            "width":  720,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/13/c8/f5/13.jpg"
+                                        },
+                                        {
+                                            "height":  118,
+                                            "width":  210,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-210x118/13/c8/f5/13.jpg"
+                                        },
+                                        {
+                                            "height":  75,
+                                            "width":  75,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-75x75/13/c8/f5/13.jpg"
+                                        }
+                                    ]
+                   },
+                   {
+                       "imageSource":  "SUPPLIER_PROVIDED",
+                       "caption":  "",
+                       "isCover":  false,
+                       "variants":  [
+                                        {
+                                            "height":  100,
+                                            "width":  100,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-100x100/16/d6/31/72.jpg"
+                                        },
+                                        {
+                                            "height":  200,
+                                            "width":  200,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-200x200/16/d6/31/72.jpg"
+                                        },
+                                        {
+                                            "height":  400,
+                                            "width":  400,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-400x400/16/d6/31/72.jpg"
+                                        },
+                                        {
+                                            "height":  240,
+                                            "width":  360,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-360x240/16/d6/31/72.jpg"
+                                        },
+                                        {
+                                            "height":  320,
+                                            "width":  480,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-480x320/16/d6/31/72.jpg"
+                                        },
+                                        {
+                                            "height":  360,
+                                            "width":  540,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-540x360/16/d6/31/72.jpg"
+                                        },
+                                        {
+                                            "height":  446,
+                                            "width":  674,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/16/d6/31/72.jpg"
+                                        },
+                                        {
+                                            "height":  480,
+                                            "width":  720,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/16/d6/31/72.jpg"
+                                        },
+                                        {
+                                            "height":  118,
+                                            "width":  210,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-210x118/16/d6/31/72.jpg"
+                                        },
+                                        {
+                                            "height":  75,
+                                            "width":  75,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-75x75/16/d6/31/72.jpg"
+                                        }
+                                    ]
+                   },
+                   {
+                       "imageSource":  "SUPPLIER_PROVIDED",
+                       "caption":  "",
+                       "isCover":  false,
+                       "variants":  [
+                                        {
+                                            "height":  100,
+                                            "width":  100,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-100x100/16/d6/31/76.jpg"
+                                        },
+                                        {
+                                            "height":  200,
+                                            "width":  200,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-200x200/16/d6/31/76.jpg"
+                                        },
+                                        {
+                                            "height":  400,
+                                            "width":  400,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-400x400/16/d6/31/76.jpg"
+                                        },
+                                        {
+                                            "height":  240,
+                                            "width":  360,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-360x240/16/d6/31/76.jpg"
+                                        },
+                                        {
+                                            "height":  320,
+                                            "width":  480,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-480x320/16/d6/31/76.jpg"
+                                        },
+                                        {
+                                            "height":  360,
+                                            "width":  540,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-540x360/16/d6/31/76.jpg"
+                                        },
+                                        {
+                                            "height":  446,
+                                            "width":  674,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/16/d6/31/76.jpg"
+                                        },
+                                        {
+                                            "height":  480,
+                                            "width":  720,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/16/d6/31/76.jpg"
+                                        },
+                                        {
+                                            "height":  118,
+                                            "width":  210,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-210x118/16/d6/31/76.jpg"
+                                        },
+                                        {
+                                            "height":  75,
+                                            "width":  75,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-75x75/16/d6/31/76.jpg"
+                                        }
+                                    ]
+                   },
+                   {
+                       "imageSource":  "SUPPLIER_PROVIDED",
+                       "caption":  "",
+                       "isCover":  false,
+                       "variants":  [
+                                        {
+                                            "height":  100,
+                                            "width":  100,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-100x100/0d/07/fa/23.jpg"
+                                        },
+                                        {
+                                            "height":  200,
+                                            "width":  200,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-200x200/0d/07/fa/23.jpg"
+                                        },
+                                        {
+                                            "height":  400,
+                                            "width":  400,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-400x400/0d/07/fa/23.jpg"
+                                        },
+                                        {
+                                            "height":  240,
+                                            "width":  360,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-360x240/0d/07/fa/23.jpg"
+                                        },
+                                        {
+                                            "height":  320,
+                                            "width":  480,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-480x320/0d/07/fa/23.jpg"
+                                        },
+                                        {
+                                            "height":  360,
+                                            "width":  540,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-540x360/0d/07/fa/23.jpg"
+                                        },
+                                        {
+                                            "height":  446,
+                                            "width":  674,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/0d/07/fa/23.jpg"
+                                        },
+                                        {
+                                            "height":  480,
+                                            "width":  720,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/0d/07/fa/23.jpg"
+                                        },
+                                        {
+                                            "height":  118,
+                                            "width":  210,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-210x118/0d/07/fa/23.jpg"
+                                        },
+                                        {
+                                            "height":  75,
+                                            "width":  75,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-75x75/0d/07/fa/23.jpg"
+                                        }
+                                    ]
+                   },
+                   {
+                       "imageSource":  "SUPPLIER_PROVIDED",
+                       "caption":  "",
+                       "isCover":  false,
+                       "variants":  [
+                                        {
+                                            "height":  100,
+                                            "width":  100,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-100x100/17/08/d6/f8.jpg"
+                                        },
+                                        {
+                                            "height":  200,
+                                            "width":  200,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-200x200/17/08/d6/f8.jpg"
+                                        },
+                                        {
+                                            "height":  400,
+                                            "width":  400,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-400x400/17/08/d6/f8.jpg"
+                                        },
+                                        {
+                                            "height":  240,
+                                            "width":  360,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-360x240/17/08/d6/f8.jpg"
+                                        },
+                                        {
+                                            "height":  320,
+                                            "width":  480,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-480x320/17/08/d6/f8.jpg"
+                                        },
+                                        {
+                                            "height":  360,
+                                            "width":  540,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-540x360/17/08/d6/f8.jpg"
+                                        },
+                                        {
+                                            "height":  446,
+                                            "width":  674,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/17/08/d6/f8.jpg"
+                                        },
+                                        {
+                                            "height":  480,
+                                            "width":  720,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/17/08/d6/f8.jpg"
+                                        },
+                                        {
+                                            "height":  118,
+                                            "width":  210,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-210x118/17/08/d6/f8.jpg"
+                                        },
+                                        {
+                                            "height":  75,
+                                            "width":  75,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-75x75/17/08/d6/f8.jpg"
+                                        }
+                                    ]
+                   },
+                   {
+                       "imageSource":  "SUPPLIER_PROVIDED",
+                       "caption":  "",
+                       "isCover":  false,
+                       "variants":  [
+                                        {
+                                            "height":  100,
+                                            "width":  100,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-100x100/16/d6/31/66.jpg"
+                                        },
+                                        {
+                                            "height":  200,
+                                            "width":  200,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-200x200/16/d6/31/66.jpg"
+                                        },
+                                        {
+                                            "height":  400,
+                                            "width":  400,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-400x400/16/d6/31/66.jpg"
+                                        },
+                                        {
+                                            "height":  240,
+                                            "width":  360,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-360x240/16/d6/31/66.jpg"
+                                        },
+                                        {
+                                            "height":  320,
+                                            "width":  480,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-480x320/16/d6/31/66.jpg"
+                                        },
+                                        {
+                                            "height":  360,
+                                            "width":  540,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-540x360/16/d6/31/66.jpg"
+                                        },
+                                        {
+                                            "height":  446,
+                                            "width":  674,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/16/d6/31/66.jpg"
+                                        },
+                                        {
+                                            "height":  480,
+                                            "width":  720,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/16/d6/31/66.jpg"
+                                        },
+                                        {
+                                            "height":  118,
+                                            "width":  210,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-210x118/16/d6/31/66.jpg"
+                                        },
+                                        {
+                                            "height":  75,
+                                            "width":  75,
+                                            "url":  "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-75x75/16/d6/31/66.jpg"
+                                        }
+                                    ]
+                   }
+               ],
+    "logistics":  {
+                      "redemption":  {
+                                         "redemptionType":  "NONE",
+                                         "specialInstructions":  "Please notify your order number or invoice number upon payment. Present your receipt and voucher upon check-in. Arrive at the starting point 5 minutes before the departure time.\n\nIf you haven\u0027t decided on your pick-up location yet, you can update it later. Please note that you must contact us to update your pick-up information or do so yourself at least 3 days before the tour date. Failure to provide or update the pick-up location prior to the departure date may impact your ability to join the tour. The company will not be responsible for any missed tours, and fees paid will not be refunded.\n\nA reachable phone number is necessary for travelers.\n\nKnow Before You Go\n1. Late Passengers: We wait up to 10 minutes past the meeting time. However, we canât guarantee exact arrival or departure times due to factors like weather, traffic, or other disruptions. We are not responsible for any inconvenience or costs due to delays, including missed connections or travel expenses.\n2. Tour Operator reserve the right, when operating conditions require, transferring passengers from one vehicle to another enroute.\n3. The following documents are recommended to make your check-in process smooth: A valid photo ID is required to board the bus; We recommend you bring a copy of the email confirmation to board the bus.\n4. Smoking is prohibited aboard the bus in accordance with Federal law. Pets are prohibited aboard the bus. \n5. Emergency contact: (Toll Free) +1(866)585-8747 or +1(212)334-4222.\n6. For comfort and weight/balance of the aircraft (if option selected), passengers weighing 300 lbs (136kg) or greater will be required to purchase an additional seat (or denied boarding). Any additional fees are payable directly to the tour operator on the day of the tour. If boarding is denied, you will receive a refund for this portion of the tour\n\n"
+                                     },
+                      "travelerPickup":  {
+                                             "pickupOptionType":  "PICKUP_EVERYONE",
+                                             "allowCustomTravelerPickup":  false,
+                                             "locations":  [
+                                                               {
+                                                                   "location":  {
+                                                                                    "ref":  "CONTACT_SUPPLIER_LATER"
+                                                                                },
+                                                                   "pickupType":  "OTHER"
+                                                               },
+                                                               {
+                                                                   "location":  {
+                                                                                    "ref":  "LOC-6eKJ+or5y8o99Qw0C8xWyJP12czl1EjgR9GV7U95FGk="
+                                                                                },
+                                                                   "pickupType":  "HOTEL"
+                                                               },
+                                                               {
+                                                                   "location":  {
+                                                                                    "ref":  "LOC-6eKJ+or5y8o99Qw0C8xWyDor+9AgaVHxrkBzT36TSKQ="
+                                                                                },
+                                                                   "pickupType":  "HOTEL"
+                                                               },
+                                                               {
+                                                                   "location":  {
+                                                                                    "ref":  "LOC-6eKJ+or5y8o99Qw0C8xWyHvfg4UVyYz3yyBDFgXmSOw="
+                                                                                },
+                                                                   "pickupType":  "HOTEL"
+                                                               },
+                                                               {
+                                                                   "location":  {
+                                                                                    "ref":  "LOC-6eKJ+or5y8o99Qw0C8xWyIBMT4vyJx77EpxCmHFDCUo="
+                                                                                },
+                                                                   "pickupType":  "HOTEL"
+                                                               },
+                                                               {
+                                                                   "location":  {
+                                                                                    "ref":  "LOC-6eKJ+or5y8o99Qw0C8xWyK/tQ70GB/3+zEFKFgGFWlM="
+                                                                                },
+                                                                   "pickupType":  "HOTEL"
+                                                               },
+                                                               {
+                                                                   "location":  {
+                                                                                    "ref":  "LOC-6eKJ+or5y8o99Qw0C8xWyHFSEICX3hYxfqC5IEBK9kU="
+                                                                                },
+                                                                   "pickupType":  "HOTEL"
+                                                               },
+                                                               {
+                                                                   "location":  {
+                                                                                    "ref":  "LOC-6eKJ+or5y8o99Qw0C8xWyNhlehMgShoOluB5jQpLV3M="
+                                                                                },
+                                                                   "pickupType":  "HOTEL"
+                                                               },
+                                                               {
+                                                                   "location":  {
+                                                                                    "ref":  "LOC-6eKJ+or5y8o99Qw0C8xWyAVE/AVICFytR/adokuZ6Xw="
+                                                                                },
+                                                                   "pickupType":  "HOTEL"
+                                                               },
+                                                               {
+                                                                   "location":  {
+                                                                                    "ref":  "LOC-6eKJ+or5y8o99Qw0C8xWyEbsd28y3g5mPwy+Opb/tiU="
+                                                                                },
+                                                                   "pickupType":  "HOTEL"
+                                                               },
+                                                               {
+                                                                   "location":  {
+                                                                                    "ref":  "LOC-6eKJ+or5y8o99Qw0C8xWyKOCmF5qE1C0hUg/qu8PKr8="
+                                                                                },
+                                                                   "pickupType":  "HOTEL"
+                                                               },
+                                                               {
+                                                                   "location":  {
+                                                                                    "ref":  "LOC-6eKJ+or5y8o99Qw0C8xWyLtQgkT7asyQ7XYtUODEjBM="
+                                                                                },
+                                                                   "pickupType":  "HOTEL"
+                                                               }
+                                                           ],
+                                             "minutesBeforeDepartureTimeForPickup":  5,
+                                             "additionalInfo":  "Pickup time may differ from voucher start time. Each pickup location has one designated pickup time. Check âMeeting \u0026 Pick-upâ for details. Please select the correct time that matches your chosen meeting point. Arrive 5â10 mins early.\n\nâ¢ 6:20am: Departure Plaza Hotel \u0026 Casino - Ride Share Areaï¼\nâ¢ 6:30am: Departure The STRAT Hotel \u0026 Tower - Side Door Facing Las Vegas Blvdï¼\nâ¢ 6:30am: Departure MGM Grand - North Side of the parking garage-Rideshare Exit on Street Levelï¼\nâ¢ 6:30am: Departure Excalibur Hotel \u0026 Casino - Bus Pick up Areaï¼\nâ¢ 6:40am: Departure Sahara Las Vegas Casino and Hotel - Las Vegas Blvd Entranceï¼\nâ¢ 6:40am: Departure Horseshoe Las Vegas Hotel \u0026 Casinoï¼(Temporarily suspended from 17 November,2025 to 25 November,2025)\nâ¢ 6:40am: Departure Park MGM Las Vegas - Uber Pick up Area - Pick up service only; \nâ¢ 6:50am: Departure The Venetian Resort Las Vegas - Main Entrance/Valet Parking Area\nâ¢ 6:50am: Departure Circus Circus - Main Entranceï¼\nâ¢ 6:50am: Departure Bellagio Hotel \u0026 Casino - Underground Bus Pickup Areaï¼(Temporarily suspended from 17 November,2025 to 25 November,2025)\nâ¢ 7am: Departure Treasure Island Hotel and Casino - Bus Pick Up Area\n\nReturn time may vary depending on the itinerary, traffic, and weather conditions."
+                                         }
+                  },
+    "timeZone":  "America/Los_Angeles",
+    "description":  "Experience the Grand Canyon West Rim like a VIP on this unforgettable day trip from Las Vegas, complete with exclusive bus access to every major viewpoint. Explore awe-inspiring locations like Eagle Point and Guano Point, where youâll have 3.5 hours to soak in panoramic canyon views. Enhance your adventure with optional upgrades like a canyon-view hot lunch, the thrilling Skywalk, west rim airplane ride or a helicopter and boat ride combo down to the Colorado River.",
+    "inclusions":  [
+                       {
+                           "category":  "OTHER",
+                           "categoryDescription":  "Other",
+                           "type":  "OTHER",
+                           "typeDescription":  "Other",
+                           "otherDescription":  "West Rim Airplane ride with aerial views of Grand Canyon West and Colorado River(if option selected)"
+                       },
+                       {
+                           "category":  "FOOD_AND_DRINK",
+                           "categoryDescription":  "Food and drink",
+                           "type":  "SNACKS",
+                           "typeDescription":  "Snacks",
+                           "description":  "Granola Bars"
+                       },
+                       {
+                           "category":  "OTHER",
+                           "categoryDescription":  "Other",
+                           "type":  "OTHER",
+                           "typeDescription":  "Other",
+                           "otherDescription":  "Exclusive Bus Access at Grand Canyon West Rim"
+                       },
+                       {
+                           "category":  "OTHER",
+                           "categoryDescription":  "Other",
+                           "type":  "OTHER",
+                           "typeDescription":  "Other",
+                           "otherDescription":  "Helicopter Ride and 25-minute Pontoon Ride Down Colorado River (if option selected)"
+                       },
+                       {
+                           "category":  "OTHER",
+                           "categoryDescription":  "Other",
+                           "type":  "OTHER",
+                           "typeDescription":  "Other",
+                           "otherDescription":  "Air-conditioned vehicle"
+                       },
+                       {
+                           "category":  "OTHER",
+                           "categoryDescription":  "Other",
+                           "type":  "OTHER",
+                           "typeDescription":  "Other",
+                           "otherDescription":  "Pick-up and drop off at select hotels"
+                       },
+                       {
+                           "category":  "OTHER",
+                           "categoryDescription":  "Other",
+                           "type":  "OTHER",
+                           "typeDescription":  "Other",
+                           "otherDescription":  "Grand Canyon West Rim Bus Tour"
+                       },
+                       {
+                           "category":  "OTHER",
+                           "categoryDescription":  "Other",
+                           "type":  "OTHER",
+                           "typeDescription":  "Other",
+                           "otherDescription":  "Bottled water"
+                       },
+                       {
+                           "category":  "OTHER",
+                           "categoryDescription":  "Other",
+                           "type":  "OTHER",
+                           "typeDescription":  "Other",
+                           "otherDescription":  "Hot Lunch (if option selected): Hearty portions at your choice of three restaurants"
+                       },
+                       {
+                           "category":  "OTHER",
+                           "categoryDescription":  "Other",
+                           "type":  "OTHER",
+                           "typeDescription":  "Other",
+                           "otherDescription":  "Skywalk Ticket (if option selected)"
+                       },
+                       {
+                           "category":  "OTHER",
+                           "categoryDescription":  "Other",
+                           "type":  "OTHER",
+                           "typeDescription":  "Other",
+                           "otherDescription":  "Professional Guide"
+                       }
+                   ],
+    "exclusions":  [
+                       {
+                           "category":  "OTHER",
+                           "categoryDescription":  "Other",
+                           "type":  "OTHER",
+                           "typeDescription":  "Other",
+                           "otherDescription":  "Gratuities ï¼10%-20% Recommendedï¼"
+                       },
+                       {
+                           "category":  "OTHER",
+                           "categoryDescription":  "Other",
+                           "type":  "OTHER",
+                           "typeDescription":  "Other",
+                           "otherDescription":  "Skywalk Ticket (if option not selected)"
+                       },
+                       {
+                           "category":  "OTHER",
+                           "categoryDescription":  "Other",
+                           "type":  "OTHER",
+                           "typeDescription":  "Other",
+                           "otherDescription":  "Helicopter Ride and 25-minute Pontoon Ride Down Colorado River (if option not selected)"
+                       },
+                       {
+                           "category":  "OTHER",
+                           "categoryDescription":  "Other",
+                           "type":  "OTHER",
+                           "typeDescription":  "Other",
+                           "otherDescription":  "West Rim Airplane ride with views of Grand Canyon West and Colorado River(if option not selected)"
+                       },
+                       {
+                           "category":  "OTHER",
+                           "categoryDescription":  "Other",
+                           "type":  "OTHER",
+                           "typeDescription":  "Other",
+                           "otherDescription":  "Lunch (if option not selected)"
+                       }
+                   ],
+    "additionalInfo":  [
+                           {
+                               "type":  "STROLLER_ACCESSIBLE",
+                               "description":  "Infants and small children can ride in a pram or stroller"
+                           },
+                           {
+                               "type":  "PUBLIC_TRANSPORTATION_NEARBY",
+                               "description":  "Public transportation options are available nearby"
+                           },
+                           {
+                               "type":  "INFANTS_MUST_SIT_ON_LAPS",
+                               "description":  "Infants are required to sit on an adultâs lap"
+                           },
+                           {
+                               "type":  "PHYSICAL_EASY",
+                               "description":  "Suitable for all physical fitness levels"
+                           },
+                           {
+                               "type":  "OTHER",
+                               "description":  "Children ages 2 years and up require a seat. Infants 23 months and under are considered a lap child. If Skywalk ticket is purchased, infants must be carried on the Skywalk."
+                           },
+                           {
+                               "type":  "OTHER",
+                               "description":  "Luggage and large bags are not permitted on this tour due to security restrictions at the Hoover Dam"
+                           },
+                           {
+                               "type":  "OTHER",
+                               "description":  "There may be waiting periods at any point or attraction due to weather or passenger volumes"
+                           },
+                           {
+                               "type":  "OTHER",
+                               "description":  "Skywalk Policy: You may bring your mobile phone onto the Skywalk, but all bags, cameras, and other personal items are not allowed. Complimentary lockers are available for secure storage. Please note: During your visit inside Grand Canyon West, backpacks and large bags must remain on the vehicle while you explore each site."
+                           },
+                           {
+                               "type":  "OTHER",
+                               "description":  "Hotel pickup is available for this tour/activity. Depending on the hotel, buses may not be able to access or enter every property. In this case, pickup may be redirected to a central bus stop or nearby hotel. Exact pickup details will be provided to the guest upon reconfirmation with the local tour operator."
+                           },
+                           {
+                               "type":  "OTHER",
+                               "description":  "Children age 6 and under require to use the car seat during the trip. Please have your own car seat/booster if possible. Please contact with tour operator in advance if you need more help."
+                           },
+                           {
+                               "type":  "OTHER",
+                               "description":  "For safety and communication purposes during the trip, a reachable phone number is necessary for participants."
+                           },
+                           {
+                               "type":  "OTHER",
+                               "description":  "For individual special needs, we may not be able to guarantee it. For special reasons, please confirm with the tour operator whether your special request is feasible after your booking is confirmed."
+                           },
+                           {
+                               "type":  "OTHER",
+                               "description":  "You must provide your pick-up location to the operator at least 3 days before departure. If not received, the default pick-up will be: 06:30am Excalibur Hotel \u0026 Casino at Bus Pick up Area--3850 S Las Vegas Blvd, Las Vegas, NV 89109"
+                           },
+                           {
+                               "type":  "OTHER",
+                               "description":  "By selecting an option and completing your booking, you confirm that you have read, understood, and agreed to the tour\u0027s full product description, including all details about itinerary, included and excluded fees. Your payment indicates your acceptance of these terms."
+                           },
+                           {
+                               "type":  "OTHER",
+                               "description":  "For multiple bookings, please provide all confirmation numbers after booking to ensure you travel on the same bus."
+                           },
+                           {
+                               "type":  "OTHER",
+                               "description":  "Tickets \u0026 Admission: Third-party attraction tickets or city passes are not accepted. All admission tickets must be purchased during booking or from your guide on the day of the tour."
+                           },
+                           {
+                               "type":  "OTHER",
+                               "description":  "For comfort and weight/balance of the aircraft (if option selected), passengers weighing 300 lbs (136kg) or greater will be required to purchase an additional seat (or demnied boarding). Any additional fees are payable directly to the tour operator on the day of the tour. If boarding is denied, you will receive a refund for this portion of the tour"
+                           },
+                           {
+                               "type":  "OTHER",
+                               "description":  "A minimum of 4 passengers is required for the West Rim Airplane Tour to operate. Availability is limited, and flights may be cancelled due to weather or low participation."
+                           },
+                           {
+                               "type":  "OTHER",
+                               "description":  "As our buses are not lift-equipped, wheelchairs must be stored in the luggage compartment, and guests will need assistance from their companions to board and disembark."
+                           },
+                           {
+                               "type":  "OTHER",
+                               "description":  "Reminder: During the period of mid-November, The Venetian Resort Las Vegas/Bellagio Hotel \u0026 Casino/Horseshoe Las Vegas, these sites will be cancelled,Please choose an alternative site when booking."
+                           },
+                           {
+                               "type":  "OTHER",
+                               "description":  "Kind reminder: The attractions visited on this tour are not subject to U.S. National Park entrance fees. No additional National Park fee is required."
+                           }
+                       ],
+    "cancellationPolicy":  {
+                               "type":  "STANDARD",
+                               "description":  "For a full refund, cancel at least 24 hours before the scheduled departure time.",
+                               "cancelIfBadWeather":  true,
+                               "cancelIfInsufficientTravelers":  true,
+                               "refundEligibility":  [
+                                                         {
+                                                             "dayRangeMin":  1,
+                                                             "percentageRefundable":  100
+                                                         },
+                                                         {
+                                                             "dayRangeMin":  0,
+                                                             "dayRangeMax":  1,
+                                                             "percentageRefundable":  0
+                                                         }
+                                                     ]
+                           },
+    "bookingConfirmationSettings":  {
+                                        "bookingCutoffType":  "FIXED_TIME",
+                                        "bookingCutoffInMinutes":  0,
+                                        "confirmationType":  "INSTANT_THEN_MANUAL",
+                                        "manualConfirmationPeriod":  1440,
+                                        "bookingCutoffFixedTime":  "05:30:00"
+                                    },
+    "bookingRequirements":  {
+                                "minTravelersPerBooking":  1,
+                                "maxTravelersPerBooking":  12,
+                                "requiresAdultForBooking":  true
+                            },
+    "languageGuides":  [
+                           {
+                               "type":  "GUIDE",
+                               "language":  "en",
+                               "legacyGuide":  "en/SERVICE_GUIDE"
+                           }
+                       ],
+    "bookingQuestions":  [
+                             "AGEBAND",
+                             "FULL_NAMES_FIRST",
+                             "FULL_NAMES_LAST",
+                             "PICKUP_POINT",
+                             "SPECIAL_REQUIREMENTS"
+                         ],
+    "tags":  [
+                 11928,
+                 367661,
+                 21971,
+                 21972,
+                 367652,
+                 367663,
+                 11889,
+                 11938,
+                 367654,
+                 367653,
+                 11930
+             ],
+    "destinations":  [
+                         {
+                             "ref":  "684",
+                             "primary":  true
+                         }
+                     ],
+    "itinerary":  {
+                      "itineraryType":  "STANDARD",
+                      "skipTheLine":  false,
+                      "privateTour":  false,
+                      "maxTravelersInSharedTour":  57,
+                      "duration":  {
+                                       "variableDurationFromMinutes":  600,
+                                       "variableDurationToMinutes":  660
+                                   },
+                      "itineraryItems":  [
+                                             {
+                                                 "pointOfInterestLocation":  {
+                                                                                 "location":  {
+                                                                                                  "ref":  "LOC-o0AXGEKPN4wJ9sIG0RAn5D43UY++pcu6zrTz0ra8Fd6VQzCuZDfP8yJrOU50S3Ej"
+                                                                                              }
+                                                                             },
+                                                 "duration":  {
+                                                                  "fixedDurationInMinutes":  30
+                                                              },
+                                                 "passByWithoutStopping":  false,
+                                                 "admissionIncluded":  "NOT_APPLICABLE",
+                                                 "description":  "Enjoy convenient pick-up service from select hotels along the Las Vegas Strip, ensuring a hassle-free start to your Grand Canyon adventure. Pick-up time is approximately 6:20am, allowing you to maximize your day exploring the Grand Canyon. Enjoy seamless transportation and exceptional service from start to finish."
+                                             },
+                                             {
+                                                 "pointOfInterestLocation":  {
+                                                                                 "location":  {
+                                                                                                  "ref":  "LOC-o0AXGEKPN4wJ9sIG0RAn5Cpf9Ll1Pdw1LhDQLYJo2HLBTwhe8fjLF210sCVo+puY"
+                                                                                              }
+                                                                             },
+                                                 "passByWithoutStopping":  true,
+                                                 "admissionIncluded":  "NOT_APPLICABLE",
+                                                 "description":  "Travel through the ancient Joshua Tree Forest en route to the West Rim of the Grand Canyon."
+                                             },
+                                             {
+                                                 "pointOfInterestLocation":  {
+                                                                                 "location":  {
+                                                                                                  "ref":  "LOC-6eKJ+or5y8o99Qw0C8xWyH4+kfZMTsJf0al8kx+MoYw="
+                                                                                              },
+                                                                                 "attractionId":  1594
+                                                                             },
+                                                 "duration":  {
+                                                                  "fixedDurationInMinutes":  210
+                                                              },
+                                                 "passByWithoutStopping":  false,
+                                                 "admissionIncluded":  "YES",
+                                                 "description":  "Spend 3.5 hours discovering the stunning Grand Canyon\u0027s West Rim, a unique destination that is home to the Hualapai Indian Tribe. Your visit includes time at Eagle Point (30 minutes to 1 hour), Guano Point (30 minutes to 1 hour), and the option to experience the thrilling Skywalk (30 minutes to 1 hour). For an even more unforgettable adventure, you can add a helicopter and Pontoon boat tour(20~30 mins) or west rim airplane flight tour for optional upgrade(~20 mins). Enjoy lunch (if option selected) and take in the breathtaking views throughout your visit.\n\nLocated at the western end of the Colorado Canyon, the West Rim is just a three-hour drive from Las Vegas. The Skywalk, a U-shaped glass bridge, offers an exhilarating experience of the canyon\u0027s vastness and beauty."
+                                             },
+                                             {
+                                                 "pointOfInterestLocation":  {
+                                                                                 "location":  {
+                                                                                                  "ref":  "LOC-6eKJ+or5y8o99Qw0C8xWyNU2adADjwBdr9lM0/bJ1Ew="
+                                                                                              },
+                                                                                 "attractionId":  10
+                                                                             },
+                                                 "passByWithoutStopping":  false,
+                                                 "admissionIncluded":  "NO",
+                                                 "description":  "Step onto the Grand Canyon West Skywalk for breathtaking, unparalleled views of one of the Seven Natural Wonders of the World. This 10-foot-wide, horseshoe-shaped glass bridge extends 70 feet beyond the canyon\u0027s edge, offering a thrilling clear view 4,000 feet down to the canyon floor. There\u0027s no adventure quite like the Skywalk, where you can walk on glass high above the Grand Canyon and experience its vastness from a whole new perspective."
+                                             },
+                                             {
+                                                 "pointOfInterestLocation":  {
+                                                                                 "location":  {
+                                                                                                  "ref":  "LOC-6eKJ+or5y8o99Qw0C8xWyKz2FfrmFsAKlFci5fGnjsI="
+                                                                                              },
+                                                                                 "attractionId":  1603
+                                                                             },
+                                                 "passByWithoutStopping":  false,
+                                                 "admissionIncluded":  "YES",
+                                                 "description":  "Head to Eagle Point, the iconic home of the Grand Canyon Skywalk, for spectacular views of the West Rim. This stunning lookout offers breathtaking vistas of the Grand Canyon, and if you look closely, you can spot the eagle-shaped rock formation that gives Eagle Point its name. Don\u0027t miss the chance to experience one of the most famous viewing points at the Grand Canyon West."
+                                             },
+                                             {
+                                                 "pointOfInterestLocation":  {
+                                                                                 "location":  {
+                                                                                                  "ref":  "LOC-6eKJ+or5y8o99Qw0C8xWyIFYeaRpgmPpkZWwdL3nY6k="
+                                                                                              },
+                                                                                 "attractionId":  102481
+                                                                             },
+                                                 "passByWithoutStopping":  false,
+                                                 "admissionIncluded":  "YES",
+                                                 "description":  "Experience even more spectacular views at Guano Point, one of the best vantage points over the Colorado River at Grand Canyon West. Take a hike to the highest point for panoramic scenery, offering majestic views of the Colorado River and the canyon\u0027s vastness. If you prefer a more relaxed visit, simply unwind and soak in the tranquility of this stunning natural wonder."
+                                             },
+                                             {
+                                                 "pointOfInterestLocation":  {
+                                                                                 "location":  {
+                                                                                                  "ref":  "LOC-o0AXGEKPN4wJ9sIG0RAn5J6PGh5aTKYZf0rBmj+U5hsu32GeT+5qG4WJ6LJs5KLs"
+                                                                                              }
+                                                                             },
+                                                 "duration":  {
+                                                                  "fixedDurationInMinutes":  30
+                                                              },
+                                                 "passByWithoutStopping":  false,
+                                                 "admissionIncluded":  "YES",
+                                                 "description":  "On your return journey to Las Vegas, enjoy a scenic stop at the Hoover Dam Memorial Bridge for a photo opportunity. Capture stunning images of the iconic Hoover Dam before continuing your comfortable bus ride back to the Las Vegas Strip."
+                                             }
+                                         ]
+                  },
+    "productOptions":  [
+                           {
+                               "productOptionCode":  "TG45",
+                               "description":  "Option Includes Hot Lunch: Hearty portions at your choice of three restaurants; two at Eagle Point, one at Guano Point (see below for details)\nHotel Pick-up Info: Pick up times vary by hotel. Please confirm with the tour operator 72 hours before the departure date for your pick-up time\nPickup included",
+                               "title":  "Tour with Hot Lunch",
+                               "languageGuides":  [
+                                                      {
+                                                          "type":  "GUIDE",
+                                                          "language":  "en",
+                                                          "legacyGuide":  "en/SERVICE_GUIDE"
+                                                      }
+                                                  ]
+                           },
+                           {
+                               "productOptionCode":  "TG46",
+                               "description":  "Tour only Option: This does not include any upgrades such as meals or additional activities at the canyon\nHotel Pick-up Info: Pick up times vary by hotel. Please confirm with the tour operator 72 hours before the departure date for your pick-up time\nPickup included",
+                               "title":  "Tour Only",
+                               "languageGuides":  [
+                                                      {
+                                                          "type":  "GUIDE",
+                                                          "language":  "en",
+                                                          "legacyGuide":  "en/SERVICE_GUIDE"
+                                                      }
+                                                  ]
+                           },
+                           {
+                               "productOptionCode":  "TG41",
+                               "description":  "Option Includes: Admission to the Grand Canyon Skywalk and Hot Lunch.\nHot Lunch: Hearty portions at your choice of three restaurants; two at Eagle Point, one at Guano Point\nHotel Pick-up Info: Pick up times vary by hotel. Please confirm with the tour operator 72 hours before the departure date for your pick-up time\nPickup included",
+                               "title":  "Tour with Hot Lunch, Skywalk",
+                               "languageGuides":  [
+                                                      {
+                                                          "type":  "GUIDE",
+                                                          "language":  "en",
+                                                          "legacyGuide":  "en/SERVICE_GUIDE"
+                                                      }
+                                                  ]
+                           },
+                           {
+                               "productOptionCode":  "TG37",
+                               "description":  "Option Includes: Helicopter flight to the Colorado RIver and a pontoon boat ride. The Skywalk is unavailable with this option\nHot Lunch: Hearty portions at your choice of three restaurants; two at Eagle Point, one at Guano Point\nHotel Pick-up Info: Pick up times vary by hotel. Please confirm with the tour operator 72 hours before the departure date for your pick-up time\nPickup included",
+                               "title":  "Tour w/ Hot Lunch, Heli \u0026 Boat",
+                               "languageGuides":  [
+                                                      {
+                                                          "type":  "GUIDE",
+                                                          "language":  "en",
+                                                          "legacyGuide":  "en/SERVICE_GUIDE"
+                                                      }
+                                                  ]
+                           },
+                           {
+                               "productOptionCode":  "TG49",
+                               "description":  "Option Includes: ~20-mins West Rim airplane ride with panoramic views of the Grand Canyon West and the Colorado River,climate-controlled cabin\nEnglish in-flight narration: The Skywalk is unavailable with this option\nHot Lunch: Hearty portions at your choice of three restaurants; two at Eagle Point, one at Guano Point\nHotel Pick-up Info: Pick up times vary by hotel. Please confirm with the tour operator 72 hours before the departure date for your pick-up time\nPickup included",
+                               "title":  "Tour w/ Hot Lunch, Airplane",
+                               "languageGuides":  [
+                                                      {
+                                                          "type":  "GUIDE",
+                                                          "language":  "en",
+                                                          "legacyGuide":  "en/SERVICE_GUIDE"
+                                                      }
+                                                  ]
+                           }
+                       ],
+    "translationInfo":  {
+                            "containsMachineTranslatedText":  false,
+                            "translationSource":  "ORIGINAL"
+                        },
+    "supplier":  {
+                     "name":  "Jupiter Legend Corporation",
+                     "reference":  "SUPPLIER-FLLSwsv30aGUM8PRzo3I/g=="
+                 },
+    "productUrl":  "https://www.viator.com/tours/Las-Vegas/Grand-Canyon-Skywalk-Hoover-Dam-Day-Trip-W-Lunch-from-Las-Vegas/d684-132218P75?mcid=42383\u0026pid=P00140156\u0026medium=api\u0026api_version=2.0",
+    "reviews":  {
+                    "sources":  [
+                                    {
+                                        "provider":  "VIATOR",
+                                        "reviewCounts":  [
+                                                             {
+                                                                 "rating":  1.0,
+                                                                 "count":  58
+                                                             },
+                                                             {
+                                                                 "rating":  2.0,
+                                                                 "count":  52
+                                                             },
+                                                             {
+                                                                 "rating":  3.0,
+                                                                 "count":  116
+                                                             },
+                                                             {
+                                                                 "rating":  4.0,
+                                                                 "count":  208
+                                                             },
+                                                             {
+                                                                 "rating":  5.0,
+                                                                 "count":  2175
+                                                             }
+                                                         ],
+                                        "totalCount":  2609,
+                                        "averageRating":  4.7
+                                    },
+                                    {
+                                        "provider":  "TRIPADVISOR",
+                                        "reviewCounts":  [
+                                                             {
+                                                                 "rating":  1.0,
+                                                                 "count":  58
+                                                             },
+                                                             {
+                                                                 "rating":  2.0,
+                                                                 "count":  58
+                                                             },
+                                                             {
+                                                                 "rating":  3.0,
+                                                                 "count":  154
+                                                             },
+                                                             {
+                                                                 "rating":  4.0,
+                                                                 "count":  607
+                                                             },
+                                                             {
+                                                                 "rating":  5.0,
+                                                                 "count":  19265
+                                                             }
+                                                         ],
+                                        "totalCount":  20142,
+                                        "averageRating":  4.9
+                                    }
+                                ],
+                    "reviewCountTotals":  [
+                                              {
+                                                  "rating":  1.0,
+                                                  "count":  116
+                                              },
+                                              {
+                                                  "rating":  2.0,
+                                                  "count":  110
+                                              },
+                                              {
+                                                  "rating":  3.0,
+                                                  "count":  270
+                                              },
+                                              {
+                                                  "rating":  4.0,
+                                                  "count":  815
+                                              },
+                                              {
+                                                  "rating":  5.0,
+                                                  "count":  21440
+                                              }
+                                          ],
+                    "totalReviews":  22751,
+                    "combinedAverageRating":  4.905543
+                }
+}

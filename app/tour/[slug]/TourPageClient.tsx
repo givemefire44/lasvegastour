@@ -8,6 +8,7 @@ import Footer from '../../components/Footer';
 import SanityContent from '../../components/blog/SanityContent';
 import HeroGallery from '../../components/blog/HeroGallery';
 import RelatedTours from '../../components/blog/RelatedTours';
+import TourComparisonTable from '@/app/components/blog/TourComparisonTable';
 import TourNavigation from '../../components/blog/TourNavigation';
 import RecommendedTours from '../../components/blog/RecommendedTours';
 import MobileTourPage from '../../components/MobileTourPage';
@@ -148,129 +149,7 @@ export default function TourPageClient({
             </section>
             
 
-            <section id="details" style={{ marginTop: '40px', marginBottom: '40px' }}>
-              <div className="desktop-tour-details-panel">
-                <div className="desktop-details-header">
-                  <span className="desktop-details-icon">📋</span>
-                  <h3 className="desktop-details-title">Tour Details</h3>
-                </div>
-                
-                <div className="desktop-details-grid">
-                  {post.tourInfo?.duration && (
-                    <div className="desktop-detail-item">
-                      <div className="desktop-detail-icon">⏱️</div>
-                      <div className="desktop-detail-content">
-                        <div className="desktop-detail-label">Duration</div>
-                        <div className="desktop-detail-value">{post.tourInfo.duration}</div>
-                      </div>
-                    </div>
-                  )}
-
-                  {post.tourInfo?.location && (
-                    <div className="desktop-detail-item">
-                      <div className="desktop-detail-icon">📍</div>
-                      <div className="desktop-detail-content">
-                        <div className="desktop-detail-label">Location</div>
-                        <div className="desktop-detail-value">{post.tourInfo.location}</div>
-                      </div>
-                    </div>
-                  )}
-
-                  {post.tourFeatures?.freeCancellation && (
-                    <div className="desktop-detail-item">
-                      <div className="desktop-detail-icon">✅</div>
-                      <div className="desktop-detail-content">
-                        <div className="desktop-detail-label">Cancellation</div>
-                        <div className="desktop-detail-value">Free cancellation available</div>
-                      </div>
-                    </div>
-                  )}
-
-                  {post.tourFeatures?.skipTheLine && (
-                    <div className="desktop-detail-item">
-                      <div className="desktop-detail-icon">⚡</div>
-                      <div className="desktop-detail-content">
-                        <div className="desktop-detail-label">Access</div>
-                        <div className="desktop-detail-value">Skip the line entry</div>
-                      </div>
-                    </div>
-                  )}
-
-                  {post.tourFeatures?.wheelchairAccessible && (
-                    <div className="desktop-detail-item">
-                      <div className="desktop-detail-icon">♿</div>
-                      <div className="desktop-detail-content">
-                        <div className="desktop-detail-label">Accessibility</div>
-                        <div className="desktop-detail-value">Wheelchair accessible</div>
-                      </div>
-                    </div>
-                  )}
-
-                  {post.tourFeatures?.hostGuide && (
-                    <div className="desktop-detail-item">
-                      <div className="desktop-detail-icon">👨‍🏫</div>
-                      <div className="desktop-detail-content">
-                        <div className="desktop-detail-label">Guide Languages</div>
-                        <div className="desktop-detail-value">{post.tourFeatures.hostGuide}</div>
-                      </div>
-                    </div>
-                  )}
-
-                  {post.tourFeatures?.audioGuide && (
-                    <div className="desktop-detail-item">
-                      <div className="desktop-detail-icon">🎧</div>
-                      <div className="desktop-detail-content">
-                        <div className="desktop-detail-label">Audio Guide</div>
-                        <div className="desktop-detail-value">{post.tourFeatures.audioGuide}</div>
-                      </div>
-                    </div>
-                  )}
-                  
-                  {post.tourFeatures?.smallGroupAvailable && (
-                    <div className="desktop-detail-item">
-                      <div className="desktop-detail-icon">👥</div>
-                      <div className="desktop-detail-content">
-                        <div className="desktop-detail-label">Group Size</div>
-                        <div className="desktop-detail-value">Small groups available</div>
-                      </div>
-                    </div>
-                  )}
-             
-                  {post.tourInfo?.price && (
-                    <div className="desktop-detail-item">
-                      <div className="desktop-detail-icon">💰</div>
-                      <div className="desktop-detail-content">
-                        <div className="desktop-detail-label">Price</div>
-                        <div className="desktop-detail-value">
-                          {post.tourInfo.currency === 'USD' && '$'}
-                          {post.tourInfo.currency === 'EUR' && '€'}
-                          {post.tourInfo.currency === 'ARS' && 'AR$'}
-                          {post.tourInfo.price}
-                          <span style={{ 
-                            fontSize: '0.85rem', 
-                            fontWeight: 'normal',
-                            color: '#666',
-                            marginLeft: '8px'
-                          }}>
-                            per person
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {post.getYourGuideData?.provider && (
-                    <div className="desktop-detail-item">
-                      <div className="desktop-detail-icon">🏢</div>
-                      <div className="desktop-detail-content">
-                        <div className="desktop-detail-label">Provider</div>
-                        <div className="desktop-detail-value">{post.getYourGuideData.provider}</div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {/* Editorial Review */}
+            {/* Editorial Review */}
             {post.editorialRating && post.editorialReview && (
               <section style={{ marginTop: '40px', marginBottom: '40px' }}>
                 <div className="desktop-tour-details-panel">
@@ -278,10 +157,10 @@ export default function TourPageClient({
                     <span className="desktop-details-icon">📝</span>
                     <h3 className="desktop-details-title">LasVegasTour Editorial Review</h3>
                   </div>
-                  
-                  <div style={{ 
-                    display: 'flex', 
-                    flexDirection: 'column', 
+
+                  <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
                     gap: '16px',
                     padding: '20px',
                     background: '#f0f7ff',
@@ -293,46 +172,46 @@ export default function TourPageClient({
                         {post.editorialRating}
                       </span>
                       <div>
-                      <span style={{ fontSize: '16px', letterSpacing: '2px' }}>
-                            {[1, 2, 3, 4, 5].map((star) => {
-                              const fill = Math.min(1, Math.max(0, post.editorialRating - (star - 1)));
-                              return (
-                                <span key={star} style={{ 
-                                  position: 'relative', 
-                                  display: 'inline-block',
-                                  color: '#e0e0e0'
-                                }}>
-                                  ★
-                                  <span style={{
-                                    position: 'absolute',
-                                    left: 0,
-                                    top: 0,
-                                    overflow: 'hidden',
-                                    width: `${fill * 100}%`,
-                                    color: '#f5a623'
-                                  }}>★</span>
-                                </span>
-                              );
-                            })}
-                          </span>
+                        <span style={{ fontSize: '16px', letterSpacing: '2px' }}>
+                          {[1, 2, 3, 4, 5].map((star) => {
+                            const fill = Math.min(1, Math.max(0, post.editorialRating - (star - 1)));
+                            return (
+                              <span key={star} style={{
+                                position: 'relative',
+                                display: 'inline-block',
+                                color: '#e0e0e0'
+                              }}>
+                                ★
+                                <span style={{
+                                  position: 'absolute',
+                                  left: 0,
+                                  top: 0,
+                                  overflow: 'hidden',
+                                  width: `${fill * 100}%`,
+                                  color: '#f5a623'
+                                }}>★</span>
+                              </span>
+                            );
+                          })}
+                        </span>
                         <span style={{ fontSize: '12px', color: '#5f6368', display: 'block', marginTop: '2px' }}>
                           LasVegasTour Rating
                         </span>
                       </div>
                     </div>
-                    
-                    <p style={{ 
-                      fontSize: '15px', 
-                      color: '#3c4043', 
+
+                    <p style={{
+                      fontSize: '15px',
+                      color: '#3c4043',
                       lineHeight: '1.6',
                       margin: 0,
                       fontStyle: 'italic'
                     }}>
                       &ldquo;{post.editorialReview}&rdquo;
                     </p>
-                    
-                    <div style={{ 
-                      fontSize: '12px', 
+
+                    <div style={{
+                      fontSize: '12px',
                       color: '#80868b',
                       display: 'flex',
                       justifyContent: 'space-between',
@@ -347,49 +226,50 @@ export default function TourPageClient({
                 </div>
               </section>
             )}
-              
-                {post.getYourGuideData?.rating && (
-                  <div style={{
-                    marginTop: '40px',
-                    paddingTop: '30px',
-                    borderTop: '2px solid #f1f3f4',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    gap: '12px'
-                  }}>
-                    <h4 style={{
-                      fontSize: '1.3rem',
-                      fontWeight: '600',
-                      color: '#202124',
-                      marginBottom: '12px',
-                      textAlign: 'center'
-                    }}>
-                      ⭐ Guest Reviews
-                    </h4>
-                    <RatingDisplay
-                      rating={post.getYourGuideData.rating}
-                      reviewCount={post.getYourGuideData.reviewCount}
-                      size="large"
-                      sourceUrl={post.bookingUrl || post.getYourGuideUrl}
-                    />
-                    <p style={{
-                      fontSize: '14px',
-                      color: '#5f6368',
-                      textAlign: 'center',
-                      maxWidth: '500px',
-                      lineHeight: '1.6',
-                      marginTop: '8px'
-                    }}>
-                      Verified reviews from travelers who booked this tour through GetYourGuide
-                    </p>
-                  </div>
-                )}
-              </div>
-            </section>
 
-{/* FAQs Section */}
-{post.faqs && post.faqs.length > 0 && (
+
+            {/* Guest Reviews */}
+            {post.getYourGuideData?.rating && (
+              <section style={{ marginTop: '40px', marginBottom: '40px' }}>
+                <div style={{
+                  paddingTop: '30px',
+                  borderTop: '2px solid #f1f3f4',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: '12px'
+                }}>
+                  <h4 style={{
+                    fontSize: '1.3rem',
+                    fontWeight: '600',
+                    color: '#202124',
+                    marginBottom: '12px',
+                    textAlign: 'center'
+                  }}>
+                    ⭐ Guest Reviews
+                  </h4>
+                  <RatingDisplay
+                    rating={post.getYourGuideData.rating}
+                    reviewCount={post.getYourGuideData.reviewCount}
+                    size="large"
+                    sourceUrl={post.bookingUrl || post.getYourGuideUrl}
+                  />
+                  <p style={{
+                    fontSize: '14px',
+                    color: '#5f6368',
+                    textAlign: 'center',
+                    maxWidth: '500px',
+                    lineHeight: '1.6',
+                    marginTop: '8px'
+                  }}>
+                    Verified reviews from travelers who booked this tour through Viator
+                  </p>
+                </div>
+              </section>
+            )}
+
+            {/* FAQs */}
+            {post.faqs && post.faqs.length > 0 && (
               <section id="faqs" style={{ marginTop: '40px', marginBottom: '40px' }}>
                 <h2 style={{
                   fontSize: '1.5rem',
@@ -438,7 +318,12 @@ export default function TourPageClient({
               </section>
             )}
 
-
+            {/* Compare Similar Tours */}
+            {relatedPosts && relatedPosts.length > 0 && (
+              <section style={{ marginTop: '40px', marginBottom: '40px' }}>
+                <TourComparisonTable currentTour={post} relatedTours={relatedPosts} />
+              </section>
+            )}
             <section id="related" style={{ marginTop: '60px', marginBottom: '40px' }}>
               <RelatedTours tours={relatedPosts} />
             </section>
@@ -596,7 +481,7 @@ export default function TourPageClient({
                 <span>Back to Home</span>
               </a>
               <a 
-                href="/tours/colosseum"
+                href="/tours"
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -613,7 +498,7 @@ export default function TourPageClient({
                 }}
               >
                 <span style={{ fontSize: '1.2rem' }}>🎫</span>
-                <span>All Colosseum Tours</span>
+                <span>All Las Vegas Tours</span>
               </a>
             </div>
           </div>

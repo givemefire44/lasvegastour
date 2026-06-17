@@ -8,6 +8,7 @@ import Footer from '@/app/components/Footer';
 import Breadcrumbs from '@/app/components/Breadcrumbs';
 import CategoryFAQ from '@/app/components/CategoryFAQ';
 import HubChips from '@/app/components/HubChips';
+import { getRecommendedTours } from '@/lib/getRecommendedTours';
 
 // ✅ CONFIGURACIÓN DE CACHE CONSISTENTE
 const cacheConfig = {
@@ -94,28 +95,6 @@ async function getPostsByCategory(categorySlug: string) {
   return result;
 }
 
-async function getRecommendedTours() {
-  const query = `*[_type == "post" && discontinued != true] | order(_createdAt desc)[0...60] {
-    _id,
-    title,
-    slug,
-    mainImage {
-      asset-> {
-        url
-      },
-      alt
-    },
-   "heroGallery": heroGallery[0..0] {
-      asset-> { url },
-      alt
-    },
-    "body": body[0...1]
-  }`;
-  
-  return await client.fetch(query, {}, {
-    next: { revalidate: 1800 }
-  });
-}
 
 function getBestImage(post: any) {
   if (post.heroGallery?.[0]?.asset?.url) {
@@ -144,7 +123,7 @@ export async function generateMetadata({ params }: PageProps) {
   
   const title = category.seoTitle || category.metaTitle || `${category.title} Tours | LasVegasTour`;
   const description = category.seoDescription || category.metaDescription || category.description || `Discover amazing ${category.title} tours and experiences`;
-  const keywords = category.seoKeywords || [category.title.toLowerCase(), 'tours', 'experiences', 'rome'];
+  const keywords = category.seoKeywords || [category.title.toLowerCase(), 'tours', 'experiences', 'las vegas'];
 
   const socialImage = category.seoImage?.asset?.url 
     ? urlFor(category.seoImage).width(1200).height(630).format('webp').quality(85).url()
@@ -374,10 +353,6 @@ export default async function ToursCategory({ params }: PageProps) {
         {/* ✅ Este componente genera su propio BreadcrumbList schema */}
         <Breadcrumbs items={[
           { label: 'Home', href: '/' },
-          { 
-            label: 'Complete Colosseum Guide', 
-            href: '/complete-guide-to-visiting-the-roman-colosseum-step-by-step' 
-          },
           { label: `${category.title} Tours`, isActive: true }
         ]} />
         
@@ -471,7 +446,7 @@ export default async function ToursCategory({ params }: PageProps) {
           {posts.length === 0 ? (
             <div style={{ textAlign: 'center', padding: '40px' }}>
               <p style={{ fontSize: '1.1rem', color: '#666' }}>
-                No hay tours disponibles para {category.title} aún.
+              No tours available for {category.title} yet.
               </p>
             </div>
           ) : (

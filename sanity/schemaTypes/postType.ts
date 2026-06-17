@@ -31,6 +31,21 @@ export const postType = defineType({
       to: [{type: 'category'}],
     }),
     
+    defineField({
+      name: 'language',
+      type: 'string',
+      title: 'Idioma del contenido',
+      description: 'Idioma en el que está escrito el post. Ancla i18n: hoy el sitio es 100% inglés; el día que sumes otro idioma, filtrás/enrutás por este campo sin migrar nada.',
+      initialValue: 'en',
+      options: {
+        list: [
+          {title: 'English', value: 'en'},
+          {title: 'Español', value: 'es'},
+          {title: 'Português', value: 'pt'},
+        ],
+      },
+    }),
+    
     // ========================================
     // SECCIÓN SEO
     // ========================================

@@ -1,0 +1,37 @@
+[
+  {
+    "code": "5119",
+    "slug": "valley-of-fire-lost-city-museum-day-trip-vegas",
+    "error": "Viator GET /products/5119 -> 404 Not Found"
+  },
+  {
+    "code": "5602SWH",
+    "slug": "7-day-southwest-parks-adventure-zion-bryce-monument-valley",
+    "error": "Viator GET /products/5602SWH -> 404 Not Found"
+  },
+  {
+    "code": "5116",
+    "slug": "5-hour-red-rock-canyon-horseback-desert-adventure-vegas",
+    "error": "Viator GET /products/5116 -> 404 Not Found"
+  },
+  {
+    "code": "2084",
+    "slug": "graceland-chapel-elvis-wedding-limo-package-vegas",
+    "error": "Viator GET /products/2084 -> 404 Not Found"
+  },
+  {
+    "code": "5602GCZMV",
+    "slug": "3-day-zion-bryce-monument-valley-grand-canyon-adventure",
+    "error": "Viator GET /products/5602GCZMV -> 404 Not Found"
+  },
+  {
+    "code": "5109",
+    "slug": "red-rock-canyon-guided-hike-from-las-vegas",
+    "error": "Viator GET /products/5109 -> 404 Not Found"
+  },
+  {
+    "code": "5145",
+    "slug": "white-rock-canyon-hot-springs-hike-6hr-desert-adventure",
+    "error": "Viator GET /products/5145 -> 404 Not Found"
+  }
+]

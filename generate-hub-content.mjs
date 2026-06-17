@@ -1,11 +1,17 @@
 #!/usr/bin/env node
 /**
- * generate-hub-content.mjs v3
- * 
+ * generate-hub-content.mjs v3 (Las Vegas)
+ *
  * Cambios vs v2:
  * - NO genera seoTitle (usa hub.title de tourHubs.json)
  * - Meta descriptions de alta calidad con pain points, few-shot, sin exageraciones
  * - Contenido editorial rico y variado
+ *
+ * Adaptacion Las Vegas:
+ * - HUB_CONTEXT, META_DESC_EXAMPLES y SYSTEM_PROMPT reescritos para day trips
+ *   (Grand Canyon, Hoover Dam, Antelope, parques, helicopteros, Strip).
+ * - HUB_CONTEXT se busca primero por slug y cae a type, para diferenciar los
+ *   destinos que comparten type "destination" (West Rim / South Rim / Antelope).
  */
 
 import dotenv from 'dotenv';
@@ -31,127 +37,134 @@ const hubs = hubData.hubs;
 const args = process.argv.slice(2);
 const SINGLE_HUB = args.find(a => a.startsWith("--hub="))?.split("=")[1];
 
-// --- Pain points y contexto por tipo de hub ---
+// --- Pain points y contexto por tipo de hub (Las Vegas) ---
+// Las claves por TYPE cubren los hubs transversales. Las claves por SLUG (al final)
+// dan contexto especifico a los destinos que comparten type "destination".
 const HUB_CONTEXT = {
-  "underground": {
-    painPoint: "Underground slots sell out 4-8 weeks ahead, only a limited number of daily permits available",
-    uniqueValue: "Gladiator tunnels, animal cages, hypogeum, trapdoors � areas closed to regular tickets",
-    buyerIntent: "Exclusive access seeker, willing to pay premium for hidden areas"
-  },
-  "night": {
-    painPoint: "Very limited night slots, atmospheric but sells out fast",
-    uniqueValue: "Evening lighting, far fewer crowds, underground + arena after dark",
-    buyerIntent: "Experience seeker wanting unique/romantic Rome moment"
-  },
-  "arena": {
-    painPoint: "Arena floor is restricted � only accessible with specific guided tours",
-    uniqueValue: "Stand where gladiators fought, see reconstructed floor, first-tier views",
-    buyerIntent: "History enthusiast wanting the most immersive gladiator experience"
-  },
   "private": {
-    painPoint: "Many tours say private but are actually small groups of 8-15",
-    uniqueValue: "True 1-on-1 or family-only experiences with flexible schedules",
-    buyerIntent: "Premium traveler wanting personalized attention and schedule control"
-  },
-  "skip-the-line": {
-    painPoint: "Regular queues are 1-3 hours in peak season",
-    uniqueValue: "Priority entrance, separate security line, more time inside",
-    buyerIntent: "Time-conscious visitor wanting to maximize Rome trip efficiency"
+    painPoint: "Many Vegas tours advertised as private are actually shared shuttles with 10-14 strangers, and pickup windows can run 60-90 minutes across multiple hotels",
+    uniqueValue: "True private vehicles with your own guide, flexible departure times, and the freedom to linger at viewpoints or skip stops",
+    buyerIntent: "Premium traveler wanting a personalized day trip with schedule control and no shared-van waiting"
   },
   "small-group": {
-    painPoint: "Large groups of 30+ mean you can barely hear the guide",
-    uniqueValue: "Max 6-15 people, real interaction with guide, better photo spots",
-    buyerIntent: "Quality-focused traveler wanting intimate experience without private tour price"
+    painPoint: "Big coach tours pack 40-50 people, so you wait at every stop and barely hear the guide over the engine",
+    uniqueValue: "Capped at a handful of guests in an SUV or small van, with real interaction and faster stops",
+    buyerIntent: "Quality-focused traveler wanting an intimate trip without paying full private-tour prices"
   },
-  "guided": {
-    painPoint: "Self-guided visits often miss key historical context � ruins look like rocks without a guide",
-    uniqueValue: "Licensed archaeologists, historians, local experts bring ruins to life",
-    buyerIntent: "Knowledge seeker wanting to understand what they are seeing"
+  "food-drink": {
+    painPoint: "The Strip is full of overpriced tourist-trap restaurants, and it is hard to know which tastings and tours are actually worth booking",
+    uniqueValue: "Curated food walks, wine and cocktail tastings, and brewery visits led by locals who know where the value is",
+    buyerIntent: "Foodie or group wanting a guided culinary experience beyond the casino buffets"
+  },
+  "budget": {
+    painPoint: "Las Vegas day trips swing from under $50 to over $400, and it is hard to tell which cheaper options still include transport, entry fees and a real guide",
+    uniqueValue: "Curated lower-priced tours that still cover hotel pickup, park fees and guided commentary, usually with free cancellation",
+    buyerIntent: "Budget-conscious visitor wanting a genuine experience without overspending"
+  },
+  "sunset": {
+    painPoint: "Midday desert light is flat and harsh for photos, and the most atmospheric departure times sell out first",
+    uniqueValue: "Golden-hour timing over the canyon, the Strip or Hoover Dam, when the light is best and the heat drops",
+    buyerIntent: "Photographer or couple wanting the most scenic, atmospheric version of the trip"
+  },
+  "combo": {
+    painPoint: "Booking the Grand Canyon, Hoover Dam and other sights as separate trips means repeated hotel pickups and wasted hours on the road",
+    uniqueValue: "Two or more marquee destinations bundled into a single day with one pickup, often cheaper than booking them apart",
+    buyerIntent: "Time-pressed visitor wanting to see more of the region in fewer days"
+  },
+  "helicopter": {
+    painPoint: "A Grand Canyon helicopter trip can mean an air-only flyover or a full canyon-floor landing with champagne, and the listings rarely make the difference clear",
+    uniqueValue: "Flights that descend below the rim and land on the canyon floor, some with a Colorado River boat ride or a champagne picnic",
+    buyerIntent: "Bucket-list traveler wanting the most dramatic way to experience the Grand Canyon"
+  },
+  "multi-day": {
+    painPoint: "The best of the Southwest (Zion, Bryce, Antelope, Monument Valley) is too far for a single day from Vegas, and self-driving means booking lodging and permits yourself",
+    uniqueValue: "Overnight and road-trip tours that chain multiple national parks with lodging, permits and transport handled",
+    buyerIntent: "Traveler wanting to cover several Southwest parks without planning the logistics"
+  },
+  "nature": {
+    painPoint: "Vegas day-trip listings bury the natural parks (Valley of Fire, Red Rock, Death Valley) among generic city tours, so they are hard to compare",
+    uniqueValue: "Guided trips to Nevada and California state and national parks, with transport, fees and short hikes included",
+    buyerIntent: "Outdoors-minded visitor wanting red rocks, desert landscapes and hikes within reach of the Strip"
   },
   "destination": {
-    painPoint: "Roman Forum looks like a field of rubble without a guide to explain it",
-    uniqueValue: "Guided walkthrough of Senate, temples, Via Sacra with Colosseum combos",
-    buyerIntent: "Visitor wanting comprehensive ancient Rome experience beyond just Colosseum"
+    painPoint: "Day trips to the same destination vary widely in driving time, stops and what is actually included, and the listings rarely make it clear",
+    uniqueValue: "Guided trips to a specific marquee destination with transport, entry fees and the key viewpoints covered",
+    buyerIntent: "Visitor wanting a focused day trip to one bucket-list destination from Las Vegas"
   },
 
-  "full-experience": {
-    painPoint: "Standard tickets only cover the main levels � you miss underground, arena floor and upper tiers",
-    uniqueValue: "All restricted areas in one tour: underground + arena + upper tiers + Roman Forum",
-    buyerIntent: "Visitor wanting the most complete Colosseum experience in a single booking"
+  // --- Overrides por SLUG para destinos que comparten type "destination" ---
+  "grand-canyon-west-rim-tours": {
+    painPoint: "The West Rim is neither the national park nor the famous South Rim viewpoints, yet many listings blur the two, and the glass Skywalk usually costs extra on top of the tour",
+    uniqueValue: "Closest rim to Vegas (about 2-2.5 hours each way), on Hualapai land with Eagle Point, Guano Point and the optional Skywalk",
+    buyerIntent: "Time-limited visitor wanting the quickest Grand Canyon day trip from the Strip, with the Skywalk as an option"
   },
-"family": {
-  painPoint: "Standard Colosseum tours involve 2+ hours of walking on uneven Roman stones, steep underground stairs, and no shade — kids lose interest in 20 minutes",
-  uniqueValue: "Family-paced tours with engaging guides who turn gladiator history into stories kids love, no underground stairs, and manageable 1.5-hour duration",
-  buyerIntent: "Parent wanting a Colosseum visit that keeps children genuinely engaged without physical challenges"
-},
-"budget": {
-  painPoint: "Colosseum tour prices range from €18 to €300+ — it's hard to know which budget options still deliver a quality experience with skip-the-line access",
-  uniqueValue: "Curated selection of tours under $50 that include skip-the-line entry, guided commentary, and Forum/Palatine access",
-  buyerIntent: "Budget-conscious visitor wanting a quality Colosseum experience without overspending"
-},
-"self-guided": {
-  painPoint: "Walking through the Colosseum without context means passing ancient ruins without understanding what you're looking at — every stone has a story",
-  uniqueValue: "Audio guide apps and multimedia tours let you explore at your own pace with commentary on gladiator history, architecture, and daily Roman life",
-  buyerIntent: "Independent traveler wanting flexibility to linger where they want without a group schedule"
-},
-
+  "grand-canyon-south-rim-tours": {
+    painPoint: "The South Rim is the postcard Grand Canyon but sits about 4.5 hours from Vegas, so day trips run long and some fly part of the way",
+    uniqueValue: "The classic national-park viewpoints (Mather Point, Grand Canyon Village) with deeper canyon views than the West Rim",
+    buyerIntent: "Visitor who wants the iconic Grand Canyon views and will trade a longer day to get them"
+  },
+  "antelope-canyon-horseshoe-bend-tours": {
+    painPoint: "Antelope Canyon sits on Navajo land near Page, Arizona, requires a Navajo guide, and Lower vs Upper canyon access differs a lot between tours",
+    uniqueValue: "The glowing slot-canyon walls plus the Horseshoe Bend overlook, usually paired in one long day or an overnight from Vegas",
+    buyerIntent: "Photographer or bucket-list traveler wanting the slot canyon and Horseshoe Bend in one trip"
+  },
 };
 
-// --- Few-shot examples de meta descriptions de alta calidad ---
+// --- Few-shot examples de meta descriptions de alta calidad (Las Vegas) ---
 const META_DESC_EXAMPLES = [
   {
-    type: "underground",
-    tours: 22, priceFrom: "$67",
-    result: "22 underground tours from $67. Gladiator tunnels, animal cages & hypogeum � limited daily permits available. Book 4-8 weeks ahead before slots sell out."
+    type: "west-rim",
+    tours: 20, priceFrom: "$99",
+    result: "20 Grand Canyon West Rim tours from $99. Closest rim to Vegas, about 2.5 hrs each way. Skywalk optional, Eagle & Guano Point. Free cancellation on most."
   },
   {
-    type: "private",
-    tours: 11, priceFrom: "$350",
-    result: "11 private Colosseum tours from $350. True VIP or small group? We break down what \"private\" really means. Underground access, flexible schedules."
+    type: "helicopter",
+    tours: 10, priceFrom: "$399",
+    result: "10 Grand Canyon helicopter tours from $399. Air-only flyover or land on the canyon floor with champagne? We break down the difference before you book."
   },
   {
-    type: "skip-the-line",
-    tours: 27, priceFrom: "$30",
-    result: "27 skip-the-line Colosseum tours from $30. Avoid 1-3 hour queues with priority access. Underground combos, Roman Forum add-ons & free cancellation."
+    type: "budget",
+    tours: 50, priceFrom: "$39",
+    result: "50 Las Vegas tours under $50. Hoover Dam, Red Rock & Valley of Fire with hotel pickup and a guide — which cheap trips still deliver, compared."
   },
   {
-    type: "arena",
-    tours: 26, priceFrom: "$34",
-    result: "26 arena floor tours from $34. Stand where gladiators fought � access restricted to guided tours only. Ratings, prices & real visitor reviews for 2026."
+    type: "nature",
+    tours: 79, priceFrom: "$45",
+    result: "79 nature & parks tours from Vegas, from $45. Valley of Fire, Red Rock & Death Valley — driving time, stops & what's included, compared for 2026."
   }
 ];
 
 // --- System prompt para contenido editorial ---
-const SYSTEM_PROMPT = `You are a Rome travel expert writing for lasvegastour.com, an independent guide to Colosseum tours.
+const SYSTEM_PROMPT = `You are a Las Vegas travel expert writing for lasvegastour.com, an independent guide to Las Vegas tours and day trips — Grand Canyon, Hoover Dam, Antelope Canyon, Red Rock, Valley of Fire, Death Valley, helicopter flights and the Strip.
 
-VOICE: Knowledgeable insider who has personally tested tours. Authoritative yet accessible. No fluff. No absolute claims like "essential", "guarantee", "zero", "100%", or unverifiable percentages � use "typically", "usually", "in most cases", "far fewer".
+VOICE: Knowledgeable insider who has personally tested tours. Authoritative yet accessible. No fluff. No absolute claims like "essential", "guarantee", "zero", "100%", or unverifiable percentages — use "typically", "usually", "in most cases", "far fewer".
 
 You will receive a hub type and real tour data. Generate content with this EXACT structure:
 
 OUTPUT JSON:
 {
   "quickAnswer": {
-    "hook": "1 sentence: benefit + pain point (e.g. crowds, time wasted). Max 20 words.",
+    "hook": "1 sentence: benefit + pain point (e.g. long drives, harsh midday heat, shared-van waiting). Max 20 words.",
     "range": "1 sentence: total tours available + price range + sweet spot recommendation.",
     "bestPick": {
       "name": "Name of top recommended tour",
       "rating": 4.7,
-      "price": 106,
-      "duration": "1.5 hours",
+      "price": 149,
+      "duration": "10 hours",
       "highlight": "One key selling point in 5-8 words"
     },
     "verdict": "1 sentence final recommendation. Max 15 words."
   },
-  "methodology": "1 sentence explaining review criteria. Example: We compared X tours based on price, review volume, group size, included access, and cancellation policy.",
+  "methodology": "1 sentence explaining review criteria. Example: We compared X tours based on price, review volume, group size, included access, driving time, and cancellation policy.",
   "intro": {
-    "whyItMatters": "2-3 sentences: why this tour type matters (crowds, stress, experience quality)",
+    "whyItMatters": "2-3 sentences: why this tour type matters (driving time, heat, crowds, experience quality)",
     "whatOptions": "2-3 sentences: how many tours exist, what the range covers",
     "sweetSpot": "2-3 sentences: where the best value is, with specific price tier",
-    "howToChoose": "2-3 sentences: quick decision criteria (cancellation, group size, booking timing)"
+    "howToChoose": "2-3 sentences: quick decision criteria (cancellation, group size, transport, booking timing)"
   },
   "pricingTiers": [
-    {"range": "$30-$45", "label": "Entry-level / audio guide"},
-    {"range": "$45-$85", "label": "Best value guided tours"}
+    {"range": "$40-$90", "label": "Entry-level / shared shuttle day trips"},
+    {"range": "$90-$200", "label": "Best value guided tours"}
   ],
   "decisionBox": {
     "title": "Who should book [this tour type]?",
@@ -163,7 +176,7 @@ OUTPUT JSON:
     ]
   },
   "internalLinks": [
-    {"text": "Descriptive anchor text", "slug": "best-colosseum-underground-tours"}
+    {"text": "Descriptive anchor text", "slug": "grand-canyon-west-rim-tours"}
   ],
   "faqs": [
     {"question": "Real question a visitor would ask Google", "answer": "Specific 2-3 sentence answer with real data."}
@@ -171,12 +184,12 @@ OUTPUT JSON:
 }
 
 IMPORTANT:
-- Do NOT generate "seoTitle" � it is managed separately.
-- Do NOT generate "seoDescription" � it is generated by a specialized prompt.
-- PRICING TIERS: Create 3-5 tiers based on REAL prices from the tour data. Dont invent prices.
+- Do NOT generate "seoTitle" — it is managed separately.
+- Do NOT generate "seoDescription" — it is generated by a specialized prompt.
+- PRICING TIERS: Create 3-5 tiers based on REAL prices from the tour data. Don't invent prices.
 - DECISION BOX: Make 4 bullets specific to THIS tour type (not generic).
 - INTERNAL LINKS: Suggest 2-3 links to OTHER hub types. Do NOT link to self.
-- FAQs: 7 questions people actually search on Google. Topics: what's included, worth the price, best time, comparison with other types, accessibility, cancellation, age suitability.
+- FAQs: 7 questions people actually search on Google. Topics: what's included, worth the price, best time, driving time, comparison with other types, accessibility, cancellation, age suitability.
 - NEVER use unverifiable stats like "90% of visitors" or "only 2% get access".
 
 Return JSON only. No markdown fences.`;
@@ -247,19 +260,26 @@ Remember: Do NOT include seoTitle or seoDescription in your response.
 Return JSON only.`;
 
   const response = await anthropic.messages.create({
-    model: "claude-sonnet-4-20250514",
+    model: "claude-opus-4-8",
     max_tokens: 4000,
     system: SYSTEM_PROMPT,
     messages: [{ role: "user", content: userMessage }],
   });
 
-  const text = response.content[0].text.replace(/```json\n?|```\n?/g, "").trim();
+  let text = response.content[0].text.replace(/```json\n?|```\n?/g, "").trim();
+  // El modelo a veces antepone un preambulo (ej. "I notice the tour data...").
+  // Recortar al primer "{" y ultimo "}" para quedarnos solo con el objeto JSON.
+  const firstBrace = text.indexOf("{");
+  const lastBrace = text.lastIndexOf("}");
+  if (firstBrace > 0 || (lastBrace !== -1 && lastBrace < text.length - 1)) {
+    text = text.slice(firstBrace, lastBrace + 1);
+  }
   return JSON.parse(text);
 }
 
 // --- Generar meta description de alta calidad ---
 async function generateMetaDescription(hub, content, tours) {
-  const ctx = HUB_CONTEXT[hub.type] || HUB_CONTEXT["destination"];
+  const ctx = HUB_CONTEXT[hub.slug] || HUB_CONTEXT[hub.type] || HUB_CONTEXT["destination"];
   const tourCount = tours.length;
   const prices = tours.filter(t => t.tourInfo?.price).map(t => t.tourInfo.price);
   const lowestPrice = prices.length ? `$${Math.min(...prices)}` : "";
@@ -270,15 +290,15 @@ async function generateMetaDescription(hub, content, tours) {
   ).join("\n\n");
 
   const response = await anthropic.messages.create({
-    model: "claude-sonnet-4-20250514",
+    model: "claude-opus-4-8",
     max_tokens: 300,
     messages: [{
       role: "user",
-      content: `You write meta descriptions for Colosseum tour comparison pages. Your descriptions are specific, punchy, and speak to the real pain point of the searcher.
+      content: `You write meta descriptions for Las Vegas tour and day-trip comparison pages. Your descriptions are specific, punchy, and speak to the real pain point of the searcher.
 
 RULES:
 - Max 155 characters
-- Start with the number of tours or a specific data point � NEVER start with "Compare" or "Best"
+- Start with the number of tours or a specific data point — NEVER start with "Compare" or "Best"
 - Include lowest price
 - Reference the specific pain point or unique value of this tour type
 - Use dashes, ampersands, short punchy sentences
@@ -320,7 +340,7 @@ async function main() {
   let existingContent = {};
   try {
     existingContent = JSON.parse(readFileSync("./data/hub-content.json", "utf-8"));
-  } catch { /* file doesnt exist yet */ }
+  } catch { /* file doesn't exist yet */ }
 
   console.log(`\nGenerating content v3 for ${hubsToProcess.length} hubs...\n`);
 
@@ -348,7 +368,7 @@ async function main() {
       const metaDesc = await generateMetaDescription(hub, content, tours);
       console.log(`  > Meta: ${metaDesc} (${metaDesc.length} chars)`);
 
-      // Ensamblar: t�tulo de tourHubs.json, meta desc especializada, contenido editorial
+      // Ensamblar: titulo de tourHubs.json, meta desc especializada, contenido editorial
       existingContent[hub.slug] = {
         ...content,
         seoTitle: hub.title,

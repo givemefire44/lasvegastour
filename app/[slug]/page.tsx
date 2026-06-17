@@ -8,6 +8,7 @@ import { isHubSlug, getHubBySlug, getAllHubs, getAllHubSlugs, buildHubGroqFilter
 import HubPage from '@/app/components/HubPage';
 import hubContentRaw from '@/data/hub-content.json';
 import Footer from '@/app/components/Footer';
+import { getRecommendedTours } from '@/lib/getRecommendedTours';
 
 const hubContent = hubContentRaw as Record<string, any>;
 
@@ -352,30 +353,7 @@ async function getToursByHub(hub: any) {
 }
 
 // ✅ FUNCIÓN CORREGIDA - CON CONFIGURACIÓN DE CACHE EXPLÍCITA
-async function getRecommendedTours() {
-  const query = `
-    *[_type == "post" && discontinued != true] | order(_createdAt desc)[0...60]{
-      _id,
-      title,
-      slug,
-      mainImage{
-        asset->{
-          url
-        },
-        alt
-      },
-     "heroGallery": heroGallery[0..0] {
-        asset->{ url },
-        alt
-      },
-      "body": body[0...1]
-    }
-  `
-  // ✅ CONFIGURACIÓN DE CACHE EXPLÍCITA
-  return await client.fetch(query, {}, {
-    next: { revalidate: 1800 } // Cache por 30 minutos
-  })
-}
+
 
 // 🆕 Traer artículos relacionados según pillar/supporting
  async function getRelatedArticles(currentSlug: string, isPillar: boolean, parentPillarRef?: string) {

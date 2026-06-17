@@ -14,6 +14,11 @@ export const config = {
     apiKey: process.env.ANTHROPIC_API_KEY
   },
   
+  viator: {
+    apiKey: process.env.VIATOR_API_KEY,
+    campaign: 'lasvegastour'
+  },
+  
   affiliate: {
     partnerId: process.env.AFFILIATE_PARTNER_ID || '2FVNDZG',
     utmMedium: 'online_publisher'
@@ -25,11 +30,13 @@ export const config = {
     userAgent: 'ColosseumRoman-Bot/1.0 (mario@colosseumroman.com)'
   },
   
+  
   dryRun: process.env.DRY_RUN === 'true',
   
-  siteUrl: 'https://colosseumroman.com',
-  siteName: 'ColosseumRoman'
+  siteUrl: 'https://lasvegastour.com',
+  siteName: 'LasVegasTour'
 };
+
 
 // Validation
 if (!config.sanity.projectId || !config.sanity.token) {
@@ -44,3 +51,4 @@ if (!config.anthropic.apiKey) {
 
 console.log('✅ Configuration loaded successfully');
 console.log(`📍 Mode: ${config.dryRun ? 'DRY RUN (test)' : 'PRODUCTION'}`);
+

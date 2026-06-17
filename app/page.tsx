@@ -11,6 +11,8 @@ import ImpactBanner from "./components/ImpactBanner";
 import LugaresPopularesArg from "./components/LugaresPopularesArg";
 import RecommendedTours from "./components/blog/RecommendedTours";
 import HubChips from './components/HubChips';
+import { getRecommendedTours } from '@/lib/getRecommendedTours';
+
 
 
 // ========================================
@@ -57,44 +59,7 @@ const getHomepage = async () => {
   })
 }
 
-const getRecommendedTours = async () => {
-  return await client.fetch(`
-    *[_type == "post" && discontinued != true] | order(_createdAt desc)[0...60]{
-      _id,
-      title,
-      slug,
-      mainImage{
-        asset->{
-          _id,
-          url,
-          metadata {
-            dimensions {
-              width,
-              height
-            }
-          }
-        },
-        alt
-      },
-      heroGallery[0...3]{
-        asset->{
-          _id,
-          url,
-          metadata {
-            dimensions {
-              width,
-              height
-            }
-          }
-        },
-        alt
-      },
-      body[0...2]
-    }
-  `, {}, {
-    next: { revalidate: 180 }
-  })
-}
+
 
 const getMosaicData = async () => {
   return await client.fetch(`
@@ -289,12 +254,13 @@ export default async function HomePage() {
       "availableLanguage": ["English", "Spanish"]
     },
      
-    "knowsAbout": [
-      "Roman Colosseum",
-      "Rome Tourism",
-      "Historical Tours",
-      "Travel Planning",
-      "Ancient Rome History"
+   "knowsAbout": [
+      "Grand Canyon Tours",
+      "Las Vegas Tourism",
+      "Hoover Dam",
+      "Antelope Canyon",
+      "Day Trips from Las Vegas",
+      "Travel Planning"
     ]
   };
 

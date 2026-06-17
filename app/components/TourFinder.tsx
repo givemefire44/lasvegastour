@@ -22,16 +22,20 @@ function parseDurationToMinutes(duration: string | null): number | null {
 
 function classifyTour(title: string) {
   const t = title.toLowerCase();
-  let tourType = 'standard'; // Museums + Sistine Chapel (+ St. Peter's) = la visita clásica
-  if (t.includes('colosseum') || t.includes('colosseo')) tourType = 'combo-colosseum';
-  else if (t.includes('dome') || t.includes('cupola')) tourType = 'dome';
-  else if ((t.includes("st. peter") || t.includes('st peter') || t.includes('saint peter') || t.includes("peter's") || t.includes('basilica')) && !t.includes('museum') && !t.includes('sistine')) tourType = 'basilica';
-  else if (t.includes('early') || t.includes('before opening') || t.includes('first entry') || t.includes('breakfast')) tourType = 'early';
-  else if (t.includes('night') || t.includes('evening') || t.includes('after hours')) tourType = 'night';
+  // Tour type por destino/modo. El orden define prioridad.
+  let tourType = 'standard';
+  if (t.includes('helicopter') || t.includes('chopper')) tourType = 'helicopter';
+  else if (t.includes('airplane') || t.includes('air tour') || t.includes('fixed-wing') || t.includes('flight')) tourType = 'air';
+  else if (t.includes('west rim') || t.includes('skywalk')) tourType = 'west-rim';
+  else if (t.includes('south rim')) tourType = 'south-rim';
+  else if (t.includes('antelope') || t.includes('horseshoe')) tourType = 'antelope';
+  else if (t.includes('combo') || t.includes('and hoover')) tourType = 'combo';
+  else if (t.includes('hoover')) tourType = 'hoover';
+  else if (t.includes('valley of fire') || t.includes('red rock') || t.includes('death valley') || t.includes('zion') || t.includes('bryce') || t.includes('mojave')) tourType = 'nature';
+  else if (t.includes('grand canyon') || t.includes('canyon')) tourType = 'grand-canyon';
 
   let format = 'guided';
-  if (t.includes('audio')) format = 'audio-guide';
-  else if (t.includes('private') || t.includes('vip') || t.includes('exclusive')) format = 'private';
+  if (t.includes('private') || t.includes('vip') || t.includes('exclusive')) format = 'private';
   else if (t.includes('self-guided')) format = 'self-guided';
 
   let groupSize = 'standard';
@@ -54,7 +58,7 @@ function formatReviewCount(c: number): string { return c >= 1000 ? `${(c / 1000)
 
 const STEPS = [
   { id: 'time', label: 'Time', icon: '🕐' },
-  { id: 'experience', label: 'Experience', icon: '🏛️' },
+  { id: 'experience', label: 'Experience', icon: '🌄' },
   { id: 'group', label: 'Group', icon: '👥' },
   { id: 'budget', label: 'Budget', icon: '💰' },
 ];
@@ -62,29 +66,30 @@ const STEPS = [
 const QUESTIONS: Record<string, { title: string; subtitle: string; options: { value: string; label: string; desc: string; icon: string }[] }> = {
   time: {
     title: 'How much time do you have?',
-    subtitle: 'This helps us match the right tour length for your schedule.',
+    subtitle: 'This helps us match the right trip length for your schedule.',
     options: [
-      { value: 'quick', label: '1–2 hours', desc: 'A focused visit', icon: '⚡' },
-      { value: 'half', label: 'Half day', desc: '3–4 hours to explore', icon: '🕐' },
-      { value: 'full', label: 'Full day', desc: 'Combine with other sites', icon: '☀️' },
+      { value: 'half', label: 'Half day', desc: '4-6 hours (Hoover Dam, Red Rock)', icon: '🕐' },
+      { value: 'full', label: 'Full day', desc: '8-14 hours (Grand Canyon, Antelope)', icon: '☀️' },
+      { value: 'multi', label: 'Multi-day', desc: 'Overnight road trips (Zion, Bryce)', icon: '🗺️' },
     ],
   },
   experience: {
-    title: 'What kind of experience?',
-    subtitle: 'From the classic visit to special access.',
+    title: 'What do you want to see?',
+    subtitle: 'From the Grand Canyon to the desert parks near Vegas.',
     options: [
-      { value: 'basic', label: 'The classic Vatican visit', desc: 'Museums, Sistine Chapel & St. Peter\'s', icon: '🏛️' },
-      { value: 'early', label: 'Beat the crowds', desc: 'Early entry before general admission', icon: '🌅' },
-      { value: 'dome', label: 'St. Peter\'s & Dome climb', desc: 'Basilica plus panoramic cupola views', icon: '⛪' },
-      { value: 'combo', label: 'Vatican + Colosseum in one day', desc: 'Rome\'s two icons, one trip', icon: '🏟️' },
+      { value: 'canyon', label: 'Grand Canyon', desc: 'West Rim or South Rim by road', icon: '🌄' },
+      { value: 'air', label: 'See it from the air', desc: 'Helicopter or airplane tours', icon: '🚁' },
+      { value: 'antelope', label: 'Antelope & Horseshoe Bend', desc: 'Slot canyons near Page, AZ', icon: '🏜️' },
+      { value: 'nearby', label: 'Close to Vegas', desc: 'Hoover Dam, Red Rock, Valley of Fire', icon: '🏞️' },
+      { value: 'combo', label: 'Two sights in one day', desc: 'Grand Canyon + Hoover Dam combos', icon: '🔗' },
     ],
   },
   group: {
-    title: 'Who\'s coming with you?',
-    subtitle: 'We\'ll find tours that fit your group.',
+    title: 'Who is coming with you?',
+    subtitle: 'We will find trips that fit your group.',
     options: [
       { value: 'couple', label: 'Solo or couple', desc: 'Just us', icon: '👫' },
-      { value: 'family', label: 'Family with kids', desc: 'Kid-friendly options', icon: '👨‍👩‍👧‍👦' },
+      { value: 'family', label: 'Family with kids', desc: 'Kid-friendly options', icon: '👪' },
       { value: 'friends', label: 'Group of friends', desc: 'Fun group experience', icon: '👥' },
       { value: 'private', label: 'Private experience', desc: 'Just our group, our pace', icon: '🎩' },
     ],
@@ -94,7 +99,7 @@ const QUESTIONS: Record<string, { title: string; subtitle: string; options: { va
     subtitle: 'Pick the option that fits how you want to spend.',
     options: [
       { value: 'value', label: 'Best value', desc: 'Great experience, smart price', icon: '💚' },
-      { value: 'flexible', label: 'I\'m flexible', desc: 'Show me the best-rated', icon: '⭐' },
+      { value: 'flexible', label: 'I am flexible', desc: 'Show me the best-rated', icon: '⭐' },
       { value: 'premium', label: 'Money is not an issue', desc: 'VIP and private options', icon: '💎' },
     ],
   },
@@ -104,15 +109,15 @@ function filterTours(tours: Tour[], answers: Answers): Tour[] {
   let filtered = tours.filter(t => t.price > 0 && t.rating > 0);
   const classified = filtered.map(t => ({ ...t, ...classifyTour(t.title), minutes: parseDurationToMinutes(t.duration) }));
   let results = classified;
-  if (answers.time === 'quick') results = results.filter(t => t.minutes && t.minutes <= 150);
-  else if (answers.time === 'half') results = results.filter(t => t.minutes && t.minutes > 90 && t.minutes <= 300);
-  else if (answers.time === 'full') results = results.filter(t => (t.minutes && t.minutes > 240) || t.tourType === 'combo-colosseum');
-  if (answers.group === 'family') results = results.filter(t => t.tourType !== 'night');
-  else if (answers.group === 'private') results = results.filter(t => t.format === 'private');
-  if (answers.experience === 'basic') results = results.filter(t => t.tourType === 'standard');
-  else if (answers.experience === 'early') results = results.filter(t => t.tourType === 'early');
-  else if (answers.experience === 'dome') results = results.filter(t => t.tourType === 'dome' || t.tourType === 'basilica');
-  else if (answers.experience === 'combo') results = results.filter(t => t.tourType === 'combo-colosseum');
+  if (answers.time === 'half') results = results.filter(t => t.minutes && t.minutes <= 360);
+  else if (answers.time === 'full') results = results.filter(t => t.minutes && t.minutes > 360 && t.minutes <= 840);
+  else if (answers.time === 'multi') results = results.filter(t => (t.minutes && t.minutes > 840) || /multi-day|overnight|\d+\s*days/.test(t.title.toLowerCase()));
+  if (answers.group === 'private') results = results.filter(t => t.format === 'private');
+  if (answers.experience === 'canyon') results = results.filter(t => ['west-rim', 'south-rim', 'grand-canyon'].includes(t.tourType));
+  else if (answers.experience === 'air') results = results.filter(t => ['helicopter', 'air'].includes(t.tourType));
+  else if (answers.experience === 'antelope') results = results.filter(t => t.tourType === 'antelope');
+  else if (answers.experience === 'nearby') results = results.filter(t => ['hoover', 'nature'].includes(t.tourType));
+  else if (answers.experience === 'combo') results = results.filter(t => t.tourType === 'combo');
   if (answers.budget === 'value') results.sort((a, b) => ((b.rating || 0) * 10 - b.price / 20) - ((a.rating || 0) * 10 - a.price / 20));
   else if (answers.budget === 'flexible') results.sort((a, b) => (b.rating !== a.rating) ? (b.rating || 0) - (a.rating || 0) : (b.reviewCount || 0) - (a.reviewCount || 0));
   else if (answers.budget === 'premium') results.sort((a, b) => b.price - a.price);
@@ -123,11 +128,16 @@ function filterTours(tours: Tour[], answers: Answers): Tour[] {
 
 function getWhyText(tour: any, answers: Answers): string {
   const p: string[] = [];
-  if (answers.experience === 'early' && tour.tourType === 'early') p.push('Early entry means you see the Sistine Chapel before the crowds arrive');
-  else if (answers.experience === 'dome' && (tour.tourType === 'dome' || tour.tourType === 'basilica')) p.push('Includes St. Peter\'s Basilica with the option to climb the dome');
-  else if (answers.experience === 'combo' && tour.tourType === 'combo-colosseum') p.push('Covers the Vatican and the Colosseum in one efficient day');
-  else if (answers.experience === 'basic' && tour.tourType === 'standard') p.push('Covers the Vatican Museums, Sistine Chapel, and St. Peter\'s Basilica');
-  if (answers.group === 'private' && tour.format === 'private') p.push('Private tour at your pace');
+  if (answers.experience === 'canyon' && ['west-rim', 'south-rim', 'grand-canyon'].includes(tour.tourType)) {
+    if (tour.tourType === 'west-rim') p.push('Visits the West Rim, the closest part of the Grand Canyon to Las Vegas');
+    else if (tour.tourType === 'south-rim') p.push('Reaches the classic South Rim national park viewpoints');
+    else p.push('A Grand Canyon day trip from Las Vegas');
+  }
+  else if (answers.experience === 'air' && ['helicopter', 'air'].includes(tour.tourType)) p.push('See the canyon from the air for the most dramatic views');
+  else if (answers.experience === 'antelope' && tour.tourType === 'antelope') p.push('Includes Antelope Canyon and the Horseshoe Bend overlook');
+  else if (answers.experience === 'nearby' && ['hoover', 'nature'].includes(tour.tourType)) p.push('A shorter trip within easy reach of Las Vegas');
+  else if (answers.experience === 'combo' && tour.tourType === 'combo') p.push('Combines two marquee sights in a single day');
+  if (answers.group === 'private' && tour.format === 'private') p.push('Private tour at your own pace');
   if (tour.reviewCount >= 1000) p.push(`${formatReviewCount(tour.reviewCount)} verified reviews`);
   if (tour.rating >= 4.8) p.push(`${tour.rating}/5 rating`);
   return p.join('. ') + '.';
@@ -180,10 +190,10 @@ export default function TourFinder({ tours }: { tours: Tour[] }) {
           fontSize: isMobile ? '1.5rem' : 'clamp(1.8rem, 4vw, 2.6rem)',
           fontWeight: 800, color: '#1a1a1a', marginBottom: '10px', lineHeight: 1.15,
         }}>
-          Let&#39;s find your <span style={{ color: '#e91e63', fontStyle: 'italic' }}>perfect</span> Vatican tour
+          Let&#39;s find your <span style={{ color: '#e91e63', fontStyle: 'italic' }}>perfect</span> Las Vegas day trip
         </h1>
         <p style={{ fontSize: isMobile ? '0.95rem' : '1.1rem', color: '#555', maxWidth: '520px', margin: '0 auto' }}>
-          Answer 4 simple questions and we&#39;ll show you the best tours for you.
+          Answer 4 simple questions and we&#39;ll show you the best trips for you.
         </p>
       </div>
 
@@ -216,7 +226,7 @@ export default function TourFinder({ tours }: { tours: Tour[] }) {
                   background: isActive ? '#fff' : isDone ? '#4caf50' : '#d0d0d0',
                   color: isActive ? '#e91e63' : '#fff',
                 }}>
-                  {isDone ? '✓' : i + 1}
+                  {isDone ? '\u2713' : i + 1}
                 </span>
                 <span style={{
                   fontSize: isMobile ? '0.78rem' : '0.9rem',
@@ -285,7 +295,7 @@ export default function TourFinder({ tours }: { tours: Tour[] }) {
                       border: selected ? 'none' : '2px solid #ddd',
                       transition: 'all 0.15s',
                     }}>
-                      {selected ? <span style={{ color: '#fff', fontSize: '1.1rem' }}>✓</span> : option.icon}
+                      {selected ? <span style={{ color: '#fff', fontSize: '1.1rem' }}>{'\u2713'}</span> : option.icon}
                     </span>
                     <div style={{ flex: 1 }}>
                       <div style={{ fontWeight: 700, fontSize: isMobile ? '0.95rem' : '1.05rem', color: '#1a1a1a', marginBottom: '1px' }}>{option.label}</div>
@@ -316,7 +326,7 @@ export default function TourFinder({ tours }: { tours: Tour[] }) {
             </div>
           </div>
 
-          {/* RIGHT: SIDEBAR — desktop only */}
+          {/* RIGHT: SIDEBAR - desktop only */}
           {!isMobile && (
             <div style={{ position: 'sticky', top: '20px' }}>
               <div style={{
@@ -327,7 +337,7 @@ export default function TourFinder({ tours }: { tours: Tour[] }) {
                 {tours[0]?.image && (
                   <img
                     src={`${tours[0].image}?w=400&h=220&fit=crop&auto=format`}
-                    alt="Vatican, Rome"
+                    alt="Grand Canyon, Las Vegas"
                     style={{ width: '100%', height: '190px', objectFit: 'cover', display: 'block' }}
                   />
                 )}
@@ -335,9 +345,9 @@ export default function TourFinder({ tours }: { tours: Tour[] }) {
                   <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#e91e63', marginBottom: '18px' }}>Why this helps</h3>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                     {[
-                      { icon: '🎯', bg: '#e8f5e9', border: '#c8e6c9', title: 'Personalized', desc: 'We match tours to your preferences' },
+                      { icon: '🎯', bg: '#e8f5e9', border: '#c8e6c9', title: 'Personalized', desc: 'We match trips to your preferences' },
                       { icon: '⭐', bg: '#fff8e1', border: '#ffe082', title: 'Top-rated', desc: 'Only highly rated tours' },
-                      { icon: '✅', bg: '#e3f2fd', border: '#90caf9', title: 'Trusted', desc: 'Partnered with GetYourGuide' },
+                      { icon: '✅', bg: '#e3f2fd', border: '#90caf9', title: 'Up to date', desc: 'Real-time prices and availability' },
                     ].map((item, i) => (
                       <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                         <span style={{
@@ -405,7 +415,7 @@ export default function TourFinder({ tours }: { tours: Tour[] }) {
                   display: isMobile ? 'block' : 'flex',
                   gap: '20px',
                 }}>
-                  {/* Image — visible en mobile (apilada) y desktop (al costado) */}
+                  {/* Image - visible en mobile (apilada) y desktop (al costado) */}
                   {tour.image && (
                     <img
                       src={`${tour.image}?w=${isMobile ? 600 : 180}&h=${isMobile ? 200 : 140}&fit=crop&auto=format`}
@@ -441,7 +451,7 @@ export default function TourFinder({ tours }: { tours: Tour[] }) {
                     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                       <a href={tour.gygUrl} target="_blank" rel="noopener noreferrer" style={{
                         display: 'inline-block', padding: isMobile ? '10px 16px' : '12px 24px',
-                        background: '#e11d48',color: '#fff',
+                        background: '#e11d48', color: '#fff',
                         borderRadius: '8px', fontWeight: 700,
                         fontSize: isMobile ? '0.85rem' : '0.95rem',
                         textDecoration: 'none', textAlign: 'center', flex: 1, minWidth: '120px',
@@ -465,7 +475,7 @@ export default function TourFinder({ tours }: { tours: Tour[] }) {
               padding: '12px 28px', background: '#fff', border: '2px solid #e91e63', color: '#e91e63',
               borderRadius: '8px', fontWeight: 600, cursor: 'pointer', fontSize: '0.95rem',
             }}>Start Over</button>
-            <Link href="/tours/vatican-tours" style={{
+            <Link href="/" style={{
               padding: '12px 28px', background: '#f5f5f5', border: '2px solid #ddd', color: '#555',
               borderRadius: '8px', fontWeight: 600, textDecoration: 'none', fontSize: '0.95rem',
             }}>Browse All Tours</Link>
@@ -473,7 +483,7 @@ export default function TourFinder({ tours }: { tours: Tour[] }) {
         </div>
       )}
 
-      {/* SOCIAL PROOF */}
+      {/* TRUST BAR */}
       <div style={{
         marginTop: isMobile ? '24px' : '36px',
         padding: isMobile ? '12px 16px' : '14px 24px',
@@ -482,23 +492,14 @@ export default function TourFinder({ tours }: { tours: Tour[] }) {
         gap: isMobile ? '10px' : '14px', flexWrap: 'wrap',
         border: '2px solid #e8e0e3', boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
       }}>
-        <div style={{ display: 'flex' }}>
-          {['🇺🇸', '🇬🇧', '🇦🇺', '🇨🇦', '🇩🇪'].map((flag, i) => (
-            <span key={i} style={{
-              width: isMobile ? '26px' : '32px', height: isMobile ? '26px' : '32px',
-              borderRadius: '50%', border: '2px solid #fff',
-              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: isMobile ? '13px' : '16px', marginLeft: i > 0 ? '-8px' : '0',
-              background: '#f5f0f2', boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
-            }}>{flag}</span>
-          ))}
-        </div>
         <span style={{ fontSize: isMobile ? '0.78rem' : '0.9rem', color: '#444', fontWeight: 600, textAlign: 'center' }}>
-          Join 25,000+ travelers who found their perfect tour
+          Prices and ratings tracked twice weekly. Free cancellation on most tours.
         </span>
         <span style={{ color: '#f5a623', letterSpacing: '2px', fontSize: isMobile ? '0.9rem' : '1.1rem' }}>&#9733;&#9733;&#9733;&#9733;&#9733;</span>
       </div>
     </div>
   );
 }
+
+
 

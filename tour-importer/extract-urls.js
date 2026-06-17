@@ -1,6 +1,8 @@
 // extract-urls.js
-// Extrae URLs de tours desde una pagina de busqueda de GetYourGuide
-// Uso: node extract-urls.js "https://www.getyourguide.com/s?q=vatican+tours" [showMoreClicks]
+// Extrae URLs de tours desde una pagina de busqueda/categoria de GetYourGuide (Las Vegas l58)
+// Uso: node extract-urls.js "https://www.getyourguide.com/las-vegas-l58/..." [showMoreClicks] [--fresh]
+//   --fresh  => vacia urls.txt antes de escribir (para tirar UNA categoria limpia por vez)
+//   sin flag => acumula y deduplica contra lo que ya haya en urls.txt
 
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
@@ -10,9 +12,10 @@ puppeteer.use(StealthPlugin());
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-async function extractUrls(searchUrl, maxClicks) {
-  console.log('\nExtrayendo URLs de GetYourGuide...');
-  console.log(`URL: ${searchUrl}\n`);
+async function extractUrls(searchUrl, maxClicks, fresh) {
+  console.log('\nExtrayendo URLs de GetYourGuide (Las Vegas)...');
+  console.log(`URL: ${searchUrl}`);
+  console.log(`Modo: ${fresh ? 'FRESH (vacia urls.txt)' : 'ACUMULA + dedup'}\n`);
 
   let browser;
 
@@ -121,39 +124,27 @@ async function extractUrls(searchUrl, maxClicks) {
 
     console.log(`Total URLs encontradas: ${urls.length}`);
 
-    // Filtrar solo tours del Vatican (descartar actividades no relacionadas)
-    const vaticanUrls = urls.filter(url => {
+    // Filtrar: SOLO tours de Las Vegas (l58) y descartar productos en espanol (el site es 100% ingles)
+    const spanishLocale = /getyourguide\.com\/es(-[a-z]{2})?\//;          // prefijo de locale espanol: /es/ o /es-es/
+    const spanishSlug = /(en-espanol|espanol|español|in-spanish|-spanish-|-spanish\/)/; // idioma en el slug del producto
+
+    const vegasUrls = urls.filter(url => {
       const lower = url.toLowerCase();
-      // MUST contain a Vatican-related term
-      const include = ['vatican', 'sistine', 'st-peter', 'saint-peter', 'peters', 'basilica', 'museums'];
-      if (!include.some(word => lower.includes(word))) return false;
-      // MUST NOT be these types (non-museum/basilica activities)
-      const excluded = [
-        'segway', 'bike', 'bicycle', 'cycling',
-        'scooter', 'vespa', 'tuk-tuk', 'tuktuk',
-        'hop-on', 'hop-off', 'bus-tour',
-        'pub-crawl', 'bar-crawl', 'nightlife',
-        'airport', 'transfer',
-        'escape-game', 'escape-room',
-        'cooking', 'baking', 'pizza-making', 'pasta-making',
-        'flamenco', 'cabaret',
-        'kayak', 'sailing', 'boat-party',
-        'running-tour', 'jogging',
-        'photo-shoot', 'photoshoot',
-        'limousine', 'ferrari',
-        'theme-park'
-      ];
-      return !excluded.some(word => lower.includes(word));
+      // MUST: ser un tour de Las Vegas (location l58)
+      if (!lower.includes('las-vegas-l58')) return false;
+      // MUST NOT: ser un producto en espanol
+      if (spanishLocale.test(lower) || spanishSlug.test(lower)) return false;
+      return true;
     });
 
-    const filteredOut = urls.length - vaticanUrls.length;
-    console.log(`Filtradas: ${vaticanUrls.length} tours del Vatican (descartadas ${filteredOut} no relevantes)`);
+    const filteredOut = urls.length - vegasUrls.length;
+    console.log(`Filtradas: ${vegasUrls.length} tours de Las Vegas (descartadas ${filteredOut}: fuera de l58 o en espanol)`);
 
-    // Leer URLs existentes para evitar duplicados
+    // Leer URLs existentes para evitar duplicados (salvo modo --fresh)
     const outputPath = 'urls.txt';
     let existingUrls = [];
 
-    if (fs.existsSync(outputPath)) {
+    if (!fresh && fs.existsSync(outputPath)) {
       const existingContent = fs.readFileSync(outputPath, 'utf-8');
       existingUrls = existingContent
         .split('\n')
@@ -163,12 +154,12 @@ async function extractUrls(searchUrl, maxClicks) {
     }
 
     // Filtrar nuevas URLs (no duplicadas)
-    const newUrls = vaticanUrls.filter(url => !existingUrls.includes(url));
-    const duplicateCount = vaticanUrls.length - newUrls.length;
+    const newUrls = vegasUrls.filter(url => !existingUrls.includes(url));
+    const duplicateCount = vegasUrls.length - newUrls.length;
 
     console.log(`\nResultados:`);
     console.log(`   Total encontradas: ${urls.length}`);
-    console.log(`   Filtradas (solo Vatican): ${vaticanUrls.length}`);
+    console.log(`   Filtradas (Las Vegas, sin espanol): ${vegasUrls.length}`);
     if (duplicateCount > 0) {
       console.log(`   Ya existian: ${duplicateCount}`);
     }
@@ -180,19 +171,23 @@ async function extractUrls(searchUrl, maxClicks) {
         console.log(`   ${i + 1}. ${url}`);
       });
 
-      // Agregar nuevas URLs al archivo (mantener las existentes)
-      const allUrls = [...existingUrls, ...newUrls];
-      const content = `# URLs de GetYourGuide - Vatican Tours\n# Actualizado: ${new Date().toISOString()}\n# Total: ${allUrls.length} tours\n\n${allUrls.join('\n')}\n`;
+      // Escribir: en fresh arranca de cero; si no, mantiene las existentes
+      const allUrls = fresh ? newUrls : [...existingUrls, ...newUrls];
+      const content = `# URLs de GetYourGuide - Las Vegas Tours\n# Actualizado: ${new Date().toISOString()}\n# Total: ${allUrls.length} tours\n\n${allUrls.join('\n')}\n`;
 
       fs.writeFileSync(outputPath, content);
       console.log(`\nGuardadas en ${outputPath} (total: ${allUrls.length})`);
     } else {
       console.log('   No hay URLs nuevas para agregar');
+      if (fresh) {
+        // En fresh, dejar el archivo vacio si no hubo resultados nuevos
+        fs.writeFileSync(outputPath, `# URLs de GetYourGuide - Las Vegas Tours\n# Actualizado: ${new Date().toISOString()}\n# Total: 0 tours\n\n`);
+      }
     }
 
     console.log(`\nPara importar: node src/index.js --batch`);
 
-    return vaticanUrls;
+    return vegasUrls;
 
   } catch (error) {
     console.error('Error:', error.message);
@@ -205,18 +200,24 @@ async function extractUrls(searchUrl, maxClicks) {
 }
 
 // Main
-const searchUrl = process.argv[2];
-const maxClicks = parseInt(process.argv[3]) || 5;
+const args = process.argv.slice(2);
+const fresh = args.includes('--fresh');
+const positional = args.filter(a => !a.startsWith('--'));
+const searchUrl = positional[0];
+const maxClicks = parseInt(positional[1]) || 5;
 
 if (!searchUrl) {
-  console.log('Uso: node extract-urls.js "URL_DE_BUSQUEDA" [showMoreClicks]');
+  console.log('Uso: node extract-urls.js "URL_DE_BUSQUEDA_GYG" [showMoreClicks] [--fresh]');
   console.log('');
   console.log('El segundo argumento = cantidad EXACTA de clicks de "show more" (GYG carga ~25 por click).');
+  console.log('--fresh = vacia urls.txt antes de escribir (para tirar UNA categoria limpia por vez).');
+  console.log('');
   console.log('Ejemplos:');
-  console.log('  node extract-urls.js "https://www.getyourguide.com/s?q=vatican+tours" 5     # ~150 tours (5 show more)');
-  console.log('  node extract-urls.js "https://www.getyourguide.com/s?q=vatican+tours" 10    # ~275 tours (10 show more)');
+  console.log('  node extract-urls.js "https://www.getyourguide.com/las-vegas-l58/...helicopter..." 3 --fresh');
+  console.log('  node extract-urls.js "https://www.getyourguide.com/las-vegas-l58/...shows..." 5');
   console.log('  (se frena solo antes si se acaba el boton "show more")');
   process.exit(1);
 }
 
-extractUrls(searchUrl, maxClicks);
+extractUrls(searchUrl, maxClicks, fresh);
+// vegas-extract-urls

@@ -8,6 +8,7 @@ import Container from '@/app/components/Container'
 import Footer from '@/app/components/Footer'
 import Breadcrumbs from '@/app/components/Breadcrumbs'
 import RecommendedTours from '@/app/components/blog/RecommendedTours'
+import { getRecommendedTours } from '@/lib/getRecommendedTours';
 
 interface PageCategoryData {
   title: string
@@ -75,28 +76,7 @@ async function getCategoryWithPages(slug: string) {
   return await client.fetch(query, { slug })
 }
 
-async function getRecommendedTours() {
-  const query = `*[_type == "post" && discontinued != true] | order(_createdAt desc)[0...6] {
-    _id,
-    title,
-    slug,
-    mainImage {
-      asset-> {
-        url
-      },
-      alt
-    },
-    "heroGallery": heroGallery[0..0] {
-      asset-> { url },
-      alt
-    },
-    "body": body[0...1]
-  }`
 
-  return await client.fetch(query, {}, {
-    next: { revalidate: 1800 }
-  })
-}
 
 export async function generateMetadata({
   params

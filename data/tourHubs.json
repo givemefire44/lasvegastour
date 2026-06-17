@@ -1,65 +1,35 @@
 {
   "hubs": [
     {
-      "slug": "best-colosseum-underground-tours",
-      "title": "Colosseum Underground Tours — Hypogeum Access, Prices & Reviews",
-      "shortTitle": "Underground Tours",
-      "destination": "colosseum",
+      "slug": "sphere-las-vegas-shows",
+      "title": "The Sphere in Las Vegas — Shows, The Wizard of Oz and Immersive Experiences",
+      "shortTitle": "The Sphere",
+      "destination": "las-vegas",
       "matchKeywords": [
-        "underground",
-        "hypogeum",
-        "subterranean",
-        "beneath"
+        "sphere"
       ],
       "matchFeatures": {},
-      "icon": "🌑",
-      "type": "underground"
+      "icon": "🔮",
+      "type": "shows"
     },
     {
-      "slug": "colosseum-and-vatican-tours",
-      "title": "Colosseum & Vatican Tours — Compare Combo Options 2026",
-      "shortTitle": "Colosseum + Vatican Tours",
-      "destination": "colosseum-vatican",
-      "matchKeywords": ["vatican", "sistine", "st peter"],
-      "matchFeatures": {},
-      "icon": "⛪",
-      "type": "combo"
-    },
-    {
-      "slug": "best-colosseum-night-tours",
-      "title": "Colosseum Night Tours — After-Dark Access, Prices & Is the Evening Visit Worth It?",
-      "shortTitle": "Night Tours",
-      "destination": "colosseum",
+      "slug": "cirque-du-soleil-shows-las-vegas",
+      "title": "Cirque du Soleil Shows in Las Vegas — O, KÀ, Mystère, Mad Apple and MJ ONE Compared",
+      "shortTitle": "Cirque du Soleil Shows",
+      "destination": "las-vegas",
       "matchKeywords": [
-        "night",
-        "evening",
-        "after dark",
-        "twilight",
-        "moonlight"
+        "cirque",
+        "mad apple"
       ],
       "matchFeatures": {},
-      "icon": "🌙",
-      "type": "night"
+      "icon": "🎭",
+      "type": "shows"
     },
     {
-      "slug": "best-colosseum-arena-floor-tours",
-      "title": "Colosseum Arena Floor Tours — Gladiator Gate Access, Prices & Tips",
-      "shortTitle": "Arena Floor Tours",
-      "destination": "colosseum",
-      "matchKeywords": [
-        "arena floor",
-        "arena",
-        "gladiator floor"
-      ],
-      "matchFeatures": {},
-      "icon": "⭕",
-      "type": "arena"
-    },
-    {
-      "slug": "best-colosseum-private-tours",
-      "title": "Private Colosseum Tours — VIP Access, Flexible Schedules & Prices",
+      "slug": "private-las-vegas-tours",
+      "title": "Private Las Vegas Tours — VIP Access, Flexible Schedules & Prices",
       "shortTitle": "Private Tours",
-      "destination": "colosseum",
+      "destination": "las-vegas",
       "matchKeywords": [
         "private",
         "exclusive",
@@ -70,33 +40,16 @@
       "type": "private"
     },
     {
-      "slug": "best-colosseum-skip-the-line-tours",
-      "title": "Skip the Line Colosseum Tours — Priority Access, Prices & Booking Tips",
-      "shortTitle": "Skip the Line Tours",
-      "destination": "colosseum",
-      "matchKeywords": [
-        "skip the line",
-        "skip-the-line",
-        "priority access",
-        "fast track"
-      ],
-      "matchFeatures": {
-        "skipTheLine": true
-      },
-      "icon": "⏩",
-      "type": "skip-the-line"
-    },
-    {
-      "slug": "best-colosseum-small-group-tours",
-      "title": "Small Group Colosseum Tours — Max 6–15 Guests, Arena Access & Reviews",
+      "slug": "small-group-las-vegas-tours",
+      "title": "Small Group Las Vegas Tours — Compare Sizes, Inclusions & Reviews",
       "shortTitle": "Small Group Tours",
-      "destination": "colosseum",
+      "destination": "las-vegas",
       "matchKeywords": [
         "small group",
         "small-group",
-        "max 15",
-        "max 10",
-        "max 7"
+        "intimate",
+        "max 6",
+        "max 14"
       ],
       "matchFeatures": {
         "smallGroupAvailable": true
@@ -105,105 +58,178 @@
       "type": "small-group"
     },
     {
-      "slug": "best-colosseum-guided-tours",
-      "title": "Guided Colosseum Tours — Archaeologist-Led Experiences Compared",
-      "shortTitle": "Guided Tours",
-      "destination": "colosseum",
+      "slug": "las-vegas-food-drink-tours",
+      "title": "Las Vegas Food & Drink Tours — Tastings, Cocktails & Culinary Experiences",
+      "shortTitle": "Food & Drink Tours",
+      "destination": "las-vegas",
       "matchKeywords": [
-        "guided",
-        "guide",
-        "expert guide",
-        "archaeologist"
+        "food",
+        "wine",
+        "tasting",
+        "brewery",
+        "cocktail",
+        "culinary",
+        "dining"
       ],
       "matchFeatures": {},
-      "icon": "🧑‍🏫",
-      "type": "guided"
+      "icon": "🍷",
+      "type": "food-drink"
     },
     {
-      "slug": "best-roman-forum-tours",
-      "title": "Roman Forum Tours — Skip-the-Line Access, Prices & Guided Options",
-      "shortTitle": "Roman Forum Tours",
-      "destination": "roman-forum",
-      "matchKeywords": [
-        "roman forum",
-        "forum"
-      ],
-      "matchFeatures": {},
-      "icon": "🏛️",
-      "type": "destination"
-    },
-    {
-      "slug": "best-palatine-hill-tours",
-      "title": "Palatine Hill Tours — Views, History & Ticket Guide",
-      "shortTitle": "Palatine Hill Tours",
-      "destination": "palatine-hill",
-      "matchKeywords": ["palatine"],
-      "matchFeatures": {},
-      "icon": "⛰️",
-      "type": "destination"
-    },
-    {
-      "slug": "colosseum-full-experience-tours",
-      "title": "Colosseum Full Experience Tours — Underground, Arena & More",
-      "shortTitle": "Full Experience Tours",
-      "destination": "colosseum",
-      "matchKeywords": ["underground", "VIP", "exclusive", "complete"],
-      "matchFeatures": {},
-      "icon": "🎟️",
-      "type": "full-experience"
-    },
-    {
-      "slug": "best-colosseum-underground-and-arena-tours",
-      "title": "Colosseum Underground & Arena Floor Tours — Combined Access, Prices & Reviews",
-      "shortTitle": "Underground + Arena Tours",
-      "destination": "colosseum",
-      "matchKeywords": [
-        "underground",
-        "arena",
-        "hypogeum",
-        "arena floor",
-        "underground and arena",
-        "full access"
-      ],
-      "matchFeatures": {},
-      "icon": "🔥",
-      "type": "underground-arena"
-    },
-    {
-      "slug": "best-colosseum-tours-under-100",
-      "title": "Best Colosseum Tours Under $100 — Budget-Friendly Options Compared",
+      "slug": "best-las-vegas-tours-under-100",
+      "title": "Best Las Vegas Tours Under $100 — Budget-Friendly Options Compared",
       "shortTitle": "Tours Under $100",
-      "destination": "colosseum",
+      "destination": "las-vegas",
       "matchKeywords": [],
-      "matchPrice": { "max": 100 },
       "matchFeatures": {},
+      "matchPrice": {
+        "max": 100
+      },
       "icon": "💰",
       "type": "budget"
     },
-  
     {
-      "slug": "colosseum-budget-tours-under-50",
-      "title": "Colosseum Tours Under $50 – Best Budget Options, What's Included & Prices",
+      "slug": "las-vegas-tours-under-50",
+      "title": "Las Vegas Tours Under $50 — Best Budget Options & What's Included",
       "shortTitle": "Tours Under $50",
-      "destination": "Colosseum, Rome",
+      "destination": "las-vegas",
       "matchKeywords": [],
       "matchFeatures": {},
-      "matchPrice": { "max": 50 },
-      "icon": "💰",
+      "matchPrice": {
+        "max": 50
+      },
+      "icon": "💵",
       "type": "budget"
     },
     {
-      "slug": "colosseum-audio-self-guided-tours",
-      "title": "Colosseum Self-Guided & Audio Tours – Apps, Audio Guides & Entry Tickets",
-      "shortTitle": "Audio & Self-Guided",
-      "destination": "Colosseum, Rome",
-      "matchKeywords": ["audio guide", "audio-guide", "self-guided", "self guided", "audio tour", "audioguide", "entry ticket", "admission ticket", "ticket only", "app"],
+      "slug": "las-vegas-sunset-tours",
+      "title": "Las Vegas Sunset Tours — Golden Hour Helicopter & Canyon Trips Compared",
+      "shortTitle": "Sunset Tours",
+      "destination": "las-vegas",
+      "matchKeywords": [
+        "sunset",
+        "golden hour",
+        "sundown",
+        "twilight"
+      ],
       "matchFeatures": {},
-      "icon": "🎧",
-      "type": "self-guided"
+      "icon": "🌅",
+      "type": "sunset"
+    },
+    {
+      "slug": "las-vegas-combo-tours",
+      "title": "Las Vegas Combo Tours — Two Destinations in One Trip, Compared",
+      "shortTitle": "Combo Tours",
+      "destination": "las-vegas",
+      "matchKeywords": [
+        "combo",
+        "combination",
+        "and hoover dam",
+        "two destinations"
+      ],
+      "matchFeatures": {},
+      "icon": "🔗",
+      "type": "combo"
+    },
+    {
+      "slug": "grand-canyon-west-rim-tours",
+      "title": "Grand Canyon West Rim Tours from Las Vegas — Skywalk, Prices & Is It Worth It?",
+      "shortTitle": "West Rim Tours",
+      "destination": "grand-canyon",
+      "matchKeywords": [
+        "west rim",
+        "skywalk",
+        "hualapai",
+        "eagle point",
+        "guano point"
+      ],
+      "matchFeatures": {},
+      "icon": "🌄",
+      "type": "destination"
+    },
+    {
+      "slug": "grand-canyon-south-rim-tours",
+      "title": "Grand Canyon South Rim Tours from Las Vegas — National Park Access & Prices",
+      "shortTitle": "South Rim Tours",
+      "destination": "grand-canyon",
+      "matchKeywords": [
+        "south rim",
+        "national park",
+        "mather point",
+        "grand canyon village"
+      ],
+      "matchFeatures": {},
+      "icon": "🏞️",
+      "type": "destination"
+    },
+    {
+      "slug": "grand-canyon-helicopter-tours",
+      "title": "Grand Canyon Helicopter Tours from Las Vegas — Landing, Champagne & Prices",
+      "shortTitle": "Grand Canyon Helicopter",
+      "destination": "grand-canyon",
+      "matchKeywords": [
+        "grand canyon helicopter",
+        "canyon helicopter",
+        "helicopter landing",
+        "champagne landing",
+        "canyon floor"
+      ],
+      "matchFeatures": {},
+      "icon": "🚁",
+      "type": "helicopter"
+    },
+    {
+      "slug": "antelope-canyon-horseshoe-bend-tours",
+      "title": "Antelope Canyon & Horseshoe Bend Tours from Las Vegas — Prices & What to Expect",
+      "shortTitle": "Antelope & Horseshoe Bend",
+      "destination": "antelope-canyon",
+      "matchKeywords": [
+        "antelope",
+        "horseshoe bend",
+        "lower antelope",
+        "upper antelope",
+        "page arizona"
+      ],
+      "matchFeatures": {},
+      "icon": "🏜️",
+      "type": "destination"
+    },
+    {
+      "slug": "multi-day-tours-road-trips-las-vegas",
+      "title": "Multi-Day Tours & Road Trips from Las Vegas — Utah Parks, Antelope & More",
+      "shortTitle": "Multi-Day & Road Trips",
+      "destination": "multi-day",
+      "matchKeywords": [
+        "multi-day",
+        "multiday",
+        "overnight",
+        "road trip",
+        "2-day",
+        "3-day",
+        "2 day",
+        "3 day"
+      ],
+      "matchFeatures": {},
+      "icon": "🗺️",
+      "type": "multi-day"
+    },
+    {
+      "slug": "las-vegas-nature-parks-tours",
+      "title": "Las Vegas Nature & Parks Tours — Valley of Fire, Red Rock & Death Valley",
+      "shortTitle": "Nature & Parks",
+      "destination": "nature-parks",
+      "matchKeywords": [
+        "valley of fire",
+        "red rock",
+        "death valley",
+        "zion",
+        "bryce",
+        "mojave",
+        "spring mountain"
+      ],
+      "matchFeatures": {},
+      "icon": "🏔️",
+      "type": "nature"
     }
-
-
-
   ]
 }
