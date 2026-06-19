@@ -36,6 +36,13 @@ export const categoryType = defineType({
     // IMAGEN PRINCIPAL (HERO)
     // ========================================
     defineField({
+      name: 'showHeroImage',
+      title: 'Show hero image',
+      type: 'boolean',
+      description: 'If off, the category page shows no hero banner (avoids an empty container when there is no image).',
+      initialValue: true,
+    }),
+    defineField({
       name: 'image',
       title: 'Hero Image',
       type: 'image',
@@ -193,6 +200,7 @@ export const categoryType = defineType({
       of: [
         {
           type: 'object',
+          name: 'faq',
           title: 'FAQ Item',
           fields: [
             {

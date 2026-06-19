@@ -118,9 +118,9 @@ const getDestinations = async () => {
 export async function generateMetadata(): Promise<Metadata> {
   const homepage = await getHomepage()
   
-  const title = homepage?.seo?.title || 'Rome Tours & Experiences | LasVegasTour'
-  const description = homepage?.seo?.description || 'Discover authentic Rome with skip-the-line tours, expert guides, and unforgettable experiences. Book your perfect Roman adventure today.'
-  const keywords = homepage?.seo?.keywords || ['Rome tours', 'Colosseum tours', 'Vatican tours', 'skip the line', 'Rome experiences']
+  const title = homepage?.seo?.title || 'Las Vegas Tours, Shows & Day Trips | LasVegasTour'
+  const description = homepage?.seo?.description || 'Discover the best of Las Vegas with top-rated tours, shows, and day trips to the Grand Canyon and Hoover Dam. Book your perfect Vegas experience today.'
+  const keywords = homepage?.seo?.keywords || ['Las Vegas tours', 'Grand Canyon tours', 'Hoover Dam tours', 'Las Vegas shows', 'things to do in Las Vegas']
   
   // Imagen social optimizada
   const socialImage = homepage?.seo?.socialImage 
@@ -211,7 +211,7 @@ export default async function HomePage() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Colosseum Roman",
+    "name": "LasVegasTour",
     "alternateName": "lasvegastour.com",
     "url": "https://lasvegastour.com",
     "logo": {
@@ -220,14 +220,14 @@ export default async function HomePage() {
       "width": 250,
       "height": 60
     },
-    "description": "Expert curators of the best Colosseum tours and comprehensive Rome travel guides since 2006.",
+    "description": "Expert curators of the best Las Vegas tours, shows, and day trips since 2006.",
     "foundingDate": "2006",
     
     "founder": {
       "@type": "Person",
       "@id": "https://intercoper.com/author/mario-dalo#person",
       "name": "Mario Dalo",
-      "jobTitle": "Founder & Rome Travel Curator",
+      "jobTitle": "Founder of Intercoper",
       "url": "https://intercoper.com/author/mario-dalo",
       "sameAs": [
         "https://www.linkedin.com/in/mariodalo/",
@@ -267,13 +267,13 @@ export default async function HomePage() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Colosseum Roman",
+    "name": "LasVegasTour",
     "alternateName": "lasvegastour.com",
     "url": "https://lasvegastour.com",
-    "description": "Your expert guide to Colosseum tours and Rome travel planning",
+    "description": "Your expert guide to Las Vegas tours, shows, and day trips",
     "publisher": {
       "@type": "Organization",
-      "name": "Colosseum Roman",
+      "name": "LasVegasTour",
       "logo": {
         "@type": "ImageObject",
         "url": "https://lasvegastour.com/logo.png"
@@ -293,8 +293,8 @@ export default async function HomePage() {
   const featuredToursSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "name": "Featured Colosseum Tours",
-    "description": "Top-rated Colosseum tours handpicked by our experts",
+    "name": "Featured Las Vegas Tours",
+    "description": "Top-rated Las Vegas tours handpicked by our experts",
     "numberOfItems": Math.min(tours.length, 10),
     "itemListElement": tours.slice(0, 10).map((tour: any, index: number) => ({
       "@type": "ListItem",

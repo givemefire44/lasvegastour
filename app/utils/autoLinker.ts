@@ -211,7 +211,7 @@ const KEYWORDS_CONFIG: Record<string, KeywordConfig> = {
   'roman empire': {
     maxLinks: 1,
     priority: 5,
-    variations: ['ancient rome', 'imperial rome']
+    variations: ['ancient ', 'imperial rome']
   },
 
   // 🏷️ BRANDED ANCHORS

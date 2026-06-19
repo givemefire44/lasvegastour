@@ -4,6 +4,7 @@ import { urlFor } from '@/sanity/lib/image';
 import Image from 'next/image';
 import Container from '@/app/components/Container';
 import RecommendedTours from '@/app/components/blog/RecommendedTours';
+import HeroGallery from '@/app/components/blog/HeroGallery';
 import Footer from '@/app/components/Footer';
 import Breadcrumbs from '@/app/components/Breadcrumbs';
 import CategoryFAQ from '@/app/components/CategoryFAQ';
@@ -38,6 +39,7 @@ async function getCategory(slug: string) {
       alt,
       heading
     },
+    showHeroImage,
     pageContent{
       heroTitle,
       heroSubtitle,
@@ -194,6 +196,7 @@ export default async function ToursCategory({ params }: PageProps) {
   }
   
   const posts = await getPostsByCategory(categorySlug);
+  const heroMosaicImages = (posts || []).map((p: any) => p.heroGallery?.[0]).filter(Boolean).slice(0, 5);
   const recommendedTours = await getRecommendedTours();
 
   // FAQs desde Sanity (con fallback vacío)
@@ -213,7 +216,7 @@ export default async function ToursCategory({ params }: PageProps) {
     
     "publisher": {
       "@type": "Organization",
-      "name": "Colosseum Roman",
+      "name": "LasVegasTour",
       "url": "https://lasvegastour.com",
       "logo": {
         "@type": "ImageObject",
@@ -269,7 +272,7 @@ export default async function ToursCategory({ params }: PageProps) {
             
             "provider": {
               "@type": "Organization",
-              "name": "Colosseum Roman",
+              "name": "LasVegasTour",
               "url": "https://lasvegastour.com"
             },
             
@@ -374,53 +377,25 @@ export default async function ToursCategory({ params }: PageProps) {
           </div>
         )}
       </Container>
+      {category.showHeroImage !== false && heroMosaicImages.length > 0 && (
       <Container>
-        <div style={{
-          position: 'relative',
-          height: '40vh',
-          minHeight: '300px',
-          overflow: 'hidden',
-          marginBottom: '3rem',
-          borderRadius: '12px'
-        }}>
-          <div style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage: category.image?.asset?.url ? 
-              `url(${urlFor(category.image).width(1200).height(600).format('webp').quality(85).url()})` : 
-              'linear-gradient(135deg, #8816c0 0%, #8f3985 100%)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }} />
+        <div style={{ marginBottom: '3rem' }}>
+          <HeroGallery post={{ heroGallery: heroMosaicImages, title: category.title }} />
 
           {category.pageContent?.highlights && category.pageContent.highlights.length > 0 && (
             <div style={{
-              position: 'absolute',
-              bottom: '20px',
-              left: '20px',
-              right: '20px',
+              marginTop: '16px',
               background: 'rgba(255, 255, 255, 0.95)',
               padding: '20px',
               borderRadius: '12px',
-              backdropFilter: 'blur(10px)',
               boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
             }}>
-              <div style={{
-                display: 'flex',
-                justifyContent: 'flex-start',
-                gap: '15px',
-                flexWrap: 'wrap'
-              }}>
+              <div style={{ display: 'flex', justifyContent: 'flex-start', gap: '15px', flexWrap: 'wrap' }}>
                 {category.pageContent.highlights.map((highlight: any, index: number) => (
                   <div key={index} style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    background: '#f8f9fa',
-                    padding: '8px 16px',
-                    borderRadius: '20px',
-                    border: '1px solid #e9ecef',
-                    fontSize: '0.9rem'
+                    display: 'flex', alignItems: 'center', gap: '6px',
+                    background: '#f8f9fa', padding: '8px 16px',
+                    borderRadius: '20px', border: '1px solid #e9ecef', fontSize: '0.9rem'
                   }}>
                     <span style={{ fontSize: '1rem' }}>{highlight.icon}</span>
                     <span style={{ fontWeight: '600', color: '#333' }}>{highlight.title}</span>
@@ -431,13 +406,14 @@ export default async function ToursCategory({ params }: PageProps) {
           )}
         </div>
       </Container>
+      )}
 
       <Container>
-        <div style={{ padding: '60px 0' }}>
+        <div style={{ padding: '20px 0 60px' }}>
           <h2 style={{
-            fontSize: '2rem',
+            fontSize: '1.4rem',
             fontWeight: '700',
-            marginBottom: '40px',
+            marginBottom: '20px',
             color: '#333'
           }}>
             Continue planning

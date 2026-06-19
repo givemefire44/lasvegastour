@@ -114,8 +114,8 @@ export default function TourPageClient({
         <Breadcrumbs items={[
   { label: 'Home', href: '/' },
   { 
-    label: 'Colosseum Tours', 
-    href: '/tours/colosseum' 
+    label: post.categoryTitle || 'Tours', 
+    href: post.categorySlug ? `/tours/${post.categorySlug}` : '/tours' 
   },
   { label: post.title, isActive: true }
 ]} />

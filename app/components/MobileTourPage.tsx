@@ -19,6 +19,8 @@ interface MobileTourPageProps {
       title?: string;
       slug?: { current: string };
     };
+    categorySlug?: string;
+    categoryTitle?: string;
     heroGallery?: Array<{
       asset: { 
         url?: string;
@@ -148,8 +150,8 @@ export default function MobileTourPage({
         <div className="mobile-breadcrumbs">
           <Breadcrumbs items={[
             { label: 'Home', href: '/' },
-            { label: 'Tours', href: '/tours/colosseum' },
-            { label: 'Current', isActive: true }
+            { label: post.categoryTitle || 'Tours', href: post.categorySlug ? `/tours/${post.categorySlug}` : '/tours' },
+            { label: post.title, isActive: true }
           ]} 
           noSchema={true}
           />

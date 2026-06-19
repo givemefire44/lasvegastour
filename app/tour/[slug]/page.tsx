@@ -232,6 +232,7 @@ export default async function TourPage({ params }: { params: Promise<{ slug: str
       title,
       slug,
       "categorySlug": category->slug.current,
+      "categoryTitle": category->title,
       discontinued,
       redirectTo,
       seoTitle,
@@ -294,7 +295,7 @@ export default async function TourPage({ params }: { params: Promise<{ slug: str
 
   if (post?.discontinued) {
     const hub = findHubForTour(post);
-    permanentRedirect(post.redirectTo || (hub ? `/${hub.slug}` : '/tours/colosseum'));
+    permanentRedirect(post.redirectTo || (hub ? `/${hub.slug}` : '/tours'));
   }
   
 

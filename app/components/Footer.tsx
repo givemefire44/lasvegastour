@@ -135,7 +135,7 @@ export default function Footer() {
             <p className="footer-description">
   LasVegasTour.com is an independent editorial site. We do not sell tickets or tours — 
   all bookings are processed directly by the tour operator (Viator/GetYourGuide) at their listed prices 
-  with no added markup. For official €18 standard entry tickets: ticketing.colosseo.it
+  with no added markup. 
 </p>
             <div className="footer-contact">
               <p>📧 info@lasvegastour.com</p>

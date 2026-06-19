@@ -133,7 +133,7 @@ function getAuthorSchema(authorType?: string): Person | Organization {
         '@id': 'https://intercoper.com/author/mario-dalo#person',
         name: 'Mario Dalo',
         url: 'https://intercoper.com/author/mario-dalo',
-        jobTitle: 'Founder & Rome Expert',
+        jobTitle: 'Founder of Intercoper',
         sameAs: [
           'https://www.linkedin.com/in/mariodalo/',
           'https://mariodalo.com',
@@ -152,7 +152,7 @@ function getAuthorSchema(authorType?: string): Person | Organization {
     default:
       return {
         '@type': 'Organization',
-        name: 'Colosseum Roman',
+        name: 'LasVegasTour',
         url: 'https://lasvegastour.com'
       };
   }
@@ -164,7 +164,7 @@ function getAuthorSchema(authorType?: string): Person | Organization {
 function getPublisherSchema(): Organization {
   return {
     '@type': 'Organization',
-    name: 'Colosseum Roman',
+    name: 'LasVegasTour',
     logo: {
       '@type': 'ImageObject',
       url: 'https://lasvegastour.com/logo.png'
@@ -186,24 +186,24 @@ export function generatePageSchema(pageData: PageData, baseUrl = 'https://lasveg
       '@type': 'AboutPage',
       mainEntity: {
         '@type': 'Organization',
-        name: 'Colosseum Roman',
+        name: 'LasVegasTour',
         alternateName: 'lasvegastour.com',
         url: 'https://lasvegastour.com',
         logo: 'https://lasvegastour.com/logo.png',
         foundingDate: '2006',
-        description: 'Expert curators of the best Colosseum tours and comprehensive Rome travel guides. Independent affiliate partner of GetYourGuide and Viator.',
+        description: 'Expert curators of the best Las Vegas tours, shows, and day trips. Independent affiliate partner of Viator.',
 
         founder: {
           '@type': 'Person',
           '@id': 'https://intercoper.com/author/mario-dalo#person',
           name: 'Mario Dalo',
           url: 'https://intercoper.com/author/mario-dalo',
-          jobTitle: 'Founder & Rome Travel Curator',
+          jobTitle: 'Founder of Intercoper',
           nationality: 'Argentine',
           knowsAbout: [
-            'Roman Colosseum',
-            'Rome Tourism',
-            'Historical Tours',
+            'Travel Content Curation',
+            'Digital Travel Guides',
+            'Tour Affiliate Publishing',
             'Travel Planning'
           ],
           sameAs: [
@@ -233,17 +233,17 @@ export function generatePageSchema(pageData: PageData, baseUrl = 'https://lasveg
 
         areaServed: {
           '@type': 'Place',
-          name: 'Rome, Italy'
+          name: 'Las Vegas, Nevada'
         },
 
         knowsAbout: [
-          'Roman Colosseum',
-          'Ancient Rome History',
-          'Rome Tourism',
-          'Historical Tours',
-          'Travel Planning',
-          'Roman Forum',
-          'Palatine Hill'
+          'Las Vegas Tours',
+          'Grand Canyon Tours',
+          'Hoover Dam Tours',
+          'Las Vegas Shows',
+          'Helicopter Tours',
+          'Day Trips from Las Vegas',
+          'Travel Planning'
         ],
 
         sameAs: [

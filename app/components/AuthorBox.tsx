@@ -20,8 +20,8 @@ interface AuthorBoxProps {
 const AUTHORS: Record<string, AuthorInfo> = {
   'mario-dalo': {
     name: 'Mario Dalo',
-    role: 'Founder & Rome Expert',
-    bio: "I've spent years researching Rome's history and the Colosseum. I created LasVegasTour to help travelers experience the real Rome, not just the tourist surface.",
+    role: 'Founder of Intercoper',
+    bio: "I've spent years building independent travel guides through Intercoper. I created LasVegasTour to help travelers find the best tours, shows, and day trips in Las Vegas - reviewed and compared, not just the tourist surface.",
     links: {
       profile: '/about-us',
       linkedin: 'https://www.linkedin.com/in/mariodalo/',

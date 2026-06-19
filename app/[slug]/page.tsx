@@ -433,7 +433,7 @@ if (isHubSlug(slug)) {
   const title = page.seoTitle || page.seo?.metaTitle || `${page.title} | LasVegasTour`
   const description = page.seoDescription || page.seo?.metaDescription || 
     page.heroContent?.excerpt || `Learn more about ${page.title} at LasVegasTour`
-  const keywords = page.seoKeywords || [page.title.toLowerCase(), 'LasVegasTour', 'rome tours']
+  const keywords = page.seoKeywords || [page.title.toLowerCase(), 'LasVegasTour', 'las vegas tours']
 
   // 🚀 IMAGEN SOCIAL OPTIMIZADA
   const socialImage = page.seoImage 
@@ -548,7 +548,7 @@ export default async function StaticPage({ params }: { params: Promise<{ slug: s
           '@id': `${canonicalUrl}#breadcrumb`,
           itemListElement: [
             { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
-            { '@type': 'ListItem', position: 2, name: 'Colosseum Tours', item: `${SITE_URL}/tours/colosseum` },
+            { '@type': 'ListItem', position: 2, name: 'Tours', item: `${SITE_URL}/tours` },
             { '@type': 'ListItem', position: 3, name: hub.shortTitle, item: canonicalUrl }
           ]
         };
@@ -570,8 +570,8 @@ export default async function StaticPage({ params }: { params: Promise<{ slug: s
         },
         about: {
           '@type': 'TouristDestination',
-          name: 'Colosseum',
-          description: `${hub.shortTitle} at the Roman Colosseum`,
+          name: 'Las Vegas',
+          description: `${hub.shortTitle} in Las Vegas`,
         },
         breadcrumb: { '@id': `${canonicalUrl}#breadcrumb` },
         ...(itemListElements.length > 0 ? { mainEntity: { '@id': `${canonicalUrl}#itemlist` } } : {}),
