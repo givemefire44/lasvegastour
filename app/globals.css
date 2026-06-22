@@ -35,7 +35,7 @@ body {
 
 /* HERO SECTION */
 .hero-section {
-  background: linear-gradient(135deg, #8816c0 0%, #8f3985 100%);
+ background: url('/images/lasvegas.webp') center center/cover no-repeat;
   padding: 48px 0 32px 0;
   border-radius: 32px;
   box-shadow: 0 8px 32px rgba(80,0,80,0.10);
@@ -548,8 +548,9 @@ body {
 .testimonial-carousel blockquote {
   font-size: 1.3rem;
   font-style: italic;
-  color: #7e2fbf;
+  color: #0F4C81;
   margin: 0;
+  font-weight: 400;
 }
 
 .testimonial-carousel-author {
@@ -575,7 +576,7 @@ body {
 }
 
 .testimonial-carousel-dot.active {
-  background: #7e2fbf;
+  background: #0F4C81;
 }
 
 @media (max-width: 600px) {
@@ -824,11 +825,11 @@ body {
   /* ImpactBanner styles */
 /* ImpactBanner styles (recto, dentro del container) */
 .impact-banner {
-  background: #7e2fbf;
+  background: #0F4C81;
   color: #FFD600;
   width: 100%;
   margin: 0 auto 0 auto;
-  padding: 54px 0 38px 0;
+  padding: 20px 0 8px 0;
   text-align: center;
   display: flex;
   justify-content: center;

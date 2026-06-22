@@ -4,16 +4,16 @@ export default function Hero() {
   return (
     <section className="hero-section">
       <div className="hero-container">
-        <h1 className="hero-title"> Choose your Roman Colosseum Tour.</h1>
+        <h1 className="hero-title"> Choose your Las Vegas Tour.</h1>
         <h2 className="hero-subtitle">
-        Pick your tour and we&#39;ll show the way!
+        We don't describe tours. We explain decisions.!
         </h2>
         <BubbleComments
           comments={[
-            { text: "Go to the Colosseum?" },
-            { text: "Booked your Ticket?" },
-            { text: "Roman Forum today?" },
-            { text: "Palatine Hill Now?" }
+            { text: "Day Tour?" },
+            { text: "Book Tickets!" },
+            { text: "Grand Canyon today?" },
+            { text: "Helicopter tour?" }
           ]}
         />
         <div className="city-search-container">

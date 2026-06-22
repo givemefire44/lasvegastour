@@ -327,9 +327,9 @@ export default async function HomePage() {
       />
 
       {/* Hero - Crítico, renderizado inmediato */}
-      <Container>
+     
         <HeroHostel />
-      </Container>
+      
       
       {/* Above the fold - Datos pre-cargados */}
       <Container>

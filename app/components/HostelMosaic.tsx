@@ -35,10 +35,10 @@ export default function HostelMosaic({ mosaicData = [] }: { mosaicData?: any[] }
       <div className="hostel-mosaic-container">
         <div className="hostel-mosaic-info">
           <h2>
-            <span className="highlight">Unforgettable tours and excursions at the Roman Colosseum.</span>
+            <span className="highlight">Find the Best Tours & Experiences in Las Vegas.</span>
           </h2>
           <div className="hostel-mosaic-info-description">
-            Don't forget to get your ticket for the Roman Colosseum.
+          We research, compare and curate Las Vegas tours, shows and day trips so you can book with confidence.
           </div>
         </div>
         <div className="hostel-mosaic-list">
