@@ -7,14 +7,13 @@ import { urlFor } from '@/sanity/lib/image'
 import RecommendedTours from '@/app/components/blog/RecommendedTours'
 import Footer from '@/app/components/Footer'
 import Container from '@/app/components/Container'
-import UnifiedAutoLinker from '@/app/components/UnifiedAutoLinker'
+
 import Breadcrumbs from '@/app/components/Breadcrumbs'
 import SchemaOrgHead from '@/app/components/SchemaOrgHead'
 import TourFinderButton from '@/app/components/TourFinderButton';
 import TableOfContents from '@/app/components/TableOfContents';
 import AuthorBox from '@/app/components/AuthorBox';
 import HubChips from '@/app/components/HubChips';
-import ResearchBadge from '@/app/components/ResearchBadge';
 
 // Interface actualizada con richSnippets y sidebarWidget
 interface SanityPage {
@@ -827,13 +826,9 @@ export default function StaticPageClient({
       ),
       // PÁRRAFOS CON AUTO-LINKS
       normal: ({ children }: any) => (
-        <UnifiedAutoLinker 
-          pageSlug={page.slug.current}
-          pageType="article"
-          disabled={isExcludedPage}
-        >
-          {children}
-        </UnifiedAutoLinker>
+        <p className="content-paragraph">
+        {children}
+      </p>
       ),
       blockquote: ({ children }: any) => (
         <blockquote style={{
@@ -847,13 +842,9 @@ export default function StaticPageClient({
           backgroundColor: '#f9f9f9',
           borderRadius: '0 8px 8px 0'
         }}>
-          <UnifiedAutoLinker 
-            pageSlug={page.slug.current}
-            pageType="article"
-            disabled={isExcludedPage}
-          >
+          <p className="content-paragraph">
             {children}
-          </UnifiedAutoLinker>
+          </p>
         </blockquote>
       )
     }
@@ -934,9 +925,7 @@ export default function StaticPageClient({
       <SchemaOrgHead pageData={pageDataForSchema} relatedArticles={relatedArticles} />
 
       {/* TÍTULO ARRIBA - EXACTO COMO TOUR PAGE */}
-      <Container>
-      <ResearchBadge isPillar={page.isPillar} parentPillar={page.parentPillar} />
-        <h1 style={{ 
+      <Container>        <h1 style={{ 
           fontSize: 'clamp(2rem, 5vw, 3rem)', 
           fontWeight: 'bold', 
           marginBottom: '1rem',
@@ -1309,7 +1298,7 @@ export default function StaticPageClient({
                 </p>
                 
                 <a 
-                  href={page.pageSettings?.ctaUrl || '/tours/colosseum'}
+                  href={page.pageSettings?.ctaUrl || '/tours'}
                   target={page.pageSettings?.ctaUrl?.startsWith('http') ? '_blank' : '_self'}
                   rel={page.pageSettings?.ctaUrl?.startsWith('http') ? 'noopener noreferrer' : undefined}
                   style={{
@@ -1441,7 +1430,7 @@ export default function StaticPageClient({
                       <span>🏛️</span> Homepage
                     </a>
                     
-                    <a href="/tours/colosseum" style={{
+                    <a href="/tours" style={{
                       color: '#8b5cf6',
                       textDecoration: 'none',
                       fontWeight: '500',
@@ -1450,7 +1439,7 @@ export default function StaticPageClient({
                       alignItems: 'center',
                       gap: '8px'
                     }}>
-                      <span>🏟️</span> Colosseum Tours
+                      <span>🏟️</span> Browse Tours
                     </a>
                     
                     <a href="/about-us" style={{
@@ -1477,7 +1466,7 @@ export default function StaticPageClient({
                       <span>📧</span> Contact
                     </a>
 
-                    <a href="https://gyg.me/cSBzRnwb" target="_blank" rel="noopener noreferrer" style={{
+                    <a href="/tours" style={{
                       color: '#8b5cf6',
                       textDecoration: 'none',
                       fontWeight: '500',
@@ -1505,7 +1494,7 @@ export default function StaticPageClient({
       {/* BOTÓN FLOTANTE - SOLO EN MOBILE (estilo tour page) */}
       <div className="mobile-floating-cta">
         <a 
-          href={page.pageSettings?.ctaUrl || '/tours/colosseum'}
+          href={page.pageSettings?.ctaUrl || '/tours'}
           target={page.pageSettings?.ctaUrl?.startsWith('http') ? '_blank' : '_self'}
           rel={page.pageSettings?.ctaUrl?.startsWith('http') ? 'noopener noreferrer' : undefined}
           className="cta-button"

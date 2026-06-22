@@ -1,16 +1,12 @@
 // app/utils/schemaGenerator.ts
 
 // ============================================================
-// CONSTANTS — Anclas canónicas del programa Research
+// CONSTANTS â€” Anclas canÃ³nicas del programa Research
 // ============================================================
 export const SITE_URL = 'https://lasvegastour.com';
-export const RESEARCH_PAGE_URL = `${SITE_URL}/colosseum-research`;
-export const RESEARCH_DATASET_ID = `${RESEARCH_PAGE_URL}#dataset`;
-export const RESEARCH_COLLECTION_ID = `${RESEARCH_PAGE_URL}#collection`;
-export const COLOSSEUM_ENTITY_ID = `${SITE_URL}/#colosseum`;
 export const INTERCOPER_ID = 'https://intercoper.com/#organization';
 
-// Tipos específicos para Schema.org
+// Tipos especÃ­ficos para Schema.org
 interface ImageObject {
   '@type': 'ImageObject';
   url: string;
@@ -52,7 +48,7 @@ interface BaseSchemaProperties {
   publisher?: Organization;
 }
 
-// Schemas específicos con sus propiedades únicas
+// Schemas especÃ­ficos con sus propiedades Ãºnicas
 interface ArticleSchema extends BaseSchemaProperties {
   '@type': 'Article';
   headline: string;
@@ -123,7 +119,7 @@ interface PageData {
 }
 
 // ========================================
-// HELPER: Generar autor según configuración
+// HELPER: Generar autor segÃºn configuraciÃ³n
 // ========================================
 function getAuthorSchema(authorType?: string): Person | Organization {
   switch (authorType) {
@@ -269,7 +265,7 @@ export function generatePageSchema(pageData: PageData, baseUrl = 'https://lasveg
   // DETECTAR SCHEMA TYPE DESDE RICH SNIPPETS (prioridad) O SCHEMA TYPE MANUAL
   const schemaType = pageData.richSnippets?.schemaType || pageData.schemaType || 'WebPage';
 
-  // Propiedades base comunes CON AUTOR DINÁMICO
+  // Propiedades base comunes CON AUTOR DINÃMICO
   const baseProperties: BaseSchemaProperties = {
     '@context': 'https://schema.org',
     name: pageData.title,
@@ -288,7 +284,7 @@ export function generatePageSchema(pageData: PageData, baseUrl = 'https://lasveg
     ...(pageData.seoImage.height && { height: pageData.seoImage.height })
   } : undefined;
 
-  // GENERAR SCHEMA ESPECÍFICO CON DATOS DE RICH SNIPPETS
+  // GENERAR SCHEMA ESPECÃFICO CON DATOS DE RICH SNIPPETS
   switch (schemaType) {
     case 'Article':
       return {
@@ -424,14 +420,9 @@ export function generateFAQSchema(faqs: Array<{question: string, answer: string}
 }
 
 // ============================================================
-// RESEARCH PROGRAM SCHEMA — NUEVO
+// RESEARCH PROGRAM SCHEMA â€” NUEVO
 // ============================================================
 
-interface ResearchPageData extends PageData {
-  isPillar?: boolean;
-  parentPillar?: { _ref?: string; _id?: string };
-  _updatedAt?: string;
-}
 
 interface RelatedArticleRef {
   _id: string;
@@ -439,144 +430,3 @@ interface RelatedArticleRef {
   slug: { current: string };
 }
 
-/**
- * Detecta si un artículo pertenece al programa Research.
- * Regla: tiene isPillar=true O tiene parentPillar (es supporting de algún pillar).
- */
-export function isResearchArticle(pageData: ResearchPageData): boolean {
-  return pageData.isPillar === true || Boolean(pageData.parentPillar?._ref);
-}
-
-/**
- * Construye el @id canónico de un artículo Research a partir del slug.
- */
-function articleIdFromSlug(slug: string): string {
-  return `${SITE_URL}/${slug}#article`;
-}
-
-/**
- * Genera el schema enriquecido para un artículo del programa Research.
- *
- * - Pillars: Article + isBasedOn Dataset + isPartOf CollectionPage + hasPart [supportings] + about Colosseum + citation
- * - Supportings: Article + isBasedOn Dataset + isPartOf [CollectionPage, Pillar] + about Colosseum + citation
- *
- * @param pageData - datos del artículo (incluyendo isPillar, parentPillar)
- * @param relatedArticles - artículos relacionados (supportings si es pillar; pillar+siblings si es supporting)
- * @param baseUrl - opcional, default https://lasvegastour.com
- */
-export function generateResearchSchema(
-  pageData: ResearchPageData,
-  relatedArticles: RelatedArticleRef[] = [],
-  baseUrl: string = SITE_URL
-) {
-  const slug = pageData.slug.current;
-  const pageUrl = `${baseUrl}/${slug}`;
-  const articleId = articleIdFromSlug(slug);
-  const description = pageData.seoDescription || pageData.title;
-
-  // Imagen del hero/SEO
-  const imageObject: ImageObject | undefined = pageData.seoImage
-    ? {
-        '@type': 'ImageObject',
-        url: pageData.seoImage.asset?.url || pageData.seoImage.url || '',
-        ...(pageData.seoImage.width && { width: pageData.seoImage.width }),
-        ...(pageData.seoImage.height && { height: pageData.seoImage.height }),
-      }
-    : undefined;
-
-  const isPillar = pageData.isPillar === true;
-
-  // Construir isPartOf
-  // - Pillar: solo apunta al CollectionPage
-  // - Supporting: apunta al CollectionPage + al Pillar padre
-  const isPartOf: any[] = [
-    { '@type': 'CollectionPage', '@id': RESEARCH_COLLECTION_ID },
-  ];
-
-  if (!isPillar && pageData.parentPillar?._ref) {
-    // Buscar el pillar dentro de relatedArticles (en supportings, el primero suele ser el pillar)
-    // Pero más seguro: buscamos por _id que matchee el _ref
-    const pillarRef = relatedArticles.find(
-      (a) => a._id === pageData.parentPillar?._ref
-    );
-    if (pillarRef) {
-      isPartOf.push({
-        '@type': 'Article',
-        '@id': articleIdFromSlug(pillarRef.slug.current),
-        url: `${baseUrl}/${pillarRef.slug.current}`,
-        name: pillarRef.title,
-      });
-    }
-  }
-
-  // Construir hasPart (solo para pillars)
-  // Para pillars, relatedArticles contiene TODOS sus supportings
-  const hasPart =
-    isPillar && relatedArticles.length > 0
-      ? relatedArticles.map((sup) => ({
-          '@type': 'Article',
-          '@id': articleIdFromSlug(sup.slug.current),
-          url: `${baseUrl}/${sup.slug.current}`,
-          name: sup.title,
-        }))
-      : undefined;
-
-  // mentions: para supportings, listamos los otros artículos del mismo grupo (siblings)
-  // relatedArticles[0] suele ser el pillar; los demás son hermanos
-  const mentions =
-    !isPillar && relatedArticles.length > 1
-      ? relatedArticles
-          .filter((a) => a._id !== pageData.parentPillar?._ref)
-          .map((sib) => ({
-            '@type': 'Article',
-            '@id': articleIdFromSlug(sib.slug.current),
-            url: `${baseUrl}/${sib.slug.current}`,
-            name: sib.title,
-          }))
-      : undefined;
-
-  const schema: any = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    '@id': articleId,
-    headline: pageData.title,
-    name: pageData.title,
-    description: description,
-    url: pageUrl,
-    inLanguage: 'en',
-    isAccessibleForFree: true,
-    datePublished: pageData.publishedAt,
-    ...(pageData._updatedAt && { dateModified: pageData._updatedAt }),
-    author: getAuthorSchema(pageData.author),
-    reviewedBy: getAuthorSchema('mario-dalo'),
-    publisher: getPublisherSchema(),
-    mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
-    ...(imageObject && { image: imageObject }),
-
-    // ⭐ EL CORAZÓN DEL SISTEMA RESEARCH
-    
-    isBasedOn: { '@id': RESEARCH_DATASET_ID },
-
-    isPartOf: isPartOf.length === 1 ? isPartOf[0] : isPartOf,
-    ...(hasPart && hasPart.length > 0 && { hasPart }),
-    ...(mentions && mentions.length > 0 && { mentions }),
-
-    about: {
-      '@type': 'TouristAttraction',
-      '@id': COLOSSEUM_ENTITY_ID,
-      name: 'Colosseum',
-      sameAs: 'https://en.wikipedia.org/wiki/Colosseum',
-    },
-
-    citation:
-      'Based on the Colosseum Tour Research Corpus 2026 (8,100 items aggregated from 5 independent sources). See https://lasvegastour.com/colosseum-research for the full dataset documentation.',
-
-    // Métricas opcionales si vienen en richSnippets
-    ...(pageData.richSnippets?.wordCount && { wordCount: pageData.richSnippets.wordCount }),
-    ...(pageData.richSnippets?.readingTime && {
-      timeRequired: `PT${pageData.richSnippets.readingTime}M`,
-    }),
-  };
-
-  return schema;
-}

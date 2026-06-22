@@ -143,7 +143,7 @@ export async function POST(request: NextRequest) {
 // GET method para testing
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
-  const query = searchParams.get('q') || 'colosseum';
+  const query = searchParams.get('q') || 'las vegas';
 
   // Redirect GET to POST for consistency
   return POST(new NextRequest(request.url, {

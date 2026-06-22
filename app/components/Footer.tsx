@@ -147,9 +147,6 @@ export default function Footer() {
           <div className="footer-nav">
             <h4>Company</h4>
             <ul>
-              <li>
-                <a href="/colosseum-research">The Research Program</a>
-              </li>
               {footerLinks}
             </ul>
           </div>
@@ -192,7 +189,7 @@ export default function Footer() {
             {/* POWERED BY INTERCOPER */}
             <div className="footer-powered">
               <span>Powered by </span>
-              <Link href="https://www.intercoper.com/portfolio/colosseum-roman" target="_blank" rel="noopener noreferrer">
+              <Link href="https://www.intercoper.com" target="_blank" rel="noopener noreferrer">
                 <span style={{ color: '#e91e63', fontWeight: 600 }}>Intercoper<span style={{ fontSize: '0.85em' }}> ↗</span></span>
               </Link>
             </div>

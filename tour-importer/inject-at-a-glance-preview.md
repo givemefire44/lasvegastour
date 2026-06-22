@@ -1,175 +1,279 @@
-======== o-cirque-du-soleil-aquatic-theater-show-bellagio-vegas ========
-   Duration         1.5 hours
-   Price (from)     $160.3 per person
-   Ages             Ages 5+
-   Operator         MGM Resorts International
+======== 3-hour-mojave-desert-outdoor-shooting-range-las-vegas ========
+   Duration         3 hours
+   Price (from)     $299 per person
+   Departure        Meet at the start point
+   Ages             Ages 18+
+   Group size       Up to 10 per booking
+   Physical level   Easy (all fitness levels)
+   Options          3 options
+   Operator         Machine Guns Vegas
    Cancellation     Free up to 24 hours before
-   Rating           4.3/5 (1,463 reviews)
+   Rating           4.8/5 (15 reviews)
 
 [simpleTable block]
 {
   "_type": "simpleTable",
-  "_key": "ai9m2309sk",
-  "title": "Show at a Glance",
+  "_key": "6cvblr8jip",
+  "title": "Tour at a Glance",
   "rows": [
     {
-      "_key": "5qj44paxjf",
+      "_key": "ser875kwd9",
       "cells": [
         "Duration",
-        "1.5 hours"
+        "3 hours"
       ]
     },
     {
-      "_key": "h138sj9ud8",
+      "_key": "pl432ys8pv",
       "cells": [
         "Price (from)",
-        "$160.3 per person"
+        "$299 per person"
       ]
     },
     {
-      "_key": "lhtnh6bkgy",
+      "_key": "wavw56gfdb",
+      "cells": [
+        "Departure",
+        "Meet at the start point"
+      ]
+    },
+    {
+      "_key": "4ito3bwjgn",
       "cells": [
         "Ages",
-        "Ages 5+"
+        "Ages 18+"
       ]
     },
     {
-      "_key": "ot1f1m366w",
+      "_key": "99ocuj0tzj",
+      "cells": [
+        "Group size",
+        "Up to 10 per booking"
+      ]
+    },
+    {
+      "_key": "dmatvy821m",
+      "cells": [
+        "Physical level",
+        "Easy (all fitness levels)"
+      ]
+    },
+    {
+      "_key": "z6nany1vr1",
+      "cells": [
+        "Options",
+        "3 options"
+      ]
+    },
+    {
+      "_key": "gb70p9dxyg",
       "cells": [
         "Operator",
-        "MGM Resorts International"
+        "Machine Guns Vegas"
       ]
     },
     {
-      "_key": "jii2ldwbhg",
+      "_key": "rmxx71p6t6",
       "cells": [
         "Cancellation",
         "Free up to 24 hours before"
       ]
     },
     {
-      "_key": "tzn6j7jb78",
+      "_key": "fp450i5wja",
       "cells": [
         "Rating",
-        "4.3/5 (1,463 reviews)"
+        "4.8/5 (15 reviews)"
       ]
     }
   ]
 }
 
-======== michael-jackson-one-cirque-du-soleil-show-mandalay-bay ========
-   Duration         1.5 hours
-   Price (from)     $117.57 per person
-   Ages             Ages 5+
-   Operator         MGM Resorts International
-   Cancellation     Free up to 24 hours before
-   Rating           4.5/5 (1,420 reviews)
+======== bryce-yellowstone-tetons-7-day-camping-vegas-adventure ========
+   Duration         168 hours
+   Price (from)     $1995 per person
+   Departure        Meet at the start point
+   Ages             Ages 7+
+   Group size       Up to 9 per booking
+   Physical level   Easy (all fitness levels)
+   Languages        German, Korean, cmn, Japanese, English, Italian, French, Spanish
+   Operator         Bindlestiff Tours
+   Cancellation     See cancellation policy
+   Rating           4.7/5 (15 reviews)
 
 [simpleTable block]
 {
   "_type": "simpleTable",
-  "_key": "sed1qeypdk",
-  "title": "Show at a Glance",
+  "_key": "1xg8g5eqqo",
+  "title": "Tour at a Glance",
   "rows": [
     {
-      "_key": "g7042uyds4",
+      "_key": "j6wsb1um2j",
       "cells": [
         "Duration",
-        "1.5 hours"
+        "168 hours"
       ]
     },
     {
-      "_key": "afa1cds1bp",
+      "_key": "no1eoo65jm",
       "cells": [
         "Price (from)",
-        "$117.57 per person"
+        "$1995 per person"
       ]
     },
     {
-      "_key": "jhw9bl25kd",
+      "_key": "bnippp4ycz",
+      "cells": [
+        "Departure",
+        "Meet at the start point"
+      ]
+    },
+    {
+      "_key": "494v7y20nk",
       "cells": [
         "Ages",
-        "Ages 5+"
+        "Ages 7+"
       ]
     },
     {
-      "_key": "77vzh60ivt",
+      "_key": "qy76cvylbi",
+      "cells": [
+        "Group size",
+        "Up to 9 per booking"
+      ]
+    },
+    {
+      "_key": "52he8tu353",
+      "cells": [
+        "Physical level",
+        "Easy (all fitness levels)"
+      ]
+    },
+    {
+      "_key": "fd1edvasm9",
+      "cells": [
+        "Languages",
+        "German, Korean, cmn, Japanese, English, Italian, French, Spanish"
+      ]
+    },
+    {
+      "_key": "8w0f9g76gy",
       "cells": [
         "Operator",
-        "MGM Resorts International"
+        "Bindlestiff Tours"
       ]
     },
     {
-      "_key": "x6vx9m5g0m",
+      "_key": "1e2q9opq59",
       "cells": [
         "Cancellation",
-        "Free up to 24 hours before"
+        "See cancellation policy"
       ]
     },
     {
-      "_key": "2udq7nk5zo",
+      "_key": "1vhrwjn0dw",
       "cells": [
         "Rating",
-        "4.5/5 (1,420 reviews)"
+        "4.7/5 (15 reviews)"
       ]
     }
   ]
 }
 
-======== vegas-mentalist-show-gerry-mccambridge-mind-reading ========
-   Duration         1 hour
-   Price (from)     $39 per person
-   Ages             Ages 13+
-   Operator         V Theater
+======== grand-canyon-west-vip-coach-tour-meals-hoover-dam-vegas ========
+   Duration         10.5 hours
+   Price (from)     $94 per person
+   Departure        Hotel pickup included
+   Ages             Ages 2+
+   Group size       Up to 15 per booking
+   Physical level   Easy (all fitness levels)
+   Languages        English
+   Options          3 options
+   Operator         Comedy On Deck
    Cancellation     Free up to 24 hours before
-   Rating           4.8/5 (2,331 reviews)
+   Rating           4.9/5 (13,044 reviews)
 
 [simpleTable block]
 {
   "_type": "simpleTable",
-  "_key": "0rx57l21vo",
-  "title": "Show at a Glance",
+  "_key": "kcf7bge45u",
+  "title": "Tour at a Glance",
   "rows": [
     {
-      "_key": "j9e6vgdm6s",
+      "_key": "6xxvvpy2lk",
       "cells": [
         "Duration",
-        "1 hour"
+        "10.5 hours"
       ]
     },
     {
-      "_key": "xmakeavakc",
+      "_key": "r56t9e9r1c",
       "cells": [
         "Price (from)",
-        "$39 per person"
+        "$94 per person"
       ]
     },
     {
-      "_key": "3mbusz0awa",
+      "_key": "hrdnb57wq7",
+      "cells": [
+        "Departure",
+        "Hotel pickup included"
+      ]
+    },
+    {
+      "_key": "z7a59xhyxn",
       "cells": [
         "Ages",
-        "Ages 13+"
+        "Ages 2+"
       ]
     },
     {
-      "_key": "rn1jbkf5sc",
+      "_key": "1r5hf1vn7j",
+      "cells": [
+        "Group size",
+        "Up to 15 per booking"
+      ]
+    },
+    {
+      "_key": "qit74s3axi",
+      "cells": [
+        "Physical level",
+        "Easy (all fitness levels)"
+      ]
+    },
+    {
+      "_key": "sstn1u9rft",
+      "cells": [
+        "Languages",
+        "English"
+      ]
+    },
+    {
+      "_key": "sa1ogae3s9",
+      "cells": [
+        "Options",
+        "3 options"
+      ]
+    },
+    {
+      "_key": "976kyb5yc3",
       "cells": [
         "Operator",
-        "V Theater"
+        "Comedy On Deck"
       ]
     },
     {
-      "_key": "o9oxe17swz",
+      "_key": "r3o50srxdm",
       "cells": [
         "Cancellation",
         "Free up to 24 hours before"
       ]
     },
     {
-      "_key": "dl5hex75zp",
+      "_key": "bnadnf0iuj",
       "cells": [
         "Rating",
-        "4.8/5 (2,331 reviews)"
+        "4.9/5 (13,044 reviews)"
       ]
     }
   ]

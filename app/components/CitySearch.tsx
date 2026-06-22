@@ -122,7 +122,7 @@ export default function CitySearch() {
         <input
           ref={inputRef}
           type="text"
-          placeholder="Search tours & activities... (e.g. Colosseum, Vatican, Rome)"
+          placeholder="Search tours & activities... (e.g. Sphere, Grand Canyon, Strip)"
           value={busqueda}
           onChange={handleInputChange}
           onFocus={() => { if (busqueda && tours.length > 0) setShow(true); }}

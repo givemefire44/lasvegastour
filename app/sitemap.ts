@@ -94,10 +94,9 @@ sitemap.push({
   changeFrequency: 'weekly',
   priority: 0.85
 })
-
-// 📊 COLOSSEUM RESEARCH PROGRAM (página hardcodeada)
+// 🗂️ TOURS INDEX (grilla de categorías)
 sitemap.push({
-  url: `${baseUrl}/colosseum-research`,
+  url: `${baseUrl}/tours`,
   lastModified: new Date(),
   changeFrequency: 'weekly',
   priority: 0.9

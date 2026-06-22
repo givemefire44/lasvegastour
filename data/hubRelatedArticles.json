@@ -1,0 +1,78 @@
+{
+    "sphere-las-vegas-shows": [
+      { "slug": "sphere-las-vegas-seats-tickets-guide", "text": "Sphere seats & tickets guide" },
+      { "slug": "how-to-choose-las-vegas-shows", "text": "How to choose Las Vegas shows" },
+      { "slug": "first-time-las-vegas-how-to-plan", "text": "First time in Las Vegas: how to plan" }
+    ],
+    "cirque-du-soleil-shows-las-vegas": [
+      { "slug": "how-to-choose-las-vegas-shows", "text": "How to choose Las Vegas shows" },
+      { "slug": "sphere-las-vegas-seats-tickets-guide", "text": "Sphere seats & tickets guide" },
+      { "slug": "how-much-las-vegas-trip-costs", "text": "How much a Las Vegas trip costs" }
+    ],
+    "private-las-vegas-tours": [
+      { "slug": "first-time-las-vegas-how-to-plan", "text": "First time in Las Vegas: how to plan" },
+      { "slug": "how-much-las-vegas-trip-costs", "text": "How much a Las Vegas trip costs" },
+      { "slug": "most-expensive-first-timer-mistakes-las-vegas", "text": "First-timer mistakes that cost the most" }
+    ],
+    "small-group-las-vegas-tours": [
+      { "slug": "first-time-las-vegas-how-to-plan", "text": "First time in Las Vegas: how to plan" },
+      { "slug": "how-much-las-vegas-trip-costs", "text": "How much a Las Vegas trip costs" },
+      { "slug": "most-expensive-first-timer-mistakes-las-vegas", "text": "First-timer mistakes that cost the most" }
+    ],
+    "las-vegas-food-drink-tours": [
+      { "slug": "las-vegas-nightlife-club-crawls", "text": "Las Vegas nightlife & club crawls" },
+      { "slug": "las-vegas-resort-fees-tipping-hidden-charges", "text": "Resort fees, tipping & hidden charges" },
+      { "slug": "most-expensive-first-timer-mistakes-las-vegas", "text": "First-timer mistakes that cost the most" }
+    ],
+    "best-las-vegas-tours-under-100": [
+      { "slug": "how-much-las-vegas-trip-costs", "text": "How much a Las Vegas trip costs" },
+      { "slug": "most-expensive-first-timer-mistakes-las-vegas", "text": "First-timer mistakes that cost the most" },
+      { "slug": "las-vegas-resort-fees-tipping-hidden-charges", "text": "Resort fees, tipping & hidden charges" }
+    ],
+    "las-vegas-tours-under-50": [
+      { "slug": "how-much-las-vegas-trip-costs", "text": "How much a Las Vegas trip costs" },
+      { "slug": "most-expensive-first-timer-mistakes-las-vegas", "text": "First-timer mistakes that cost the most" },
+      { "slug": "las-vegas-resort-fees-tipping-hidden-charges", "text": "Resort fees, tipping & hidden charges" }
+    ],
+    "las-vegas-sunset-tours": [
+      { "slug": "red-rock-canyon-from-las-vegas", "text": "Red Rock Canyon from Las Vegas" },
+      { "slug": "valley-of-fire-from-las-vegas", "text": "Valley of Fire from Las Vegas" },
+      { "slug": "first-time-las-vegas-how-to-plan", "text": "First time in Las Vegas: how to plan" }
+    ],
+    "las-vegas-combo-tours": [
+      { "slug": "grand-canyon-west-vs-south-rim-from-las-vegas", "text": "Grand Canyon West vs South Rim" },
+      { "slug": "first-time-las-vegas-how-to-plan", "text": "First time in Las Vegas: how to plan" },
+      { "slug": "how-much-las-vegas-trip-costs", "text": "How much a Las Vegas trip costs" }
+    ],
+    "grand-canyon-west-rim-tours": [
+      { "slug": "grand-canyon-west-vs-south-rim-from-las-vegas", "text": "Grand Canyon West vs South Rim" },
+      { "slug": "las-vegas-helicopter-tours-which-worth-it", "text": "Which Las Vegas helicopter tours are worth it" },
+      { "slug": "first-time-las-vegas-how-to-plan", "text": "First time in Las Vegas: how to plan" }
+    ],
+    "grand-canyon-south-rim-tours": [
+      { "slug": "grand-canyon-west-vs-south-rim-from-las-vegas", "text": "Grand Canyon West vs South Rim" },
+      { "slug": "how-to-get-around-las-vegas", "text": "Getting around Las Vegas" },
+      { "slug": "how-much-las-vegas-trip-costs", "text": "How much a Las Vegas trip costs" }
+    ],
+    "grand-canyon-helicopter-tours": [
+      { "slug": "las-vegas-helicopter-tours-which-worth-it", "text": "Which Las Vegas helicopter tours are worth it" },
+      { "slug": "grand-canyon-west-vs-south-rim-from-las-vegas", "text": "Grand Canyon West vs South Rim" },
+      { "slug": "most-expensive-first-timer-mistakes-las-vegas", "text": "First-timer mistakes that cost the most" }
+    ],
+    "antelope-canyon-horseshoe-bend-tours": [
+      { "slug": "grand-canyon-west-vs-south-rim-from-las-vegas", "text": "Grand Canyon West vs South Rim" },
+      { "slug": "first-time-las-vegas-how-to-plan", "text": "First time in Las Vegas: how to plan" },
+      { "slug": "how-to-get-around-las-vegas", "text": "Getting around Las Vegas" }
+    ],
+    "multi-day-tours-road-trips-las-vegas": [
+      { "slug": "first-time-las-vegas-how-to-plan", "text": "First time in Las Vegas: how to plan" },
+      { "slug": "how-much-las-vegas-trip-costs", "text": "How much a Las Vegas trip costs" },
+      { "slug": "grand-canyon-west-vs-south-rim-from-las-vegas", "text": "Grand Canyon West vs South Rim" }
+    ],
+    "las-vegas-nature-parks-tours": [
+      { "slug": "valley-of-fire-from-las-vegas", "text": "Valley of Fire from Las Vegas" },
+      { "slug": "red-rock-canyon-from-las-vegas", "text": "Red Rock Canyon from Las Vegas" },
+      { "slug": "hoover-dam-tour-from-las-vegas", "text": "Hoover Dam tours from Las Vegas" }
+    ]
+  }
+  

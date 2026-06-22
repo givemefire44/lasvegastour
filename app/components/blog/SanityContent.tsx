@@ -3,8 +3,6 @@ import { PortableText } from '@portabletext/react';
 import { urlFor } from '@/sanity/lib/image';
 import Image from 'next/image';
 import { useEffect } from 'react';
-import UnifiedAutoLinker, { autoLinkerStyles } from '@/app/components/UnifiedAutoLinker';
-import { resetPageCounters } from '@/app/utils/autoLinker';
 import TourImageRow from './TourImageRow';
 
 
@@ -75,14 +73,6 @@ export default function SanityContent({ post, relatedTours = [], noTableSchema =
 
   const excludedSlugs = ['about-us', 'contact-us', 'privacy-policy'];
   const isExcludedPage = tourSlug ? excludedSlugs.includes(tourSlug) : false;  
-
-  useEffect(() => {
-    return () => {
-      if (tourSlug) {
-        resetPageCounters(tourSlug);
-      }
-    };
-  }, [tourSlug]);
 
   useEffect(() => {
     const handleSmartLink = (e: MouseEvent) => {
@@ -479,9 +469,9 @@ export default function SanityContent({ post, relatedTours = [], noTableSchema =
           );
         }
         return (
-          <UnifiedAutoLinker pageSlug={tourSlug} pageType="tour" as="div" className="content-paragraph">
-            {children}
-          </UnifiedAutoLinker>
+          <div className="content-paragraph">
+          {children}
+        </div>
         );
       },
     },
@@ -531,9 +521,7 @@ export default function SanityContent({ post, relatedTours = [], noTableSchema =
           <PortableText value={finalContent} components={components} />
         )}
 
-        <style jsx global>{`
-          ${autoLinkerStyles}
-
+       <style jsx global>{`
           .sanity-container {
             max-width: 100%;
             margin: 0 auto;

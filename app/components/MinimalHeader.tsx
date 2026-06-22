@@ -194,7 +194,7 @@ export default function MinimalHeader() {
     if (navigator.share) {
       navigator.share({
         title: 'lasvegastour.com',
-        text: "Look what I found - best Colosseum tours in Rome!",
+        text: "Look what I found - the best Las Vegas tours & shows!",
         url: window.location.href
       });
     } else {

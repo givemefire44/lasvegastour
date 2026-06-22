@@ -7,7 +7,8 @@ import Container from '@/app/components/Container';
 import Breadcrumbs from '@/app/components/Breadcrumbs';
 import Footer from '@/app/components/Footer';
 import RecommendedTours from '@/app/components/blog/RecommendedTours';
-import UnifiedAutoLinker from '@/app/components/UnifiedAutoLinker';
+import hubRelatedArticles from '@/data/hubRelatedArticles.json';
+
 
 interface TourHub {
   slug: string;
@@ -83,6 +84,7 @@ export default function HubPage({ hub, tours, content, allHubs, recommendedTours
   const qa = content?.quickAnswer;
   const intro = content?.intro;
   const faqs = content?.faqs || [];
+  const relatedGuides = (hubRelatedArticles as Record<string, { slug: string; text: string }[]>)[hub.slug] || [];
 
   return (
     <>
@@ -257,19 +259,19 @@ export default function HubPage({ hub, tours, content, allHubs, recommendedTours
           }}>
             <div style={{ padding: '16px', background: '#fff7ed', borderRadius: '12px', border: '1px solid #fed7aa' }}>
               <h3 style={{ fontSize: '0.95rem', fontWeight: '700', marginBottom: '8px', color: '#c2410c' }}>🎯 Why it matters</h3>
-              <UnifiedAutoLinker pageSlug={hub.slug} pageType="hub" style={{ fontSize: '0.9rem', color: '#555', lineHeight: '1.6' }}>{intro.whyItMatters}</UnifiedAutoLinker>
+              <p style={{ fontSize: '0.9rem', color: '#555', lineHeight: '1.6' }}>{intro.whyItMatters}</p>
             </div>
             <div style={{ padding: '16px', background: '#eff6ff', borderRadius: '12px', border: '1px solid #bfdbfe' }}>
               <h3 style={{ fontSize: '0.95rem', fontWeight: '700', marginBottom: '8px', color: '#1d4ed8' }}>📊 Your options</h3>
-              <UnifiedAutoLinker pageSlug={hub.slug} pageType="hub" style={{ fontSize: '0.9rem', color: '#555', lineHeight: '1.6' }}>{intro.whatOptions}</UnifiedAutoLinker>
+              <p style={{ fontSize: '0.9rem', color: '#555', lineHeight: '1.6' }}>{intro.whatOptions}</p>
             </div>
             <div style={{ padding: '16px', background: '#f0fdf4', borderRadius: '12px', border: '1px solid #bbf7d0' }}>
               <h3 style={{ fontSize: '0.95rem', fontWeight: '700', marginBottom: '8px', color: '#16a34a' }}>💎 Sweet spot</h3>
-              <UnifiedAutoLinker pageSlug={hub.slug} pageType="hub" style={{ fontSize: '0.9rem', color: '#555', lineHeight: '1.6' }}>{intro.sweetSpot}</UnifiedAutoLinker>
+              <p style={{ fontSize: '0.9rem', color: '#555', lineHeight: '1.6' }}>{intro.sweetSpot}</p>
             </div>
             <div style={{ padding: '16px', background: '#fdf4ff', borderRadius: '12px', border: '1px solid #e9d5ff' }}>
               <h3 style={{ fontSize: '0.95rem', fontWeight: '700', marginBottom: '8px', color: '#9333ea' }}>🧭 How to choose</h3>
-              <UnifiedAutoLinker pageSlug={hub.slug} pageType="hub" style={{ fontSize: '0.9rem', color: '#555', lineHeight: '1.6' }}>{intro.howToChoose}</UnifiedAutoLinker>
+              <p style={{ fontSize: '0.9rem', color: '#555', lineHeight: '1.6' }}>{intro.howToChoose}</p>
             </div>
           </div>
         </Container>
@@ -379,14 +381,19 @@ export default function HubPage({ hub, tours, content, allHubs, recommendedTours
         </Container>
       )}
 
-      {/* Internal Links */}
-      {content?.internalLinks && content.internalLinks.length > 0 && (
+      {/* Related guides (articles) */}
+      {relatedGuides.length > 0 && (
         <Container>
-          <div style={{ marginBottom: '2rem', padding: '16px 20px', background: '#f8f9fa', borderRadius: '12px', border: '1px solid #e9ecef' }}>
-            <h3 style={{ fontSize: '1rem', fontWeight: '700', marginBottom: '10px', color: '#333' }}>📍 Related guides</h3>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-              {content.internalLinks.filter(l => l.slug !== hub.slug).map((link, i) => (
-                <Link key={i} href={`/${link.slug}`} style={{ fontSize: '0.9rem', color: '#e91e63', textDecoration: 'none' }}>→ {link.text}</Link>
+          <div style={{ margin: '2.5rem 0', padding: '24px 28px', background: 'linear-gradient(135deg, #fff5f8 0%, #fbfbfb 100%)', borderRadius: '16px', border: '1px solid #f3d4de' }}>
+            <h3 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: '16px', color: '#1a1a1a', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span aria-hidden="true">📚</span> Related guides
+            </h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '10px' }}>
+              {relatedGuides.map((a, i) => (
+                <Link key={i} href={`/${a.slug}`} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '13px 16px', background: '#fff', borderRadius: '10px', border: '1px solid #efe2e8', color: '#c2185b', fontSize: '0.92rem', fontWeight: 500, textDecoration: 'none', lineHeight: 1.35 }}>
+                  <span style={{ color: '#e91e63', fontWeight: 700 }} aria-hidden="true">→</span>
+                  <span>{a.text}</span>
+                </Link>
               ))}
             </div>
           </div>
@@ -403,7 +410,7 @@ export default function HubPage({ hub, tours, content, allHubs, recommendedTours
             {faqs.map((faq, i) => (
               <details key={i} style={{ borderBottom: '1px solid #eee', padding: '18px 0' }}>
                 <summary style={{ fontWeight: '600', fontSize: '1.05rem', cursor: 'pointer', color: '#333' }}>{faq.question}</summary>
-                <UnifiedAutoLinker pageSlug={hub.slug} pageType="hub" style={{ marginTop: '12px', fontSize: '0.95rem', color: '#555', lineHeight: '1.7' }}>{faq.answer}</UnifiedAutoLinker>
+                <p style={{ marginTop: '12px', fontSize: '0.95rem', color: '#555', lineHeight: '1.7' }}>{faq.answer}</p>
               </details>
             ))}
           </div>

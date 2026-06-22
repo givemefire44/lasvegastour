@@ -39,8 +39,8 @@ const MATCHERS: { key: string; test: (h: string) => boolean }[] = [
 // Orden canonico de TOURS (las secciones que el body controla; FAQs / Compare /
 // Editorial los renderiza el front, no estan en el body).
 const ORDER_TOUR = [
-  'quick-answer', 'at-a-glance', 'why-book', 'experience',
-  'worth-it', 'included', 'not-included', 'practical', 'insider-tip',
+'quick-answer', 'why-book', 'experience',
+  'worth-it', 'at-a-glance', 'included', 'not-included', 'practical', 'insider-tip',
 ];
 
 // Orden de SHOWS. Un show es el ticket, no un recorrido: se le caen included /
@@ -49,8 +49,8 @@ const ORDER_TOUR = [
 // hacer click. Si un show arrastra included/not-included del molde de tour, al no estar
 // en esta lista se descartan del render (como las huerfanas), no del dato en Sanity.
 const ORDER_SHOW = [
-  'quick-answer', 'at-a-glance', 'why-book', 'experience',
-  'worth-it', 'practical', 'insider-tip',
+  'quick-answer', 'why-book', 'experience',
+  'worth-it', 'at-a-glance', 'practical', 'insider-tip',
 ];
 
 function getOrder(categorySlug?: string | null): string[] {

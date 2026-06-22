@@ -9,7 +9,7 @@ interface FloatingCTAProps {
 }
 
 export default function FloatingCTA({ 
-  affiliateUrl = "https://www.getyourguide.com/colosseum-tours",
+  affiliateUrl = "/tours",
   ctaText = "Book Tour",
   showOnlyOnHomepage = true
 }: FloatingCTAProps) {

@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/admin/', '/studio/', '/_next/static/'],
+        disallow: ['/admin/', '/studio/'],
       },
     ],
     sitemap: 'https://lasvegastour.com/sitemap.xml',
