@@ -10,10 +10,26 @@ export default function Hero() {
         </h2>
         <BubbleComments
           comments={[
-            { text: "Day Tour?" },
-            { text: "Book Tickets!" },
-            { text: "Grand Canyon today?" },
-            { text: "Helicopter tour?" }
+            {
+              text: "Helicopters",
+              image: "https://cdn.sanity.io/images/kabmqky1/production/2d8842ecf39889552918cbf3b6a40594c127d601-720x480.jpg?w=240&h=240&fit=crop&auto=format",
+              href: "/tours/helicopter-tours",
+            },
+            {
+              text: "Grand Canyon",
+              image: "https://cdn.sanity.io/images/kabmqky1/production/06136dc7367c352deeca6eda9e3a7617b1819b64-720x480.jpg?w=240&h=240&fit=crop&auto=format",
+              href: "/tours/grand-canyon-tours",
+            },
+            {
+              text: "Cirque",
+              image: "https://cdn.sanity.io/images/kabmqky1/production/7ad0423780c6aae9587ab63adafc547574194425-720x480.jpg?w=240&h=240&fit=crop&auto=format",
+              href: "/cirque-du-soleil-shows-las-vegas",
+            },
+            {
+              text: "Sphere",
+              image: "https://cdn.sanity.io/images/kabmqky1/production/c0a533a1bca4e6ace7b5478664d48e0e11b2512f-720x480.jpg?w=240&h=240&fit=crop&auto=format",
+              href: "/sphere-las-vegas-shows",
+            },
           ]}
         />
         <div className="city-search-container">
