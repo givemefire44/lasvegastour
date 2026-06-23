@@ -21,7 +21,7 @@ export default function Hero() {
               href: "/tours/grand-canyon-tours",
             },
             {
-              text: "Cirque",
+              text: "Cirque Soleil",
               image: "https://cdn.sanity.io/images/kabmqky1/production/7ad0423780c6aae9587ab63adafc547574194425-720x480.jpg?w=240&h=240&fit=crop&auto=format",
               href: "/cirque-du-soleil-shows-las-vegas",
             },

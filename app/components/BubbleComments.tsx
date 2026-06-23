@@ -11,7 +11,9 @@ export default function BubbleComments({ comments }: { comments: Bubble[] }) {
         const inner = (
           <>
             {c.image && (
-              <img src={c.image} alt={c.text} className="hero-bubble-img" loading="lazy" />
+              <span className="hero-bubble-imgwrap">
+                <img src={c.image} alt={c.text} className="hero-bubble-img" loading="lazy" />
+              </span>
             )}
             <span className="hero-bubble-text">{c.text}</span>
           </>
@@ -44,21 +46,29 @@ export default function BubbleComments({ comments }: { comments: Bubble[] }) {
           gap: 10px;
           text-decoration: none;
           cursor: pointer;
-          transition: transform 0.25s ease;
         }
-        .hero-bubble:hover {
-          transform: translateY(-4px) scale(1.04);
-        }
-        .hero-bubble-img {
+        .hero-bubble-imgwrap {
           width: clamp(96px, 19vw, 142px);
           height: clamp(96px, 19vw, 142px);
           border-radius: 50%;
-          object-fit: cover;
+          overflow: hidden;
           border: 3px solid rgba(255, 255, 255, 0.9);
           box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+          transition: box-shadow 0.3s ease, border-color 0.3s ease;
           display: block;
+          background: #1a1a1a;
+        }
+        .hero-bubble-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          transition: transform 0.45s ease;
         }
         .hero-bubble:hover .hero-bubble-img {
+          transform: scale(1.12);
+        }
+        .hero-bubble:hover .hero-bubble-imgwrap {
           border-color: #ffffff;
           box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
         }
@@ -72,6 +82,7 @@ export default function BubbleComments({ comments }: { comments: Bubble[] }) {
           border-radius: 999px;
           white-space: nowrap;
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+          transition: color 0.3s ease;
         }
         .hero-bubble:hover .hero-bubble-text {
           color: #6d28d9;

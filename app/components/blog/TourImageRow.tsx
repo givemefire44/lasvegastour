@@ -8,7 +8,7 @@ interface TourImageRowProps {
 }
 
 export default function TourImageRow({ images, title }: TourImageRowProps) {
-  const imgs = (images || []).filter(Boolean).slice(0, 3);
+  const imgs = (images || []).filter(Boolean).slice(0, 4);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   // ESC para cerrar, flechas para navegar; bloquear scroll del body con el lightbox abierto.
@@ -80,6 +80,8 @@ export default function TourImageRow({ images, title }: TourImageRowProps) {
           grid-template-columns: repeat(3, 1fr);
           gap: 10px;
         }
+        /* Desktop: mostramos como máximo 3 — la 4ta queda oculta */
+        .tour-image-row-item:nth-child(4) { display: none; }
         .tour-image-row-item {
           position: relative;
           display: block;
@@ -129,7 +131,11 @@ export default function TourImageRow({ images, title }: TourImageRowProps) {
         .tour-lightbox-nav.next { right: 20px; }
         .tour-lightbox-nav:hover { background: rgba(255,255,255,0.25); }
         @media (max-width: 768px) {
+          /* Mobile: 2 columnas, y mostramos la 4ta para cerrar en 2×2 */
           .tour-image-row { grid-template-columns: repeat(2, 1fr); }
+          .tour-image-row-item:nth-child(4) { display: block; }
+          /* Si solo hay 3 imágenes, la 3ra (última) ocupa el ancho completo */
+          .tour-image-row-item:nth-child(3):last-child { grid-column: span 2; }
           .tour-image-row-item { height: 190px; }
           .tour-lightbox-nav { width: 44px; height: 44px; font-size: 32px; }
           .tour-lightbox-nav.prev { left: 8px; }
