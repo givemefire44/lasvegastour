@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section className="hero-section">
       <div className="hero-container">
-        <h1 className="hero-title"> Choose your Las Vegas Tour.</h1>
+        <h1 className="hero-title"> Choose the Right Las Vegas Experience</h1>
         <h2 className="hero-subtitle">
         We don't describe tours. We explain decisions.!
         </h2>
