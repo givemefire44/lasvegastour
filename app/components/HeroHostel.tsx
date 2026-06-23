@@ -6,7 +6,7 @@ export default function Hero() {
       <div className="hero-container">
         <h1 className="hero-title"> Choose the Right Las Vegas Experience</h1>
         <h2 className="hero-subtitle">
-        We don't describe tours. We explain decisions.!
+        We don't describe tours. We explain decisions.
         </h2>
         <BubbleComments
           comments={[
