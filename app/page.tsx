@@ -278,14 +278,6 @@ export default async function HomePage() {
         "@type": "ImageObject",
         "url": "https://lasvegastour.com/logo.png"
       }
-    },
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://lasvegastour.com/search?q={search_term_string}"
-      },
-      "query-input": "required name=search_term_string"
     }
   };
 
