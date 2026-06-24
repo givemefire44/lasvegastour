@@ -47,6 +47,11 @@ export default function Hero() {
               fontWeight: 700,
               textDecoration: 'none',
               textShadow: '0 1px 4px rgba(0,0,0,0.5)',
+              background: 'rgba(0, 0, 0, 0.42)',
+              padding: '1px 12px',
+              borderRadius: '5px',
+              lineHeight: '1.25',
+              display: 'inline-block',
             }}
           >
             Not sure which tour? Find yours in 30 seconds

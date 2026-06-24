@@ -130,15 +130,15 @@ body {
   color: #fff700;
   font-weight: 700;
   margin-top: 24px;
-  padding-top: 10px;
-  display: block;
+  padding: 1px 12px;
+  display: table;
   text-align: center;
   font-size: 18px;
-  max-width: 600px;
+  line-height: 1.25;
   margin-left: auto;
   margin-right: auto;
-  background: none;
-  border-radius: 0;
+  background: rgba(0, 0, 0, 0.42);
+  border-radius: 5px;
 }
 /* Responsive */
 @media (max-width: 768px) {
