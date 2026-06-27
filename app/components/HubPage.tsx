@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -384,13 +384,13 @@ export default function HubPage({ hub, tours, content, allHubs, recommendedTours
       {/* Related guides (articles) */}
       {relatedGuides.length > 0 && (
         <Container>
-          <div style={{ margin: '2.5rem 0', padding: '24px 28px', background: 'linear-gradient(135deg, #fff5f8 0%, #fbfbfb 100%)', borderRadius: '16px', border: '1px solid #f3d4de' }}>
-            <h3 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: '16px', color: '#1a1a1a', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div style={{ margin: '2.5rem 0', padding: '8px 18px', background: '#1e3a5f', borderRadius: '16px', border: '1px solid #16304f' }}>
+            <h3 style={{ fontSize: '0.9rem', fontWeight: 600, marginBottom: '4px', color: '#f4c95d', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <span aria-hidden="true">📚</span> Related guides
             </h3>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '10px' }}>
               {relatedGuides.map((a, i) => (
-                <Link key={i} href={`/${a.slug}`} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '13px 16px', background: '#fff', borderRadius: '10px', border: '1px solid #efe2e8', color: '#c2185b', fontSize: '0.92rem', fontWeight: 500, textDecoration: 'none', lineHeight: 1.35 }}>
+                <Link key={i} href={`/${a.slug}`} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '13px 16px', background: '#fff', borderRadius: '10px', border: '1px solid #efe2e8', color: '#c2185b', fontSize: '0.92rem', fontWeight: 500, textDecoration: 'none', lineHeight: 1.00 }}>
                   <span style={{ color: '#e91e63', fontWeight: 700 }} aria-hidden="true">→</span>
                   <span>{a.text}</span>
                 </Link>
