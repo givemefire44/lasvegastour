@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -125,16 +125,16 @@ export default function HubPage({ hub, tours, content, allHubs, recommendedTours
       {qa && (
         <Container>
           <div style={{
-            background: '#f8f9fa',
-            border: '1px solid #e9ecef',
+            background: '#1e3a5f',
+            border: '1px solid #16304f',
             borderRadius: '12px',
             padding: '24px',
             marginBottom: '2rem'
           }}>
-            <h2 style={{ fontSize: '1.3rem', fontWeight: '700', marginBottom: '12px', color: '#333' }}>
+            <h2 style={{ fontSize: '1.3rem', fontWeight: '800', marginBottom: '12px', color: '#f4c95d' }}>
               💡 Quick Answer
             </h2>
-            <p style={{ fontSize: '1.05rem', color: '#444', lineHeight: '1.7', marginBottom: '12px' }}>
+            <p style={{ fontSize: '1.05rem', color: '#ffffff', lineHeight: '1.7', marginBottom: '12px' }}>
               <strong>{qa.hook}</strong> {qa.range}
             </p>
             {qa.bestPick && (
@@ -158,7 +158,7 @@ export default function HubPage({ hub, tours, content, allHubs, recommendedTours
                 </div>
               </div>
             )}
-            <p style={{ fontSize: '0.95rem', color: '#555', fontStyle: 'italic' }}>{qa.verdict}</p>
+            <p style={{ fontSize: '0.95rem', color: '#e8eef5', fontStyle: 'italic' }}>{qa.verdict}</p>
           </div>
         </Container>
       )}
@@ -230,7 +230,7 @@ export default function HubPage({ hub, tours, content, allHubs, recommendedTours
                           </div>
                         )}
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '10px' }}>
-                          {tour.tourFeatures?.skipTheLine && <span style={{ fontSize: '0.7rem', padding: '3px 8px', borderRadius: '12px', background: '#dcfce7', color: '#16a34a', fontWeight: '600', whiteSpace: 'nowrap' }}>⚡ Skip the line</span>}
+                          {tour.tourFeatures?.skipTheLine && <span style={{ fontSize: '0.7rem', padding: '3px 8px', borderRadius: '12px', background: '#dcfce7', color: '#f4c95d', fontWeight: '600', whiteSpace: 'nowrap' }}>⚡ Skip the line</span>}
                           {tour.tourFeatures?.smallGroupAvailable && <span style={{ fontSize: '0.7rem', padding: '3px 8px', borderRadius: '12px', background: '#dbeafe', color: '#2563eb', fontWeight: '600', whiteSpace: 'nowrap' }}>👥 Small group</span>}
                           {tour.tourFeatures?.freeCancellation && <span style={{ fontSize: '0.7rem', padding: '3px 8px', borderRadius: '12px', background: '#fef3c7', color: '#d97706', fontWeight: '600', whiteSpace: 'nowrap' }}>🔄 Free cancel</span>}
                         </div>
@@ -257,21 +257,21 @@ export default function HubPage({ hub, tours, content, allHubs, recommendedTours
             gap: '16px',
             marginBottom: '2.5rem'
           }}>
-            <div style={{ padding: '16px', background: '#fff7ed', borderRadius: '12px', border: '1px solid #fed7aa' }}>
-              <h3 style={{ fontSize: '0.95rem', fontWeight: '700', marginBottom: '8px', color: '#c2410c' }}>🎯 Why it matters</h3>
-              <p style={{ fontSize: '0.9rem', color: '#555', lineHeight: '1.6' }}>{intro.whyItMatters}</p>
+            <div style={{ padding: '18px', background: '#1e3a5f', borderRadius: '12px', border: '1px solid #16304f' }}>
+              <h3 style={{ fontSize: '0.95rem', fontWeight: '700', marginBottom: '8px', color: '#f4c95d' }}>🎯 Why it matters</h3>
+              <p style={{ fontSize: '0.9rem', color: '#ffffff', lineHeight: '1.65', fontWeight: '500' }}>{intro.whyItMatters}</p>
             </div>
-            <div style={{ padding: '16px', background: '#eff6ff', borderRadius: '12px', border: '1px solid #bfdbfe' }}>
-              <h3 style={{ fontSize: '0.95rem', fontWeight: '700', marginBottom: '8px', color: '#1d4ed8' }}>📊 Your options</h3>
-              <p style={{ fontSize: '0.9rem', color: '#555', lineHeight: '1.6' }}>{intro.whatOptions}</p>
+            <div style={{ padding: '18px', background: '#E8EDF3', borderRadius: '12px', border: '1px solid #d4dde8' }}>
+              <h3 style={{ fontSize: '0.95rem', fontWeight: '700', marginBottom: '8px', color: '#1e3a5f' }}>📊 Your options</h3>
+              <p style={{ fontSize: '0.9rem', color: '#1a2b3c', lineHeight: '1.65', fontWeight: '500' }}>{intro.whatOptions}</p>
             </div>
-            <div style={{ padding: '16px', background: '#f0fdf4', borderRadius: '12px', border: '1px solid #bbf7d0' }}>
-              <h3 style={{ fontSize: '0.95rem', fontWeight: '700', marginBottom: '8px', color: '#16a34a' }}>💎 Sweet spot</h3>
-              <p style={{ fontSize: '0.9rem', color: '#555', lineHeight: '1.6' }}>{intro.sweetSpot}</p>
+            <div style={{ padding: '18px', background: '#1e3a5f', borderRadius: '12px', border: '1px solid #16304f' }}>
+              <h3 style={{ fontSize: '0.95rem', fontWeight: '700', marginBottom: '8px', color: '#f4c95d' }}>💎 Sweet spot</h3>
+              <p style={{ fontSize: '0.9rem', color: '#ffffff', lineHeight: '1.65', fontWeight: '500' }}>{intro.sweetSpot}</p>
             </div>
-            <div style={{ padding: '16px', background: '#fdf4ff', borderRadius: '12px', border: '1px solid #e9d5ff' }}>
-              <h3 style={{ fontSize: '0.95rem', fontWeight: '700', marginBottom: '8px', color: '#9333ea' }}>🧭 How to choose</h3>
-              <p style={{ fontSize: '0.9rem', color: '#555', lineHeight: '1.6' }}>{intro.howToChoose}</p>
+            <div style={{ padding: '18px', background: '#E8EDF3', borderRadius: '12px', border: '1px solid #d4dde8' }}>
+              <h3 style={{ fontSize: '0.95rem', fontWeight: '700', marginBottom: '8px', color: '#1e3a5f' }}>🧭 How to choose</h3>
+              <p style={{ fontSize: '0.9rem', color: '#1a2b3c', lineHeight: '1.65', fontWeight: '500' }}>{intro.howToChoose}</p>
             </div>
           </div>
         </Container>
@@ -360,7 +360,7 @@ export default function HubPage({ hub, tours, content, allHubs, recommendedTours
                           </div>
                         )}
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '10px' }}>
-                          {tour.tourFeatures?.skipTheLine && <span style={{ fontSize: '0.7rem', padding: '3px 8px', borderRadius: '12px', background: '#dcfce7', color: '#16a34a', fontWeight: '600', whiteSpace: 'nowrap' }}>⚡ Skip the line</span>}
+                          {tour.tourFeatures?.skipTheLine && <span style={{ fontSize: '0.7rem', padding: '3px 8px', borderRadius: '12px', background: '#dcfce7', color: '#f4c95d', fontWeight: '600', whiteSpace: 'nowrap' }}>⚡ Skip the line</span>}
                           {tour.tourFeatures?.smallGroupAvailable && <span style={{ fontSize: '0.7rem', padding: '3px 8px', borderRadius: '12px', background: '#dbeafe', color: '#2563eb', fontWeight: '600', whiteSpace: 'nowrap' }}>👥 Small group</span>}
                           {tour.tourFeatures?.freeCancellation && <span style={{ fontSize: '0.7rem', padding: '3px 8px', borderRadius: '12px', background: '#fef3c7', color: '#d97706', fontWeight: '600', whiteSpace: 'nowrap' }}>🔄 Free cancel</span>}
                         </div>
