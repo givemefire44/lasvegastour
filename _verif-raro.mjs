@@ -1,0 +1,13 @@
+﻿import { getProduct } from "./corpus.js";
+import { createClient } from "@sanity/client";
+import dotenv from "dotenv"; dotenv.config({ path: ".env.local" });
+const sanity = createClient({ projectId:"kabmqky1", dataset:"production", apiVersion:"2023-05-03", token:process.env.SANITY_API_TOKEN, useCdn:false });
+const d = await sanity.fetch(`*[_type=="post" && slug.current=="red-rock-canyon-heli-tour-with-landing-champagne"][0]{ "url":getYourGuideUrl, "price":tourInfo.price, "rating":getYourGuideData.rating, "reviews":getYourGuideData.reviewCount, title }`);
+const code = (String(d.url||"").match(/d\d+-([0-9A-Za-z]+)/)||[])[1];
+const p = getProduct(code);
+console.log("SANITY:", d.title);
+console.log("  url:", d.url);
+console.log("  code:", code);
+console.log("  sanity rating/reviews:", d.rating, d.reviews, "| precio", d.price);
+console.log("CORPUS:", p ? p.title : "NO ENCONTRADO");
+console.log("  corpus rating/reviews:", p?.rating, p?.reviewCount, "| precio", p?.price);

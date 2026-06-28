@@ -31,6 +31,7 @@ jobs:
           SANITY_DATASET: ${{ secrets.SANITY_DATASET }}
           SANITY_TOKEN: ${{ secrets.SANITY_TOKEN }}
           VIATOR_API_KEY: ${{ secrets.VIATOR_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node ingest-corpus.mjs
 
       - name: Correr cron de precios y ratings
@@ -40,6 +41,7 @@ jobs:
           SANITY_DATASET: ${{ secrets.SANITY_DATASET }}
           SANITY_TOKEN: ${{ secrets.SANITY_TOKEN }}
           VIATOR_API_KEY: ${{ secrets.VIATOR_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node cron-prices.mjs --execute
 
       - name: Notify IndexNow (Bing)
