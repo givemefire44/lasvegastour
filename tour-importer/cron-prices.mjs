@@ -1,600 +1,261 @@
-import dotenv from 'dotenv';
-dotenv.config({ path: 'C:/Users/Noxi-PC/colosseumroman-blog/tour-importer/.env.local' });
+﻿// cron-prices.mjs — lasvegastour.com
+// Actualiza precios (datos duros) leyendo el CORPUS (Viator), no scrapea.
+// Cadena: precio nuevo del corpus -> (1) PROPIO estructurado + prosa de su pagina
+//                                   (2) AJENO en paginas que lo citan (via fetchAlternatives = la tabla)
+//                                   (3) DERIVADOS recalculados (resta extremos exactos -> floor)
+// Uso:
+//   node cron-prices.mjs                 (DRY: muestra, no escribe)
+//   node cron-prices.mjs --execute       (PRODUCCION: escribe Sanity)
+//   node cron-prices.mjs --slug=X         (un solo tour, dry)
+//   node cron-prices.mjs --slug=X --execute
+
+import dotenv from 'dotenv'; dotenv.config({ path: '.env.local' });
 import { createClient } from '@sanity/client';
-import puppeteer from 'puppeteer-extra';
-import StealthPlugin from 'puppeteer-extra-plugin-stealth';
+import { getProduct } from './corpus.js';   // ajustar ruta si corpus.js esta en otro lado
 
-puppeteer.use(StealthPlugin());
-
-// ========================================
-// CONFIGURACION
-// ========================================
-const SITE_NAME = 'colosseumroman.com';
-const DELAY_BETWEEN_TOURS = 15000;
-
-// UMBRALES DE SEGURIDAD
+// ── config ──────────────────────────────────────────────
+const SITE = 'lasvegastour.com';
 const MAX_PRICE_CHANGE_PERCENT = 120;
 const MIN_PRICE = 5;
 const MAX_PRICE = 2000;
 const GLOBAL_FAILURE_THRESHOLD = 50;
 
-// ALERTA POR EMAIL (Resend) - solo cuando hay bajas nuevas
-const ALERT_EMAIL = 'damefuego2020@gmail.com';
-const ALERT_FROM = 'ColosseumRoman Cron <onboarding@resend.dev>';
-// Reintentos antes de confirmar una actividad como muerta
-const DEAD_RETRIES = 3;
-
 const args = process.argv.slice(2);
-const DRY_RUN = !args.includes('--execute');
-const slugArg = args.find(a => !a.startsWith('--'));
+const EXECUTE = args.includes('--execute');
+const slugArg = (args.find(a => a.startsWith('--slug=')) || '').split('=')[1] || null;
 
-const sanityClient = createClient({
-  projectId: process.env.SANITY_PROJECT_ID,
-  dataset: process.env.SANITY_DATASET,
-  token: process.env.SANITY_TOKEN,
-  apiVersion: '2024-01-01',
-  useCdn: false
+const sanity = createClient({
+  projectId: 'kabmqky1', dataset: 'production',
+  apiVersion: '2023-05-03', token: process.env.SANITY_API_TOKEN, useCdn: false,
 });
 
-const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-const randomDelay = (min, max) => delay(min + Math.random() * (max - min));
-const activityId = (u) => { const m = (u || '').match(/-t(\d+)/); return m ? m[1] : null; };
-
-// ========================================
-// SCRAPE PRECIO + RATING + REVIEWS + DETECCION DE MUERTA
-// ========================================
-async function scrapeTourData(url) {
-  let browser;
-  try {
-    browser = await puppeteer.launch({
-      headless: 'new',
-      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu', '--window-size=1920,1080'],
-      ignoreHTTPSErrors: true
-    });
-
-    const page = await browser.newPage();
-    await page.setViewport({ width: 1920, height: 1080 });
-    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
-    await page.setExtraHTTPHeaders({ 'Accept-Language': 'en-US,en;q=0.9', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' });
-
-    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
-    await randomDelay(3000, 5000);
-    await page.waitForSelector('h1', { timeout: 15000 });
-
-    // >>> DETECCION DE ACTIVIDAD MUERTA <<<
-    // Si la URL final perdio el -t<id>, GYG rebotó a /rome-l33/ = actividad discontinuada.
-    const finalUrl = page.url();
-    const origId = activityId(url);
-    const finalId = activityId(finalUrl);
-    const activityDead = !!(origId && origId !== finalId);
-
-    if (activityDead) {
-      return { activityDead: true, finalUrl, price: null, rating: null, reviewCount: null, priceSelectorFound: false };
-    }
-
-    const result = await page.evaluate(() => {
-      // PRECIO - solo selector primario, sin fallbacks
-      let price = null;
-      const mainPrice = document.querySelector('.price-info-actual-price-explanation ins');
-      if (mainPrice) {
-        const priceMatch = mainPrice.innerText.match(/\$(\d+[\d,]*)/);
-        if (priceMatch) price = parseFloat(priceMatch[1].replace(/,/g, ''));
-      }
-
-      // RATING + REVIEW COUNT desde JSON-LD aggregateRating (fuente canonica).
-      // El texto "X out of 5" agarra resenas individuales (casi siempre 5), por eso
-      // antes daba 5 en vez del agregado. GYG guarda el promedio crudo en JSON-LD
-      // (ej 4.7682...); lo redondeamos a 1 decimal para que coincida con lo que muestra (4.8).
-      let rating = null;
-      let reviewCount = null;
-      const ldScripts = document.querySelectorAll('script[type="application/ld+json"]');
-      for (const s of ldScripts) {
-        try {
-          const data = JSON.parse(s.textContent);
-          const stack = Array.isArray(data) ? [...data] : [data];
-          while (stack.length) {
-            const o = stack.pop();
-            if (!o || typeof o !== 'object') continue;
-            if (o.aggregateRating && o.aggregateRating.ratingValue != null) {
-              rating = Math.round(parseFloat(o.aggregateRating.ratingValue) * 10) / 10;
-              const rc = o.aggregateRating.reviewCount ?? o.aggregateRating.ratingCount;
-              if (rc != null) reviewCount = parseInt(String(rc).replace(/,/g, ''), 10);
-            }
-            for (const v of Object.values(o)) if (v && typeof v === 'object') stack.push(v);
-          }
-        } catch (e) {}
-      }
-      // Fallback al texto SOLO si no hubo JSON-LD
-      const bodyText = document.body.innerText;
-      if (rating === null) {
-        const m = bodyText.match(/(\d+\.?\d*)\s*out of 5/i);
-        if (m) rating = parseFloat(m[1]);
-      }
-      if (reviewCount === null) {
-        const m = bodyText.match(/(\d+[\d,]*)\s*reviews/i);
-        if (m) reviewCount = parseInt(m[1].replace(/,/g, ''), 10);
-      }
-
-      return { price, rating, reviewCount, priceSelectorFound: !!mainPrice };
-    });
-
-    return { activityDead: false, finalUrl, ...result };
-  } catch (error) {
-    return { activityDead: false, price: null, rating: null, reviewCount: null, priceSelectorFound: false, error: error.message };
-  } finally {
-    if (browser) await browser.close();
-  }
+const codeFromUrl = url => (String(url || '').match(/d\d+-([0-9A-Za-z_]+)/) || [])[1] || null;
+// code limpio: saca sufijo de tracking pegado con _ (ej 5847NIGHT_TZ -> 5847NIGHT)
+const cleanCode = url => { const c = codeFromUrl(url); return c ? c.split('_')[0] : null; };
+// tokens significativos del titulo (para verificar matching Sanity<->corpus)
+const titleTokens = s => String(s || '').toLowerCase().replace(/[^a-z0-9]/g, ' ').split(/\s+/).filter(w => w.length > 3);
+// ¿el tour de Sanity matchea al producto del corpus? (>=2 palabras de titulo en comun)
+function titlesMatch(sanityTitle, corpusTitle) {
+  const a = new Set(titleTokens(sanityTitle));
+  return titleTokens(corpusTitle).filter(w => a.has(w)).length >= 2;
 }
 
-// ========================================
-// SCRAPE CON REINTENTOS - confirma MUERTA solo si TODOS los intentos rebotan
-// ========================================
-// - Si una carga vuelve viva (mantiene el -t<id>) -> devuelve esa data al toque (1 intento).
-// - Un rebote (perdio -t<id>) cuenta como "bounce"; un error/timeout NO es bounce.
-// - confirmedDead = true SOLO si los N intentos rebotaron (evidencia inequivoca).
-// - Cualquier mezcla (rebote + error, o todo error) = inconcluso -> NO se retira,
-//   se trata como fallo normal y se rechequea en la proxima corrida.
-async function scrapeWithRetries(url, maxAttempts = DEAD_RETRIES) {
-  let bounces = 0;
-  let lastResult = null;
-  let lastBounceUrl = null;
-
-  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
-    const r = await scrapeTourData(url);
-    lastResult = r;
-
-    if (r.error) {
-      console.log(`      intento ${attempt}/${maxAttempts}: error de carga (${r.error})`);
-      if (attempt < maxAttempts) await randomDelay(4000, 7000);
-      continue;
-    }
-
-    if (r.activityDead) {
-      bounces++;
-      lastBounceUrl = r.finalUrl;
-      console.log(`      intento ${attempt}/${maxAttempts}: rebotó -> ${r.finalUrl}`);
-      if (attempt < maxAttempts) await randomDelay(4000, 7000);
-      continue;
-    }
-
-    // Cargó bien y mantuvo el -t<id> => VIVA. Corta y devuelve.
-    return { ...r, confirmedDead: false };
-  }
-
-  // Ningún intento volvió vivo. Solo confirmamos muerta si los N rebotaron.
-  const confirmedDead = bounces === maxAttempts;
-  if (!confirmedDead) {
-    console.log(`      inconcluso (${bounces}/${maxAttempts} rebotes) -> NO se retira, se rechequea`);
-  }
-  return { ...lastResult, confirmedDead, bounces, finalUrl: lastBounceUrl || lastResult?.finalUrl };
-}
-
-// ========================================
-// VALIDAR PRECIO
-// ========================================
-function validatePrice(oldPrice, newPrice) {
+// ── validacion (umbrales, reusado de Colosseum) ─────────
+function validatePrice(oldP, newP) {
   const issues = [];
-  if (newPrice < MIN_PRICE) issues.push(`Precio $${newPrice} menor al minimo $${MIN_PRICE}`);
-  if (newPrice > MAX_PRICE) issues.push(`Precio $${newPrice} mayor al maximo $${MAX_PRICE}`);
-  if (oldPrice > 0) {
-    const changePercent = Math.abs((newPrice - oldPrice) / oldPrice) * 100;
-    if (changePercent > MAX_PRICE_CHANGE_PERCENT) issues.push(`Cambio de ${changePercent.toFixed(1)}% excede umbral de ${MAX_PRICE_CHANGE_PERCENT}% ($${oldPrice} -> $${newPrice})`);
+  if (newP < MIN_PRICE) issues.push(`< $${MIN_PRICE}`);
+  if (newP > MAX_PRICE) issues.push(`> $${MAX_PRICE}`);
+  if (oldP > 0) {
+    const pct = Math.abs(newP - oldP) / oldP * 100;
+    if (pct > MAX_PRICE_CHANGE_PERCENT) issues.push(`cambio ${pct.toFixed(0)}% > ${MAX_PRICE_CHANGE_PERCENT}%`);
   }
-  if (!Number.isFinite(newPrice) || newPrice <= 0) issues.push(`Precio invalido: ${newPrice}`);
-  return { valid: issues.length === 0, issues };
+  return issues;
 }
 
-// ========================================
-// REEMPLAZAR PRECIO EN PORTABLE TEXT BODY
-// ========================================
-function fixPriceInBody(body, oldPrice, newPrice) {
-  if (!body || !Array.isArray(body)) return { body, changes: 0 };
-  const oldStr = `$${oldPrice}`;
-  const newStr = `$${newPrice}`;
+// ── tabla (fetchAlternatives, identica al injector) ─────
+async function fetchAlternatives(slug, cat) {
+  return sanity.fetch(
+    `*[_type=="post" && !(_id in path("drafts.**")) && category->slug.current==$cat && slug.current!=$slug && defined(tourInfo.price)] | order(getYourGuideData.reviewCount desc)[0...4]{ "slug":slug.current, "price":tourInfo.price }`,
+    { cat, slug }
+  );
+}
+
+// ── reemplazo de precio en un body (preserva marks) ─────
+function replacePriceInBody(body, oldP, newP) {
+  const reOld = new RegExp('(\\$|USD )' + String(oldP).replace('.', '\\.') + '(?![\\d])', 'g');
+  const newStr = String(newP);
   let changes = 0;
-  const fixedBody = body.map(block => {
-    if (!block.children || !Array.isArray(block.children)) return block;
-    const fixedChildren = block.children.map(child => {
-      if (typeof child.text === 'string' && child.text.includes(oldStr)) {
+  const nb = (body || []).map(b => {
+    if (!b.children) return b;
+    return { ...b, children: b.children.map(c => {
+      if (typeof c.text === 'string' && reOld.test(c.text)) { changes++; return { ...c, text: c.text.replace(reOld, (m, pre) => pre + newStr) }; }
+      return c;
+    }) };
+  });
+  return { body: nb, changes };
+}
+
+// ── reemplazo de rating + reviews en un body (solo pagina propia) ──
+// formas: "X/5" para rating, "(N review" para reviews (cubre review/reviews)
+function replaceRatingInBody(body, oldRating, oldReviews, newRating, newReviews) {
+  let changes = 0;
+  const oldR = `${oldRating}/5`, newR = `${newRating}/5`;
+  const oldRev = `(${oldReviews} review`, newRev = `(${newReviews} review`;
+  const nb = (body || []).map(b => {
+    if (!b.children) return b;
+    return { ...b, children: b.children.map(c => {
+      if (typeof c.text !== 'string') return c;
+      let t = c.text;
+      if (oldRating !== newRating && t.includes(oldR)) { t = t.replaceAll(oldR, newR); changes++; }
+      if (oldReviews !== newReviews && t.includes(oldRev)) { t = t.replaceAll(oldRev, newRev); changes++; }
+      return t !== c.text ? { ...c, text: t } : c;
+    }) };
+  });
+  return { body: nb, changes };
+}
+
+// ── recalcular derivados de una pagina (resta extremos -> floor) ──
+// busca "$N more/less" ; si el comparado (de la tabla) cambio, recalcula
+function recalcDerivados(body, propioPrice, tabla) {
+  const reDeriv = /(\$)(\d+(?:\.\d+)?)(\s+(?:more|less)\b)/gi;
+  let changes = 0;
+  const nb = (body || []).map(b => {
+    if (!b.children) return b;
+    return { ...b, children: b.children.map(c => {
+      if (typeof c.text !== 'string') return c;
+      const nuevo = c.text.replace(reDeriv, (m, sign, num, tail) => {
+        const n = Number(num);
+        // buscar un comparado de la tabla cuya |propio - comparado| floor == n  (el que este derivado usaba)
+        const match = tabla.find(a => Math.floor(Math.abs(propioPrice - Number(a.price))) === n
+          || Math.round(Math.abs(propioPrice - Number(a.price))) === n);
+        if (!match) return m; // no identificamos el comparado -> no tocar
+        const real = Math.abs(propioPrice - Number(match.price));
+        const recalc = Math.floor(real);
+        if (recalc === n) return m;
         changes++;
-        return { ...child, text: child.text.replaceAll(oldStr, newStr) };
-      }
-      return child;
-    });
-    return { ...block, children: fixedChildren };
+        return sign + recalc + tail;
+      });
+      return nuevo !== c.text ? { ...c, text: nuevo } : c;
+    }) };
   });
-  return { body: fixedBody, changes };
+  return { body: nb, changes };
 }
 
-// ========================================
-// REEMPLAZAR RATING Y REVIEWS EN BODY
-// ========================================
-function fixRatingInBody(body, oldRating, oldReviews, newRating, newReviews) {
-  if (!body || !Array.isArray(body)) return { body, changes: 0 };
-  let changes = 0;
-  const oldRatingStr = `${oldRating}/5`;
-  const newRatingStr = `${newRating}/5`;
-  const oldReviewStr = `(${oldReviews} review`;
-  const newReviewStr = `(${newReviews} review`;
+// ── procesar UN tour: precio y/o rating/reviews ─────────
+async function aplicarCambio(tour, prod) {
+  const oldPrice = Number(tour.oldPrice);
+  const newPrice = prod.price != null ? Number(prod.price) : oldPrice;
+  const oldRating = tour.oldRating, newRating = prod.rating != null ? prod.rating : oldRating;
+  const oldReviews = tour.oldReviews, newReviews = prod.reviewCount != null ? prod.reviewCount : oldReviews;
 
-  const fixedBody = body.map(block => {
-    if (!block.children || !Array.isArray(block.children)) return block;
-    const fixedChildren = block.children.map(child => {
-      if (typeof child.text !== 'string') return child;
-      let newText = child.text;
-      let changed = false;
-      if (oldRating !== newRating && newText.includes(oldRatingStr)) {
-        newText = newText.replaceAll(oldRatingStr, newRatingStr);
-        changed = true;
-      }
-      if (oldReviews !== newReviews && newText.includes(oldReviewStr)) {
-        newText = newText.replaceAll(oldReviewStr, newReviewStr);
-        changed = true;
-      }
-      if (changed) { changes++; return { ...child, text: newText }; }
-      return child;
-    });
-    return { ...block, children: fixedChildren };
-  });
-  return { body: fixedBody, changes };
-}
+  const priceChanged = Math.abs(newPrice - oldPrice) >= 0.01;
+  const ratingChanged = oldRating !== newRating || oldReviews !== newReviews;
+  let log = [];
 
-// ========================================
-// REEMPLAZAR EN TEXTO PLANO
-// ========================================
-function fixPriceInText(text, oldPrice, newPrice) {
-  if (!text) return { text: null, changed: false };
-  const oldStr = `$${oldPrice}`;
-  const newStr = `$${newPrice}`;
-  if (text.includes(oldStr)) return { text: text.replaceAll(oldStr, newStr), changed: true };
-  return { text, changed: false };
-}
+  // patch del estructurado (precio + rating + reviews juntos)
+  const setObj = {};
+  if (priceChanged) setObj['tourInfo.price'] = newPrice;
+  if (oldRating !== newRating) setObj['getYourGuideData.rating'] = newRating;
+  if (oldReviews !== newReviews) setObj['getYourGuideData.reviewCount'] = newReviews;
 
-function fixRatingInText(text, oldRating, oldReviews, newRating, newReviews) {
-  if (!text) return { text: null, changed: false };
-  let newText = text;
-  let changed = false;
-  if (oldRating !== newRating && newText.includes(`${oldRating}/5`)) {
-    newText = newText.replaceAll(`${oldRating}/5`, `${newRating}/5`);
-    changed = true;
+  // (1) PROPIO en su pagina: precio en prosa + rating/reviews en prosa
+  let bodyPropio = tour.body;
+  if (priceChanged) {
+    const r = replacePriceInBody(bodyPropio, oldPrice, newPrice);
+    bodyPropio = r.body; log.push(`PRECIO propio: ${r.changes} lugares`);
   }
-  if (oldReviews !== newReviews && newText.includes(`${oldReviews} review`)) {
-    newText = newText.replaceAll(`${oldReviews} review`, `${newReviews} review`);
-    changed = true;
+  if (ratingChanged) {
+    const r = replaceRatingInBody(bodyPropio, oldRating, oldReviews, newRating, newReviews);
+    bodyPropio = r.body; log.push(`RATING/REVIEWS: ${r.changes} lugares (${oldRating}/5->${newRating}/5, ${oldReviews}->${newReviews})`);
   }
-  return { text: newText, changed };
-}
-
-// ========================================
-// INDEXNOW - Notificar a Bing
-// ========================================
-async function notifyIndexNow(updatedSlugs) {
-  if (updatedSlugs.length === 0) {
-    console.log('\nIndexNow: sin URLs para notificar');
-    return;
+  if (EXECUTE && (priceChanged || ratingChanged)) {
+    await sanity.patch(tour._id).set({ ...setObj, body: bodyPropio }).commit();
   }
 
-  const urlList = updatedSlugs.map(slug => `https://${SITE_NAME}/tour/${slug}`);
-
-  try {
-    const response = await fetch('https://api.indexnow.org/indexnow', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        host: SITE_NAME,
-        key: '5748a39a308b48b8a6b5d5bdbe288a9d',
-        urlList: urlList.slice(0, 100)
-      })
-    });
-    console.log(`\nIndexNow: ${urlList.length} URLs enviadas -> ${response.status} ${response.statusText}`);
-  } catch (error) {
-    console.log(`\nIndexNow: error -> ${error.message}`);
-  }
-}
-
-// ========================================
-// EMAIL DE BAJAS - Resend (solo cuando hay tours discontinuados nuevos)
-// ========================================
-async function notifyDeadByEmail(deadList) {
-  if (!deadList || deadList.length === 0) return;
-
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
-    console.log('\nEmail: RESEND_API_KEY no configurada -> se omite el aviso');
-    return;
-  }
-
-  const rows = deadList.map(t => `
-    <tr>
-      <td style="padding:8px 12px;border:1px solid #e2e2e2;font-family:monospace">${t.slug}</td>
-      <td style="padding:8px 12px;border:1px solid #e2e2e2">${t.title}</td>
-      <td style="padding:8px 12px;border:1px solid #e2e2e2"><a href="${t.finalUrl}">rebote</a></td>
-    </tr>`).join('');
-
-  const html = `
-    <div style="font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:640px">
-      <h2 style="color:#b91c1c;margin:0 0 4px">🔴 ${deadList.length} tour(es) discontinuado(s) en ${SITE_NAME}</h2>
-      <p style="color:#444;margin:0 0 16px">
-        El cron detectó que estas actividades ya no existen en GetYourGuide (rebotaron ${DEAD_RETRIES}/${DEAD_RETRIES} veces).
-        Quedaron marcadas <strong>activeOnGyg = false</strong> y excluidas del scrapeo de precios.
-        Para retirarlas (301 al hub + fuera de sitemap/listados), poné <strong>discontinued = true</strong> en Sanity Studio.
-      </p>
-      <table style="border-collapse:collapse;width:100%;font-size:14px">
-        <thead>
-          <tr style="background:#f5f5f5">
-            <th style="padding:8px 12px;border:1px solid #e2e2e2;text-align:left">slug</th>
-            <th style="padding:8px 12px;border:1px solid #e2e2e2;text-align:left">título</th>
-            <th style="padding:8px 12px;border:1px solid #e2e2e2;text-align:left">link</th>
-          </tr>
-        </thead>
-        <tbody>${rows}</tbody>
-      </table>
-      <p style="color:#888;font-size:12px;margin-top:16px">Aviso automático — ${new Date().toISOString()}</p>
-    </div>`;
-
-  try {
-    const res = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        from: ALERT_FROM,
-        to: [ALERT_EMAIL],
-        subject: `🔴 ${deadList.length} tour(es) discontinuado(s) en ${SITE_NAME}`,
-        html
-      })
-    });
-    const data = await res.json().catch(() => ({}));
-    if (res.ok) {
-      console.log(`\nEmail enviado a ${ALERT_EMAIL} (${deadList.length} bajas) -> id ${data.id || '?'}`);
-    } else {
-      console.log(`\nEmail: error ${res.status} -> ${JSON.stringify(data)}`);
+  // (2) AJENO: solo si cambio el PRECIO (el rating ajeno no se cita en prosa)
+  let ajenoPaginas = 0;
+  if (priceChanged) {
+    const mismaCat = await sanity.fetch(
+      `*[_type=="post" && !(_id in path("drafts.**")) && category->slug.current==$cat && slug.current!=$slug && defined(tourInfo.price)]{ _id, "slug":slug.current, body }`,
+      { cat: tour.cat, slug: tour.slug }
+    );
+    for (const pg of mismaCat) {
+      const tabla = await fetchAlternatives(pg.slug, tour.cat);
+      if (!tabla.some(tt => tt.slug === tour.slug)) continue;
+      const { body: nb, changes } = replacePriceInBody(pg.body, oldPrice, newPrice);
+      if (changes) { ajenoPaginas++; if (EXECUTE) await sanity.patch(pg._id).set({ body: nb }).commit(); }
     }
-  } catch (error) {
-    console.log(`\nEmail: excepción -> ${error.message}`);
+    log.push(`AJENO: ${ajenoPaginas} paginas que lo citan`);
+
+    // (3) DERIVADOS de SU pagina (solo si cambio el precio propio)
+    const tablaPropia = await fetchAlternatives(tour.slug, tour.cat);
+    const { body: bodyDeriv, changes: cD } = recalcDerivados(bodyPropio, newPrice, tablaPropia);
+    if (cD) { log.push(`DERIVADOS: ${cD} recalculados`); if (EXECUTE) await sanity.patch(tour._id).set({ body: bodyDeriv }).commit(); }
   }
+
+  return { log, priceChanged, ratingChanged };
 }
 
-// ========================================
-// SCRIPT PRINCIPAL
-// ========================================
+// ── IndexNow ────────────────────────────────────────────
+async function notifyIndexNow(slugs) {
+  if (!slugs.length) return;
+  const key = process.env.INDEXNOW_KEY;
+  if (!key) { console.log('IndexNow: sin INDEXNOW_KEY, omito'); return; }
+  const urlList = slugs.map(s => `https://${SITE}/${s}`);
+  try {
+    const r = await fetch('https://api.indexnow.org/indexnow', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ host: SITE, key, urlList }),
+    });
+    console.log(`IndexNow: ${urlList.length} URLs -> ${r.status}`);
+  } catch (e) { console.log(`IndexNow error: ${e.message}`); }
+}
+
+// ── main ────────────────────────────────────────────────
 async function main() {
-  const startTime = Date.now();
   console.log('========================================');
-  console.log(`  PRICE & RATING CRON - ${SITE_NAME}`);
+  console.log(`  CRON PRICES — ${SITE}  ${EXECUTE ? '(EXECUTE)' : '(DRY)'}`);
   console.log('========================================\n');
-  console.log(`Modo: ${DRY_RUN ? 'DRY RUN (solo muestra)' : 'PRODUCCION (modifica Sanity)'}`);
-  console.log(`Umbrales: max cambio ${MAX_PRICE_CHANGE_PERCENT}%, rango $${MIN_PRICE}-$${MAX_PRICE}, abort si >${GLOBAL_FAILURE_THRESHOLD}% falla`);
-  console.log(`Delay: ${DELAY_BETWEEN_TOURS / 1000}s\n`);
 
-  let query;
-  if (slugArg) {
-    query = `*[_type == "post" && slug.current == "${slugArg}" && !(_id in path("drafts.**"))] {
-      _id, title, "slug": slug.current,
-      "oldPrice": tourInfo.price,
-      "oldRating": getYourGuideData.rating,
-      "oldReviews": getYourGuideData.reviewCount,
-      "gygUrl": getYourGuideUrl,
-      seoDescription, editorialReview, body
-    }`;
-    console.log(`Modo single: ${slugArg}\n`);
-  } else {
-    // Ignora las ya marcadas como muertas (activeOnGyg == false)
-    query = `*[_type == "post" && defined(tourInfo.price) && defined(getYourGuideUrl) && (activeOnGyg != false) && !(_id in path("drafts.**"))] | order(_createdAt asc) {
-      _id, title, "slug": slug.current,
-      "oldPrice": tourInfo.price,
-      "oldRating": getYourGuideData.rating,
-      "oldReviews": getYourGuideData.reviewCount,
-      "gygUrl": getYourGuideUrl,
-      seoDescription, editorialReview, body
-    }`;
-    console.log(`Modo batch: todos los tours activos\n`);
-  }
+  const q = slugArg
+    ? `*[_type=="post" && slug.current=="${slugArg}" && !(_id in path("drafts.**"))]{ _id, title, "slug":slug.current, "cat":category->slug.current, "oldPrice":tourInfo.price, "oldRating":getYourGuideData.rating, "oldReviews":getYourGuideData.reviewCount, "url":getYourGuideUrl, body }`
+    : `*[_type=="post" && defined(tourInfo.price) && defined(getYourGuideUrl) && !(_id in path("drafts.**"))]{ _id, title, "slug":slug.current, "cat":category->slug.current, "oldPrice":tourInfo.price, "oldRating":getYourGuideData.rating, "oldReviews":getYourGuideData.reviewCount, "url":getYourGuideUrl, body }`;
 
-  console.log('Cargando tours de Sanity...');
-  const tours = await sanityClient.fetch(query);
-  console.log(`   ${tours.length} tours encontrados\n`);
+  const tours = await sanity.fetch(q);
+  console.log(`${tours.length} tours a revisar\n`);
 
-  if (tours.length === 0) { console.log('No se encontraron tours.'); process.exit(1); }
+  let changed = 0, unchanged = 0, blocked = 0, noCorpus = 0, skipped = 0;
+  const changedSlugs = [];
+  const skippedList = [];
 
-  const results = {
-    unchanged: 0, priceFixed: 0, ratingFixed: 0, errors: 0,
-    scrapeFailures: 0, selectorMissing: 0, validationBlocked: 0, deadActivities: 0,
-    details: { changed: [], blocked: [], failed: [], dead: [] }
-  };
+  for (const tour of tours) {
+    const code = cleanCode(tour.url);
+    const prod = code ? getProduct(code) : null;
+    if (!prod) { noCorpus++; skippedList.push(`${tour.slug} (code ${code} sin corpus)`); continue; }
 
-  for (let i = 0; i < tours.length; i++) {
-    const tour = tours[i];
-    console.log(`----------------------------------------`);
-    console.log(`[${i + 1}/${tours.length}] ${tour.title}`);
-    console.log(`   Sanity: $${tour.oldPrice} | ${tour.oldRating}/5 (${tour.oldReviews} reviews)`);
-
-    // El abort por fallas NO cuenta las muertas (son esperadas, no fallas de HTML)
-    const totalProcessed = results.unchanged + results.priceFixed + results.ratingFixed + results.errors + results.scrapeFailures + results.selectorMissing + results.validationBlocked;
-    if (totalProcessed > 10) {
-      const failRate = (results.scrapeFailures + results.selectorMissing) / totalProcessed * 100;
-      if (failRate > GLOBAL_FAILURE_THRESHOLD) {
-        console.log(`\nABORT: ${failRate.toFixed(0)}% fallaron. Posible cambio en HTML de GYG.`);
-        break;
-      }
-    }
-
-    const scrapeResult = await scrapeWithRetries(tour.gygUrl, DEAD_RETRIES);
-
-    // >>> RAMA NUEVA: ACTIVIDAD MUERTA CONFIRMADA (los 3 intentos rebotaron) <<<
-    if (scrapeResult.confirmedDead) {
-      console.log(`   MUERTA confirmada (${scrapeResult.bounces}/${DEAD_RETRIES}) -> ${scrapeResult.finalUrl}`);
-      results.deadActivities++;
-      results.details.dead.push({ title: tour.title, slug: tour.slug, finalUrl: scrapeResult.finalUrl });
-      if (!DRY_RUN) {
-        try {
-          await sanityClient.patch(tour._id)
-            .setIfMissing({ deadSince: new Date().toISOString().split('T')[0] })
-            .set({ activeOnGyg: false })
-            .commit();
-          console.log(`   Marcada activeOnGyg=false (no se toca precio/reviews)`);
-        } catch (error) {
-          console.log(`   Error marcando: ${error.message}`);
-          results.errors++;
-        }
-      } else {
-        console.log(`   DRY RUN -> marcaria activeOnGyg=false`);
-      }
-      if (i < tours.length - 1) await delay(DELAY_BETWEEN_TOURS);
+    // GUARDRAIL: si el titulo de Sanity no matchea el del corpus, NO tocar (URL sucia / code cruzado)
+    if (!titlesMatch(tour.title, prod.title)) {
+      skipped++;
+      skippedList.push(`${tour.slug}: "${tour.title.slice(0,35)}" != corpus "${(prod.title||'').slice(0,35)}"`);
       continue;
     }
 
-    if (!scrapeResult.priceSelectorFound) {
-      console.log(`   SELECTOR NO ENCONTRADO - no se toca`);
-      if (scrapeResult.error) console.log(`   Error: ${scrapeResult.error}`);
-      results.selectorMissing++;
-      results.details.failed.push({ title: tour.title, slug: tour.slug, reason: 'Selector no encontrado' });
-      if (i < tours.length - 1) await delay(DELAY_BETWEEN_TOURS);
-      continue;
-    }
+    const newPrice = prod.price != null ? Number(prod.price) : Number(tour.oldPrice);
+    const oldPrice = Number(tour.oldPrice);
 
-    if (scrapeResult.price === null) {
-      console.log(`   NO SE PUDO PARSEAR PRECIO - no se toca`);
-      results.scrapeFailures++;
-      results.details.failed.push({ title: tour.title, slug: tour.slug, reason: 'Precio no parseado' });
-      if (i < tours.length - 1) await delay(DELAY_BETWEEN_TOURS);
-      continue;
-    }
+    const priceChanged = Math.abs(newPrice - oldPrice) >= 0.01;
+    const ratingChanged = (prod.rating != null && prod.rating !== tour.oldRating)
+      || (prod.reviewCount != null && prod.reviewCount !== tour.oldReviews);
 
-    const newPrice = scrapeResult.price;
-    const newRating = scrapeResult.rating || tour.oldRating;
-    const newReviews = scrapeResult.reviewCount || tour.oldReviews;
-
-    console.log(`   GYG:    $${newPrice} | ${newRating}/5 (${newReviews} reviews)`);
-
-    const priceChanged = newPrice !== tour.oldPrice;
-    const ratingChanged = newRating !== tour.oldRating;
-    const reviewsChanged = newReviews !== tour.oldReviews;
-
-    if (!priceChanged && !ratingChanged && !reviewsChanged) {
-      console.log(`   Todo correcto`);
-      results.unchanged++;
-      if (i < tours.length - 1) await delay(DELAY_BETWEEN_TOURS);
-      continue;
-    }
+    if (!priceChanged && !ratingChanged) { unchanged++; continue; }
 
     if (priceChanged) {
-      const validation = validatePrice(tour.oldPrice, newPrice);
-      if (!validation.valid) {
-        console.log(`   PRECIO BLOQUEADO:`);
-        validation.issues.forEach(issue => console.log(`      - ${issue}`));
-        results.validationBlocked++;
-        results.details.blocked.push({ title: tour.title, slug: tour.slug, oldPrice: tour.oldPrice, newPrice, issues: validation.issues });
-        if (i < tours.length - 1) await delay(DELAY_BETWEEN_TOURS);
+      const issues = validatePrice(oldPrice, newPrice);
+      if (issues.length) {
+        blocked++;
+        console.log(`BLOQUEADO ${tour.slug}: ${oldPrice} -> ${newPrice} (${issues.join(', ')})`);
         continue;
       }
     }
 
-    if (priceChanged) console.log(`   Precio: $${tour.oldPrice} -> $${newPrice}`);
-    if (ratingChanged) console.log(`   Rating: ${tour.oldRating} -> ${newRating}`);
-    if (reviewsChanged) console.log(`   Reviews: ${tour.oldReviews} -> ${newReviews}`);
-
-    let currentBody = tour.body;
-    let totalBodyChanges = 0;
-
-    if (priceChanged) {
-      const { body: fixedBody, changes } = fixPriceInBody(currentBody, tour.oldPrice, newPrice);
-      currentBody = fixedBody;
-      totalBodyChanges += changes;
-      console.log(`   Body precio: ${changes} reemplazos`);
-    }
-
-    if (ratingChanged || reviewsChanged) {
-      const { body: fixedBody, changes } = fixRatingInBody(currentBody, tour.oldRating, tour.oldReviews, newRating, newReviews);
-      currentBody = fixedBody;
-      totalBodyChanges += changes;
-      console.log(`   Body rating/reviews: ${changes} reemplazos`);
-    }
-
-    let currentSeo = tour.seoDescription;
-    let seoChanged = false;
-    if (priceChanged) { const r = fixPriceInText(currentSeo, tour.oldPrice, newPrice); if (r.changed) { currentSeo = r.text; seoChanged = true; } }
-    if (ratingChanged || reviewsChanged) { const r = fixRatingInText(currentSeo, tour.oldRating, tour.oldReviews, newRating, newReviews); if (r.changed) { currentSeo = r.text; seoChanged = true; } }
-    console.log(`   SEO: ${seoChanged ? 'corregido' : 'sin cambios'}`);
-
-    let currentReview = tour.editorialReview;
-    let reviewTextChanged = false;
-    if (priceChanged) { const r = fixPriceInText(currentReview, tour.oldPrice, newPrice); if (r.changed) { currentReview = r.text; reviewTextChanged = true; } }
-    if (ratingChanged || reviewsChanged) { const r = fixRatingInText(currentReview, tour.oldRating, tour.oldReviews, newRating, newReviews); if (r.changed) { currentReview = r.text; reviewTextChanged = true; } }
-    console.log(`   Review: ${reviewTextChanged ? 'corregido' : 'sin cambios'}`);
-
-    if (!DRY_RUN) {
-      try {
-        const patch = sanityClient.patch(tour._id);
-        if (priceChanged) patch.set({ 'tourInfo.price': newPrice });
-        if (ratingChanged) patch.set({ 'getYourGuideData.rating': newRating });
-        if (reviewsChanged) patch.set({ 'getYourGuideData.reviewCount': newReviews });
-        if (totalBodyChanges > 0) patch.set({ body: currentBody });
-        if (seoChanged) patch.set({ seoDescription: currentSeo });
-        if (reviewTextChanged) patch.set({ editorialReview: currentReview });
-        await patch.commit();
-        console.log(`   Sanity actualizado`);
-        if (priceChanged) results.priceFixed++;
-        if (ratingChanged || reviewsChanged) results.ratingFixed++;
-        results.details.changed.push({ title: tour.title, slug: tour.slug, price: priceChanged ? `$${tour.oldPrice}->$${newPrice}` : '-', rating: ratingChanged ? `${tour.oldRating}->${newRating}` : '-', reviews: reviewsChanged ? `${tour.oldReviews}->${newReviews}` : '-' });
-      } catch (error) {
-        console.log(`   Error: ${error.message}`);
-        results.errors++;
-      }
-    } else {
-      console.log(`   DRY RUN - no se modifico`);
-      if (priceChanged) results.priceFixed++;
-      if (ratingChanged || reviewsChanged) results.ratingFixed++;
-      results.details.changed.push({ title: tour.title, slug: tour.slug, price: priceChanged ? `$${tour.oldPrice}->$${newPrice}` : '-', rating: ratingChanged ? `${tour.oldRating}->${newRating}` : '-', reviews: reviewsChanged ? `${tour.oldReviews}->${newReviews}` : '-' });
-    }
-
-    if (i < tours.length - 1) await delay(DELAY_BETWEEN_TOURS);
+    console.log(`--- ${tour.slug}`);
+    const { log } = await aplicarCambio(tour, prod);
+    log.forEach(l => console.log('    ' + l));
+    changed++;
+    changedSlugs.push(tour.slug);
   }
 
-  const elapsed = ((Date.now() - startTime) / 1000 / 60).toFixed(1);
-  console.log('\n========================================');
-  console.log(`  RESUMEN - ${SITE_NAME}`);
-  console.log('========================================\n');
-  console.log(`Sin cambios: ${results.unchanged}`);
-  console.log(`Precios actualizados: ${results.priceFixed}`);
-  console.log(`Rating/reviews actualizados: ${results.ratingFixed}`);
-  console.log(`Bloqueados: ${results.validationBlocked}`);
-  console.log(`Selector missing: ${results.selectorMissing}`);
-  console.log(`Fallos: ${results.scrapeFailures}`);
-  console.log(`Errores: ${results.errors}`);
-  console.log(`ACTIVIDADES MUERTAS: ${results.deadActivities}`);
-  console.log(`\nTotal: ${tours.length} | ${elapsed} min`);
+  console.log(`\n========================================`);
+  console.log(`Cambiados: ${changed} | Sin cambio: ${unchanged} | Bloqueados: ${blocked} | Sin corpus: ${noCorpus} | Salteados (titulo no matchea): ${skipped}`);
+  console.log(EXECUTE ? 'ESCRITO en Sanity' : 'DRY — nada escrito');
 
-  if (results.details.changed.length > 0) {
-    console.log('\n--- ACTUALIZADOS ---');
-    results.details.changed.forEach(t => console.log(`   ${t.title} | ${t.price} | ${t.rating} | ${t.reviews}`));
-  }
-  if (results.details.dead.length > 0) {
-    console.log('\n--- MUERTAS (a retirar) ---');
-    results.details.dead.forEach(t => console.log(`   ${t.slug} | ${t.title}`));
-  }
-  if (results.details.blocked.length > 0) {
-    console.log('\n--- BLOQUEADOS ---');
-    results.details.blocked.forEach(t => { console.log(`   $${t.oldPrice}->$${t.newPrice} | ${t.title}`); t.issues.forEach(i => console.log(`      ${i}`)); });
-  }
-  if (results.details.failed.length > 0) {
-    console.log('\n--- FALLOS ---');
-    results.details.failed.forEach(t => console.log(`   ${t.title} | ${t.reason}`));
+  if (skippedList.length) {
+    console.log(`\n--- SALTEADOS/SIN CORPUS (revisar URL en Sanity) ---`);
+    skippedList.forEach(s => console.log('  ' + s));
   }
 
-  // Notificar IndexNow con las URLs actualizadas
-  if (!DRY_RUN && results.details.changed.length > 0) {
-    await notifyIndexNow(results.details.changed.map(t => t.slug));
-  }
-
-  // Email SOLO si hay bajas nuevas en esta corrida
-  if (!DRY_RUN && results.details.dead.length > 0) {
-    await notifyDeadByEmail(results.details.dead);
-  } else if (DRY_RUN && results.details.dead.length > 0) {
-    console.log(`\nDRY RUN -> mandaría email a ${ALERT_EMAIL} con ${results.details.dead.length} baja(s)`);
-  }
-
-  if (DRY_RUN) console.log(`\nDRY RUN. Para aplicar: agregar --execute`);
-  if (results.errors > 0 || results.selectorMissing > tours.length * 0.5) process.exit(1);
+  if (EXECUTE && changedSlugs.length) await notifyIndexNow(changedSlugs);
 }
 
-main().catch(err => { console.error('Error fatal:', err); process.exit(1); });
+main().catch(e => { console.error(e); process.exit(1); });
+
