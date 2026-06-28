@@ -1,15 +1,15 @@
-name: Update Tour Prices & Ratings
+name: Update Tour Prices & Ratings (lasvegastour)
 
 on:
   schedule:
-    # Cada 72 horas (lunes, jueves a las 6 AM UTC)
+    # Lunes y jueves a las 6 AM UTC
     - cron: '0 6 * * 1,4'
   workflow_dispatch: # Permite ejecutar manualmente desde GitHub
 
 jobs:
   update-prices:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 60
 
     steps:
       - name: Checkout repo
@@ -24,45 +24,31 @@ jobs:
         working-directory: tour-importer
         run: npm ci
 
-      - name: Install Chromium for Puppeteer
-        run: npx puppeteer browsers install chrome
-
-      - name: Run price & rating update
+      - name: Refrescar corpus desde Viator
         working-directory: tour-importer
         env:
           SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
           SANITY_DATASET: ${{ secrets.SANITY_DATASET }}
           SANITY_TOKEN: ${{ secrets.SANITY_TOKEN }}
-          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          VIATOR_API_KEY: ${{ secrets.VIATOR_API_KEY }}
+        run: node ingest-corpus.mjs
+
+      - name: Correr cron de precios y ratings
+        working-directory: tour-importer
+        env:
+          SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
+          SANITY_DATASET: ${{ secrets.SANITY_DATASET }}
+          SANITY_TOKEN: ${{ secrets.SANITY_TOKEN }}
+          VIATOR_API_KEY: ${{ secrets.VIATOR_API_KEY }}
         run: node cron-prices.mjs --execute
-
-      - name: Rebuild corpus (with fresh prices)
-        working-directory: tour-importer
-        env:
-          SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
-          SANITY_DATASET: ${{ secrets.SANITY_DATASET }}
-          SANITY_TOKEN: ${{ secrets.SANITY_TOKEN }}
-        run: node build-corpus.mjs
-
-      - name: Analyze corpus
-        working-directory: tour-importer
-        run: node analyze-corpus.mjs
-
-      - name: Regenerate AI citable phrases
-        working-directory: tour-importer
-        env:
-          SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
-          SANITY_DATASET: ${{ secrets.SANITY_DATASET }}
-          SANITY_TOKEN: ${{ secrets.SANITY_TOKEN }}
-        run: node apply-citables.mjs --all --yes
 
       - name: Notify IndexNow (Bing)
         env:
-          INDEXNOW_HOST: colosseumroman.com
-          INDEXNOW_KEY: fd3b235575b044c1b491dda0d4057aaa
+          INDEXNOW_HOST: lasvegastour.com
+          INDEXNOW_KEY: b62806b355294ae38198b7a021a1492a
         run: |
           set -e
-           curl -fsSL -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36" --retry 3 --retry-delay 5 "https://${INDEXNOW_HOST}/sitemap.xml" -o sitemap.xml || { echo "Sitemap no disponible, salteo IndexNow"; exit 0; }
+          curl -fsSL -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36" --retry 3 --retry-delay 5 "https://${INDEXNOW_HOST}/sitemap.xml" -o sitemap.xml || { echo "Sitemap no disponible, salteo IndexNow"; exit 0; }
           grep -oP '(?<=<loc>)[^<]+' sitemap.xml | head -n 10000 > urls.txt
           COUNT=$(wc -l < urls.txt)
           echo "Encontradas ${COUNT} URLs en el sitemap"
