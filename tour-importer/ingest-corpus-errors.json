@@ -1,7 +1,7 @@
 [
   {
-    "code": "<CODE>",
-    "slug": null,
-    "error": "Viator GET /products/<CODE> -> 404 Not Found"
+    "code": "5119",
+    "slug": "valley-of-fire-lost-city-museum-day-trip-vegas",
+    "error": "Viator GET /products/5119 -> 404 Not Found"
   }
 ]

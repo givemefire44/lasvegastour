@@ -12,6 +12,7 @@
 import dotenv from 'dotenv'; dotenv.config({ path: '.env.local' });
 import { createClient } from '@sanity/client';
 import { getProduct } from './corpus.js';   // ajustar ruta si corpus.js esta en otro lado
+import fs from 'fs';
 
 // ── config ──────────────────────────────────────────────
 const SITE = 'lasvegastour.com';
@@ -19,6 +20,10 @@ const MAX_PRICE_CHANGE_PERCENT = 120;
 const MIN_PRICE = 5;
 const MAX_PRICE = 2000;
 const GLOBAL_FAILURE_THRESHOLD = 50;
+
+// ── alertas email (Resend, mismo que Colosseum) ──
+const ALERT_EMAIL = 'damefuego2020@gmail.com';
+const ALERT_FROM = 'LasVegasTour Cron <onboarding@resend.dev>';
 
 const args = process.argv.slice(2);
 const EXECUTE = args.includes('--execute');
@@ -38,6 +43,21 @@ const titleTokens = s => String(s || '').toLowerCase().replace(/[^a-z0-9]/g, ' '
 function titlesMatch(sanityTitle, corpusTitle) {
   const a = new Set(titleTokens(sanityTitle));
   return titleTokens(corpusTitle).filter(w => a.has(w)).length >= 2;
+}
+
+// ── codigos muertos en Viator (404) leidos del errors.json del ingest ──
+// Solo cuenta 404 (producto delistado). "fetch failed" u otros errores transitorios se ignoran.
+function loadDead404Codes() {
+  const ERRFILE = './ingest-corpus-errors.json';
+  if (!fs.existsSync(ERRFILE)) return new Set();
+  try {
+    const arr = JSON.parse(fs.readFileSync(ERRFILE, 'utf8'));
+    const dead = new Set();
+    for (const e of (arr || [])) {
+      if (e && e.code && typeof e.error === 'string' && e.error.includes('404')) dead.add(e.code);
+    }
+    return dead;
+  } catch { return new Set(); }
 }
 
 // ── validacion (umbrales, reusado de Colosseum) ─────────
@@ -191,27 +211,103 @@ async function notifyIndexNow(slugs) {
   } catch (e) { console.log(`IndexNow error: ${e.message}`); }
 }
 
+// ── EMAIL DE BAJAS (Resend) — solo cuando hay tours muertos nuevos ──
+async function notifyDeadByEmail(deadList) {
+  if (!deadList || deadList.length === 0) return;
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) { console.log('\nEmail: RESEND_API_KEY no configurada -> se omite el aviso'); return; }
+
+  const rows = deadList.map(t => `
+    <tr>
+      <td style="padding:8px 12px;border:1px solid #e2e2e2;font-family:monospace">${t.slug}</td>
+      <td style="padding:8px 12px;border:1px solid #e2e2e2">${t.title}</td>
+      <td style="padding:8px 12px;border:1px solid #e2e2e2;font-family:monospace">${t.code}</td>
+    </tr>`).join('');
+
+  const html = `
+    <div style="font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:640px">
+      <h2 style="color:#b91c1c;margin:0 0 4px">${deadList.length} tour(es) muerto(s) en ${SITE}</h2>
+      <p style="color:#444;margin:0 0 16px">
+        El cron detecto que estas actividades ya no existen en Viator (404 Not Found).
+        Quedaron marcadas <strong>activeOnGyg = false</strong> y excluidas del scrapeo de precios.
+        Decidi caso por caso: reescribir la pagina apuntandola a un tour vivo similar (conserva URL/ranking),
+        o retirarla con <strong>discontinued = true</strong> en Sanity Studio (301 al hub + fuera de sitemap).
+      </p>
+      <table style="border-collapse:collapse;width:100%;font-size:14px">
+        <thead>
+          <tr style="background:#f5f5f5">
+            <th style="padding:8px 12px;border:1px solid #e2e2e2;text-align:left">slug</th>
+            <th style="padding:8px 12px;border:1px solid #e2e2e2;text-align:left">titulo</th>
+            <th style="padding:8px 12px;border:1px solid #e2e2e2;text-align:left">code</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+      <p style="color:#888;font-size:12px;margin-top:16px">Aviso automatico — ${new Date().toISOString()}</p>
+    </div>`;
+
+  try {
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ from: ALERT_FROM, to: [ALERT_EMAIL], subject: `${deadList.length} tour(es) muerto(s) en ${SITE}`, html }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (res.ok) console.log(`\nEmail enviado a ${ALERT_EMAIL} (${deadList.length} bajas) -> id ${data.id || '?'}`);
+    else console.log(`\nEmail: error ${res.status} -> ${JSON.stringify(data)}`);
+  } catch (error) {
+    console.log(`\nEmail: excepcion -> ${error.message}`);
+  }
+}
+
 // ── main ────────────────────────────────────────────────
 async function main() {
   console.log('========================================');
   console.log(`  CRON PRICES — ${SITE}  ${EXECUTE ? '(EXECUTE)' : '(DRY)'}`);
   console.log('========================================\n');
 
+  const dead404 = loadDead404Codes();
+  if (dead404.size) console.log(`Codigos muertos en Viator (404) detectados por el ingest: ${dead404.size}\n`);
+
   const q = slugArg
     ? `*[_type=="post" && slug.current=="${slugArg}" && !(_id in path("drafts.**"))]{ _id, title, "slug":slug.current, "cat":category->slug.current, "oldPrice":tourInfo.price, "oldRating":getYourGuideData.rating, "oldReviews":getYourGuideData.reviewCount, "url":getYourGuideUrl, body }`
-    : `*[_type=="post" && defined(tourInfo.price) && defined(getYourGuideUrl) && !(_id in path("drafts.**"))]{ _id, title, "slug":slug.current, "cat":category->slug.current, "oldPrice":tourInfo.price, "oldRating":getYourGuideData.rating, "oldReviews":getYourGuideData.reviewCount, "url":getYourGuideUrl, body }`;
+    : `*[_type=="post" && defined(tourInfo.price) && defined(getYourGuideUrl) && (activeOnGyg != false) && !(_id in path("drafts.**"))]{ _id, title, "slug":slug.current, "cat":category->slug.current, "oldPrice":tourInfo.price, "oldRating":getYourGuideData.rating, "oldReviews":getYourGuideData.reviewCount, "url":getYourGuideUrl, body }`;
 
   const tours = await sanity.fetch(q);
   console.log(`${tours.length} tours a revisar\n`);
 
-  let changed = 0, unchanged = 0, blocked = 0, noCorpus = 0, skipped = 0;
+  let changed = 0, unchanged = 0, blocked = 0, noCorpus = 0, skipped = 0, deadNew = 0;
   const changedSlugs = [];
   const skippedList = [];
+  const deadList = [];
 
   for (const tour of tours) {
     const code = cleanCode(tour.url);
     const prod = code ? getProduct(code) : null;
-    if (!prod) { noCorpus++; skippedList.push(`${tour.slug} (code ${code} sin corpus)`); continue; }
+    if (!prod) {
+      // ¿es un MUERTO confirmado por Viator (404)? -> marcar activeOnGyg=false + juntar para mail
+      if (code && dead404.has(code)) {
+        deadNew++;
+        deadList.push({ title: tour.title, slug: tour.slug, code });
+        console.log(`MUERTO (404 Viator): ${tour.slug} (code ${code})`);
+        if (EXECUTE) {
+          try {
+            await sanity.patch(tour._id)
+              .setIfMissing({ deadSince: new Date().toISOString().split('T')[0] })
+              .set({ activeOnGyg: false })
+              .commit();
+            console.log(`    marcado activeOnGyg=false`);
+          } catch (e) {
+            console.log(`    error marcando: ${e.message}`);
+          }
+        } else {
+          console.log(`    DRY -> marcaria activeOnGyg=false`);
+        }
+        continue;
+      }
+      // no es 404 confirmado: queda como "sin corpus" para revisar (codigo/titulo, transitorio, etc.)
+      noCorpus++; skippedList.push(`${tour.slug} (code ${code} sin corpus)`); continue;
+    }
 
     // GUARDRAIL: si el titulo de Sanity no matchea el del corpus, NO tocar (URL sucia / code cruzado)
     if (!titlesMatch(tour.title, prod.title)) {
@@ -246,16 +342,21 @@ async function main() {
   }
 
   console.log(`\n========================================`);
-  console.log(`Cambiados: ${changed} | Sin cambio: ${unchanged} | Bloqueados: ${blocked} | Sin corpus: ${noCorpus} | Salteados (titulo no matchea): ${skipped}`);
+  console.log(`Cambiados: ${changed} | Sin cambio: ${unchanged} | Bloqueados: ${blocked} | Muertos nuevos: ${deadNew} | Sin corpus: ${noCorpus} | Salteados (titulo no matchea): ${skipped}`);
   console.log(EXECUTE ? 'ESCRITO en Sanity' : 'DRY — nada escrito');
 
+  if (deadList.length) {
+    console.log(`\n--- MUERTOS NUEVOS (404 Viator, marcados activeOnGyg=false) ---`);
+    deadList.forEach(d => console.log(`  ${d.slug} (${d.code})`));
+  }
   if (skippedList.length) {
     console.log(`\n--- SALTEADOS/SIN CORPUS (revisar URL en Sanity) ---`);
     skippedList.forEach(s => console.log('  ' + s));
   }
 
   if (EXECUTE && changedSlugs.length) await notifyIndexNow(changedSlugs);
+  if (EXECUTE && deadList.length) await notifyDeadByEmail(deadList);
+  else if (!EXECUTE && deadList.length) console.log(`\nDRY -> mandaria email a ${ALERT_EMAIL} con ${deadList.length} baja(s)`);
 }
 
 main().catch(e => { console.error(e); process.exit(1); });
-
