@@ -3,12 +3,13 @@
 //
 // Uso:
 //   node ingest-corpus.mjs --dry-run            (lista qué bajaría, sin escribir)
-//   node ingest-corpus.mjs                      (backfill desde Sanity: todos los tours live)
+//   node ingest-corpus.mjs                      (refresca desde Sanity: TODOS los tours live, datos frescos)
 //   node ingest-corpus.mjs --code=5516P7        (un solo producto, para probar)
 //   node ingest-corpus.mjs --limit=10           (acota)
 //
-// Fuente por defecto: los docs de Sanity (lee el productCode del final de getYourGuideUrl),
-// así el corpus queda calcado a lo que está publicado. Reanudable (ingest-corpus-done.json).
+// Fuente: los docs de Sanity (lee el productCode del final de getYourGuideUrl),
+// así el corpus queda calcado a lo que está publicado.
+// Baja SIEMPRE todos los tours con datos frescos (upsert actualiza si ya existen).
 
 import { fetchViatorTour } from './src/viator-client.js';
 import { upsertProduct, countProducts, closeCorpus } from './corpus.js';
@@ -39,8 +40,6 @@ async function main() {
   const ONE = args.find(a => a.startsWith('--code='))?.split('=')[1] || null;
   const LIMIT = parseInt(args.find(a => a.startsWith('--limit='))?.split('=')[1] || '100000', 10);
   const DRY = args.includes('--dry-run');
-  const DONE = './ingest-corpus-done.json';
-  const done = fs.existsSync(DONE) ? JSON.parse(fs.readFileSync(DONE)) : [];
 
   let targets = ONE ? [{ code: ONE }] : await codesFromSanity();
   // dedupe por code
@@ -53,7 +52,6 @@ async function main() {
   let ok = 0, err = 0, skipped = 0;
   const failures = [];
   for (const { code, slug } of targets) {
-    if (!ONE && done.includes(code)) { console.log(`skip (done): ${code}`); skipped++; continue; }
     try {
       const data = await fetchViatorTour(code);
       if (!data?.title) { console.log(`skip (no-data): ${code}`); skipped++; continue; }
@@ -64,8 +62,6 @@ async function main() {
         console.log(`would upsert: ${code}  | ${data.title.slice(0, 50)}  | additionalInfo:${nAI} ${itFlag}`);
       } else {
         upsertProduct({ ...data, productCode: code, sourceUrl: data.url || null });
-        done.push(code);
-        fs.writeFileSync(DONE, JSON.stringify(done, null, 2));
         console.log(`upserted: ${code}  | ${data.title.slice(0, 50)}  | additionalInfo:${nAI} ${itFlag}`);
       }
       ok++;
@@ -81,7 +77,7 @@ async function main() {
   if (failures.length) {
     const ERRFILE = './ingest-corpus-errors.json';
     fs.writeFileSync(ERRFILE, JSON.stringify(failures, null, 2));
-    console.log(`\n⚠️  ${failures.length} fallidos -> ${ERRFILE}`);
+    console.log(`\nFallidos: ${failures.length} -> ${ERRFILE}`);
     for (const f of failures) console.log(`   ${f.code}  | ${f.slug || '(sin slug)'}  | ${f.error}`);
   }
 
