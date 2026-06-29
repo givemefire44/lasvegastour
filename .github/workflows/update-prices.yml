@@ -34,6 +34,12 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node ingest-corpus.mjs
 
+      - name: Debug token
+        working-directory: tour-importer
+        env:
+          SANITY_TOKEN: ${{ secrets.SANITY_API_TOKEN }}
+        run: node -e "const t=process.env.SANITY_TOKEN||''; console.log('len:',t.length,'ini:',t.slice(0,8),'fin:',t.slice(-6))"
+
       - name: Correr cron de precios y ratings
         working-directory: tour-importer
         env:
