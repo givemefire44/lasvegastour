@@ -127,15 +127,15 @@ export default function RecommendedTours({
                       {image ? (
                         <Image
                           src={urlFor(image)
-                            .width(300)
-                            .height(200)
+                            .width(480)
+                            .height(440)
                             .format('webp')
                             .quality(80)
                             .fit('crop')
                             .url()}
                           alt={image.alt || tour.title}
                           fill
-                          sizes="(max-width: 768px) 100vw, 300px"
+                          sizes="(max-width: 768px) 170px, 240px"
                           loading={index < initialCount ? "eager" : "lazy"} // 🚀 Eager para iniciales
                           placeholder="blur"
                           blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="

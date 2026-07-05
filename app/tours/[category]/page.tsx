@@ -452,12 +452,12 @@ export default async function ToursCategory({ params }: PageProps) {
                       href={`/tour/${post.slug.current}`}
                       style={{ textDecoration: 'none', color: 'inherit' }}
                     >
-                      <div style={{ position: 'relative', height: '160px' }}>
+                      <div style={{ position: 'relative', height: '220px' }}>
                         {image ? (
                           <Image
                             src={urlFor(image)
                               .width(350)
-                              .height(160)
+                              .height(220)
                               .format('webp')
                               .quality(80)
                               .fit('crop')

@@ -1777,15 +1777,15 @@ body {
     text-decoration: none;
     color: inherit;
     height: 100%;
-    min-height: 180px;
+    min-height: 200px;
   }
-  
-  /* IMAGEN IZQUIERDA */
+
+  /* IMAGEN IZQUIERDA — sin height fijo: estira a la altura total de la card
+     (con height fijo quedaba un hueco blanco cuando el texto crecía) */
   .recommended-tour-image {
     position: relative;
-    width: 200px;
-    min-width: 200px;
-    height: 180px;
+    width: 240px;
+    min-width: 240px;
     flex-shrink: 0;
   }
   
@@ -1887,7 +1887,7 @@ body {
     .recommended-tour-image {
       width: 170px; /* 🔥 AÚN MÁS GRANDE - era 160px */
       min-width: 170px;
-      height: 130px; /* 🔥 AJUSTADO a la nueva altura total */
+      /* sin height fijo: estira a la altura de la card */
       border-radius: 8px 0 0 8px; /* 🔥 AGREGAR border-radius */
     }
 
@@ -1929,7 +1929,6 @@ body {
     .recommended-tour-image {
       width: 150px; /* 🔥 MANTENER IMAGEN PROMINENTE */
       min-width: 150px;
-      height: 110px; /* 🔥 AJUSTADO */
     }
 
     .recommended-tour-link {

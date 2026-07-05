@@ -204,10 +204,11 @@ export default function HubPage({ hub, tours, content, allHubs, recommendedTours
                       {i + 1}
                     </div>
                     <a href={`/tour/${tour.slug.current}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                      <div style={{ position: 'relative', height: '160px' }}>
+                      {/* Top 3: imagen al doble de alto que las cards de la lista, para impacto */}
+                      <div style={{ position: 'relative', height: '320px' }}>
                         {image ? (
                           <Image
-                            src={urlFor(image).width(350).height(160).format('webp').quality(80).fit('crop').url()}
+                            src={urlFor(image).width(350).height(320).format('webp').quality(80).fit('crop').url()}
                             alt={image.alt || tour.title} fill style={{ objectFit: 'cover' }}
                             sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                             loading="lazy"
@@ -334,10 +335,10 @@ export default function HubPage({ hub, tours, content, allHubs, recommendedTours
                     minWidth: '260px', maxWidth: '300px', justifySelf: 'center'
                   }}>
                     <a href={`/tour/${tour.slug.current}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                      <div style={{ position: 'relative', height: '160px' }}>
+                      <div style={{ position: 'relative', height: '220px' }}>
                         {image ? (
                           <Image
-                            src={urlFor(image).width(350).height(160).format('webp').quality(80).fit('crop').url()}
+                            src={urlFor(image).width(350).height(220).format('webp').quality(80).fit('crop').url()}
                             alt={image.alt || tour.title} fill style={{ objectFit: 'cover' }}
                             sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                             loading="lazy"
