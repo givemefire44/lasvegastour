@@ -1118,10 +1118,12 @@ body {
   font-weight: 500;
 }
 
-/* LAYOUT PRINCIPAL - DOS COLUMNAS */
+/* LAYOUT PRINCIPAL - DOS COLUMNAS
+   La columna del sidebar debe medir lo mismo que la tarjeta .tour-widget (300px);
+   con 350px la tarjeta quedaba corrida a la izquierda y comprimía el contenido */
 .tour-layout {
   display: grid;
-  grid-template-columns: 1fr 350px !important;
+  grid-template-columns: 1fr 300px !important;
   gap: 40px;
   align-items: start;
   margin-bottom: 60px;
