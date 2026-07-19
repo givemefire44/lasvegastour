@@ -92,7 +92,8 @@ function linkifyBody(body, currentUrl) {
   }
 
   // secciones de LOGÍSTICA donde NO se linkea (ahí viven direcciones, horarios, nombres de venues)
-  const BLOCKED_SECTIONS = ['included', 'practical', 'best for', 'at a glance', 'insider', 'what to bring', 'good to know'];
+  // + 'quick answer': la respuesta citable por AI engines queda limpia de anchors
+  const BLOCKED_SECTIONS = ['included', 'practical', 'best for', 'at a glance', 'insider', 'what to bring', 'good to know', 'quick answer'];
   let blockedSection = false;     // se activa según el último heading
 
   const out = body.map((block) => {

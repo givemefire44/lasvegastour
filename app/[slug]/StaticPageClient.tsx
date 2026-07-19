@@ -743,15 +743,16 @@ export default function StaticPageClient({
     },
     marks: {
       link: ({ children, value }: any) => (
-        <a 
-          href={value.href} 
-          style={{ 
-            color: '#2563eb', 
+        <a
+          href={value.href}
+          style={{
+            color: '#2563eb',
             textDecoration: 'underline',
             fontWeight: '500'
           }}
-          target="_blank"
-          rel="noopener noreferrer"
+          // internos (links persistidos de link-articles) en la misma pestaña y SIN noreferrer
+          target={value?.href?.startsWith('/') ? '_self' : '_blank'}
+          rel={value?.href?.startsWith('/') ? undefined : 'noopener noreferrer'}
         >
           {children}
         </a>

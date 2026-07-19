@@ -45,6 +45,8 @@ interface HubContent {
   };
   methodology: string;
   intro: { whyItMatters: string; whatOptions: string; sweetSpot: string; howToChoose: string };
+  // HTML pre-linkificado server-side ([slug]/page.tsx via serverAutoLinker)
+  introHtml?: { whyItMatters: string; whatOptions: string; sweetSpot: string; howToChoose: string };
   pricingTiers: { range: string; label: string }[];
   decisionBox: { title: string; bullets: string[] };
   internalLinks: { text: string; slug: string }[];
@@ -258,21 +260,23 @@ export default function HubPage({ hub, tours, content, allHubs, recommendedTours
             gap: '16px',
             marginBottom: '2.5rem'
           }}>
-            <div style={{ padding: '18px', background: '#1e3a5f', borderRadius: '12px', border: '1px solid #16304f' }}>
+            {/* Links pre-inyectados SERVER-SIDE (introHtml) — crawleables en el
+                HTML inicial (serverAutoLinker.linkifyText en [slug]/page.tsx). */}
+            <div className="hub-block-dark" style={{ padding: '18px', background: '#1e3a5f', borderRadius: '12px', border: '1px solid #16304f' }}>
               <h3 style={{ fontSize: '0.95rem', fontWeight: '700', marginBottom: '8px', color: '#f4c95d' }}>🎯 Why it matters</h3>
-              <p style={{ fontSize: '0.9rem', color: '#ffffff', lineHeight: '1.65', fontWeight: '500' }}>{intro.whyItMatters}</p>
+              <p style={{ fontSize: '0.9rem', color: '#ffffff', lineHeight: '1.65', fontWeight: '500' }} dangerouslySetInnerHTML={{ __html: content?.introHtml?.whyItMatters ?? intro.whyItMatters }} />
             </div>
             <div style={{ padding: '18px', background: '#E8EDF3', borderRadius: '12px', border: '1px solid #d4dde8' }}>
               <h3 style={{ fontSize: '0.95rem', fontWeight: '700', marginBottom: '8px', color: '#1e3a5f' }}>📊 Your options</h3>
-              <p style={{ fontSize: '0.9rem', color: '#1a2b3c', lineHeight: '1.65', fontWeight: '500' }}>{intro.whatOptions}</p>
+              <p style={{ fontSize: '0.9rem', color: '#1a2b3c', lineHeight: '1.65', fontWeight: '500' }} dangerouslySetInnerHTML={{ __html: content?.introHtml?.whatOptions ?? intro.whatOptions }} />
             </div>
-            <div style={{ padding: '18px', background: '#1e3a5f', borderRadius: '12px', border: '1px solid #16304f' }}>
+            <div className="hub-block-dark" style={{ padding: '18px', background: '#1e3a5f', borderRadius: '12px', border: '1px solid #16304f' }}>
               <h3 style={{ fontSize: '0.95rem', fontWeight: '700', marginBottom: '8px', color: '#f4c95d' }}>💎 Sweet spot</h3>
-              <p style={{ fontSize: '0.9rem', color: '#ffffff', lineHeight: '1.65', fontWeight: '500' }}>{intro.sweetSpot}</p>
+              <p style={{ fontSize: '0.9rem', color: '#ffffff', lineHeight: '1.65', fontWeight: '500' }} dangerouslySetInnerHTML={{ __html: content?.introHtml?.sweetSpot ?? intro.sweetSpot }} />
             </div>
             <div style={{ padding: '18px', background: '#E8EDF3', borderRadius: '12px', border: '1px solid #d4dde8' }}>
               <h3 style={{ fontSize: '0.95rem', fontWeight: '700', marginBottom: '8px', color: '#1e3a5f' }}>🧭 How to choose</h3>
-              <p style={{ fontSize: '0.9rem', color: '#1a2b3c', lineHeight: '1.65', fontWeight: '500' }}>{intro.howToChoose}</p>
+              <p style={{ fontSize: '0.9rem', color: '#1a2b3c', lineHeight: '1.65', fontWeight: '500' }} dangerouslySetInnerHTML={{ __html: content?.introHtml?.howToChoose ?? intro.howToChoose }} />
             </div>
           </div>
         </Container>
@@ -411,7 +415,8 @@ export default function HubPage({ hub, tours, content, allHubs, recommendedTours
             {faqs.map((faq, i) => (
               <details key={i} style={{ borderBottom: '1px solid #eee', padding: '18px 0' }}>
                 <summary style={{ fontWeight: '600', fontSize: '1.05rem', cursor: 'pointer', color: '#333' }}>{faq.question}</summary>
-                <p style={{ marginTop: '12px', fontSize: '0.95rem', color: '#555', lineHeight: '1.7' }}>{faq.answer}</p>
+                {/* answerHtml = links pre-inyectados server-side */}
+                <p style={{ marginTop: '12px', fontSize: '0.95rem', color: '#555', lineHeight: '1.7' }} dangerouslySetInnerHTML={{ __html: (faq as any).answerHtml ?? faq.answer }} />
               </details>
             ))}
           </div>
@@ -448,6 +453,20 @@ export default function HubPage({ hub, tours, content, allHubs, recommendedTours
       )}
 
       <Footer />
+
+      {/* estilos de los auto-links server-side (intros/FAQs) */}
+      <style jsx global>{`
+        .auto-link {
+          color: #1e3a5f;
+          text-decoration: underline;
+          font-weight: 600;
+        }
+        .auto-link:hover { color: #e91e63; }
+        .hub-block-dark .auto-link {
+          color: #f4c95d;
+        }
+        .hub-block-dark .auto-link:hover { color: #ffffff; }
+      `}</style>
     </>
   );
 }

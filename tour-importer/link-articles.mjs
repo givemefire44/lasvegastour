@@ -88,7 +88,8 @@ function linkifyBody(body, currentUrl) {
     }
   }
 
-  const BLOCKED_SECTIONS = ['included', 'practical', 'best for', 'at a glance', 'insider', 'what to bring', 'good to know'];
+  // + 'quick answer': la respuesta citable por AI engines queda limpia de anchors
+  const BLOCKED_SECTIONS = ['included', 'practical', 'best for', 'at a glance', 'insider', 'what to bring', 'good to know', 'quick answer'];
   let blockedSection = false;
 
   const out = body.map((block) => {

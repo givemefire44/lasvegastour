@@ -7,6 +7,7 @@ import StaticPageClient from './StaticPageClient'
 import { isHubSlug, getHubBySlug, getAllHubs, getAllHubSlugs, buildHubGroqFilter } from '@/lib/tourHubs';
 import HubPage from '@/app/components/HubPage';
 import hubContentRaw from '@/data/hub-content.json';
+import { linkifyText, createLinkState } from '@/app/utils/serverAutoLinker';
 import Footer from '@/app/components/Footer';
 import { getRecommendedTours } from '@/lib/getRecommendedTours';
 
@@ -505,7 +506,26 @@ export default async function StaticPage({ params }: { params: Promise<{ slug: s
     const hub = getHubBySlug(slug);
     if (hub) {
       const tours = await getToursByHub(hub);
-      const content = hubContent[hub.slug] || null;
+      const rawContent = hubContent[hub.slug] || null;
+      // 🔗 AutoLinks SERVER-SIDE en los intros/FAQs del hub → guías (HTML inicial,
+      // crawleable). Estado compartido entre párrafos para respetar el cap por página.
+      let content = rawContent;
+      if (rawContent?.intro) {
+        const state = createLinkState();
+        content = {
+          ...rawContent,
+          introHtml: {
+            whyItMatters: linkifyText(rawContent.intro.whyItMatters, hub.slug, state),
+            whatOptions: linkifyText(rawContent.intro.whatOptions, hub.slug, state),
+            sweetSpot: linkifyText(rawContent.intro.sweetSpot, hub.slug, state),
+            howToChoose: linkifyText(rawContent.intro.howToChoose, hub.slug, state),
+          },
+          faqs: (rawContent.faqs || []).map((f: any) => ({
+            ...f,
+            answerHtml: linkifyText(f.answer, hub.slug, state),
+          })),
+        };
+      }
       const allHubs = getAllHubs();
       const recommendedTours = await getRecommendedTours();
 
