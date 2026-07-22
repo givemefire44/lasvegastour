@@ -262,7 +262,7 @@ export default function TourPageClient({
                     lineHeight: '1.6',
                     marginTop: '8px'
                   }}>
-                    Verified reviews from travelers who booked this tour through Viator
+                    Based on verified traveler reviews
                   </p>
                 </div>
               </section>

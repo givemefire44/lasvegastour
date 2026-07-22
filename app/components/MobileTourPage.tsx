@@ -322,7 +322,7 @@ export default function MobileTourPage({
                 margin: 0,
                 textAlign: 'center'
               }}>
-                Verified reviews from GetYourGuide
+                Based on verified traveler reviews
               </p>
             </div>
           )}
