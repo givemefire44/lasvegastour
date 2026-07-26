@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState, useMemo, useCallback } from 'react';
 import Link from 'next/link';
@@ -189,7 +189,7 @@ export default function Footer() {
             {/* POWERED BY INTERCOPER */}
             <div className="footer-powered">
               <span>Powered by </span>
-              <Link href="https://www.intercoper.com" target="_blank" rel="noopener noreferrer">
+              <Link href="https://intercoper.com/portfolio/lasvegastour-com" target="_blank" rel="noopener noreferrer">
                 <span style={{ color: '#e91e63', fontWeight: 600 }}>Intercoper<span style={{ fontSize: '0.85em' }}> ↗</span></span>
               </Link>
             </div>
