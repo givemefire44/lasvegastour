@@ -38,8 +38,8 @@ const AUTHORS: Record<string, AuthorInfo> = {
   },
   'curator-team': {
     name: 'Intercoper Curator Team',
-    role: 'Travel Specialists',
-    bio: 'Our team of travel specialists researches and curates the best tour experiences. We combine local expertise with rigorous verification to recommend only tours worth your time.',
+    role: 'Travel Analysts',
+    bio: 'Our team researches and curates tour experiences. We combine local knowledge with rigorous verification to recommend only tours worth your time.',
     links: {
       profile: '/about-us',
       linkedin: null,
