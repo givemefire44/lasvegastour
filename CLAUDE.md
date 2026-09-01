@@ -79,10 +79,17 @@ Mario prefiere un "no lo verifiqué" antes que una afirmación redonda que
 después se cae. **Abrir la imagen antes de escribir su alt**: el nombre del
 archivo no predice el contenido.
 
-## Aprobación
+## Aprobación y commits
 
 **Nada se publica ni se commitea sin visto bueno explícito de Mario.** Los
 scripts de modificación van con dry-run por defecto y `--execute` para aplicar.
+
+**Nunca `git add -A`, `git add .` ni `git commit -a`.** Stagear siempre las
+rutas exactas que uno mismo tocó. Mario trabaja con varios hilos en paralelo
+sobre el portfolio, así que un `add` amplio se lleva trabajo ajeno —
+posiblemente a medias— bajo un mensaje que habla de otra cosa. Antes de
+commitear, mirar `git log --oneline -5`: si hay commits que uno no hizo, otro
+hilo estuvo acá.
 
 ## Los tres carriles de los datos
 
