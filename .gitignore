@@ -60,3 +60,10 @@ tour-importer/node_modules/
 tour-importer/corpus/
 *.tar.gz
 *.zip
+
+# --- Corpus de reviews: dato DERIVADO, no va al repo ---
+# Lo reconstruye el pipeline (init-corpus-db -> import-* -> enrich -> cluster),
+# que vive en colosseumroman-blog/tour-importer y se corre con --dest <sitio>.
+# Son binarios: git guarda una copia ENTERA por revision, sin delta util, y estos
+# pesan entre 3,5 y 44 MB cada uno.
+*.db
