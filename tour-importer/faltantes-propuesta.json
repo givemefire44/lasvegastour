@@ -1,0 +1,296 @@
+[
+  {
+    "slug": "1-hour-beginner-atv-adventure-with-training-las-vegas",
+    "family": "DAY TRIP",
+    "question": "Do you need closed-toe shoes for the Nellis Dunes ATV ride?",
+    "evidence": "helmets and closed-toe shoes are required"
+  },
+  {
+    "slug": "2-hour-nellis-dunes-atv-desert-ride-from-las-vegas",
+    "family": "DAY TRIP",
+    "question": "Does each rider get their own ATV at Nellis Dunes?",
+    "evidence": "with one rider per ATV"
+  },
+  {
+    "slug": "3-day-zion-bryce-monument-valley-grand-canyon-adventure",
+    "family": "GRAND CANYON",
+    "question": "Is the Zion and Monument Valley 3-day tour small-group?",
+    "evidence": "Small-group 3-day Southwest parks tour from Las Vegas"
+  },
+  {
+    "slug": "3-hour-hoover-dam-mini-tour-small-group-vegas-experience",
+    "family": "DAY TRIP",
+    "question": "How long is the small-group Hoover Dam tour from Las Vegas?",
+    "evidence": "3-hour small-group tour of the Hoover Dam from Las Vegas"
+  },
+  {
+    "slug": "3-hour-mojave-desert-atv-ride-with-strip-shuttle-vegas",
+    "family": "DAY TRIP",
+    "question": "Does the Mojave Desert ATV tour depart from Mandalay Bay?",
+    "evidence": "departing from Mandalay Bay in Las Vegas"
+  },
+  {
+    "slug": "3-hour-mojave-desert-outdoor-shooting-range-las-vegas",
+    "family": "DAY TRIP",
+    "question": "How long is the Mojave Desert shooting range experience?",
+    "evidence": "3-hour outdoor shooting range experience in the Mojave Desert"
+  },
+  {
+    "slug": "5-hour-red-rock-canyon-horseback-desert-adventure-vegas",
+    "family": "DAY TRIP",
+    "question": "Can beginners join the Red Rock Canyon horseback ride?",
+    "evidence": "riders of all experience levels"
+  },
+  {
+    "slug": "6-hour-emerald-cave-kayak-with-optional-vegas-shuttle",
+    "family": "DAY TRIP",
+    "question": "How many hours do you paddle on the Emerald Cave tour?",
+    "evidence": "the paddling portion running about 3.5 hours"
+  },
+  {
+    "slug": "7-day-southwest-parks-adventure-zion-bryce-monument-valley",
+    "family": "GRAND CANYON",
+    "question": "How many days is the Southwest national parks tour from Vegas?",
+    "evidence": "7-day Southwest national parks tour from Las Vegas"
+  },
+  {
+    "slug": "antelope-canyon-horseshoe-bend-full-day-trip-las-vegas",
+    "family": "DAY TRIP",
+    "question": "Is lunch included on the Antelope Canyon and Horseshoe Bend trip?",
+    "evidence": "per person with lunch included"
+  },
+  {
+    "slug": "arte-museum-vegas-digital-art-tea-bar-experience",
+    "family": "SHOWS",
+    "question": "Is the ARTE Museum Las Vegas exhibit self-guided?",
+    "evidence": "self-guided digital art exhibition at the ARTE Museum"
+  },
+  {
+    "slug": "bryce-yellowstone-tetons-7-day-camping-vegas-adventure",
+    "family": "DAY TRIP",
+    "question": "Does the Las Vegas camping tour reach Yellowstone and Bryce Canyon?",
+    "evidence": "from Las Vegas to Bryce Canyon, Grand Tetons, and Yellowstone"
+  },
+  {
+    "slug": "bryce-zion-two-parks-day-trip-from-las-vegas",
+    "family": "DAY TRIP",
+    "question": "How many seats are on the Zion and Bryce Canyon van?",
+    "evidence": "in a 20-seat Mercedes Sprinter"
+  },
+  {
+    "slug": "graceland-chapel-elvis-wedding-limo-package-vegas",
+    "family": "SHOWS",
+    "question": "Can you renew your vows at Graceland Chapel Las Vegas?",
+    "evidence": "vow renewal ceremony at Graceland Wedding Chapel in Las Vegas"
+  },
+  {
+    "slug": "grand-canyon-helicopter-landing-tour-from-las-vegas",
+    "family": "AIR",
+    "question": "How long is the Grand Canyon helicopter tour from Las Vegas?",
+    "evidence": "2.3-hour helicopter tour from Las Vegas to Grand Canyon West"
+  },
+  {
+    "slug": "grand-canyon-west-hoover-dam-ihop-breakfast-combo",
+    "family": "GRAND CANYON",
+    "question": "Does the Grand Canyon West bus tour include hotel pickup?",
+    "evidence": "bus tour to Grand Canyon West from Las Vegas, with hotel pickup"
+  },
+  {
+    "slug": "grand-canyon-west-hoover-dam-wifi-combo-tour-from-vegas",
+    "family": "GRAND CANYON",
+    "question": "Is Grand Canyon West admission included on the bus tour?",
+    "evidence": "with hotel pickup, WiFi, and Grand Canyon West admission included"
+  },
+  {
+    "slug": "grand-canyon-west-multi-stop-vip-day-trip-from-las-vegas",
+    "family": "GRAND CANYON",
+    "question": "Does the Grand Canyon West VIP trip visit Seven Magic Mountains?",
+    "evidence": "Seven Magic Mountains, the Hoover Dam"
+  },
+  {
+    "slug": "grand-canyon-west-rim-full-day-bus-tour-hoover-dam-vegas",
+    "family": "GRAND CANYON",
+    "question": "Can young children do the Grand Canyon West Rim bus tour?",
+    "evidence": "including families with young children"
+  },
+  {
+    "slug": "half-day-emerald-cave-kayak-with-hotel-pickup-vegas",
+    "family": "DAY TRIP",
+    "question": "Can you choose a single or tandem kayak to Emerald Cove?",
+    "evidence": "with single or tandem kayaks"
+  },
+  {
+    "slug": "half-day-mojave-desert-atv-adventure-from-las-vegas",
+    "family": "DAY TRIP",
+    "question": "Is there a minimum age for the Mojave Desert ATV tour?",
+    "evidence": "riders 18 and over in reasonable health"
+  },
+  {
+    "slug": "red-rock-canyon-electric-scooter-adventure-las-vegas",
+    "family": "DAY TRIP",
+    "question": "How many miles is the Red Rock Canyon scooter loop?",
+    "evidence": "the 13-mile one-way canyon loop"
+  },
+  {
+    "slug": "red-rock-canyon-guided-hike-from-las-vegas",
+    "family": "DAY TRIP",
+    "question": "Does a guide choose your Red Rock Canyon hiking trail?",
+    "evidence": "a professional guide who selects routes based on your preferences"
+  },
+  {
+    "slug": "south-rim-national-park-full-day-bus-tour-from-vegas",
+    "family": "GRAND CANYON",
+    "question": "How long is the Grand Canyon South Rim bus tour?",
+    "evidence": "15-16 hour bus tour to the Grand Canyon's South Rim"
+  },
+  {
+    "slug": "strip-night-heli-flight-with-optional-brazilian-dinner",
+    "family": "AIR",
+    "question": "Can you add dinner to the Las Vegas Strip helicopter flight?",
+    "evidence": "with an optional Brazilian dinner add-on"
+  },
+  {
+    "slug": "valley-of-fire-lost-city-museum-day-trip-vegas",
+    "family": "DAY TRIP",
+    "question": "Does the Valley of Fire trip include the Lost City Museum?",
+    "evidence": "Valley of Fire and Lost City Museum day trip from Las Vegas"
+  },
+  {
+    "slug": "valley-of-fire-small-group-day-trip-from-las-vegas",
+    "family": "DAY TRIP",
+    "question": "How many people are on the Valley of Fire small-group trip?",
+    "evidence": "small-group day trip (max 13 guests)"
+  },
+  {
+    "slug": "vegas-mentalist-show-gerry-mccambridge-mind-reading",
+    "family": "SHOWS",
+    "question": "Does the Las Vegas mentalist show involve audience participation?",
+    "evidence": "calling on audience members and revealing names"
+  },
+  {
+    "slug": "vegas-supercar-track-experience-exotic-drive",
+    "family": "DAY TRIP",
+    "question": "How far is the supercar race track from Las Vegas?",
+    "evidence": "about 20 minutes south of Las Vegas"
+  },
+  {
+    "slug": "vip-hoover-dam-interior-comedy-club-tour-from-vegas",
+    "family": "DAY TRIP",
+    "question": "Are comedy club tickets included with the Hoover Dam tour?",
+    "evidence": "comedy club tickets are also included"
+  },
+  {
+    "slug": "west-rim-bus-tour-canyon-hoover-dam-experience",
+    "family": "GRAND CANYON",
+    "question": "Does the West Rim bus tour stop at Hoover Dam?",
+    "evidence": "stop 30 minutes for photos at the Hoover Dam bridge"
+  },
+  {
+    "slug": "white-rock-canyon-hot-springs-hike-6hr-desert-adventure",
+    "family": "DAY TRIP",
+    "question": "How long is the White Rock Canyon hot springs hike?",
+    "evidence": "White Rock Canyon hiking adventure from Las Vegas, lasting 6 hours"
+  },
+  {
+    "slug": "hoover-dam-bridge-walk-boulder-city-historic-tour",
+    "family": "DAY TRIP",
+    "question": "How much time do you get at the Hoover Dam?",
+    "evidence": "spend 90 minutes at the dam"
+  },
+  {
+    "slug": "hoover-dam-walk-on-top-tour-w-seven-magic-mountains",
+    "family": "DAY TRIP",
+    "question": "Do you need moderate fitness for the Hoover Dam tour?",
+    "evidence": "travelers with at least moderate fitness"
+  },
+  {
+    "slug": "hoover-dam-power-plant-interior-tour-from-las-vegas",
+    "family": "DAY TRIP",
+    "question": "Do you go through the original tunnels inside Hoover Dam?",
+    "evidence": "go below through original construction tunnels"
+  },
+  {
+    "slug": "hoover-dam-kayak-adventure-colorado-river-tour",
+    "family": "DAY TRIP",
+    "question": "Does the Hoover Dam kayak tour depart from Hoover Dam Lodge?",
+    "evidence": "departing from the Hoover Dam Lodge near Las Vegas"
+  },
+  {
+    "slug": "bryce-zion-utah-parks-adventure-las-vegas",
+    "family": "DAY TRIP",
+    "question": "How long is the small-group Bryce and Zion day tour?",
+    "evidence": "14-hour small-group tour from Las Vegas"
+  },
+  {
+    "slug": "death-valley-tour-trekker-adventure-las-vegas",
+    "family": "DAY TRIP",
+    "question": "Does the Death Valley tour drive Twenty Mule Team Canyon?",
+    "evidence": "off-road drive through Twenty Mule Team Canyon"
+  },
+  {
+    "slug": "death-valley-national-park-adventure-las-vegas",
+    "family": "DAY TRIP",
+    "question": "Are drinks and snacks included on the Death Valley tour?",
+    "evidence": "unlimited drinks and snacks included"
+  },
+  {
+    "slug": "desert-machine-gun-shooting-with-50-cal-barrett-vegas",
+    "family": "DAY TRIP",
+    "question": "Does the Las Vegas machine gun tour include an In-N-Out burger?",
+    "evidence": "all guns and ammo, an In-N-Out burger"
+  },
+  {
+    "slug": "private-downtown-vegas-food-walk-6-dishes-local-gems",
+    "family": "PRIMERA VEZ",
+    "question": "How many dishes does the Downtown Las Vegas food walk serve?",
+    "evidence": "walking tour serves 6+ dishes"
+  },
+  {
+    "slug": "original-vegas-walking-tour-fremont-street-history-walk",
+    "family": "PRIMERA VEZ",
+    "question": "Where does the Fremont Street walking tour start?",
+    "evidence": "departing from The Plaza Hotel & Casino"
+  },
+  {
+    "slug": "vegas-elvis-wedding-limo-chapel-package",
+    "family": "SHOWS",
+    "question": "Does Elvis officiate the ceremony at the Little Vegas Chapel?",
+    "evidence": "an Elvis Tribute Artist officiant"
+  },
+  {
+    "slug": "grand-canyon-west-vip-skywalk-heli-river-adventure",
+    "family": "GRAND CANYON",
+    "question": "Does the Grand Canyon West tour include a river boat ride?",
+    "evidence": "for a Colorado River pontoon ride"
+  },
+  {
+    "slug": "valley-of-fire-small-group-desert-excursion-vegas",
+    "family": "DAY TRIP",
+    "question": "Are park entrance fees included on the Valley of Fire tour?",
+    "evidence": "with park entrance fees and bottled water included"
+  },
+  {
+    "slug": "valley-of-fire-vip-desert-adventure-from-las-vegas",
+    "family": "DAY TRIP",
+    "question": "Does the Valley of Fire tour stop at Elephant Rock?",
+    "evidence": "Fire Canyon, The Cabins, and Elephant Rock"
+  },
+  {
+    "slug": "vegas-chapel-wedding-limo-package-photography",
+    "family": "SHOWS",
+    "question": "Does the Las Vegas chapel wedding include limo hotel pickup?",
+    "evidence": "round-trip limo, a 2-hour experience departing from your Las Vegas hotel"
+  },
+  {
+    "slug": "vegas-strip-limo-photo-tour-professional-photographer",
+    "family": "NIGHTLIFE",
+    "question": "How many stops does the Las Vegas Strip limo tour make?",
+    "evidence": "make at least 6 Strip stops"
+  },
+  {
+    "slug": "zion-utah-red-rock-canyon-day-trip-from-las-vegas",
+    "family": "DAY TRIP",
+    "question": "How much of the Zion day trip is spent driving?",
+    "evidence": "about 5 hours spent on travel"
+  }
+]
