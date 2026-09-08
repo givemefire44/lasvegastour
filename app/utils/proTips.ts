@@ -5,6 +5,18 @@ export interface ProTip {
 }
 
 export const proTips: ProTip[] = [
+  // ─── Research Program ───
+  // Los nuevos entran arriba y el resto baja.
+  // Falta todavía el chip de la biblioteca (que en el resto del portfolio va
+  // PRIMERO) y el del research program: en lasvegastour esas dos son rutas del
+  // front, como app/colosseum-guides y app/colosseum-research, y acá no existen
+  // ninguna de las dos. Ponerles chip hoy sería mandar a un 404.
+  {
+    icon: '📊',
+    text: 'What a Las Vegas Show’s Rating Doesn’t Tell You',
+    slug: 'las-vegas-show-ratings-what-they-hide'
+  },
+
   // ─── Day trips estrella + experiencias marquee (monetizan / alto search) ───
   {
     icon: '🏜️',
