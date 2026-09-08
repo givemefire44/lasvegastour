@@ -1280,9 +1280,9 @@ export default function StaticPageClient({
                   color: '#1a1a1a',
                   textAlign: 'center'
                 }}>
-                  {page.pageSettings?.ctaText || 
-                   (slug.includes('contact') ? 'Ready to Explore Rome?' :
-                    slug.includes('about') ? 'Start Your Roman Adventure' :
+                  {page.pageSettings?.ctaText ||
+                   (slug.includes('contact') ? 'Ready to Explore Las Vegas?' :
+                    slug.includes('about') ? 'Start Your Las Vegas Trip' :
                     'Discover More')}
                 </h3>
                 
@@ -1294,8 +1294,8 @@ export default function StaticPageClient({
                   fontSize: '0.9rem'
                 }}>
                   {slug.includes('contact') ? 'Contact us for personalized tour recommendations.' :
-                   slug.includes('about') ? 'Discover the best tours and experiences in the Eternal City.' :
-                   'Explore our amazing tours and experiences in Rome.'}
+                   slug.includes('about') ? 'Discover the best tours and experiences in Las Vegas.' :
+                   'Explore our amazing tours and experiences in Las Vegas.'}
                 </p>
                 
                 <a 
