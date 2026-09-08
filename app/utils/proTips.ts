@@ -5,14 +5,24 @@ export interface ProTip {
 }
 
 export const proTips: ProTip[] = [
+  // ─── Biblioteca: PRIMERO, como en el resto del portfolio ───
+  // No es una page de Sanity: es la ruta app/las-vegas-guides/page.tsx.
+  {
+    icon: '📚',
+    text: 'The Las Vegas Guides Library: Every Guide in One Place',
+    slug: 'las-vegas-guides'
+  },
+
   // ─── Research Program ───
-  // Los nuevos entran arriba y el resto baja.
-  // Falta todavía el chip de la biblioteca (que en el resto del portfolio va
-  // PRIMERO) y el del research program: en lasvegastour esas dos son rutas del
-  // front, como app/colosseum-guides y app/colosseum-research, y acá no existen
-  // ninguna de las dos. Ponerles chip hoy sería mandar a un 404.
+  // Tampoco es una page: app/las-vegas-research/page.tsx.
+  // Los artículos nuevos del programa entran acá arriba y el resto baja.
   {
     icon: '📊',
+    text: 'The Las Vegas Research Program',
+    slug: 'las-vegas-research'
+  },
+  {
+    icon: '🎭',
     text: 'What a Las Vegas Show’s Rating Doesn’t Tell You',
     slug: 'las-vegas-show-ratings-what-they-hide'
   },
@@ -89,5 +99,13 @@ export const proTips: ProTip[] = [
     icon: '🎰',
     text: 'Gamble Smart: Odds & Budget',
     slug: 'las-vegas-casino-gambling-responsibly'
+  },
+
+  // ─── Agrupador de categoría: ÚLTIMO, como en los otros tres sitios ───
+  // Es el hub /pages/[category], no una page suelta. Por eso lleva el prefijo.
+  {
+    icon: '⏩',
+    text: 'Las Vegas Tours and Tips',
+    slug: 'pages/las-vegas-tours-and-tips'
   },
 ];
