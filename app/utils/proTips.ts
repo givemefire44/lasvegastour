@@ -22,6 +22,11 @@ export const proTips: ProTip[] = [
     slug: 'las-vegas-research'
   },
   {
+    icon: '🚁',
+    text: 'Why Las Vegas Helicopter Tours Get Cancelled',
+    slug: 'las-vegas-helicopter-tour-cancellations'
+  },
+  {
     icon: '🎭',
     text: 'What a Las Vegas Show’s Rating Doesn’t Tell You',
     slug: 'las-vegas-show-ratings-what-they-hide'
