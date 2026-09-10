@@ -7,7 +7,7 @@ import StaticPageClient from './StaticPageClient'
 import { isHubSlug, getHubBySlug, getAllHubs, getAllHubSlugs, buildHubGroqFilter } from '@/lib/tourHubs';
 import HubPage from '@/app/components/HubPage';
 import hubContentRaw from '@/data/hub-content.json';
-import { linkifyText, createLinkState } from '@/app/utils/serverAutoLinker';
+import { linkifyText, createLinkState, linkifyBlocks } from '@/app/utils/serverAutoLinker';
 import Footer from '@/app/components/Footer';
 import { getRecommendedTours } from '@/lib/getRecommendedTours';
 
@@ -642,6 +642,10 @@ export default async function StaticPage({ params }: { params: Promise<{ slug: s
   if (!page) {
     notFound()
   }
+
+  // Interlinking automatico hacia las categorias de tours. En memoria, no toca
+  // Sanity. Respeta los links que ya vengan persistidos del documento.
+  page.content = linkifyBlocks(page.content, 'article', slug);
 
   // Obtener tours recomendados si están habilitados
   const recommendedTours = page.pageSettings?.showRecommendedTours 

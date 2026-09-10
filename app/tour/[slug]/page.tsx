@@ -5,6 +5,7 @@ import TourPageClient from './TourPageClient';
 import { permanentRedirect } from 'next/navigation';
 import { findHubForTour } from '@/lib/tourHubs';
 import { orderTourBody } from '@/lib/orderTourBody';
+import { linkifyBlocks } from '@/app/utils/serverAutoLinker';
 
 // ========================================
 // CONFIGURACIÓN
@@ -303,6 +304,10 @@ export default async function TourPage({ params }: { params: Promise<{ slug: str
 
   // Orden canonico garantizado en cada carga (server). El dato puede estar como sea.
   if (post?.body) post.body = orderTourBody(post.body, categorySlug);
+
+  // Interlinking automatico hacia las categorias de tours. En memoria, no toca
+  // Sanity. Respeta los links que ya vengan persistidos del documento.
+  if (post?.body) post.body = linkifyBlocks(post.body, 'tour', slug);
 
   const relatedPosts = await client.fetch(`
     *[_type == "post" && slug.current != $slug && discontinued != true && category->slug.current == $categorySlug] | order(getYourGuideData.reviewCount desc)[0...20]{
