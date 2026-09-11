@@ -150,6 +150,21 @@ export default function StaticPageClient({
 
   // 🆕 EXTRAER QUICK ANSWER BOX DEL CONTENIDO
   const quickAnswerBlock = page.content?.find((block: any) => block._type === 'quickAnswerBox');
+
+  // FAQ del pie: solo las preguntas que NO se leen ya en el cuerpo como bloque
+  // quickAnswer. Sin este filtro la misma pregunta aparecia dos veces en la
+  // pagina (149 paginas del portfolio al 10 sep 2026). El FAQPage de
+  // SchemaOrgHead sigue declarando TODAS las faqItems: las que se filtran aca
+  // siguen visibles, en el cuerpo.
+  const normPregunta = (s: string) => String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+  const preguntasEnCuerpo = new Set(
+    (page.content || [])
+      .filter((block: any) => block._type === 'quickAnswer' && block.question)
+      .map((block: any) => normPregunta(block.question))
+  );
+  const faqsVisibles = (page.richSnippets?.faqItems || []).filter(
+    (faq: any) => !preguntasEnCuerpo.has(normPregunta(faq.question))
+  );
   const contentWithoutQuickAnswer = page.content?.filter((block: any) => block._type !== 'quickAnswerBox') || [];
 
   // 🆕 SCRIPT PARA SMART GUIDE LINK
@@ -1189,7 +1204,7 @@ export default function StaticPageClient({
 
             
             {/* FAQs */}
-            {page.richSnippets?.faqItems && page.richSnippets.faqItems.length > 0 && (
+            {faqsVisibles.length > 0 && (
               <section style={{ marginTop: '3rem', marginBottom: '2rem' }}>
                 <h2 style={{
                   fontSize: '1.8rem',
@@ -1201,7 +1216,7 @@ export default function StaticPageClient({
                 </h2>
                 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                  {page.richSnippets.faqItems.map((faq: any, index: number) => (
+                  {faqsVisibles.map((faq: any, index: number) => (
                     <details 
                       key={index}
                       style={{
