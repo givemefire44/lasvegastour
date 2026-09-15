@@ -37,6 +37,7 @@ interface SanityPage {
   
   heroImage?: {
     asset: { url: string };
+    hotspot?: { x: number; y: number };
     alt?: string;
     heading?: string;
   };
@@ -982,7 +983,10 @@ export default function StaticPageClient({
         )}
       </Container>
 
-      {/* HERO SECTION - IMAGEN LIMPIA SIN OVERLAY */}
+      {/* HERO SECTION - IMAGEN LIMPIA SIN OVERLAY
+          Respeta el hotspot de Sanity en los dos recortes: el 1200x600 que entrega el CDN (urlFor lo toma
+          del hotspot/crop que trae la query) y el de la caja de 50vh (objectPosition). Sin hotspot, las dos
+          quedan al centro como antes. Mismo criterio que trasteverefoodtour. */}
       {isHeroPage && page.heroImage && (
         <Container>
           <section style={{
@@ -1003,7 +1007,12 @@ export default function StaticPageClient({
                 .url()}
               alt={page.heroImage.alt || page.title}
               fill
-              style={{ objectFit: 'cover' }}
+              style={{
+                objectFit: 'cover',
+                ...(page.heroImage.hotspot
+                  ? { objectPosition: `${page.heroImage.hotspot.x * 100}% ${page.heroImage.hotspot.y * 100}%` }
+                  : {}),
+              }}
               priority
               sizes="100vw"
             />

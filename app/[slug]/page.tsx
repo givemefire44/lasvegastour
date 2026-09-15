@@ -227,6 +227,8 @@ async function getPage(slug: string): Promise<SanityPage | null> {
           _id,
           url
         },
+        hotspot,
+        crop,
         alt,
         heading
       },
