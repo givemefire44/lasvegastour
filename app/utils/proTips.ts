@@ -21,6 +21,12 @@ export const proTips: ProTip[] = [
     text: 'The Las Vegas Research Program',
     slug: 'las-vegas-research'
   },
+  // Pilar nuevo (15 sep 2026): el texto del chip es el SEO title, criterio acordado para los chips de pilar.
+  {
+    icon: '🚐',
+    text: 'Las Vegas Helicopter Tours: Where the Bad Reviews Come From',
+    slug: 'las-vegas-helicopter-tour-ground-time'
+  },
   {
     icon: '🚁',
     text: 'Why Las Vegas Helicopter Tours Get Cancelled',
