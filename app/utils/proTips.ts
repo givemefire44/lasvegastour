@@ -21,6 +21,24 @@ export const proTips: ProTip[] = [
     text: 'The Las Vegas Research Program',
     slug: 'las-vegas-research'
   },
+  // Pilares del Gran Cañón por tierra (17 sep 2026). Los tres están en DRAFT en el Studio: el chip
+  // apunta a su slug, así que hay que publicarlos antes de desplegar o el chip lleva a un 404.
+  // El texto es el SEO title, como todos los chips de pilar.
+  {
+    icon: '🚌',
+    text: 'Grand Canyon Day Trip from Las Vegas: The Honest Door-to-Door Timeline',
+    slug: 'grand-canyon-day-trip-from-las-vegas-how-long'
+  },
+  {
+    icon: '🏜️',
+    text: 'Grand Canyon West Guide: Skywalk, Eagle Point and Guano Point',
+    slug: 'grand-canyon-west-skywalk-eagle-point-guano-point'
+  },
+  {
+    icon: '🌊',
+    text: 'Hoover Dam from Las Vegas: Which Tour Actually Goes Inside',
+    slug: 'hoover-dam-from-las-vegas-photo-stop-or-dam-tour'
+  },
   // Pilar nuevo (15 sep 2026): el texto del chip es el SEO title, criterio acordado para los chips de pilar.
   {
     icon: '🚐',
