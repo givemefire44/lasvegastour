@@ -21,6 +21,24 @@ export const proTips: ProTip[] = [
     text: 'The Las Vegas Research Program',
     slug: 'las-vegas-research'
   },
+  // Pilar de food tours (fase 7, 17 sep 2026). En DRAFT: publicar antes de desplegar.
+  {
+    icon: '🍽️',
+    text: 'Las Vegas Food Tours: What You Actually Get for the Price',
+    slug: 'las-vegas-food-tour-what-you-get'
+  },
+  // Pilar de bodas (fase 7, 17 sep 2026). En DRAFT: publicar antes de desplegar.
+  {
+    icon: '💍',
+    text: 'Las Vegas Chapel Weddings: What You Are Actually Buying',
+    slug: 'las-vegas-chapel-wedding-what-you-are-buying'
+  },
+  // Pilar de Fremont Street (fase 7, 17 sep 2026). En DRAFT: publicar antes de desplegar.
+  {
+    icon: '🌃',
+    text: 'Fremont Street Experience: What the Reviews Actually Say',
+    slug: 'fremont-street-experience-what-reviews-say'
+  },
   // Pilar de aventura (fase 7, 17 sep 2026). Tambien en DRAFT: publicarlo antes de desplegar.
   {
     icon: '🏜️',
