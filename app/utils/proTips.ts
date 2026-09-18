@@ -21,6 +21,12 @@ export const proTips: ProTip[] = [
     text: 'The Las Vegas Research Program',
     slug: 'las-vegas-research'
   },
+  // Pilar de aventura (fase 7, 17 sep 2026). Tambien en DRAFT: publicarlo antes de desplegar.
+  {
+    icon: '🏜️',
+    text: 'Las Vegas Adventure Tours: Who They Actually Suit',
+    slug: 'las-vegas-desert-adventure-tours-what-they-ask'
+  },
   // Pilares del Gran Cañón por tierra (17 sep 2026). Los tres están en DRAFT en el Studio: el chip
   // apunta a su slug, así que hay que publicarlos antes de desplegar o el chip lleva a un 404.
   // El texto es el SEO title, como todos los chips de pilar.
