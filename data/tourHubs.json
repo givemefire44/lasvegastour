@@ -230,6 +230,41 @@
       "matchFeatures": {},
       "icon": "🏔️",
       "type": "nature"
+    },
+    {
+      "slug": "las-vegas-atv-off-road-tours",
+      "title": "Las Vegas ATV & Off-Road Tours — Dunes, RZRs and What Each Ride Includes",
+      "shortTitle": "ATV & Off-Road",
+      "destination": "las-vegas",
+      "matchKeywords": [
+        "atv",
+        "utv",
+        "rzr",
+        "dune buggy",
+        "off-road",
+        "off road",
+        "sand dune",
+        "baja"
+      ],
+      "matchFeatures": {},
+      "icon": "🚙",
+      "type": "adventure"
+    },
+    {
+      "slug": "las-vegas-supercar-driving",
+      "title": "Las Vegas Supercar & Track Driving — Exotic Laps, Ride-Alongs and Prices",
+      "shortTitle": "Supercar & Track",
+      "destination": "las-vegas",
+      "matchKeywords": [
+        "supercar",
+        "speedway",
+        "drifting",
+        "hellcat",
+        "pro track racing"
+      ],
+      "matchFeatures": {},
+      "icon": "🏎️",
+      "type": "adventure"
     }
   ]
 }

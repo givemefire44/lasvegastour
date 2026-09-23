@@ -1384,5 +1384,187 @@
     ],
     "seoTitle": "The Sphere in Las Vegas — Shows, The Wizard of Oz and Immersive Experiences",
     "seoDescription": "2 Sphere Las Vegas shows from $85. The Wizard of Oz in 4D or immersive films — what each ticket covers & which seats actually deliver, compared."
+  },
+  "las-vegas-atv-off-road-tours": {
+    "quickAnswer": {
+      "hook": "The desert starts twenty minutes past the last casino, and an ATV is the cheapest way into it.",
+      "range": "Across 37 off-road tours from $95 to $1,158, two thirds of all reviews sit in the cheapest tier: rides under $120.",
+      "bestPick": {
+        "name": "Half-Day Mojave Desert ATV Adventure from Las Vegas",
+        "rating": 4.8,
+        "price": 105,
+        "duration": "4 hours",
+        "highlight": "The most reviewed off-road tour in the lineup"
+      },
+      "verdict": "For most riders a 2 to 4 hour ATV trip around $105 to $140 is the right call. The premium tiers buy distance and privacy, not a better ride."
+    },
+    "methodology": "We compared 37 ATV, UTV, RZR and dune buggy tours on price, review volume, rating, duration, pickup arrangements and whether training is included.",
+    "intro": {
+      "whyItMatters": "Off-road tours are the one Las Vegas activity where the price spread does not track the experience. The cheapest rides carry the most reviews and the ratings barely move across tiers, so paying more mostly buys a longer drive out, a smaller group or a private machine. What does change with price is how far from the city you get, and whether you drive your own vehicle or ride behind a guide.",
+      "whatOptions": "The lineup runs from $95 two-hour rides at Nellis Dunes to $1,158 nine-hour combos. In between sit beginner sessions with training, RZR and UTV trail rides at Hidden Valley and across the Mojave, dune buggy chases, self-drive rentals, ghost town routes with a gold mine stop, and private Can-Am trips with hotel pickup.",
+      "sweetSpot": "The strongest tier is under $120, where 11 tours carry 18,956 of the 28,603 reviews at an average 4.82. Most of that volume is 2 to 4 hours, which is about as long as most people want to be on a machine in the desert."
+    },
+    "pricingTiers": [
+      {
+        "range": "$95-$120",
+        "label": "Nellis Dunes and Mojave rides, 2 to 4 hours"
+      },
+      {
+        "range": "$125-$200",
+        "label": "Beginner sessions with training and longer trail rides"
+      },
+      {
+        "range": "$200-$350",
+        "label": "RZR and UTV trails, dune buggy chases, ghost town routes"
+      },
+      {
+        "range": "$350-$1,158",
+        "label": "Private machines, hotel pickup and full-day combos"
+      }
+    ],
+    "decisionBox": {
+      "title": "Who should book a Las Vegas off-road tour?",
+      "bullets": [
+        "First-timers who want the desert without renting a car or a machine themselves",
+        "Riders with no experience: several operators build training into the first hour",
+        "Groups who would rather drive than sit, and do not mind dust and heat",
+        "Anyone with half a day free, since most of the reviewed volume is 2 to 4 hours"
+      ]
+    },
+    "internalLinks": [
+      {
+        "text": "What adventure tours actually ask of you",
+        "slug": "las-vegas-desert-adventure-tours-what-they-ask"
+      },
+      {
+        "text": "Where Las Vegas tours pick you up",
+        "slug": "las-vegas-tour-pickup-and-meeting-point"
+      },
+      {
+        "text": "Compare nature and parks day trips",
+        "slug": "las-vegas-nature-parks-tours"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Do you need experience to ride an ATV in Las Vegas?",
+        "answer": "No. Several operators run beginner sessions that include training before you ride, and one of them is among the highest rated in the lineup at 5 stars. If you have never been on a quad, book one of those rather than a trail ride that assumes you can already handle the machine."
+      },
+      {
+        "question": "How much does an ATV tour from Las Vegas cost?",
+        "answer": "The range is $95 to $1,158 across 37 tours, but the weight is at the bottom: rides under $120 carry two thirds of all reviews. A typical 2 to 4 hour Nellis Dunes or Mojave ride sits at $105, and beginner sessions with training run around $140."
+      },
+      {
+        "question": "How long do these tours last?",
+        "answer": "Most of the reviewed volume is 2 to 4 hours, including transfer time from the Strip. One-hour beginner sessions exist at the short end, and ghost town or combo routes run 6.5 to 9 hours. Confirm whether the quoted time includes the drive out and back, because on the shorter tours that is a real share of it."
+      },
+      {
+        "question": "What is the difference between an ATV, a UTV, an RZR and a dune buggy?",
+        "answer": "An ATV is a single-rider quad you straddle. A UTV or RZR is a side-by-side with seats, belts and a roll cage, so a passenger can come along and you can talk. A dune buggy is a lighter open frame built for sand. If someone in your group would rather not drive, a side-by-side is the one to book."
+      },
+      {
+        "question": "Is the price difference worth it?",
+        "answer": "Average ratings barely move across the four price tiers, from 4.82 under $120 to 4.88 between $200 and $350. What the higher tiers buy is distance from the city, a smaller group, a private machine or hotel pickup. If none of those matter to you, the cheapest tier is not a compromise."
+      },
+      {
+        "question": "Are these tours suitable in summer?",
+        "answer": "The desert around Las Vegas regularly clears 110F in midsummer, and there is no shade on a machine. Operators run year round, but a morning departure is the sensible booking from June through September. Check what water is provided, since that varies by operator rather than by season."
+      },
+      {
+        "question": "Can I cancel or change my booking?",
+        "answer": "Most tours here offer free cancellation, typically up to 24 hours before departure. Confirm the specific window at checkout: private and full-day combo operators sometimes apply stricter terms than the short dune rides."
+      }
+    ],
+    "seoTitle": "Las Vegas ATV & Off-Road Tours — Dunes, RZRs and Prices",
+    "seoDescription": "37 off-road tours from $95. Nellis Dunes, Mojave and RZR trails compared on price, length and training, plus what the pricier tiers actually buy."
+  },
+  "las-vegas-supercar-driving": {
+    "quickAnswer": {
+      "hook": "The real decision is not which car. It is whether you drive it or ride in it.",
+      "range": "Five track experiences from $99 to $406, and the split is clean: $99 buys a ride-along, $299 puts you behind the wheel.",
+      "bestPick": {
+        "name": "Vegas Supercar Track Experience: Exotic Drive",
+        "rating": 4.9,
+        "price": 299,
+        "duration": "2 hours",
+        "highlight": "The most reviewed track experience, and you drive"
+      },
+      "verdict": "If you want to drive, $299 for two hours is the going rate and both options at that price rate 4.9 or better. If you only want the speed, a $99 ride-along gets you there for a third of it."
+    },
+    "methodology": "We compared 5 supercar and racetrack experiences on price, review volume, rating, session length and whether you drive the car or ride as a passenger.",
+    "intro": {
+      "whyItMatters": "Track experiences are sold on the car in the photograph, but the car is not what changes the price. Every listing here is one of two products: you drive laps yourself, or a professional drives and you sit beside them. The gap between those is $200, and a booking page that leads with the badge on the hood does not always make clear which one you are buying.",
+      "whatOptions": "Two driving experiences at $299 for two hours, rated 4.9 and 5 across more than 4,200 reviews between them. Two ride-alongs at $99, one a 2-lap run in a Hellcat and one a 30-minute drifting session, both rated 5 stars. And one 4-hour track day at $406 that adds coaching.",
+      "sweetSpot": "The $299 tier holds 4,237 of the 4,632 reviews at an average 4.95. That is where the volume and the ratings both sit, and it is the only tier where you drive."
+    },
+    "pricingTiers": [
+      {
+        "range": "$99",
+        "label": "Ride-alongs: Hellcat laps and 30-minute drifting"
+      },
+      {
+        "range": "$299",
+        "label": "Drive it yourself, about two hours including the briefing"
+      },
+      {
+        "range": "$406",
+        "label": "Half-day track session with coaching"
+      }
+    ],
+    "decisionBox": {
+      "title": "Who should book a Las Vegas track experience?",
+      "bullets": [
+        "Anyone who wants to drive a supercar and has two hours and $299",
+        "Passengers and non-drivers, who get most of the speed for $99",
+        "Groups where only some want to drive, since both products run at the same venues",
+        "Drivers who want coaching rather than a handful of laps, at the $406 tier"
+      ]
+    },
+    "internalLinks": [
+      {
+        "text": "What adventure tours actually ask of you",
+        "slug": "las-vegas-desert-adventure-tours-what-they-ask"
+      },
+      {
+        "text": "Booking a Las Vegas tour without getting burned",
+        "slug": "how-to-book-a-las-vegas-tour-without-getting-burned"
+      },
+      {
+        "text": "What a Las Vegas trip really costs",
+        "slug": "how-much-las-vegas-trip-costs"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How much does it cost to drive a supercar in Las Vegas?",
+        "answer": "The two driving experiences both list at $299 for about two hours, and both rate 4.9 or better. Ride-alongs, where a professional drives, are $99. A 4-hour track day with coaching runs $406."
+      },
+      {
+        "question": "What is the difference between a drive and a ride-along?",
+        "answer": "In a drive you are behind the wheel for a set number of laps, usually after a briefing. In a ride-along a professional drives and you are the passenger, which is why it costs a third as much and takes 30 minutes to an hour instead of two. Both happen at the same tracks."
+      },
+      {
+        "question": "Do you need a licence or racing experience?",
+        "answer": "These are sold to people with no track background, with an instructor and a briefing built into the session. A valid driving licence is the usual requirement. Confirm the age minimum and the licence rules on the listing before booking, since the operator sets them."
+      },
+      {
+        "question": "How long does a supercar experience actually take?",
+        "answer": "The $299 drives are listed at two hours, which covers the briefing, the gear and the laps rather than two hours at speed. Ride-alongs are 30 minutes to an hour. The $406 session runs four hours because the coaching is the point of it."
+      },
+      {
+        "question": "Is the track on the Strip?",
+        "answer": "No. These run at racetrack facilities outside the resort corridor, which is why transfer arrangements vary by listing. Check whether pickup is included or whether you are expected to arrive yourself, because that changes how much of your day the booking takes."
+      },
+      {
+        "question": "Which one is the best rated?",
+        "answer": "Both ride-alongs and the Motor Speedway drive carry a 5-star average, but on smaller numbers. The Supercar Track Experience holds 4.9 across more than 3,000 reviews, which is the largest sample in this group by a wide margin."
+      },
+      {
+        "question": "Can I cancel or change my booking?",
+        "answer": "Most listings here offer free cancellation, typically up to 24 hours before your slot. Track operators sometimes apply stricter terms than sightseeing tours, so confirm the window at checkout."
+      }
+    ],
+    "seoTitle": "Las Vegas Supercar & Track Driving — Prices and What You Get",
+    "seoDescription": "Five Vegas track experiences from $99. The real split is driving yourself at $299 versus a $99 ride-along, compared on price, length and rating."
   }
 }

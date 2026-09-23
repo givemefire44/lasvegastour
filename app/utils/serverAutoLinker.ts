@@ -95,9 +95,15 @@ const LINKS_TO_TOURS: [string, string, number][] = [
   ['grand canyon', '/tours/grand-canyon-tours', 5],
   ['day trip', '/tours/day-trips', 5], ['day trips', '/tours/day-trips', 5],
   ['the strip', '/tours/strip-tours', 5], ['las vegas strip', '/tours/strip-tours', 6],
-  ['adventure tour', '/tours/adventure-tours', 5], ['atv', '/tours/adventure-tours', 5],
-  ['off-road', '/tours/adventure-tours', 5], ['off road', '/tours/adventure-tours', 5],
-  ['dune buggy', '/tours/adventure-tours', 5], ['zipline', '/tours/adventure-tours', 5],
+  ['adventure tour', '/tours/adventure-tours', 5], ['zipline', '/tours/adventure-tours', 5],
+  // Off-road y pista tienen hub propio desde el 23 sep 2026. Antes caian en la categoria
+  // /tours/adventure-tours, que mezcla ATV con tiro, kayak y caballos. Peso mas alto que la
+  // categoria para que gane el hub cuando las dos podrian matchear.
+  ['atv', '/las-vegas-atv-off-road-tours', 7], ['utv', '/las-vegas-atv-off-road-tours', 7],
+  ['rzr', '/las-vegas-atv-off-road-tours', 7], ['dune buggy', '/las-vegas-atv-off-road-tours', 7],
+  ['off-road', '/las-vegas-atv-off-road-tours', 7], ['off road', '/las-vegas-atv-off-road-tours', 7],
+  ['supercar', '/las-vegas-supercar-driving', 7], ['exotic car', '/las-vegas-supercar-driving', 7],
+  ['race track', '/las-vegas-supercar-driving', 6], ['ride-along', '/las-vegas-supercar-driving', 6],
 ];
 
 export type PageType = 'hub' | 'article' | 'tour';
