@@ -21,6 +21,20 @@ export const proTips: ProTip[] = [
     text: 'The Las Vegas Research Program',
     slug: 'las-vegas-research'
   },
+  // ─── Fase 10 (21 sep 2026): los dos pilares transversales ───
+  // Salen de la arquitectura, no de un tema suelto: "How to Book a Las Vegas Tour Without Getting
+  // Burned" aparece textual en adventure y en food, y el dia puerta-a-puerta aparece en cuatro.
+  // El texto del chip es el seoTitle de cada pilar, como en el resto del portfolio.
+  {
+    icon: '🚌',
+    text: 'Las Vegas Tour Pickup: Meeting Points, Times and Waiting',
+    slug: 'las-vegas-tour-pickup-and-meeting-point'
+  },
+  {
+    icon: '🧾',
+    text: 'Booking a Las Vegas Tour: Third Party vs Direct, and Refunds',
+    slug: 'how-to-book-a-las-vegas-tour-without-getting-burned'
+  },
   // Pilar de food tours (fase 7, 17 sep 2026). En DRAFT: publicar antes de desplegar.
   {
     icon: '🍽️',

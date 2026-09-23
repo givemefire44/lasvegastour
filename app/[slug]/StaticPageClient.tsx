@@ -9,6 +9,7 @@ import Footer from '@/app/components/Footer'
 import Container from '@/app/components/Container'
 
 import Breadcrumbs from '@/app/components/Breadcrumbs'
+import ResearchBadge from '@/app/components/ResearchBadge'
 import SchemaOrgHead from '@/app/components/SchemaOrgHead'
 import TourFinderButton from '@/app/components/TourFinderButton';
 import TableOfContents from '@/app/components/TableOfContents';
@@ -847,8 +848,22 @@ export default function StaticPageClient({
         {children}
       </p>
       ),
-      blockquote: ({ children }: any) => (
-        <blockquote style={{
+      // Las citas de resenas se guardan en UN bloque: «texto» — Fuente, N stars, Mes Ano.
+      // El lector siempre vio esa atribucion; el parser no, porque no habia un solo <cite> en la
+      // pagina. Aca se parte por el guion final y la atribucion sale dentro de <cite>, que es el
+      // elemento que los buscadores y los lectores de pantalla esperan para la fuente de una cita.
+      // Si un blockquote no tiene esa forma se renderiza como antes: no se le inventa una fuente.
+      // Lo marco una auditoria externa el 22 sep 2026 (14 blockquotes, 0 cite).
+      blockquote: ({ children, value }: any) => {
+        const plano = (value?.children || []).map((c: any) => c.text || '').join('');
+        // No se lista la plataforma: se busca la FORMA de una atribucion —lo que va despues del
+        // ultimo guion largo y contiene estrellas o un mes con ano—. Con una lista cerrada se
+        // escapo Trustpilot en Colosseum, y el corpus tiene siete fuentes distintas.
+        // Va como literal y NO como new RegExp con string: ahi '\s' se lee como 's' y no matchea nada.
+        const partido = plano.match(
+          /^([\s\S]*)\s+—\s+((?=[^—]*(?:\bstars?\b|(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{4}))[\s\S]+)$/
+        );
+        const estilo = {
           borderLeft: '4px solid #8b5cf6',
           paddingLeft: '1.5rem',
           paddingTop: '0.5rem',
@@ -858,12 +873,23 @@ export default function StaticPageClient({
           color: '#666',
           backgroundColor: '#f9f9f9',
           borderRadius: '0 8px 8px 0'
-        }}>
-          <p className="content-paragraph">
-            {children}
-          </p>
-        </blockquote>
-      )
+        };
+        if (!partido) {
+          return (
+            <blockquote style={estilo}>
+              <p className="content-paragraph">{children}</p>
+            </blockquote>
+          );
+        }
+        return (
+          <blockquote style={estilo}>
+            <p className="content-paragraph" style={{ marginBottom: '0.35rem' }}>{partido[1]}</p>
+            <cite style={{ display: 'block', fontStyle: 'normal', fontSize: '0.85rem', color: '#6b7280' }}>
+              — {partido[2]}
+            </cite>
+          </blockquote>
+        );
+      }
     }
   }
 
@@ -942,7 +968,9 @@ export default function StaticPageClient({
       <SchemaOrgHead pageData={pageDataForSchema} relatedArticles={relatedArticles} />
 
       {/* TÍTULO ARRIBA - EXACTO COMO TOUR PAGE */}
-      <Container>        <h1 style={{ 
+      <Container>
+        <ResearchBadge isPillar={page.isPillar} parentPillar={page.parentPillar} />
+        <h1 style={{ 
           fontSize: 'clamp(2rem, 5vw, 3rem)', 
           fontWeight: 'bold', 
           marginBottom: '1rem',
@@ -954,10 +982,18 @@ export default function StaticPageClient({
         
         {/* BREADCRUMBS - SOLO PARA PÁGINAS HERO (SEO) */}
         {isHeroPage && (
-          <Breadcrumbs items={[
-            { label: 'Home', href: '/' },
-            { label: page.title, href: `/${page.slug.current}`, isActive: true }
-          ]} />
+          <Breadcrumbs items={
+            ['about-us', 'contact-us', 'terms-and-conditions', 'cookies-and-privacy-policy'].includes(page.slug.current)
+              ? [
+                  { label: 'Home', href: '/' },
+                  { label: page.title, href: `/${page.slug.current}`, isActive: true }
+                ]
+              : [
+                  { label: 'Home', href: '/' },
+                  { label: 'Guides Library', href: '/las-vegas-guides' },
+                  { label: page.title, href: `/${page.slug.current}`, isActive: true }
+                ]
+          } />
         )}
 
         {/* AUTHOR BYLINE - E-E-A-T */}

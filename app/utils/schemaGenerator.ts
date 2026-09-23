@@ -4,6 +4,10 @@
 // CONSTANTS â€” Anclas canÃ³nicas del programa Research
 // ============================================================
 export const SITE_URL = 'https://lasvegastour.com';
+export const RESEARCH_PAGE_URL = `${SITE_URL}/las-vegas-research`;
+export const RESEARCH_DATASET_ID = `${RESEARCH_PAGE_URL}#dataset`;
+export const RESEARCH_COLLECTION_ID = `${RESEARCH_PAGE_URL}#collection`;
+export const LAS_VEGAS_ENTITY_ID = `${SITE_URL}/#las-vegas`;
 export const INTERCOPER_ID = 'https://intercoper.com/#organization';
 
 // Tipos especÃ­ficos para Schema.org
@@ -105,6 +109,9 @@ interface PageData {
   seoDescription?: string;
   seoImage?: any;
   publishedAt?: string;
+  _updatedAt?: string;
+  isPillar?: boolean;
+  parentPillar?: { _ref?: string; _id?: string };
   richSnippets?: any;
   schemaType?: 'Article' | 'WebPage' | 'HowTo' | 'FAQPage' | 'ItemList' | 'Review';
   author?: 'mario-dalo' | 'curator-team' | 'none' | string;
@@ -263,7 +270,15 @@ export function generatePageSchema(pageData: PageData, baseUrl = 'https://lasveg
   const description = pageData.seoDescription || pageData.title;
 
   // DETECTAR SCHEMA TYPE DESDE RICH SNIPPETS (prioridad) O SCHEMA TYPE MANUAL
-  const schemaType = pageData.richSnippets?.schemaType || pageData.schemaType || 'WebPage';
+  //
+  // Las pages del RESEARCH PROGRAM (pilares y supportings) declaran Article, no WebPage. Son analisis
+  // editoriales con autor, fecha y metodologia declarada: como WebPage se pierde elegibilidad de
+  // varias presentaciones y se le quita senal de autoria justo al contenido que se apoya en su metodo.
+  // El default sigue siendo WebPage para el cluster y las institucionales, y richSnippets.schemaType
+  // conserva la prioridad, asi que esto no pisa nada configurado a mano.
+  const esResearch = pageData.isPillar === true || Boolean(pageData.parentPillar?._ref);
+  const schemaType = pageData.richSnippets?.schemaType || pageData.schemaType
+    || (esResearch ? 'Article' : 'WebPage');
 
   // Propiedades base comunes CON AUTOR DINÃMICO
   const baseProperties: BaseSchemaProperties = {
@@ -272,6 +287,10 @@ export function generatePageSchema(pageData: PageData, baseUrl = 'https://lasveg
     description: description,
     url: pageUrl,
     datePublished: pageData.publishedAt,
+    // dateModified importa sobre todo en el research: sus cifras son una medicion fechada, asi que
+    // cuando se reviso es parte del dato. El campo ya estaba en la interfaz de salida y nunca se
+    // emitia. Cae a datePublished mientras Sanity no registre una modificacion.
+    dateModified: pageData._updatedAt || pageData.publishedAt,
     author: getAuthorSchema(pageData.author),
     publisher: getPublisherSchema()
   };
@@ -430,3 +449,134 @@ interface RelatedArticleRef {
   slug: { current: string };
 }
 
+interface ResearchPageData extends PageData {
+  isPillar?: boolean;
+  parentPillar?: { _ref?: string; _id?: string };
+  _updatedAt?: string;
+}
+
+/**
+ * Detecta si un articulo pertenece al programa Research.
+ * Regla: tiene isPillar=true O tiene parentPillar (es supporting de algun pillar).
+ */
+export function isResearchArticle(pageData: ResearchPageData): boolean {
+  return pageData.isPillar === true || Boolean(pageData.parentPillar?._ref);
+}
+
+/** Construye el @id canonico de un articulo Research a partir del slug. */
+function articleIdFromSlug(slug: string): string {
+  return `${SITE_URL}/${slug}#article`;
+}
+
+/**
+ * Schema enriquecido para un articulo del programa Research. Portado de colosseumroman-blog
+ * el 23 sep 2026: lasvegastour tenia el encabezado de esta seccion y la interfaz, y nada mas,
+ * asi que sus 45 articulos salian como WebPage sueltos, sin isBasedOn al corpus y sin reviewedBy.
+ *
+ * - Pilar:    Article + isBasedOn Dataset + isPartOf CollectionPage + hasPart [soportes] + about + citation
+ * - Soporte:  Article + isBasedOn Dataset + isPartOf [CollectionPage, Pilar] + mentions [hermanos] + about + citation
+ */
+export function generateResearchSchema(
+  pageData: ResearchPageData,
+  relatedArticles: RelatedArticleRef[] = [],
+  baseUrl: string = SITE_URL
+) {
+  const slug = pageData.slug.current;
+  const pageUrl = `${baseUrl}/${slug}`;
+  const articleId = articleIdFromSlug(slug);
+  const description = pageData.seoDescription || pageData.title;
+
+  const imageObject: ImageObject | undefined = pageData.seoImage
+    ? {
+        '@type': 'ImageObject',
+        url: pageData.seoImage.asset?.url || pageData.seoImage.url || '',
+        ...(pageData.seoImage.width && { width: pageData.seoImage.width }),
+        ...(pageData.seoImage.height && { height: pageData.seoImage.height }),
+      }
+    : undefined;
+
+  const isPillar = pageData.isPillar === true;
+
+  const isPartOf: any[] = [
+    { '@type': 'CollectionPage', '@id': RESEARCH_COLLECTION_ID },
+  ];
+  if (!isPillar && pageData.parentPillar?._ref) {
+    const pillarRef = relatedArticles.find((a) => a._id === pageData.parentPillar?._ref);
+    if (pillarRef) {
+      isPartOf.push({
+        '@type': 'Article',
+        '@id': articleIdFromSlug(pillarRef.slug.current),
+        url: `${baseUrl}/${pillarRef.slug.current}`,
+        name: pillarRef.title,
+      });
+    }
+  }
+
+  const hasPart =
+    isPillar && relatedArticles.length > 0
+      ? relatedArticles.map((sup) => ({
+          '@type': 'Article',
+          '@id': articleIdFromSlug(sup.slug.current),
+          url: `${baseUrl}/${sup.slug.current}`,
+          name: sup.title,
+        }))
+      : undefined;
+
+  const mentions =
+    !isPillar && relatedArticles.length > 1
+      ? relatedArticles
+          .filter((a) => a._id !== pageData.parentPillar?._ref)
+          .map((sib) => ({
+            '@type': 'Article',
+            '@id': articleIdFromSlug(sib.slug.current),
+            url: `${baseUrl}/${sib.slug.current}`,
+            name: sib.title,
+          }))
+      : undefined;
+
+  const schema: any = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    '@id': articleId,
+    headline: pageData.title,
+    name: pageData.title,
+    description: description,
+    url: pageUrl,
+    inLanguage: 'en',
+    isAccessibleForFree: true,
+    datePublished: pageData.publishedAt,
+    ...(pageData._updatedAt && { dateModified: pageData._updatedAt }),
+    author: getAuthorSchema(pageData.author),
+    reviewedBy: getAuthorSchema('mario-dalo'),
+    publisher: getPublisherSchema(),
+    mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+    ...(imageObject && { image: imageObject }),
+
+    isBasedOn: { '@id': RESEARCH_DATASET_ID },
+    isPartOf: isPartOf.length === 1 ? isPartOf[0] : isPartOf,
+    ...(hasPart && hasPart.length > 0 && { hasPart }),
+    ...(mentions && mentions.length > 0 && { mentions }),
+
+    about: {
+      '@type': 'City',
+      '@id': LAS_VEGAS_ENTITY_ID,
+      name: 'Las Vegas',
+      sameAs: 'https://en.wikipedia.org/wiki/Las_Vegas',
+    },
+
+    // Cifra del corpus VIGENTE. Esto viaja al JSON-LD de TODOS los articulos del research, asi que
+    // cuando el corpus crece hay que tocarlo aca Y en app/las-vegas-research/page.tsx: si no, el
+    // articulo declara un numero en su nota de metodo y otro distinto en su schema, que es la
+    // contradiccion que un revisor busca primero. El 23 sep 2026 la pagina declaraba 27.066 items
+    // y 11 fichas cuando el corpus ya tenia 40.112 y 33; las dos cosas se corrigieron juntas.
+    citation:
+      'Based on the Las Vegas Shows and Tours Research Corpus 2026, version 2 (40,112 items aggregated from 5 independent sources, covering pre-purchase deliberation and post-visit reviews; 17,594 carry a star rating across 33 listings). See https://lasvegastour.com/las-vegas-research for the full dataset documentation and version history.',
+
+    ...(pageData.richSnippets?.wordCount && { wordCount: pageData.richSnippets.wordCount }),
+    ...(pageData.richSnippets?.readingTime && {
+      timeRequired: `PT${pageData.richSnippets.readingTime}M`,
+    }),
+  };
+
+  return schema;
+}

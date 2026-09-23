@@ -2,6 +2,8 @@
 import {
   generatePageSchema,
   generateFAQSchema,
+  generateResearchSchema,
+  isResearchArticle,
 } from '@/app/utils/schemaGenerator';
 interface RelatedArticleRef {
   _id: string;
@@ -29,13 +31,21 @@ export default function SchemaOrgHead({
   relatedArticles = [],
   baseUrl = 'https://lasvegastour.com',
 }: SchemaOrgHeadProps) {
-  const pageSchema = generatePageSchema(pageData, baseUrl);
+  // Si el articulo es del research program usa el schema enriquecido (Article + isBasedOn al
+  // Dataset del corpus + isPartOf + hasPart + reviewedBy + citation). Si no, el de siempre.
+  // Portado de colosseumroman-blog el 23 sep 2026: lasvegastour era el unico de los cuatro
+  // sitios sin esto, y sus 45 articulos del research salian como WebPage sueltos.
+  const isResearch = isResearchArticle(pageData);
+  const pageSchema = isResearch
+    ? generateResearchSchema(pageData, relatedArticles, baseUrl)
+    : generatePageSchema(pageData, baseUrl);
   // Obtener FAQs si existen
   const faqItems = pageData.richSnippets?.faqItems;
   const hasFAQs = faqItems && faqItems.length > 0;
   // Verificar si el schema principal ya es FAQPage
+  // Solo aplica a los que NO son research: el research siempre genera Article.
   const isFAQPageType =
-    pageData.richSnippets?.schemaType === 'FAQPage';
+    !isResearch && pageData.richSnippets?.schemaType === 'FAQPage';
   if (!pageSchema) {
     return null;
   }
