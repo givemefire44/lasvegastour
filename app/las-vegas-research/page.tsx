@@ -15,7 +15,7 @@ const INTERCOPER_ID = 'https://intercoper.com/#organization'
 
 export const metadata: Metadata = {
   title: 'The Las Vegas Research Program | LasVegasTour',
-  description: 'Original research on Las Vegas shows and tours. 27,066 items analyzed across 3 independent sources, covering both the decision before booking and the verdict after the night.',
+  description: 'Original research on Las Vegas shows and tours. 40,112 items analyzed across 5 independent sources, covering both the decision before booking and the verdict after the night.',
   alternates: { canonical: PAGE_URL },
   openGraph: {
     type: 'website',
@@ -74,7 +74,7 @@ export default async function LasVegasResearchPage() {
     '@id': DATASET_ID,
     name: 'Las Vegas Shows and Tours Research Corpus',
     alternateName: 'Las Vegas Research Corpus',
-    description: 'Curated corpus of 27,066 items related to Las Vegas shows, helicopter tours and day trips, gathered from three independent sources (Reddit, YouTube, TripAdvisor). Covers two stages of the traveler journey: pre-purchase deliberation from public forums, and post-visit reviews. 4,836 items were processed for topic, sentiment and claims; 4,837 carry a star rating, all of them from TripAdvisor across 11 venue listings. Reddit and YouTube carry no star ratings, so every comparison between what people expected and what they scored comes from the TripAdvisor layer. Reviews were collected in two separate passes, one unfiltered and one restricted to the 1-3 star tail, and the two are never averaged together. Version 1, September 2026.',
+    description: 'Curated corpus of 40,112 items related to Las Vegas shows, tours, day trips, weddings and food tours, gathered from five independent sources (Reddit, TripAdvisor, YouTube, Google Maps, Quora). Covers two stages of the traveler journey: pre-purchase deliberation from public forums, and post-visit reviews. 30,441 items were processed for topic, sentiment and claims; 17,594 carry a star rating, from TripAdvisor and Google Maps across 33 venue and operator listings. Reddit, YouTube and Quora carry no star ratings, so every comparison between what people expected and what they scored comes from the rated layer. Reviews were collected in two separate passes: 14,656 unfiltered, which are the only ones counted in any proportion, and 2,938 restricted to the 1-3 star tail, which are quoted but never counted. The two are never averaged together. Version 2, September 2026.',
     url: PAGE_URL,
     sameAs: PAGE_URL,
     creator: {
@@ -227,10 +227,10 @@ export default async function LasVegasResearchPage() {
             gap: '1.5rem',
           }}>
             {[
-              { value: '27,066', label: 'Items analyzed' },
+              { value: '40,112', label: 'Items analyzed' },
               { value: '3', label: 'Independent sources' },
               { value: '2', label: 'Journey stages covered' },
-              { value: '4,837', label: 'Reviews with a star rating' },
+              { value: '17,594', label: 'Reviews with a star rating' },
             ].map((stat) => (
               <div key={stat.label}>
                 <div style={{
@@ -392,7 +392,7 @@ export default async function LasVegasResearchPage() {
             marginBottom: '1.5rem',
             maxWidth: '700px',
           }}>
-            The Las Vegas Research Corpus is the evidence base behind every article in this program: 27,066 items gathered from three independent platforms between December 2008 and September 2026, of which 4,836 were processed for topic, sentiment and claims. The rated layer &mdash; 4,837 reviews across 11 venue listings &mdash; was collected in two separate passes, one unfiltered and one restricted to the 1-3 star tail, and the two are never averaged together. Every figure published on this site traces back to it.
+            The Las Vegas Research Corpus is the evidence base behind every article in this program: 40,112 items gathered from five independent platforms between August 2008 and September 2026, of which 30,441 were processed for topic, sentiment and claims. The rated layer &mdash; 17,594 reviews across 33 venue and operator listings &mdash; was collected in two separate passes: 14,656 unfiltered, which are the only ones any percentage is calculated on, and 2,938 drawn from the 1-3 star tail, which are quoted but never counted. The two are never averaged together. Every figure published on this site traces back to it.
           </p>
 
           <div className="dataset-grid" style={{
@@ -426,7 +426,8 @@ export default async function LasVegasResearchPage() {
               }}>
                 <li>Reddit (pre-purchase discussion, 2008&ndash;2026)</li>
                 <li>YouTube (video transcripts &amp; comments)</li>
-                <li>TripAdvisor (visitor reviews, 11 venue listings)</li>
+                <li>TripAdvisor and Google Maps (visitor reviews, 33 venue and operator listings)</li>
+                <li>Quora (pre-purchase questions)</li>
               </ul>
             </div>
 

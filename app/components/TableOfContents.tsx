@@ -42,9 +42,14 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
       .filter((heading) => heading.id.length > 0); // Quita los vacíos
   }, [content]);
 
-  const handleClick = (id: string) => {
+  // El indice navega con <a href="#id">, no con <button>. Con JS activado este handler conserva el
+  // scroll suave y el offset del header; sin JS, o para un crawler, el ancla sigue funcionando sola.
+  // Antes eran <button> con onClick: el indice no navegaba sin JS y no generaba sitelinks de seccion,
+  // teniendo los IDs ya puestos en los H2. Lo marco una auditoria externa el 22 sep 2026.
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     const element = document.getElementById(id);
     if (element) {
+      e.preventDefault();
       const offset = 100;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
@@ -92,13 +97,15 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
       }}>
         {headings.map((heading, index) => (
           <li key={index}>
-            <button
-              onClick={() => handleClick(heading.id)}
+            <a
+              href={`#${heading.id}`}
+              onClick={(e) => handleClick(e, heading.id)}
               style={{
                 width: '100%',
                 textAlign: 'left',
                 background: activeId === heading.id ? '#f3f4f6' : 'transparent',
                 border: 'none',
+                textDecoration: 'none',
                 padding: '8px 12px',
                 paddingLeft: heading.level === 3 ? '28px' : '12px',
                 cursor: 'pointer',
@@ -127,7 +134,7 @@ export default function TableOfContents({ content }: TableOfContentsProps) {
                 {heading.level === 2 ? '▸' : '◦'}
               </span>
               <span style={{ flex: 1 }}>{heading.text}</span>
-            </button>
+            </a>
           </li>
         ))}
       </ul>

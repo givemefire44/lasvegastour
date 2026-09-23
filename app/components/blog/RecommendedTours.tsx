@@ -46,6 +46,18 @@ function extractDescription(body: any): string {
   return 'Discover this Las Vegas tour...';
 }
 
+// El alt que trae el asset del tour suele ser el del importador: "Tour image 1", "Tour image 2",
+// "image", el nombre del archivo. Doce tarjetas repetían el MISMO alt genérico, y encima el número
+// siempre era 1. Los tours no se tocan —el precio y los datos los pone el operador— así que el
+// arreglo va acá: si el alt es de esa clase, se usa el título del tour, que sí describe la imagen.
+// Lo marcó una auditoría externa el 22 sep 2026, y lo mismo aparecía en dos artículos del Vaticano.
+const ALT_GENERICO = /^(tour[\s_-]*image|image|img|photo|picture|foto|imagen|untitled|default)[\s_-]*\d*$/i;
+function altUtil(alt: string | undefined, titulo: string) {
+  const limpio = (alt || '').trim();
+  if (!limpio || ALT_GENERICO.test(limpio)) return titulo;
+  return limpio;
+}
+
 // Función para obtener la mejor imagen disponible
 function getBestImage(tour: RecommendedToursProps['tours'][0]) {
   // PRIMERO: Buscar en heroGallery
@@ -133,7 +145,7 @@ export default function RecommendedTours({
                             .quality(80)
                             .fit('crop')
                             .url()}
-                          alt={image.alt || tour.title}
+                          alt={altUtil(image.alt, tour.title)}
                           fill
                           sizes="(max-width: 768px) 170px, 240px"
                           loading={index < initialCount ? "eager" : "lazy"} // 🚀 Eager para iniciales
