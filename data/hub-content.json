@@ -1480,7 +1480,7 @@
   },
   "las-vegas-supercar-driving": {
     "quickAnswer": {
-      "hook": "The real decision is not which car. It is whether you drive it or ride in it.",
+      "hook": "The real decision is not which car. It is whether you hold the wheel or the professional does.",
       "range": "Five track experiences from $99 to $406, and the split is clean: $99 buys a ride-along, $299 puts you behind the wheel.",
       "bestPick": {
         "name": "Vegas Supercar Track Experience: Exotic Drive",
@@ -1493,7 +1493,7 @@
     },
     "methodology": "We compared 5 supercar and racetrack experiences on price, review volume, rating, session length and whether you drive the car or ride as a passenger.",
     "intro": {
-      "whyItMatters": "Track experiences are sold on the car in the photograph, but the car is not what changes the price. Every listing here is one of two products: you drive laps yourself, or a professional drives and you sit beside them. The gap between those is $200, and a booking page that leads with the badge on the hood does not always make clear which one you are buying.",
+      "whyItMatters": "Track experiences are sold on the car in the photograph, but the car is not what changes the price. Every listing here is one of two products: you drive laps yourself, or a professional drives and you sit beside them. The gap between those is $200, and a booking page that leads with the badge on the hood does not always make clear which one you are buying. Either way you are not alone with the car: our review analysis found 192 of 298 positive reviewers naming their instructor, more than twice as many as named the model.",
       "whatOptions": "Two driving experiences at $299 for two hours, rated 4.9 and 5 across more than 4,200 reviews between them. Two ride-alongs at $99, one a 2-lap run in a Hellcat and one a 30-minute drifting session, both rated 5 stars. And one 4-hour track day at $406 that adds coaching.",
       "sweetSpot": "The $299 tier holds 4,237 of the 4,632 reviews at an average 4.95. That is where the volume and the ratings both sit, and it is the only tier where you drive."
     },
@@ -1541,7 +1541,7 @@
       },
       {
         "question": "What is the difference between a drive and a ride-along?",
-        "answer": "In a drive you are behind the wheel for a set number of laps, usually after a briefing. In a ride-along a professional drives and you are the passenger, which is why it costs a third as much and takes 30 minutes to an hour instead of two. Both happen at the same tracks."
+        "answer": "In a drive you hold the wheel for a set number of laps, with an instructor in the passenger seat coaching you through the course. In a ride-along a professional drives and you are the passenger, which is why it costs a third as much and takes 30 minutes to an hour instead of two. Both happen at the same tracks."
       },
       {
         "question": "Do you need a licence or racing experience?",
@@ -1550,6 +1550,10 @@
       {
         "question": "How long does a supercar experience actually take?",
         "answer": "The $299 drives are listed at two hours, which covers the briefing, the gear and the laps rather than two hours at speed. Ride-alongs are 30 minutes to an hour. The $406 session runs four hours because the coaching is the point of it."
+      },
+      {
+        "question": "How many laps do you actually get?",
+        "answer": "Laps, not minutes, are the unit these packages are sold in. Our analysis of the reviews found forty reviewers who named a number, with a median of seven and clusters at five, seven and ten. Check the lap count on your listing rather than the session length, because a lap behind slower traffic is still a lap."
       },
       {
         "question": "Is the track on the Strip?",

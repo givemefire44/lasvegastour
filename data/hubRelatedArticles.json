@@ -225,16 +225,16 @@
   ],
   "las-vegas-supercar-driving": [
     {
+      "slug": "las-vegas-supercar-driving-what-reviews-describe",
+      "text": "What the supercar reviews actually describe"
+    },
+    {
       "slug": "las-vegas-desert-adventure-tours-what-they-ask",
       "text": "What Las Vegas adventure tours ask of you"
     },
     {
       "slug": "how-to-book-a-las-vegas-tour-without-getting-burned",
       "text": "Booking without getting burned"
-    },
-    {
-      "slug": "how-much-las-vegas-trip-costs",
-      "text": "What a Vegas trip really costs"
     }
   ]
 }
