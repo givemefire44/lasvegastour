@@ -211,16 +211,16 @@
   ],
   "las-vegas-atv-off-road-tours": [
     {
+      "slug": "las-vegas-atv-tour-what-reviews-say",
+      "text": "What 300 ATV reviews actually say"
+    },
+    {
       "slug": "las-vegas-desert-adventure-tours-what-they-ask",
       "text": "What Las Vegas adventure tours ask of you"
     },
     {
       "slug": "las-vegas-tour-pickup-and-meeting-point",
       "text": "Pickup points, times and waiting"
-    },
-    {
-      "slug": "red-rock-canyon-scooter-tour-what-reviews-say",
-      "text": "What the Red Rock scooter reviews say"
     }
   ],
   "las-vegas-supercar-driving": [
