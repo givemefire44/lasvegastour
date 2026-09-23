@@ -41,6 +41,28 @@ const nextConfig = {
     ];
   },
 
+  // Slugs institucionales que nunca existieron con ese nombre (medido 23 sep 2026).
+  // Los componentes ya apuntan al slug real; esto cubre los enlaces entrantes de afuera.
+  async redirects() {
+    return [
+      {
+        source: '/privacy-policy',
+        destination: '/cookies-and-privacy-policy',
+        permanent: true,
+      },
+      {
+        source: '/terms',
+        destination: '/terms-and-conditions',
+        permanent: true,
+      },
+      {
+        source: '/contact',
+        destination: '/contact-us',
+        permanent: true,
+      },
+    ];
+  },
+
 };
 
 module.exports = nextConfig;

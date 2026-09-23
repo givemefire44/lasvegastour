@@ -129,7 +129,7 @@ export default function CategoryFAQ({ faqs }: CategoryFAQProps) {
           <p style={{ margin: 0 }}>
             Still have questions?{' '}
             <a 
-              href="/contact" 
+              href="/contact-us" 
               style={{ 
                 color: '#2563eb',
                 textDecoration: 'underline',

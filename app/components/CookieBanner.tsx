@@ -75,7 +75,7 @@ export default function CookieBanner({
               We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. 
               By clicking "Accept All", you consent to our use of cookies.
               <br />
-              <a href="/privacy-policy" className="cookie-link">
+              <a href="/cookies-and-privacy-policy" className="cookie-link">
                 Learn more about our Privacy Policy
               </a>
             </p>

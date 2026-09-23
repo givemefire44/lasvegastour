@@ -45,9 +45,9 @@ export default function Footer() {
       // ✅ FALLBACK CORREGIDO - Estructura simplificada
       setFooterPages([
         { title: 'About Us', slug: 'about-us' },
-        { title: 'Privacy Policy', slug: 'privacy-policy' },
-        { title: 'Terms of Service', slug: 'terms' },
-        { title: 'Contact', slug: 'contact' }
+        { title: 'Privacy Policy', slug: 'cookies-and-privacy-policy' },
+        { title: 'Terms of Service', slug: 'terms-and-conditions' },
+        { title: 'Contact', slug: 'contact-us' }
       ]);
     } finally {
       setIsLoading(false);

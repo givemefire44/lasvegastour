@@ -2,7 +2,7 @@ import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
 import { Metadata } from 'next';
 import TourPageClient from './TourPageClient';
-import { permanentRedirect } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import { findHubForTour } from '@/lib/tourHubs';
 import { orderTourBody } from '@/lib/orderTourBody';
 import { linkifyBlocks } from '@/app/utils/serverAutoLinker';
@@ -293,6 +293,9 @@ export default async function TourPage({ params }: { params: Promise<{ slug: str
       }
     }
   `, { slug }, cacheConfig);
+
+  // 404 de verdad: el div devolvia 200 y Google lo indexaba como pagina buena y vacia.
+  if (!post) notFound();
 
   if (post?.discontinued) {
     const hub = findHubForTour(post);
