@@ -1,0 +1,602 @@
+[
+  {
+    "slug": "about-us",
+    "sinMatch": true,
+    "tours": [],
+    "reason": "Institutional page about the site and its founder, not a visit-planning article."
+  },
+  {
+    "slug": "absinthe-las-vegas-five-star-reviews-warn",
+    "tours": [
+      "rouge-adult-burlesque-show-strat-theater-vegas",
+      "zombie-burlesque-show-planet-hollywood-v-theater-vegas",
+      "v-ultimate-variety-show-planet-hollywood-7-acts-vegas"
+    ],
+    "reason": "Readers here have just learned Absinthe's raunchy adult cabaret format is a fit problem, not a quality problem; these are the other adult and variety-format Strip shows where you can check the same fit before booking."
+  },
+  {
+    "slug": "blue-man-group-las-vegas-what-divides-the-reviews",
+    "tours": [
+      "myst-re-cirque-du-soleil-original-las-vegas-show-theater",
+      "mad-apple-nyc-nightlife-cirque-show-new-york-new-york",
+      "v-ultimate-variety-show-planet-hollywood-7-acts-vegas"
+    ],
+    "reason": "The article's split is people watching the clock through a 90-minute wordless show; these are the comparable 75–90 minute Strip alternatives with acrobatics, music and pace changes instead of one sustained gimmick."
+  },
+  {
+    "slug": "cirque-du-soleil-las-vegas-random-reviews",
+    "tours": [
+      "k-cirque-du-soleil-epic-adventure-show-mgm-grand-vegas",
+      "michael-jackson-one-cirque-du-soleil-show-mandalay-bay",
+      "o-cirque-du-soleil-aquatic-theater-show-bellagio-vegas"
+    ],
+    "reason": "The complaint the article tracks is 'random' — no through-line. KÀ is the Cirque show built on an actual narrative (imperial twins), and MJ ONE hangs on a songbook everyone already knows; O is the one where the article's fault applies."
+  },
+  {
+    "slug": "contact-us",
+    "sinMatch": true,
+    "tours": [],
+    "reason": "Contact page, not a visit-planning article."
+  },
+  {
+    "slug": "cookies-and-privacy-policy",
+    "sinMatch": true,
+    "tours": [],
+    "reason": "Legal and privacy page with no visit intent."
+  },
+  {
+    "slug": "first-time-las-vegas-how-to-plan",
+    "tours": [
+      "las-vegas-strip-walking-tour-insider-tips-hidden-spots",
+      "3-hour-hoover-dam-mini-tour-small-group-vegas-experience",
+      "grand-canyon-west-hoover-dam-wifi-combo-tour-from-vegas"
+    ],
+    "reason": "The article tells first-timers to pick two or three things and pace the rest: one orientation walk of the Strip, one half-day out of town that fits around a show night, and one full-day canyon trip."
+  },
+  {
+    "slug": "fremont-street-experience-what-reviews-say",
+    "tours": [
+      "downtown-vegas-walking-tour-fremont-street-casinos",
+      "fremont-street-night-walk-downtown-vegas-history-tour",
+      "vegas-fremont-street-segway-experience-downtown"
+    ],
+    "reason": "Readers just learned the canopy is not what people rate and that daylight and dark are two different visits — these guided walks start at the Plaza and cover the four blocks in both time slots, with a guide who explains what you're looking at."
+  },
+  {
+    "slug": "fremont-street-live-music-what-reviews-say",
+    "tours": [
+      "fremont-street-bar-crawl-3-drinks-local-gems-walk",
+      "fremont-street-night-walk-downtown-vegas-history-tour",
+      "downtown-vegas-segway-evening-tour-neon-district-ride"
+    ],
+    "reason": "The free stages overlap every hundred metres; a crawl or a guided night route moves you between venues and off the clashing stages instead of standing in the crossfire."
+  },
+  {
+    "slug": "fremont-street-old-casinos-what-reviews-say",
+    "tours": [
+      "original-vegas-walking-tour-fremont-street-history-walk",
+      "vegas-casino-gaming-lessons-real-table-training-downtown",
+      "vegas-mob-history-walk-small-group-crime-stories-tour"
+    ],
+    "reason": "The 21 reviewers came for 'old Vegas' and cheap tables — this walk starts where the city was founded, and the gaming lesson puts you at real tables inside the Plaza, the downtown casino they keep naming."
+  },
+  {
+    "slug": "fremont-street-zip-line-what-reviews-say",
+    "tours": [
+      "vegas-fremont-street-segway-experience-downtown",
+      "vegas-axe-throwing-fremont-street-weapon-experience",
+      "big-apple-coaster-vegas-67mph-strip-thrill-ride"
+    ],
+    "reason": "Fifty-six people mentioned the zip line and seven rode it; if you want something you actually do downtown rather than watch, these are bookable on the same blocks, with the coaster as the Strip thrill alternative."
+  },
+  {
+    "slug": "grand-canyon-coach-tour-guide-quality",
+    "tours": [
+      "grand-canyon-west-multi-stop-vip-day-trip-from-las-vegas",
+      "south-rim-national-park-small-group-day-trip-from-vegas",
+      "grand-canyon-west-vip-coach-tour-meals-hoover-dam-vegas"
+    ],
+    "reason": "Six in ten happy reviewers name their guide by name — small-group operators like MaxTour put one driver-guide with you all day, which is the variable the article says decides the trip."
+  },
+  {
+    "slug": "grand-canyon-comedy-tour-what-reviews-describe",
+    "tours": [
+      "comedy-hoover-dam-tour-interior-access-show-tickets",
+      "vip-hoover-dam-interior-comedy-club-tour-from-vegas",
+      "grand-canyon-west-vip-coach-tour-meals-hoover-dam-vegas"
+    ],
+    "reason": "The comedian-guided format the article dissects is sold on these Hoover Dam runs, where the jokes come with 524 feet of interior access and show tickets — and the third is the same day without the stand-up, if the jokes are the risk."
+  },
+  {
+    "slug": "grand-canyon-day-trip-from-las-vegas-how-long",
+    "tours": [
+      "late-start-grand-canyon-west-small-group-day-trip-vegas",
+      "south-rim-national-park-day-trip-from-vegas",
+      "grand-canyon-west-multi-stop-vip-day-trip-from-las-vegas"
+    ],
+    "reason": "The article's headline pain is the earliest alarm of your trip; the Late Start West Rim tour is a 9-hour day with a later pickup, and the other two show what 13 hours and 12–13 hours actually buy you at the rim."
+  },
+  {
+    "slug": "grand-canyon-tour-reviews-google-vs-tripadvisor",
+    "tours": [
+      "grand-canyon-west-eagle-point-bus-tour-optional-upgrades",
+      "grand-canyon-west-vip-coach-tour-meals-hoover-dam-vegas",
+      "west-rim-bus-tour-canyon-hoover-dam-experience"
+    ],
+    "reason": "The article tells you to count the one-to-three-star share instead of the average; these are the highest-volume West Rim listings (25,000+, 13,000+ and 7,000+ reviews) where that ratio is actually readable."
+  },
+  {
+    "slug": "grand-canyon-west-coach-day-hour-by-hour",
+    "tours": [
+      "grand-canyon-west-vip-coach-tour-meals-hoover-dam-vegas",
+      "private-vip-west-rim-canyon-tour-vegas-with-meals",
+      "grand-canyon-west-hoover-dam-ihop-breakfast-combo"
+    ],
+    "reason": "The two hidden clocks in the article are the shuttle queue and the lunch line: the VIP coach feeds you breakfast and a BBQ lunch on the rim, and the private VIP version has bus access that skips the canyon shuttle transfer entirely."
+  },
+  {
+    "slug": "grand-canyon-west-skywalk-eagle-point-guano-point",
+    "tours": [
+      "grand-canyon-west-skywalk-hoover-dam-day-trip-with-lunch",
+      "luxury-suv-grand-canyon-west-skywalk-day-trip-vegas",
+      "10-hour-west-rim-skywalk-luxury-mercedes-tour-from-vegas"
+    ],
+    "reason": "The complaint is that the ticket is a package and the Skywalk is a separate paid decision you make on the spot — all three of these have Skywalk admission already included in the price you book."
+  },
+  {
+    "slug": "grand-canyon-west-vs-south-rim-from-las-vegas",
+    "tours": [
+      "south-rim-national-park-full-day-bus-tour-from-vegas",
+      "grand-canyon-west-eagle-point-bus-tour-optional-upgrades",
+      "grand-canyon-helicopter-landing-tour-from-las-vegas"
+    ],
+    "reason": "This is the exact decision the article frames: the 15-hour South Rim national-park day, the 10-hour West Rim day, and the helicopter option it names as the third way of getting there."
+  },
+  {
+    "slug": "grand-canyon-west-zip-line-what-reviews-say",
+    "tours": [
+      "private-grand-canyon-west-skywalk-hoover-dam-day-tour-vegas",
+      "grand-canyon-west-multi-stop-vip-day-trip-from-las-vegas",
+      "grand-canyon-west-rim-full-day-bus-tour-hoover-dam-vegas"
+    ],
+    "reason": "Eleven reviewers paid for the zip line and ran out of time to ride it — the private tour bundles the zipline with admission and Skywalk on your own schedule, and the other two buy you the longest rim time on a group day."
+  },
+  {
+    "slug": "hoover-dam-from-las-vegas-photo-stop-or-dam-tour",
+    "tours": [
+      "6-hour-hoover-dam-interior-bridge-experience-from-vegas",
+      "hoover-dam-power-plant-interior-tour-vegas-generator-room",
+      "3-hour-hoover-dam-mini-tour-small-group-vegas-experience"
+    ],
+    "reason": "The article's whole point is that three different visits share one name; these are the interior powerplant version, the generator-room-and-tunnels version, and the honest photo-stop version, so you can book the one you actually meant."
+  },
+  {
+    "slug": "hoover-dam-lake-mead-boulder-city-day",
+    "tours": [
+      "hoover-dam-bbq-experience-small-group-wildlife-tour",
+      "hoover-dam-bridge-walk-boulder-city-historic-tour",
+      "boulder-city-ghost-walk-ufo-hoover-dam-paranormal-tour"
+    ],
+    "reason": "The stop people remember is the bighorn sheep — this tour stops at Hemenway Park for exactly that, and the other two cover the Memorial Bridge walkway and historic Boulder City the article says exists because of the dam."
+  },
+  {
+    "slug": "hoover-dam-tour-from-las-vegas",
+    "tours": [
+      "hoover-dam-power-plant-interior-tour-vegas-generator-room",
+      "vip-hoover-dam-interior-comedy-club-tour-from-vegas",
+      "grand-canyon-west-hoover-dam-wifi-combo-tour-from-vegas"
+    ],
+    "reason": "You've just read the breakdown of Visitor Center vs Powerplant vs Dam Tour and how long to budget; two of these include the guided interior, and the third is the West Rim combo the article discusses pairing it with."
+  },
+  {
+    "slug": "horseshoe-bend-from-las-vegas-what-reviews-say",
+    "tours": [
+      "antelope-canyon-horseshoe-bend-full-day-trip-las-vegas",
+      "lower-antelope-canyon-horseshoe-bend-day-trip-las-vegas",
+      "antelope-canyon-horseshoe-bend-golden-hour-day-trip-vegas"
+    ],
+    "reason": "The article's finding is that Horseshoe Bend is always the second half of an Antelope Canyon day — these are that day, with the Navajo-guided slot canyon and the guide who takes your photo at the overlook."
+  },
+  {
+    "slug": "how-much-las-vegas-trip-costs",
+    "tours": [
+      "vip-hoover-dam-interior-comedy-club-tour-from-vegas",
+      "grand-canyon-west-eagle-point-bus-tour-optional-upgrades",
+      "vegas-the-show-planet-hollywood-live-orchestra-revue"
+    ],
+    "reason": "The section on big-ticket shows and tours is where the budget moves: a $59 dam day with interior access included, a $94 canyon day, and a $49 Strip revue keep the two biggest line items from doubling."
+  },
+  {
+    "slug": "how-to-book-a-las-vegas-tour-without-getting-burned",
+    "tours": [
+      "grand-canyon-west-vip-coach-tour-meals-hoover-dam-vegas",
+      "antelope-canyon-horseshoe-bend-full-day-trip-las-vegas",
+      "vip-hoover-dam-interior-comedy-club-tour-from-vegas"
+    ],
+    "reason": "The article says the channel decides who owes you when things go wrong; these are the highest-volume listings where inclusions (meals, admissions, permits) are published up front and the refund history is visible in thousands of reviews."
+  },
+  {
+    "slug": "how-to-choose-las-vegas-shows",
+    "tours": [
+      "o-cirque-du-soleil-aquatic-theater-show-bellagio-vegas",
+      "michael-jackson-one-cirque-du-soleil-show-mandalay-bay",
+      "v-ultimate-variety-show-planet-hollywood-7-acts-vegas"
+    ],
+    "reason": "The article sorts shows by type and by where paying extra for seats is worth it: the aquatic spectacle where seating category is chosen at booking, the music-driven one, and the cheap seven-act variety show for a first night."
+  },
+  {
+    "slug": "how-to-get-around-las-vegas",
+    "tours": [
+      "vegas-airport-escalade-transfer-private-luxury-service",
+      "vegas-airport-sedan-transfer-private-luxury-service",
+      "vegas-city-tour-strip-downtown-small-group"
+    ],
+    "reason": "The article opens with airport-to-hotel options by budget and then covers covering Strip-to-downtown distances without a car — these are the private transfer and the guided run that links both ends of the Boulevard."
+  },
+  {
+    "slug": "is-the-grand-canyon-day-trip-from-las-vegas-worth-it",
+    "tours": [
+      "south-rim-national-park-day-trip-from-vegas",
+      "grand-canyon-west-multi-stop-vip-day-trip-from-las-vegas",
+      "10-hour-west-rim-skywalk-luxury-mercedes-tour-from-vegas"
+    ],
+    "reason": "The 'not worth it' verdicts are about hours on a bus for a short stop; the $94 South Rim day, the small-group VIP with multiple stops, and the 14-seat Mercedes with Skywalk included are the three ways reviewers described the day paying off."
+  },
+  {
+    "slug": "las-vegas-atv-tour-what-reviews-say",
+    "tours": [
+      "half-day-mojave-desert-atv-adventure-from-las-vegas",
+      "2-hour-nellis-dunes-atv-desert-ride-from-las-vegas",
+      "1-hour-beginner-atv-adventure-with-training-las-vegas"
+    ],
+    "reason": "The reviews are about the guide and about beginners saying yes while experienced riders say the opposite — these are the Las Vegas ATV operators the file comes from, including the beginner run with 30 minutes of training before you ride."
+  },
+  {
+    "slug": "las-vegas-casino-gambling-responsibly",
+    "tours": [
+      "vegas-casino-gaming-lessons-real-table-training-downtown",
+      "downtown-vegas-walking-tour-fremont-street-casinos",
+      "las-vegas-strip-walking-tour-insider-tips-hidden-spots"
+    ],
+    "reason": "The article's answer to 'how not to feel lost at the table' is learning the rules before you sit down — this lesson teaches roulette, craps and blackjack at real Plaza tables, and the walks give you a night that doesn't cost you a bankroll."
+  },
+  {
+    "slug": "las-vegas-chapel-wedding-limo-and-transport",
+    "tours": [
+      "vegas-chapel-wedding-limo-package-photography",
+      "vegas-elvis-wedding-limo-chapel-package",
+      "graceland-chapel-elvis-wedding-limo-package-vegas"
+    ],
+    "reason": "Seventy-three reviewers mention the limo and only one is unhappy, and it always starts at the hotel — these are the packages where round-trip limo pickup from your hotel is part of the price, not an add-on."
+  },
+  {
+    "slug": "las-vegas-chapel-wedding-what-you-are-buying",
+    "tours": [
+      "vegas-chapel-wedding-30-min-ceremony-photos-package",
+      "bliss-chapel-vegas-wedding-luxury-package-transport",
+      "paradise-wedding-chapel-vegas-modern-30-min-ceremony"
+    ],
+    "reason": "The article says you're buying a production — staff, a photographer, and half an hour with a grace period; these are the 30-minute packages that spell out ceremony, photos, flowers and music in the booking."
+  },
+  {
+    "slug": "las-vegas-colorado-river-kayak-what-reviews-say",
+    "tours": [
+      "half-day-emerald-cave-kayak-with-hotel-pickup-vegas",
+      "6-hour-emerald-cave-kayak-with-optional-vegas-shuttle",
+      "3-hour-emerald-cave-kayak-adventure-black-canyon-vegas"
+    ],
+    "reason": "Three quarters of the reviews are about the guide and the two days sold under one idea — the short Emerald Cave paddle with hotel pickup versus the longer Willow Beach day, both guided, both with the cave photo stop."
+  },
+  {
+    "slug": "las-vegas-day-tours-with-kids",
+    "tours": [
+      "small-group-hoover-dam-seven-magic-mountains-day-trip",
+      "3-hour-hoover-dam-mini-tour-small-group-vegas-experience",
+      "valley-of-fire-small-group-day-trip-from-las-vegas"
+    ],
+    "reason": "The article's finding is that length of day, not age, is what breaks children on a tour: 4.5 hours with seven stops, a 3-hour dam run, and a 6-hour red-rock day are the short formats it points toward."
+  },
+  {
+    "slug": "las-vegas-desert-adventure-tours-what-they-ask",
+    "tours": [
+      "4-hour-mojave-desert-rzr-off-road-adventure-vegas",
+      "3-hour-mojave-desert-atv-ride-with-strip-shuttle-vegas",
+      "5-hour-ranch-horseback-adventure-with-breakfast-vegas"
+    ],
+    "reason": "'Nobody expects you to know how' — each of these gives you a safety orientation before you drive or ride, and they are exactly the ATV/UTV/horseback shapes the article describes, with the desert heat as the real difficulty."
+  },
+  {
+    "slug": "las-vegas-food-tour-downtown-or-strip",
+    "tours": [
+      "vegas-celebrity-chef-food-walk-strip-downtown-combo",
+      "downtown-vegas-food-tour-6-dishes-secret-bites-walk",
+      "vegas-strip-food-walk-local-eats-casino-tour"
+    ],
+    "reason": "The reviews split cleanly between the two products and almost nobody crosses over — this operator sells both the Strip and downtown versions, so you can pick the side the article describes as yours."
+  },
+  {
+    "slug": "las-vegas-food-tour-what-you-get",
+    "tours": [
+      "fremont-east-food-walk-5-local-spots-downtown-secrets",
+      "arts-district-food-walk-vegas-local-eats-culture-tour",
+      "vegas-strip-food-walk-local-eats-casino-tour"
+    ],
+    "reason": "The article says you get a history walk that feeds you and won't need dinner — these are the small-group walks with a local guide, five hole-in-the-wall stops, and tastings that add up to a full meal."
+  },
+  {
+    "slug": "las-vegas-helicopter-cancellation-rebooking",
+    "tours": [
+      "strip-night-heli-flight-with-optional-brazilian-dinner",
+      "vegas-strip-night-helicopter-flight-with-downtown-views",
+      "grand-canyon-west-rim-airplane-tour-from-las-vegas"
+    ],
+    "reason": "The rebooking offer assumes you have another day — a 12-minute Strip flight has several departures a night, so a scrub can be recovered the same trip, and the fixed-wing canyon flight is the option that doesn't get pulled as easily."
+  },
+  {
+    "slug": "las-vegas-helicopter-pilot-commentary",
+    "tours": [
+      "grand-canyon-helicopter-landing-tour-from-las-vegas",
+      "grand-canyon-west-rim-aerial-helicopter-flight",
+      "valley-of-fire-heli-landing-tour-with-strip-flyover"
+    ],
+    "reason": "The article says a good pilot rescues a bad day and a silent one sinks a good flight — these are narrated flights where the pilot talks you over Lake Mead, the dam and the canyon rather than just flying."
+  },
+  {
+    "slug": "las-vegas-helicopter-seat-assignment",
+    "tours": [
+      "grand-canyon-west-helicopter-with-canyon-floor-landing",
+      "grand-canyon-west-rim-aerial-tour-from-vegas",
+      "sunset-grand-canyon-heli-tour-with-strip-flyover"
+    ],
+    "reason": "Which side you get decides what you see, and the scale assigns it — these are the A-Star and Papillon canyon flights where the seat lottery the article describes actually plays out, and where a front-seat upgrade is sold."
+  },
+  {
+    "slug": "las-vegas-helicopter-tour-cancellations",
+    "tours": [
+      "grand-canyon-west-rim-airplane-tour-from-las-vegas",
+      "strip-night-heli-flight-with-optional-brazilian-dinner",
+      "west-rim-small-group-tour-with-optional-canyon-heli-flight"
+    ],
+    "reason": "A third of the complaints are about a flight that never happened — a fixed-wing canyon flight is far less likely to be scrubbed, and the ground tour with the heli as an optional upgrade means the day still runs if the aircraft doesn't."
+  },
+  {
+    "slug": "las-vegas-helicopter-tour-ground-time",
+    "tours": [
+      "hoover-dam-strip-daytime-helicopter-flight",
+      "vegas-strip-night-helicopter-flight-with-downtown-views",
+      "strip-heli-flight-eiffel-tower-dinner-vip-experience"
+    ],
+    "reason": "The complaints are about the hour before you fly and the shared shuttle home — a 35-minute VIP-terminal departure cuts that ground time down, and the dinner package at least gives the waiting an itinerary."
+  },
+  {
+    "slug": "las-vegas-helicopter-tour-nervous-flyers",
+    "tours": [
+      "vegas-strip-night-helicopter-flight-with-downtown-views",
+      "red-rock-canyon-helicopter-flight-from-vegas",
+      "grand-canyon-helicopter-landing-tour-from-las-vegas"
+    ],
+    "reason": "Almost nobody who was scared regretted it, and 10–12 minutes airborne is the gentlest way to test that — the 30-minute Red Rock flight is the next step up, with the canyon landing tour for when the fear turns out to be unfounded."
+  },
+  {
+    "slug": "las-vegas-helicopter-tours-which-worth-it",
+    "tours": [
+      "strip-night-heli-flight-with-optional-brazilian-dinner",
+      "grand-canyon-west-rim-aerial-tour-from-vegas",
+      "grand-canyon-floor-helicopter-landing-champagne-tour"
+    ],
+    "reason": "The article frames exactly three products — the short Strip thrill at $99, the canyon flyover with no landing, and the premium floor landing with champagne — one of each is here."
+  },
+  {
+    "slug": "las-vegas-horseback-riding-what-the-day-includes",
+    "tours": [
+      "5-hour-wild-west-horseback-ride-with-bbq-dinner-vegas",
+      "5-hour-ranch-horseback-adventure-with-breakfast-vegas",
+      "red-rock-canyon-horseback-ride-with-bbq-dinner-vegas"
+    ],
+    "reason": "The ride is 90 minutes inside a five-hour day and the driver often cooks your meal — these are the sunrise-with-breakfast and sunset-with-BBQ versions the reviewers were describing."
+  },
+  {
+    "slug": "las-vegas-nightlife-club-crawls",
+    "tours": [
+      "vegas-nightclub-crawl-3-vip-venues-luxury-party-bus",
+      "las-vegas-club-crawl-party-bus-vip-entry",
+      "vegas-club-crawl-2-premium-venues-party-bus-skip-line"
+    ],
+    "reason": "The article explains what a crawl actually buys — hosted entry past the line, transport between venues, and covered covers — which is precisely what these three sell at Omnia, Tao, LIV and XS."
+  },
+  {
+    "slug": "las-vegas-resort-fees-tipping-hidden-charges",
+    "tours": [
+      "grand-canyon-west-hoover-dam-wifi-combo-tour-from-vegas",
+      "grand-canyon-west-vip-coach-tour-meals-hoover-dam-vegas",
+      "vip-hoover-dam-interior-comedy-club-tour-from-vegas"
+    ],
+    "reason": "After a piece on charges that appear after you've committed, these are days where admission, meals and transport are inside the published fare rather than bought on-site."
+  },
+  {
+    "slug": "las-vegas-shooting-range-what-reviews-describe",
+    "tours": [
+      "4-hour-outdoor-shooting-range-experience-las-vegas",
+      "private-range-shooting-experience-with-military-instructor",
+      "machine-gun-experience-with-military-humvee-vegas"
+    ],
+    "reason": "The article's two surprises are the included transport and the instructor standing over you the whole time; these publish the round count and the gun list up front, which is what stops the bill surprise it warns about."
+  },
+  {
+    "slug": "las-vegas-show-ratings-what-they-hide",
+    "tours": [
+      "michael-jackson-one-cirque-du-soleil-show-mandalay-bay",
+      "o-cirque-du-soleil-aquatic-theater-show-bellagio-vegas",
+      "mat-franco-interactive-magic-show-linq-hotel-vegas"
+    ],
+    "reason": "The article's test is whether the complaints are a bad fit or a real fault — MJ ONE's are volume and cold, O's are the clowns and pace, and a one-man magic residency is the control case with neither."
+  },
+  {
+    "slug": "las-vegas-show-seats-where-to-sit",
+    "tours": [
+      "o-cirque-du-soleil-aquatic-theater-show-bellagio-vegas",
+      "michael-jackson-one-cirque-du-soleil-show-mandalay-bay",
+      "myst-re-cirque-du-soleil-original-las-vegas-show-theater"
+    ],
+    "reason": "These are the three houses the article dissects by seat: O's balcony and side complaints, MJ ONE fans telling you to sit further back, and Mystère where the front row is part of the show — all three let you pick the category at booking."
+  },
+  {
+    "slug": "las-vegas-shows-with-kids",
+    "tours": [
+      "myst-re-cirque-du-soleil-original-las-vegas-show-theater",
+      "mac-king-afternoon-comedy-magic-show-excalibur-vegas",
+      "nathan-burton-family-magic-show-las-vegas-strip"
+    ],
+    "reason": "Mystère is the one show no parent in the article regretted; the two magic shows are the afternoon, family-rated alternatives (Mac King's minimum age is 5) for children too small for a 90-minute Cirque night."
+  },
+  {
+    "slug": "las-vegas-strip-night-helicopter-flight",
+    "tours": [
+      "strip-night-heli-flight-with-optional-brazilian-dinner",
+      "vegas-strip-night-helicopter-flight-with-downtown-views",
+      "red-rock-canyon-heli-tour-with-landing-champagne"
+    ],
+    "reason": "The article's subject is the twelve-minute night flight nobody minds paying for — these are that exact product from $99, including the version that adds downtown on the loop."
+  },
+  {
+    "slug": "las-vegas-supercar-driving-what-reviews-describe",
+    "tours": [
+      "vegas-supercar-track-experience-exotic-drive",
+      "vegas-motor-speedway-supercar-drive-5-lap-track-day",
+      "vegas-hellcat-ride-along-2-lap-professional-drive"
+    ],
+    "reason": "You never drive alone — a coach rides shotgun and the unit you buy is the lap; these sell laps explicitly (5-lap sessions), with the ride-along for people who'd rather be the passenger."
+  },
+  {
+    "slug": "las-vegas-tour-group-size",
+    "tours": [
+      "death-valley-small-group-day-trip-from-las-vegas",
+      "grand-canyon-west-multi-stop-vip-day-trip-from-las-vegas",
+      "valley-of-fire-small-group-day-trip-from-las-vegas"
+    ],
+    "reason": "The article says 'small group' describes the day you got, not the company — so book the ones that publish a hard cap: seven guests on the Death Valley day, 13 on Valley of Fire."
+  },
+  {
+    "slug": "las-vegas-tour-pickup-and-meeting-point",
+    "tours": [
+      "3-hour-luxury-suv-hoover-dam-interior-tour-from-vegas",
+      "private-hoover-dam-interior-tour-luxury-suv-from-vegas",
+      "grand-canyon-west-multi-stop-vip-day-trip-from-las-vegas"
+    ],
+    "reason": "'Hotel pickup' often means a neighbouring hotel and an hour of waiting — a six-passenger SUV or a private vehicle collects you at your own door, which removes the failure the article documents."
+  },
+  {
+    "slug": "las-vegas-tours-customer-service-after-a-problem",
+    "tours": [
+      "3-hour-hoover-dam-mini-tour-small-group-vegas-experience",
+      "grand-canyon-west-multi-stop-vip-day-trip-from-las-vegas",
+      "antelope-canyon-horseshoe-bend-full-day-trip-las-vegas"
+    ],
+    "reason": "The article tells you to read an operator for what happens after, not during — these have 5,000 to 8,000 reviews each, enough volume that the post-problem replies and refunds are visible before you book."
+  },
+  {
+    "slug": "las-vegas-tours-walking-and-mobility",
+    "tours": [
+      "red-rock-canyon-small-group-desert-tour-las-vegas",
+      "seven-magic-mountains-las-vegas-sign-desert-tour",
+      "grand-canyon-west-vip-coach-tour-meals-hoover-dam-vegas"
+    ],
+    "reason": "Antelope Canyon's stairs and the West Rim's uneven surface are the article's two warnings; these are the low-demand alternatives — a 13-mile scenic drive with short stops, a 30-minute art-installation stop, and a rim day where a shuttle drops you at paved viewpoints."
+  },
+  {
+    "slug": "las-vegas-vow-renewal-what-reviews-say",
+    "tours": [
+      "bliss-chapel-vegas-wedding-luxury-package-transport",
+      "vegas-sign-elvis-wedding-45-min-outdoor-ceremony",
+      "vegas-elvis-wedding-sign-photos-immersive-chapel"
+    ],
+    "reason": "Nearly a quarter of these ceremonies are renewals at 20 and 25 years, and Elvis is twice as likely to be there — these packages are sold for wedding or vow renewal, with room for the family people bring."
+  },
+  {
+    "slug": "michael-jackson-one-las-vegas-loud-dance-show",
+    "tours": [
+      "michael-jackson-one-cirque-du-soleil-show-mandalay-bay",
+      "mj-live-harrah-s-vegas-michael-jackson-tribute-show",
+      "mad-apple-nyc-nightlife-cirque-show-new-york-new-york"
+    ],
+    "reason": "If the article's warning about volume and the cold theater puts you off the Mandalay Bay show, MJ Live at Harrah's is the same songbook in a 75-minute tribute format, and Mad Apple is Cirque with music and less dance density."
+  },
+  {
+    "slug": "most-expensive-first-timer-mistakes-las-vegas",
+    "tours": [
+      "las-vegas-strip-walking-tour-insider-tips-hidden-spots",
+      "vip-hoover-dam-interior-comedy-club-tour-from-vegas",
+      "grand-canyon-west-eagle-point-bus-tour-optional-upgrades"
+    ],
+    "reason": "Mistake 4 is underestimating distances and the heat, and Mistake 3 is buying tours from the wrong site — a guided Strip walk fixes the first, and these two price the dam and the canyon with admission stated before you pay."
+  },
+  {
+    "slug": "mystere-las-vegas-character-that-splits-reviews",
+    "tours": [
+      "myst-re-cirque-du-soleil-original-las-vegas-show-theater",
+      "k-cirque-du-soleil-epic-adventure-show-mgm-grand-vegas",
+      "michael-jackson-one-cirque-du-soleil-show-mandalay-bay"
+    ],
+    "reason": "One character — the clown who works the audience before the curtain — decides the verdict; if that's a dealbreaker, KÀ and MJ ONE are the Cirque shows in town without him."
+  },
+  {
+    "slug": "o-cirque-du-soleil-las-vegas-nobody-warns-you",
+    "tours": [
+      "o-cirque-du-soleil-aquatic-theater-show-bellagio-vegas",
+      "michael-jackson-one-cirque-du-soleil-show-mandalay-bay",
+      "mad-apple-nyc-nightlife-cirque-show-new-york-new-york"
+    ],
+    "reason": "The two faults its own fans won't defend are the clowns and the pace — MJ ONE and Mad Apple are the faster, music-driven Cirque shows for readers the article has just warned off the Bellagio pool."
+  },
+  {
+    "slug": "red-rock-canyon-from-las-vegas",
+    "tours": [
+      "red-rock-canyon-half-day-tour-3-route-options-vegas",
+      "red-rock-canyon-scenic-loop-small-group-tour-las-vegas",
+      "red-rock-canyon-guided-ebike-adventure-from-las-vegas"
+    ],
+    "reason": "The timed-entry reservation is the catch the article flags for self-drivers — booking a guided loop means the operator handles entry, and these cover the drive, the small-group version and the 17-mile eBike loop."
+  },
+  {
+    "slug": "red-rock-canyon-scooter-tour-what-reviews-say",
+    "tours": [
+      "red-rock-canyon-electric-scooter-adventure-las-vegas",
+      "red-rock-canyon-guided-ebike-adventure-from-las-vegas",
+      "red-rock-canyon-self-guided-e-bike-experience-las-vegas"
+    ],
+    "reason": "A tenth of these reviewers had never ridden a scooter and got a lesson first; this is that tour, with pedal-assist eBike versions of the same 13-mile loop if you'd rather not hold a throttle."
+  },
+  {
+    "slug": "sphere-las-vegas-seats-tickets-guide",
+    "tours": [
+      "sphere-vegas-wizard-of-oz-immersive-experience",
+      "wizard-of-oz-sphere-las-vegas-4d-show-experience",
+      "arte-museum-vegas-digital-art-tea-bar-experience"
+    ],
+    "reason": "The article's 'what you can see right now' is The Wizard of Oz on the wraparound display, and both ticketed versions are here; ARTE is the other immersive projection room if the Sphere price doesn't fit."
+  },
+  {
+    "slug": "terms-and-conditions",
+    "sinMatch": true,
+    "tours": [],
+    "reason": "Legal terms page, not a visit-planning article."
+  },
+  {
+    "slug": "valley-of-fire-from-las-vegas",
+    "tours": [
+      "valley-of-fire-small-group-day-trip-from-las-vegas",
+      "valley-of-fire-red-rock-canyon-combo-day-trip-las-vegas",
+      "valley-of-fire-guided-hiking-adventure-from-las-vegas"
+    ],
+    "reason": "The article's two decisions are self-drive vs guided and Valley of Fire vs Red Rock — this is the $99 small-group day, the combo that settles the comparison in one trip, and the guided hike to Atlatl Rock and the slot canyons."
+  },
+  {
+    "slug": "what-to-bring-las-vegas-tour",
+    "tours": [
+      "3-hour-mojave-desert-atv-ride-with-strip-shuttle-vegas",
+      "red-rock-canyon-guided-ebike-adventure-from-las-vegas",
+      "grand-canyon-west-eagle-point-bus-tour-optional-upgrades"
+    ],
+    "reason": "Dust is its own category and it is not everywhere — it's the ATV days that generate it, the open-air eBike loop that generates the sun complaints, and the pre-dawn canyon coach where reviewers were cold at the rim."
+  }
+]

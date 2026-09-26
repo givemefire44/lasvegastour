@@ -15,6 +15,7 @@ const hubContent = hubContentRaw as Record<string, any>;
 
 // Interface expandida para páginas estáticas
 interface SanityPage {
+  toursAsignados?: any[];
   title: string;
   slug: {
     current: string;
@@ -242,6 +243,17 @@ async function getPage(slug: string): Promise<SanityPage | null> {
         title,
         description,
         icon
+      },
+      // Los tres tours que el analisis contextual le asigno a esta pagina.
+      "toursAsignados": toursRecomendados[]->{
+        _id, title, slug,
+        bookingUrl, getYourGuideUrl,
+        "precio": tourInfo.price,
+        "duracion": tourInfo.duration,
+        "rating": getYourGuideData.rating,
+        "reviews": getYourGuideData.reviewCount,
+        "heroGallery": heroGallery[0..0]{ asset->{ url }, alt },
+        mainImage{ asset->{ url }, alt }
       },
       pageSettings{
         showRecommendedTours,
@@ -666,7 +678,7 @@ export default async function StaticPage({ params }: { params: Promise<{ slug: s
     <StaticPageClient 
       page={page} 
       slug={slug} 
-      recommendedTours={recommendedTours}
+      recommendedTours={recommendedTours} toursAsignados={page.toursAsignados || []}
       relatedArticles={relatedArticles}
     />
   )

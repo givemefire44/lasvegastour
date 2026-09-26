@@ -11,7 +11,7 @@ import Container from '@/app/components/Container'
 import Breadcrumbs from '@/app/components/Breadcrumbs'
 import ResearchBadge from '@/app/components/ResearchBadge'
 import SchemaOrgHead from '@/app/components/SchemaOrgHead'
-import TourFinderButton from '@/app/components/TourFinderButton';
+import SidebarTours, { elegirTours } from '@/app/components/SidebarTours';
 import TableOfContents from '@/app/components/TableOfContents';
 import AuthorBox from '@/app/components/AuthorBox';
 import HubChips from '@/app/components/HubChips';
@@ -134,12 +134,13 @@ interface SanityPage {
 export default function StaticPageClient({ 
   page, 
   slug, 
-  recommendedTours,
+  recommendedTours, toursAsignados = [],
   relatedArticles = []
 }: { 
   page: SanityPage; 
   slug: string;
   recommendedTours: any[];
+  toursAsignados?: any[];
   relatedArticles?: Array<{ _id: string; title: string; slug: { current: string } }>;
 }) {
   
@@ -151,6 +152,15 @@ export default function StaticPageClient({
   const isHeroPage = page.pageType === 'hero'
 
   // 🆕 EXTRAER QUICK ANSWER BOX DEL CONTENIDO
+  // El tour que le asigno el analisis contextual leyendo el texto del articulo;
+  // si esta pagina no tiene asignacion cae al emparejamiento por palabras. El
+  // ultimo respaldo es el destino que ya tenia el boton, para no dejarlo muerto.
+  const tourDestacado =
+    toursAsignados[0] || elegirTours(recommendedTours || [], page.title || '', 1)[0];
+  const ctaMovilUrl =
+    tourDestacado?.bookingUrl || tourDestacado?.getYourGuideUrl || page.pageSettings?.ctaUrl || '/';
+  const ctaMovilSale = /^https?:\/\//.test(ctaMovilUrl);
+
   const quickAnswerBlock = page.content?.find((block: any) => block._type === 'quickAnswerBox');
 
   // FAQ del pie: solo las preguntas que NO se leen ya en el cuerpo como bloque
@@ -1319,231 +1329,20 @@ export default function StaticPageClient({
             height: 'fit-content',
             alignSelf: 'start'
           }}>
-            {/* WIDGET CTA - AHORA EDITABLE */}
-            <div style={{
-              width: '100%',
-              maxWidth: '300px',
-              background: 'white',
-              border: '1px solid #e0e0e0',
-              borderRadius: '12px',
-              overflow: 'hidden',
-              boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
-              marginBottom: '20px'
-            }}>
-              
-              {/* CTA PRINCIPAL - AHORA EDITABLE */}
-              <div style={{ padding: '30px 20px 25px 20px' }}>
-                <h3 style={{
-                  fontSize: '1.2rem',
-                  fontWeight: 'bold',
-                  marginBottom: '10px',
-                  color: '#1a1a1a',
-                  textAlign: 'center'
-                }}>
-                  {page.pageSettings?.ctaText ||
-                   (slug.includes('contact') ? 'Ready to Explore Las Vegas?' :
-                    slug.includes('about') ? 'Start Your Las Vegas Trip' :
-                    'Discover More')}
-                </h3>
-                
-                <p style={{
-                  color: '#666',
-                  marginBottom: '20px',
-                  lineHeight: '1.6',
-                  textAlign: 'center',
-                  fontSize: '0.9rem'
-                }}>
-                  {slug.includes('contact') ? 'Contact us for personalized tour recommendations.' :
-                   slug.includes('about') ? 'Discover the best tours and experiences in Las Vegas.' :
-                   'Explore our amazing tours and experiences in Las Vegas.'}
-                </p>
-                
-                <a 
-                  href={page.pageSettings?.ctaUrl || '/tours'}
-                  target={page.pageSettings?.ctaUrl?.startsWith('http') ? '_blank' : '_self'}
-                  rel={page.pageSettings?.ctaUrl?.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  style={{
-                    display: 'block',
-                    background: '#e91e63',
-                    color: 'white',
-                    padding: '12px 20px',
-                    borderRadius: '25px',
-                    textDecoration: 'none',
-                    textAlign: 'center',
-                    fontWeight: 'bold',
-                    fontSize: '14px'
-                  }}
-                >
-                  {page.pageSettings?.ctaText || 'View Tours'}
-                </a>
-              </div>
+            {/* La tarjeta generica del sidebar sale: ocupaba el lugar de honor y su
+                boton iba hacia adentro del sitio. Su boton se conserva en la
+                cabecera del widget de tours, con el ctaUrl/ctaText de Sanity. */}
+            <SidebarTours
+              toursAsignados={toursAsignados}
+              tours={recommendedTours || []}
+              tituloPagina={page.title || ''}
+              verTodosUrl={page.pageSettings?.ctaUrl || undefined}
+              verTodosTexto={page.pageSettings?.ctaText || undefined}
+            />
 
-              {/* IMAGEN */}
-              {page.heroImage && (
-                <div style={{ padding: '0 20px 25px 20px' }}>
-                  <div style={{ 
-                    position: 'relative', 
-                    width: '100%', 
-                    height: '200px', 
-                    borderRadius: '8px', 
-                    overflow: 'hidden'
-                  }}>
-                    <Image
-                      src={urlFor(page.heroImage)
-                        .width(300)
-                        .height(200)
-                        .format('webp')
-                        .quality(85)
-                        .fit('crop')
-                        .url()}
-                      alt={page.title}
-                      fill
-                      style={{ objectFit: 'cover' }}
-                      sizes="300px"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-              )}
-
-              {/* ICONOS/FEATURES */}
-              <div style={{ 
-                padding: '10px 20px 20px 20px',
-                fontSize: '12px',
-                color: '#666',
-                textAlign: 'center'
-              }}>
-                <div style={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center',
-                  marginBottom: '5px' 
-                }}>
-                  <span style={{ marginRight: '8px' }}>✅</span>
-                  <span>Instant Information</span>
-                </div>
-                <div style={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center',
-                  marginBottom: '5px' 
-                }}>
-                  <span style={{ marginRight: '8px' }}>📧</span>
-                  <span>Expert Guidance Available</span>
-                </div>
-              </div>
-
-            </div>
-
-            {/* ENLACES RÁPIDOS - EDITABLES MANUALMENTE */}
-            <div style={{
-              background: 'white',
-              padding: '20px',
-              borderRadius: '12px',
-              boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
-              border: '1px solid #e0e0e0'
-            }}>
-              <h4 style={{
-                fontSize: '1rem',
-                fontWeight: '600',
-                marginBottom: '15px',
-                color: '#1a1a1a'
-              }}>
-                Quick Links
-              </h4>
-              
-              <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '10px'
-              }}>
-                {/* LINKS DINÁMICOS DESDE SANITY */}
-                {page.sidebarWidget?.quickLinks && page.sidebarWidget.quickLinks.length > 0 ? (
-                  page.sidebarWidget.quickLinks.map((link, index) => (
-                    <a 
-                      key={index}
-                      href={link.url} 
-                      style={{
-                        color: '#8b5cf6',
-                        textDecoration: 'none',
-                        fontWeight: '500',
-                        fontSize: '0.9rem',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '8px'
-                      }}
-                    >
-                      <span>{link.icon || '🔗'}</span> {link.title}
-                    </a>
-                  ))
-                ) : (
-                  // FALLBACK LINKS si no hay configurados en Sanity
-                  <>
-                    <a href="/" style={{
-                      color: '#8b5cf6',
-                      textDecoration: 'none',
-                      fontWeight: '500',
-                      fontSize: '0.9rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px'
-                    }}>
-                      <span>🏛️</span> Homepage
-                    </a>
-                    
-                    <a href="/tours" style={{
-                      color: '#8b5cf6',
-                      textDecoration: 'none',
-                      fontWeight: '500',
-                      fontSize: '0.9rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px'
-                    }}>
-                      <span>🏟️</span> Browse Tours
-                    </a>
-                    
-                    <a href="/about-us" style={{
-                      color: '#8b5cf6',
-                      textDecoration: 'none',
-                      fontWeight: '500',
-                      fontSize: '0.9rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px'
-                    }}>
-                      <span>ℹ️</span> About Us
-                    </a>
-                    
-                    <a href="/contact-us" style={{
-                      color: '#8b5cf6',
-                      textDecoration: 'none',
-                      fontWeight: '500',
-                      fontSize: '0.9rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px'
-                    }}>
-                      <span>📧</span> Contact
-                    </a>
-
-                    <a href="/tours" style={{
-                      color: '#8b5cf6',
-                      textDecoration: 'none',
-                      fontWeight: '500',
-                      fontSize: '0.9rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px'
-                    }}>
-                      <span>🎫</span> Book Tours
-                    </a>
-                  </>
-                )}
-              </div>
-           
-            </div>
-            <TourFinderButton />
+            {/* El boton del Tour Finder sale del sidebar: manda a un quiz interno
+                de 4 preguntas, que es mucho pedirle a quien acaba de leer un
+                articulo especifico, y competia con el widget por la atencion. */}
           </div>
           
         </div>
@@ -1553,16 +1352,17 @@ export default function StaticPageClient({
       <Footer />
 
       {/* BOTÓN FLOTANTE - SOLO EN MOBILE (estilo tour page) */}
+      {/* En movil el sidebar no se muestra, asi que este boton es el UNICO CTA
+          de la pagina. Iba al listado interno de tours, dejando al partner a
+          varios clics; ahora sale al mismo tour que el widget pone primero. */}
       <div className="mobile-floating-cta">
-        <a 
-          href={page.pageSettings?.ctaUrl || '/tours'}
-          target={page.pageSettings?.ctaUrl?.startsWith('http') ? '_blank' : '_self'}
-          rel={page.pageSettings?.ctaUrl?.startsWith('http') ? 'noopener noreferrer' : undefined}
+        <a
+          href={ctaMovilUrl}
+          target={ctaMovilSale ? '_blank' : '_self'}
+          rel={ctaMovilSale ? 'noopener noreferrer sponsored' : undefined}
           className="cta-button"
         >
-          <span className="cta-text">
-            {page.pageSettings?.ctaText || 'View Tours'}
-          </span>
+          <span className="cta-text">{ctaMovilSale ? 'Check dates & prices' : (page.pageSettings?.ctaText || 'View Tours')}</span>
           <span className="cta-arrow">→</span>
         </a>
       </div>

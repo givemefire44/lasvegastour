@@ -271,6 +271,18 @@ defineField({
       }
     }),
 
+    defineField({
+      name: 'toursRecomendados',
+      type: 'array',
+      title: 'Tours recomendados (sidebar)',
+      description:
+        'Los tours que muestra el widget del sidebar en esta pagina. Los propone ' +
+        'analizar-tours-por-articulo.mjs leyendo el texto del articulo, y se pueden ' +
+        'cambiar a mano aca. Si queda vacio, el widget elige por palabras del titulo.',
+      of: [{ type: 'reference', to: [{ type: 'post' }] }],
+      validation: (Rule: any) => Rule.max(3)
+    }),
+
     // ========================================
     // SIDEBAR WIDGET CONTROL
     // ========================================
