@@ -21,77 +21,39 @@ export const proTips: ProTip[] = [
     text: 'The Las Vegas Research Program',
     slug: 'las-vegas-research'
   },
-  // ─── Fase 10 (21 sep 2026): los dos pilares transversales ───
-  // Salen de la arquitectura, no de un tema suelto: "How to Book a Las Vegas Tour Without Getting
-  // Burned" aparece textual en adventure y en food, y el dia puerta-a-puerta aparece en cuatro.
-  // El texto del chip es el seoTitle de cada pilar, como en el resto del portfolio.
+  // ─── Los 6 pilares del research: un chip por PILAR, con su SEO title. Los soportes no llevan chip ───
+  // Reagrupado el 9 oct 2026 (eran 12 pilares, 8 con menos de 4 soportes): bajaron a soporte y
+  // perdieron el chip cancelaciones de helicoptero, Grand Canyon West, Hoover Dam, como reservar,
+  // food tours y bodas. El mapa esta en tour-importer/reordenar-arbol-lasvegas.mjs.
   {
-    icon: '🚌',
-    text: 'Las Vegas Tour Pickup: Meeting Points, Times and Waiting',
-    slug: 'las-vegas-tour-pickup-and-meeting-point'
+    icon: '🎭',
+    text: 'What a Las Vegas Show’s Rating Doesn’t Tell You',
+    slug: 'las-vegas-show-ratings-what-they-hide'
   },
-  {
-    icon: '🧾',
-    text: 'Booking a Las Vegas Tour: Third Party vs Direct, and Refunds',
-    slug: 'how-to-book-a-las-vegas-tour-without-getting-burned'
-  },
-  // Pilar de food tours (fase 7, 17 sep 2026). En DRAFT: publicar antes de desplegar.
-  {
-    icon: '🍽️',
-    text: 'Las Vegas Food Tours: What You Actually Get for the Price',
-    slug: 'las-vegas-food-tour-what-you-get'
-  },
-  // Pilar de bodas (fase 7, 17 sep 2026). En DRAFT: publicar antes de desplegar.
-  {
-    icon: '💍',
-    text: 'Las Vegas Chapel Weddings: What You Are Actually Buying',
-    slug: 'las-vegas-chapel-wedding-what-you-are-buying'
-  },
-  // Pilar de Fremont Street (fase 7, 17 sep 2026). En DRAFT: publicar antes de desplegar.
-  {
-    icon: '🌃',
-    text: 'Fremont Street Experience: What the Reviews Actually Say',
-    slug: 'fremont-street-experience-what-reviews-say'
-  },
-  // Pilar de aventura (fase 7, 17 sep 2026). Tambien en DRAFT: publicarlo antes de desplegar.
-  {
-    icon: '🏜️',
-    text: 'Las Vegas Adventure Tours: Who They Actually Suit',
-    slug: 'las-vegas-desert-adventure-tours-what-they-ask'
-  },
-  // Pilares del Gran Cañón por tierra (17 sep 2026). Los tres están en DRAFT en el Studio: el chip
-  // apunta a su slug, así que hay que publicarlos antes de desplegar o el chip lleva a un 404.
-  // El texto es el SEO title, como todos los chips de pilar.
   {
     icon: '🚌',
     text: 'Grand Canyon Day Trip from Las Vegas: The Honest Door-to-Door Timeline',
     slug: 'grand-canyon-day-trip-from-las-vegas-how-long'
   },
   {
-    icon: '🏜️',
-    text: 'Grand Canyon West Guide: Skywalk, Eagle Point and Guano Point',
-    slug: 'grand-canyon-west-skywalk-eagle-point-guano-point'
-  },
-  {
-    icon: '🌊',
-    text: 'Hoover Dam from Las Vegas: Which Tour Actually Goes Inside',
-    slug: 'hoover-dam-from-las-vegas-photo-stop-or-dam-tour'
-  },
-  // Pilar nuevo (15 sep 2026): el texto del chip es el SEO title, criterio acordado para los chips de pilar.
-  {
-    icon: '🚐',
+    icon: '🚁',
     text: 'Las Vegas Helicopter Tours: Where the Bad Reviews Come From',
     slug: 'las-vegas-helicopter-tour-ground-time'
   },
   {
-    icon: '🚁',
-    text: 'Why Las Vegas Helicopter Tours Get Cancelled',
-    slug: 'las-vegas-helicopter-tour-cancellations'
+    icon: '🏜️',
+    text: 'Las Vegas Adventure Tours: Who They Actually Suit',
+    slug: 'las-vegas-desert-adventure-tours-what-they-ask'
   },
   {
-    icon: '🎭',
-    text: 'What a Las Vegas Show’s Rating Doesn’t Tell You',
-    slug: 'las-vegas-show-ratings-what-they-hide'
+    icon: '🌃',
+    text: 'Fremont Street Experience: What the Reviews Actually Say',
+    slug: 'fremont-street-experience-what-reviews-say'
+  },
+  {
+    icon: '📍',
+    text: 'Las Vegas Tour Pickup: Meeting Points, Times and Waiting',
+    slug: 'las-vegas-tour-pickup-and-meeting-point'
   },
 
   // ─── Day trips estrella + experiencias marquee (monetizan / alto search) ───
