@@ -193,7 +193,6 @@ export function generatePageSchema(pageData: PageData, baseUrl = 'https://lasveg
         alternateName: 'lasvegastour.com',
         url: 'https://lasvegastour.com',
         logo: 'https://lasvegastour.com/logo.png',
-        foundingDate: '2006',
         description: 'Expert curators of the best Las Vegas tours, shows, and day trips. Independent affiliate partner of Viator.',
 
         founder: {

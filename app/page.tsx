@@ -220,8 +220,7 @@ export default async function HomePage() {
       "width": 250,
       "height": 60
     },
-    "description": "Expert curators of the best Las Vegas tours, shows, and day trips since 2006.",
-    "foundingDate": "2006",
+    "description": "Expert curators of the best Las Vegas tours, shows, and day trips.",
     
     "founder": {
       "@type": "Person",
