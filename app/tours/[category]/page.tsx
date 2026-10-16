@@ -60,7 +60,7 @@ async function getCategory(slug: string) {
 
 // 🆕 QUERY CON RATING Y FEATURES
 async function getPostsByCategory(categorySlug: string) {
- const query = `*[_type == "post" && category->slug.current == $categorySlug && discontinued != true]| order(_createdAt desc)[0...200]{
+ const query = `*[_type == "post" && category->slug.current == $categorySlug && discontinued != true && activeOnGyg != false]| order(_createdAt desc)[0...200]{
     title,
     slug,
     seoDescription,

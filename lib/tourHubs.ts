@@ -71,8 +71,9 @@ export function buildHubGroqFilter(hub: TourHub): { filter: string; params: Reco
   }
 
   const matchFilter = conditions.length > 0 ? `(${conditions.join(' && ')})` : 'true';
-  // Excluir tours retirados de TODOS los hubs, en un solo lugar.
-  const filter = `${matchFilter} && discontinued != true`;
+  // Excluir tours retirados de TODOS los hubs, en un solo lugar. activeOnGyg: en Las Vegas el cron
+  // marca los muertos asi y discontinued no se usa (16 oct 2026: 14 muertos, 0 discontinued).
+  const filter = `${matchFilter} && discontinued != true && activeOnGyg != false`;
   return { filter, params };
 }
 

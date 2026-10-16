@@ -313,7 +313,7 @@ export default async function TourPage({ params }: { params: Promise<{ slug: str
   if (post?.body) post.body = linkifyBlocks(post.body, 'tour', slug);
 
   const relatedPosts = await client.fetch(`
-    *[_type == "post" && slug.current != $slug && discontinued != true && category->slug.current == $categorySlug] | order(getYourGuideData.reviewCount desc)[0...20]{
+    *[_type == "post" && slug.current != $slug && discontinued != true && activeOnGyg != false && category->slug.current == $categorySlug] | order(getYourGuideData.reviewCount desc)[0...20]{
       _id,
       title,
       slug,
@@ -343,7 +343,7 @@ export default async function TourPage({ params }: { params: Promise<{ slug: str
   `, { slug, categorySlug }, cacheConfig);
 
   const recommendedPosts = await client.fetch(`
-    *[_type == "post" && slug.current != $slug && discontinued != true]{
+    *[_type == "post" && slug.current != $slug && discontinued != true && activeOnGyg != false]{
        _id,
        title,
        slug,

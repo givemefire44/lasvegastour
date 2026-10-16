@@ -741,93 +741,93 @@
   },
   "grand-canyon-south-rim-tours": {
     "quickAnswer": {
-      "hook": "See the real national park rim — not the West Rim — but expect long days and early starts.",
-      "range": "We found 9 South Rim tours from Las Vegas ranging $79 to $1,197, with the best value in the $150-$210 small-group range.",
+      "hook": "The South Rim delivers deeper canyon views than West Rim, but the drive is long and days run 13+ hours.",
+      "range": "8 South Rim tours run from $94 shared bus trips up to $1,317 private charters, with the best value sitting around $94-$180.",
       "bestPick": {
-        "name": "14-Hour South Rim Hoover Dam Route 66 Combo from Vegas",
-        "rating": 4.9,
-        "price": 209,
-        "duration": "14 hours",
-        "highlight": "South Rim plus Hoover Dam and Route 66"
+        "name": "South Rim National Park Day Trip from Vegas",
+        "rating": 4.8,
+        "price": 94,
+        "duration": "13 hours",
+        "highlight": "National park access at the lowest fare"
       },
-      "verdict": "Book a small-group South Rim combo for the best mix of price, scenery and pacing."
+      "verdict": "Book the $94 National Park Express day trip for unbeatable value and solid reviews."
     },
-    "methodology": "We compared 9 South Rim tours based on price, review volume, group size, included national park access, driving time, and cancellation policy.",
+    "methodology": "We compared 8 South Rim tours based on price, review volume, group size, included national park access, driving time, and cancellation policy.",
     "intro": {
-      "whyItMatters": "The South Rim is the classic Grand Canyon you picture — deeper, wider, and inside the actual national park, unlike the closer West Rim. The trade-off is distance: it sits roughly 4.5 hours each way from Las Vegas, so day trips typically run 13 to 17 hours. That long drive is the single biggest factor when choosing a tour.",
-      "whatOptions": "We tracked 9 tours, from budget shared-bus day trips around $79 to private SUV experiences near $1,197. Options range from straight South Rim runs to combos that add Hoover Dam, Route 66, Antelope Canyon, or Horseshoe Bend.",
-      "sweetSpot": "The best value usually lands in the $150-$210 range, where small-group operators include national park entry, hotel pickup, and a more comfortable pace. Spending here typically gets you fewer people, better narration, and more time at the rim.",
-      "howToChoose": "Prioritize free cancellation, small group size, and total driving hours before price. If the day length feels brutal, a combo tour at least breaks up the drive with stops. Book a few days ahead in peak season, as the top-rated departures fill quickly."
+      "whyItMatters": "The South Rim is the classic Grand Canyon experience most people picture, with sweeping views from the actual national park rather than the Hualapai West Rim. It sits roughly 270 miles from Las Vegas, so expect a long day with several hours of driving each way. The payoff is layered canyon vistas, pine forest, and viewpoints like Mather Point and Yavapai that typically feel less commercialized than the West Rim.",
+      "whatOptions": "Our data covers 8 trips, from budget shared buses to small-group vans, private charters, and extended combos pairing the canyon with Antelope Canyon and Horseshoe Bend. Day trips usually run 12-16 hours, while multi-park combos stretch to 17-18 hours. Prices span $94 to over $1,300 depending on group size and inclusions.",
+      "sweetSpot": "The best value lands in the $94-$180 range, where you get round-trip transport and national park entry without paying premium small-group or private rates. The $94 National Park Express trip stands out for its low price and 2,000-plus reviews. Upgrading to a small-group van around $370 buys more comfort and personal attention if crowds aren't your thing.",
+      "howToChoose": "Decide first between a focused canyon day trip and a longer multi-park combo, since the combos add hours but cover Antelope Canyon and Horseshoe Bend. Look for free cancellation, check the group size, and confirm the driving time fits your energy level. Booking a few days ahead is wise, as the popular budget tours fill quickly."
     },
     "pricingTiers": [
       {
-        "range": "$79-$170",
-        "label": "Shared bus day trips with national park access"
+        "range": "$94-$180",
+        "label": "Shared bus day trips — best value"
       },
       {
-        "range": "$170-$400",
-        "label": "Small-group and multi-park combo tours"
+        "range": "$180-$400",
+        "label": "Small-group vans & multi-park combos"
       },
       {
-        "range": "$1100+",
-        "label": "Private full-day Grand Canyon experiences"
+        "range": "$1,000+",
+        "label": "Private charters for families or groups"
       }
     ],
     "decisionBox": {
-      "title": "Who should book a South Rim tour?",
+      "title": "Who should book a Grand Canyon South Rim tour?",
       "bullets": [
-        "Travelers who want the iconic, deeper national park views rather than the closer West Rim",
-        "Visitors comfortable with a long 13-17 hour day and an early morning pickup",
-        "Photographers and first-timers who want classic overlooks like Mather and Yavapai Point",
-        "Anyone who'd rather combine the canyon with Hoover Dam, Route 66, or Antelope Canyon in one trip"
+        "Travelers who want the iconic, deeper canyon views inside the national park rather than the West Rim's Skywalk",
+        "Visitors comfortable with a long 13+ hour day and several hours of driving each way",
+        "Photographers chasing classic viewpoints like Mather Point and Yavapai Observation Station",
+        "Those who can combine the canyon with Antelope Canyon and Horseshoe Bend on a 17-hour combo"
       ]
     },
     "internalLinks": [
       {
-        "text": "Compare with Grand Canyon West Rim tours",
+        "text": "Compare Grand Canyon West Rim tours with the Skywalk",
         "slug": "grand-canyon-west-rim-tours"
       },
       {
-        "text": "Add a Hoover Dam tour to your trip",
-        "slug": "hoover-dam-tours"
+        "text": "See Grand Canyon helicopter flights from Las Vegas",
+        "slug": "grand-canyon-helicopter-tours"
       },
       {
-        "text": "Pair the South Rim with Antelope Canyon",
+        "text": "Browse Antelope Canyon and Horseshoe Bend tours",
         "slug": "antelope-canyon-tours"
       }
     ],
     "faqs": [
       {
-        "question": "What's the difference between the South Rim and West Rim from Las Vegas?",
-        "answer": "The South Rim is inside Grand Canyon National Park and offers the deeper, more iconic views, but it's about 4.5 hours away. The West Rim (home to the Skywalk) is closer at roughly 2.5 hours, making it better for shorter days or helicopter add-ons."
+        "question": "What's included in a Grand Canyon South Rim tour from Las Vegas?",
+        "answer": "Most tours include round-trip transport from the Strip, national park entrance fees, and a guide or driver. Budget bus trips typically add a few hotel pickups and free time at the viewpoints, while small-group vans often include water and snacks."
       },
       {
-        "question": "How long is the drive to the South Rim from Las Vegas?",
-        "answer": "Expect roughly 4 to 4.5 hours each way, which is why most South Rim day trips run 13 to 17 hours total. Tours typically start with hotel pickup in the early morning and return after dark."
+        "question": "Is the South Rim worth the long drive from Las Vegas?",
+        "answer": "For most visitors, yes — the South Rim offers deeper, more dramatic canyon views than the closer West Rim and sits inside the actual national park. The trade-off is a 13+ hour day with roughly 4.5 hours of driving each way, so it suits travelers who prioritize the scenery over convenience."
       },
       {
-        "question": "Is national park entry included in South Rim tours?",
-        "answer": "In most cases, yes — the South Rim sits inside Grand Canyon National Park, and reputable operators include the entrance fee in the tour price. Always confirm on the booking page, as a few budget tours list it separately."
+        "question": "How long is the drive to the South Rim?",
+        "answer": "The South Rim is about 270 miles from Las Vegas, so one-way driving typically takes 4.5 to 5 hours. That's why nearly all South Rim day trips run 12 to 16 hours total, and multi-park combos stretch to 17-18 hours."
       },
       {
-        "question": "Is a South Rim tour worth the long day?",
-        "answer": "For most first-time visitors it is, since the South Rim delivers the postcard Grand Canyon views the West Rim doesn't match. If a 13+ hour day feels like too much, a combo tour with Hoover Dam or Route 66 helps break up the drive."
+        "question": "What's the difference between the South Rim and West Rim?",
+        "answer": "The South Rim is the official national park with the classic panoramic viewpoints and is farther from Vegas, while the West Rim is Hualapai tribal land closer to the city, home to the glass Skywalk. South Rim trips are longer but usually reward you with more iconic scenery."
       },
       {
-        "question": "What's the cheapest South Rim tour from Las Vegas?",
-        "answer": "The South Rim National Park Day Trip from National Park Express starts around $79 and has thousands of reviews. It's a shared bus format, so you trade some comfort and group size for the low price."
+        "question": "When is the best time to take a South Rim tour?",
+        "answer": "Spring and fall typically bring mild temperatures and clearer views, while summer midday heat can be intense and winter can bring snow at the rim's higher elevation. Early departures help you reach the canyon during the best light and avoid the busiest crowds."
       },
       {
-        "question": "Can I do the South Rim and Antelope Canyon in one trip?",
-        "answer": "Yes — several 17-hour combo tours pair the South Rim with Antelope Canyon and Horseshoe Bend, priced around $369 to $399. These are very long days but cover multiple bucket-list spots at once."
+        "question": "Can I cancel a South Rim tour if my plans change?",
+        "answer": "Most South Rim tours in our data offer free cancellation, usually up to 24 hours before departure. Always confirm the specific policy at checkout, as one of the longer multi-park combos does not offer free cancellation."
       },
       {
-        "question": "What's the best time of year to visit the South Rim?",
-        "answer": "Spring and fall typically offer the most comfortable temperatures and clear views. Summer brings bigger crowds and heat, while winter can deliver dramatic snow-dusted rims but occasional road or weather delays."
+        "question": "Are South Rim tours suitable for kids and older travelers?",
+        "answer": "The viewpoints are generally accessible with paved overlooks and minimal walking, so they work for most ages. The main consideration is the long day in the vehicle, which can be tiring for young children or anyone who struggles with extended travel."
       }
     ],
     "seoTitle": "Grand Canyon South Rim Tours from Las Vegas — National Park Access & Prices",
-    "seoDescription": "9 Grand Canyon South Rim tours from $79. The postcard views — Mather Point & the Village — about 4.5 hrs out. Long days by bus or fly part way, compared."
+    "seoDescription": "8 Grand Canyon South Rim tours from $94. The postcard views — Mather Point & the Village — sit 4.5 hrs out. Drive or fly part way, compared."
   },
   "grand-canyon-helicopter-tours": {
     "quickAnswer": {

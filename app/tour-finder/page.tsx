@@ -23,7 +23,7 @@ export const metadata = {
 
 async function getTours() {
   return await client.fetch(`
-   *[_type == "post" && defined(tourInfo.price) && defined(getYourGuideUrl) && discontinued != true && !(_id in path("drafts.**"))] | order(getYourGuideData.reviewCount desc) {
+   *[_type == "post" && defined(tourInfo.price) && defined(getYourGuideUrl) && discontinued != true && activeOnGyg != false && !(_id in path("drafts.**"))] | order(getYourGuideData.reviewCount desc) {
       title,
       "slug": slug.current,
       "price": tourInfo.price,

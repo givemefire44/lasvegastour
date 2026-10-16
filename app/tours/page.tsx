@@ -52,8 +52,8 @@ async function getCategories() {
     title,
     slug,
     "image": image{ asset->{ url }, alt },
-    "count": count(*[_type == "post" && references(^._id) && discontinued != true]),
-    "fallbackImage": *[_type == "post" && references(^._id) && discontinued != true]
+    "count": count(*[_type == "post" && references(^._id) && discontinued != true && activeOnGyg != false]),
+    "fallbackImage": *[_type == "post" && references(^._id) && discontinued != true && activeOnGyg != false]
       | order(getYourGuideData.reviewCount desc)[0]{
         "hero": heroGallery[0]{ asset->{ url }, alt },
         "seo": seoImage{ asset->{ url }, alt }

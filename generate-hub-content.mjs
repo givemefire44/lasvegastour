@@ -208,7 +208,8 @@ async function fetchToursForHub(hub) {
     ? `tourInfo.price <= ${hub.matchPrice.max}`
     : null;
 
-  let filter = `_type == "post" && !(_id in path("drafts.**"))`;
+  // Sin tours muertos: el bestPick del South Rim salio de uno con activeOnGyg=false (16 oct 2026).
+  let filter = `_type == "post" && !(_id in path("drafts.**")) && discontinued != true && activeOnGyg != false`;
 
   const conditions = [keywordConditions, featureConditions, priceCondition].filter(Boolean);
 

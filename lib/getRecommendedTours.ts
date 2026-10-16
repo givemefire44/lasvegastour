@@ -4,7 +4,8 @@ import { client } from '@/sanity/lib/client';
 export async function getRecommendedTours(excludeSlug?: string) {
   const filter = excludeSlug ? '&& slug.current != $excludeSlug' : '';
   return await client.fetch(
-    `*[_type == "post" && discontinued != true ${filter}]{
+    // activeOnGyg: en Las Vegas el cron marca los muertos asi y discontinued no se usa (16 oct 2026).
+    `*[_type == "post" && discontinued != true && activeOnGyg != false ${filter}]{
       _id,
       title,
       slug,
