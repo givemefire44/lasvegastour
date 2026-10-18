@@ -127,6 +127,10 @@
   ],
   "grand-canyon-west-rim-tours": [
     {
+      "slug": "grand-canyon-west-helicopter-boat-add-on-from-las-vegas",
+      "text": "The helicopter and boat add-on, from the reviews"
+    },
+    {
       "slug": "grand-canyon-west-vs-south-rim-from-las-vegas",
       "text": "Grand Canyon West vs South Rim"
     },
@@ -154,6 +158,18 @@
     }
   ],
   "grand-canyon-helicopter-tours": [
+    {
+      "slug": "are-las-vegas-grand-canyon-helicopter-tours-safe",
+      "text": "Are the helicopter tours safe? The federal record"
+    },
+    {
+      "slug": "las-vegas-helicopter-tour-ground-time",
+      "text": "What goes wrong on a helicopter tour, from the reviews"
+    },
+    {
+      "slug": "hoover-dam-helicopter-tour-from-las-vegas",
+      "text": "Hoover Dam by helicopter: what reviewers see"
+    },
     {
       "slug": "las-vegas-helicopter-tours-which-worth-it",
       "text": "Which Las Vegas helicopter tours are worth it"
