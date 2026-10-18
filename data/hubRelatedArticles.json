@@ -127,6 +127,10 @@
   ],
   "grand-canyon-west-rim-tours": [
     {
+      "slug": "grand-canyon-airplane-tour-from-las-vegas",
+      "text": "Grand Canyon by airplane: what you get for the price"
+    },
+    {
       "slug": "grand-canyon-west-helicopter-boat-add-on-from-las-vegas",
       "text": "The helicopter and boat add-on, from the reviews"
     },
@@ -145,6 +149,10 @@
   ],
   "grand-canyon-south-rim-tours": [
     {
+      "slug": "grand-canyon-south-rim-tour-from-las-vegas-what-reviews-say",
+      "text": "South Rim from Las Vegas: what the reviews say"
+    },
+    {
       "slug": "grand-canyon-west-vs-south-rim-from-las-vegas",
       "text": "Grand Canyon West vs South Rim"
     },
@@ -158,6 +166,10 @@
     }
   ],
   "grand-canyon-helicopter-tours": [
+    {
+      "slug": "grand-canyon-airplane-tour-from-las-vegas",
+      "text": "Plane or helicopter? The airplane option"
+    },
     {
       "slug": "are-las-vegas-grand-canyon-helicopter-tours-safe",
       "text": "Are the helicopter tours safe? The federal record"
@@ -184,6 +196,10 @@
     }
   ],
   "antelope-canyon-horseshoe-bend-tours": [
+    {
+      "slug": "antelope-canyon-tour-from-las-vegas-what-reviews-say",
+      "text": "What 154 Antelope Canyon reviews actually say"
+    },
     {
       "slug": "grand-canyon-west-vs-south-rim-from-las-vegas",
       "text": "Grand Canyon West vs South Rim"
