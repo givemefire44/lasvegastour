@@ -95,10 +95,22 @@ export default function SidebarTours({
   // titulo es el respaldo, no el criterio.
   toursAsignados?: Tour[];
 }) {
+  // PRUEBA 25 oct 2026: cuatro tours en vez de tres, a ver si una fila mas da
+  // mas superficie de reserva o si solo alarga el widget.
+  //
+  // El analisis contextual escribe como maximo 3 en Sanity (Rule.max(3) en
+  // page.ts), y 80 de las 85 pages de este sitio ya los tienen. Por eso subir el
+  // `cuantos` de elegirTours no alcanzaria: solo moveria las 5 que no tienen
+  // asignados. El cuarto se completa aca con el emparejador por titulo, sin
+  // repetir los que ya estan y sin tocar Sanity ni gastar llamadas de API.
+  const CUANTOS = 4;
+
   // Se filtran igual por GYG: si a una pagina le quedo asignado un tour que
   // despues se dio de baja o cambio de plataforma, no se muestra.
   const asignados = (toursAsignados || []).filter(esDeGyg);
-  const elegidos = asignados.length ? asignados : elegirTours(tours || [], tituloPagina);
+  const yaEstan = new Set(asignados.map((t) => t._id));
+  const relleno = elegirTours(tours || [], tituloPagina, CUANTOS * 2).filter((t) => !yaEstan.has(t._id));
+  const elegidos = [...asignados, ...relleno].slice(0, CUANTOS);
   // Sin tours con URL de reserva no se pinta nada: es preferible el hueco a una
   // tarjeta que no lleva a ningun lado.
   if (!elegidos.length) return null;
@@ -179,8 +191,19 @@ export default function SidebarTours({
           box-shadow: 0 2px 10px rgba(0,0,0,0.04);
         }
         /* Sin el boton de arriba, la cabecera abre el widget: por eso
-           recupera el aire que antes ponia .st-top. */
-        .st-cab { padding: 16px 16px 10px; }
+           recupera el aire que antes ponia .st-top.
+
+           El fondo es el rosa del boton (#e91e63) muy diluido, no un gris: asi
+           la cabecera y el CTA quedan de la misma familia y la tarjeta se lee
+           como una pieza cerrada arriba y abajo, en vez de un bloque blanco con
+           un boton suelto al final. Un gris claro ademas chocaba con el #fafafa
+           que usan las filas al pasar el mouse, y le sacaba claridad a ese
+           feedback. */
+        .st-cab {
+          padding: 16px 16px 10px;
+          background: #fdf2f6;
+          border-bottom: 1px solid #f6e3ea;
+        }
         .st-t { font-size: 16px; font-weight: 700; color: #1a1a1a; line-height: 1.3; }
         .st-s { font-size: 12px; color: #8a8a8a; margin-top: 2px; }
         /* Tarjeta vertical, no fila horizontal. En una columna de 300px las dos
