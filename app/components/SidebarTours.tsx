@@ -87,8 +87,6 @@ export default function SidebarTours({
   tours,
   tituloPagina,
   toursAsignados = [],
-  verTodosUrl = '/tours',
-  verTodosTexto = 'View Tours',
 }: {
   tours: Tour[];
   tituloPagina: string;
@@ -96,10 +94,6 @@ export default function SidebarTours({
   // texto. Cuando existen mandan ellos: el emparejamiento por palabras del
   // titulo es el respaldo, no el criterio.
   toursAsignados?: Tour[];
-  // Heredados de la tarjeta "Discover More" que este widget reemplaza, para que
-  // las paginas que hoy personalizan ctaUrl/ctaText en Sanity sigan mandando.
-  verTodosUrl?: string;
-  verTodosTexto?: string;
 }) {
   // Se filtran igual por GYG: si a una pagina le quedo asignado un tour que
   // despues se dio de baja o cambio de plataforma, no se muestra.
@@ -109,23 +103,20 @@ export default function SidebarTours({
   // tarjeta que no lleva a ningun lado.
   if (!elegidos.length) return null;
 
-  const esSaliente = /^https?:\/\//.test(verTodosUrl);
-
   return (
     <div className="sidebar-tours">
-      {/* El boton que estaba en "Discover More". Va arriba de todo: es el camino
-          para el que quiere recorrer el catalogo entero, mientras las filas de
-          abajo son para el que ya sabe que quiere. */}
-      <div className="st-top">
-        <a
-          className="st-boton"
-          href={verTodosUrl}
-          target={esSaliente ? '_blank' : undefined}
-          rel={esSaliente ? 'noopener noreferrer sponsored' : undefined}
-        >
-          {verTodosTexto}
-        </a>
-      </div>
+      {/* Aca vivia un segundo boton, heredado de "Discover More", que iba a
+          verTodosUrl. Salio el 25 oct 2026 por dos mediciones:
+
+          - El destino era INTERNO en el 100% de las pages de este sitio. O sea:
+            el boton mas visible del widget, y en la mejor posicion, se llevaba
+            el click hacia adentro en lugar de a la OTA.
+          - Era identico al del pie — mismo color, mismo tamano, mismo sentido —
+            asi que los dos se repartian la atencion en vez de sumarla.
+
+          El link al catalogo propio no se perdio: paso al footer, que es donde
+          va la navegacion. El widget ahora hace un solo trabajo, sacar a la OTA,
+          y por eso se puede medir. */}
 
       <div className="st-cab">
         <div className="st-t">Tours for this guide</div>
@@ -187,8 +178,9 @@ export default function SidebarTours({
           overflow: hidden;
           box-shadow: 0 2px 10px rgba(0,0,0,0.04);
         }
-        .st-top { padding: 16px 16px 14px; }
-        .st-cab { padding: 4px 16px 10px; }
+        /* Sin el boton de arriba, la cabecera abre el widget: por eso
+           recupera el aire que antes ponia .st-top. */
+        .st-cab { padding: 16px 16px 10px; }
         .st-t { font-size: 16px; font-weight: 700; color: #1a1a1a; line-height: 1.3; }
         .st-s { font-size: 12px; color: #8a8a8a; margin-top: 2px; }
         /* Tarjeta vertical, no fila horizontal. En una columna de 300px las dos
@@ -224,7 +216,7 @@ export default function SidebarTours({
         .st-pie { padding: 12px 16px 14px; border-top: 1px solid #f0f0f0; }
         .st-boton {
           display: block; text-align: center; background: #e91e63; color: #fff;
-          font-size: 14px; font-weight: 700; padding: 10px; border-radius: 24px;
+          font-size: 15px; font-weight: 700; padding: 16px 10px; border-radius: 24px;
           text-decoration: none;
         }
         .st-boton:hover { background: #c2185b; }

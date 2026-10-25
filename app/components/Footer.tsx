@@ -147,6 +147,14 @@ export default function Footer() {
           <div className="footer-nav">
             <h4>Company</h4>
             <ul>
+              {/* El catalogo propio entra al footer el 25 oct 2026, cuando
+                  salio del widget del sidebar. Ahi era un boton de conversion
+                  que mandaba para adentro y le ganaba el click al que si sale
+                  a la OTA. Aca es lo que siempre fue: navegacion. Y la gana en
+                  todo el sitio, no solo en los articulos. */}
+              <li>
+                <a href="/tours">All Las Vegas Tours</a>
+              </li>
               {footerLinks}
             </ul>
           </div>

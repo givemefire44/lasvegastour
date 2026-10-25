@@ -1336,8 +1336,6 @@ export default function StaticPageClient({
               toursAsignados={toursAsignados}
               tours={recommendedTours || []}
               tituloPagina={page.title || ''}
-              verTodosUrl={page.pageSettings?.ctaUrl || undefined}
-              verTodosTexto={page.pageSettings?.ctaText || undefined}
             />
 
             {/* El boton del Tour Finder sale del sidebar: manda a un quiz interno
