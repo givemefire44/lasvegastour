@@ -251,6 +251,10 @@
     {
       "slug": "hoover-dam-tour-from-las-vegas",
       "text": "Hoover Dam tours from Las Vegas"
+    },
+    {
+      "slug": "bryce-canyon-zion-day-trip-from-las-vegas",
+      "text": "Bryce and Zion in one day from Las Vegas"
     }
   ],
   "las-vegas-atv-off-road-tours": [
@@ -265,6 +269,10 @@
     {
       "slug": "las-vegas-tour-pickup-and-meeting-point",
       "text": "Pickup points, times and waiting"
+    },
+    {
+      "slug": "las-vegas-atv-tours-nellis-dunes-valley-of-fire",
+      "text": "ATV tours by place: Nellis Dunes or Valley of Fire"
     }
   ],
   "las-vegas-supercar-driving": [
