@@ -130,11 +130,6 @@ export const proTips: ProTip[] = [
     slug: 'las-vegas-casino-gambling-responsibly'
   },
 
-  // ─── Agrupador: ÚLTIMO, como en los otros tres sitios ───
-  // Era /pages/las-vegas-tours-and-tips; desde el 26 oct 2026 redirige a la biblioteca, que es el indice.
-  {
-    icon: '⏩',
-    text: 'Las Vegas Guides Library',
-    slug: 'las-vegas-guides'
-  },
+  // El agrupador de categoria que iba ULTIMO (/pages/las-vegas-tours-and-tips) se quito el 26 oct 2026: redirige a la
+  // biblioteca, y la biblioteca ya es el PRIMER chip de esta lista.
 ];
