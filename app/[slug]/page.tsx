@@ -7,11 +7,13 @@ import StaticPageClient from './StaticPageClient'
 import { isHubSlug, getHubBySlug, getAllHubs, getAllHubSlugs, buildHubGroqFilter } from '@/lib/tourHubs';
 import HubPage from '@/app/components/HubPage';
 import hubContentRaw from '@/data/hub-content.json';
+import hubRelatedArticlesRaw from '@/data/hubRelatedArticles.json';
 import { linkifyText, createLinkState, linkifyBlocks } from '@/app/utils/serverAutoLinker';
 import Footer from '@/app/components/Footer';
 import { getRecommendedTours } from '@/lib/getRecommendedTours';
 
 const hubContent = hubContentRaw as Record<string, any>;
+const hubRelatedArticles = hubRelatedArticlesRaw as Record<string, { slug: string; text: string }[]>;
 
 // Interface expandida para páginas estáticas
 interface SanityPage {
@@ -371,7 +373,7 @@ async function getToursByHub(hub: any) {
 
 
 // 🆕 Traer artículos relacionados según pillar/supporting
- async function getRelatedArticles(currentSlug: string, isPillar: boolean, parentPillarRef?: string) {
+ async function getRelatedArticles(currentSlug: string, isPillar: boolean, parentPillarRef?: string, content?: any[]) {
     if (isPillar) {
       const query = `*[
         _type == "page"
@@ -405,8 +407,39 @@ async function getToursByHub(hub: any) {
         ...data.siblings,
       ];
     }
-    return [];
+    return getClusterRelated(currentSlug, content);
   }
+
+// Relacionados para los articulos del cluster (sin pilar ni padre), que antes salian sin bloque.
+// Regla, medida en tour-importer/articles/enlazado/relacionados-dryrun.mjs (26 oct 2026): las pages que comparten hub con
+// esta en data/hubRelatedArticles.json, y cada hub compartido vale 10 / (hubs en que esta la otra page), para que las
+// guias generales que estan en 6-8 hubs no ganen en todos lados; +1 si esta page la enlaza desde el cuerpo. Hasta 3.
+async function getClusterRelated(currentSlug: string, content?: any[]) {
+  const hubsDe = (s: string) => Object.keys(hubRelatedArticles).filter((h) => hubRelatedArticles[h].some((x) => x.slug === s));
+  const puntos = new Map<string, number>();
+  for (const h of hubsDe(currentSlug)) {
+    for (const x of hubRelatedArticles[h]) {
+      if (x.slug === currentSlug) continue;
+      puntos.set(x.slug, (puntos.get(x.slug) || 0) + 10 / hubsDe(x.slug).length);
+    }
+  }
+  for (const b of content || []) {
+    for (const m of b?.markDefs || []) {
+      if (m?._type !== 'link' || typeof m.href !== 'string') continue;
+      const s = m.href.replace(/^https?:\/+(www\.)?lasvegastour\.com/, '').replace(/^\//, '').replace(/[#?].*$/, '');
+      if (s && s !== currentSlug && /^[a-z0-9-]+$/.test(s)) puntos.set(s, (puntos.get(s) || 0) + 1);
+    }
+  }
+  const orden = [...puntos.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(([s]) => s);
+  if (!orden.length) return [];
+  const docs = await client.fetch(
+    `*[_type == "page" && !(_id in path("drafts.**")) && slug.current in $slugs]{ _id, title, slug, heroImage{ asset->{ _id, url }, alt } }`,
+    { slugs: orden.slice(0, 12) },
+    { next: { revalidate: 3600 } }
+  );
+  // solo pages publicadas (un slug de hub o de una page sin publicar se descarta), en el orden de la regla
+  return orden.map((s) => docs.find((d: any) => d.slug?.current === s)).filter(Boolean).slice(0, 3);
+}
 
 // ✅ GENERATEMETADATA con params async - Next.js 15
 export async function generateMetadata(
@@ -670,7 +703,8 @@ export default async function StaticPage({ params }: { params: Promise<{ slug: s
   const relatedArticles = await getRelatedArticles(
     slug,
     page.isPillar === true,
-    page.parentPillar?._ref
+    page.parentPillar?._ref,
+    page.content
   )
 
   // Pasar datos al Client Component
