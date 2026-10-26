@@ -25,6 +25,45 @@ interface GuideItem {
   isPillar?: boolean
   parentPillarId?: string
   categoryTitle?: string
+  heroImage?: any
+}
+
+// GRUPOS POR VERTICAL (26 oct 2026). Antes: research aparte y el resto en un solo grupo de 23 por su categoria de
+// Sanity, que es la misma para todos. Plan medido en tour-importer/articles/enlazado/grupos-guides-dryrun.mjs del
+// pipeline: cada page va al primer patron que calza con slug + titulo (el orden importa: helicoptero antes que Gran
+// Canon); un soporte va siempre con el grupo de su pilar, para no partir la familia del research.
+const GROUP_RULES: [string, RegExp][] = [
+  ['Helicopter Tours', /helicopter|heli-/],
+  ['Grand Canyon, Antelope and the Skywalk', /grand-canyon|antelope|skywalk|horseshoe|eagle-point|west-rim|south-rim|airplane/],
+  ['Shows and Entertainment', /show|cirque|sphere|absinthe|blue-man|mystere|\bka\b|-o-|michael-jackson|shin-lim|tournament-of-kings|magic|comedy/],
+  ['Day Trips: Hoover Dam, Red Rock, Zion and More', /hoover|lake-mead|zion|bryce|death-valley|valley-of-fire|red-rock|national-park|seven-magic|day-trip/],
+  ['Adventure: ATV, Driving, Shooting', /atv|supercar|shooting|horseback|zip-line|desert-adventure|scooter|slingshot/],
+  ['The Strip, Downtown, Food and Weddings', /strip|fremont|nightlife|club|food|high-roller|neon|casino|gambling|cartzilla/],
+  ['Planning, Costs and Getting Around', /first-time|cost|fees|tipping|mistakes|get-around|pickup|group-size|kids|weather|planning|how-to/],
+]
+// Slugs que el patron manda a otro lado por una palabra suelta del titulo (medido en el dry-run)
+const GROUP_FIXED: Record<string, string> = {
+  'how-much-las-vegas-trip-costs': 'Planning, Costs and Getting Around',
+  'how-to-get-around-las-vegas': 'Planning, Costs and Getting Around',
+  'las-vegas-atv-tours-nellis-dunes-valley-of-fire': 'Adventure: ATV, Driving, Shooting',
+}
+// Orden en la pagina
+const GROUP_ORDER = [
+  'Grand Canyon, Antelope and the Skywalk',
+  'Helicopter Tours',
+  'Shows and Entertainment',
+  'Day Trips: Hoover Dam, Red Rock, Zion and More',
+  'Adventure: ATV, Driving, Shooting',
+  'The Strip, Downtown, Food and Weddings',
+  'Planning, Costs and Getting Around',
+  'More Las Vegas Guides',
+]
+
+function groupOf(g: GuideItem): string {
+  if (GROUP_FIXED[g.slug]) return GROUP_FIXED[g.slug]
+  const k = `${g.slug} ${g.title}`.toLowerCase()
+  const hit = GROUP_RULES.find(([, re]) => re.test(k))
+  return hit ? hit[0] : 'More Las Vegas Guides'
 }
 
 async function getAllGuides(): Promise<GuideItem[]> {
@@ -40,7 +79,8 @@ async function getAllGuides(): Promise<GuideItem[]> {
     seoDescription,
     isPillar,
     "parentPillarId": parentPillar._ref,
-    "categoryTitle": category->title
+    "categoryTitle": category->title,
+    heroImage
   } | order(title asc)`
   return await client.fetch(query, {}, { next: { revalidate: 3600 } })
 }
@@ -98,35 +138,24 @@ export default async function LasVegasGuidesPage() {
   const methodology = all.find((g) => g.slug === 'methodology')
   const guides = all.filter((g) => g.slug !== 'methodology')
 
-  // Sección research: pilares con sus supportings anidados
-  const pillars = guides
-    .filter((g) => g.isPillar)
-    .sort((a, b) => a.title.localeCompare(b.title))
-  const supportingsByPillar = new Map<string, GuideItem[]>()
-  for (const g of guides) {
-    if (g.parentPillarId) {
-      const list = supportingsByPillar.get(g.parentPillarId) || []
-      list.push(g)
-      supportingsByPillar.set(g.parentPillarId, list)
-    }
-  }
-
-  // Resto: agrupado por su categoría de Sanity (crece solo al publicar)
-  const rest = guides.filter((g) => !g.isPillar && !g.parentPillarId)
+  // Grupos por vertical: un soporte va con el grupo de su pilar
+  const byId = new Map(guides.map((g) => [g._id, g]))
   const sections = new Map<string, GuideItem[]>()
-  for (const g of rest) {
-    const key = (g.categoryTitle || 'More Las Vegas Guides').trim().replace(/\s{2,}/g, ' ')
+  for (const g of guides) {
+    const parent = g.parentPillarId ? byId.get(g.parentPillarId) : undefined
+    const key = groupOf(parent || g)
     const list = sections.get(key) || []
     list.push(g)
     sections.set(key, list)
   }
-  const orderedSections = [...sections.entries()].sort((a, b) => b[1].length - a[1].length)
+  // Dentro de cada grupo: pilar, sus soportes, despues el resto (cluster); cada tramo por titulo
+  const layer = (g: GuideItem) => (g.isPillar ? 0 : g.parentPillarId ? 1 : 2)
+  const orderedSections = GROUP_ORDER
+    .filter((t) => sections.has(t))
+    .map((t) => [t, (sections.get(t) || []).sort((a, b) => layer(a) - layer(b) || a.title.localeCompare(b.title))] as [string, GuideItem[]])
 
   // Lista plana para el schema ItemList (todos los artículos, en orden de página)
-  const flatOrder: GuideItem[] = [
-    ...pillars.flatMap((p) => [p, ...(supportingsByPillar.get(p._id) || [])]),
-    ...orderedSections.flatMap(([, items]) => items),
-  ]
+  const flatOrder: GuideItem[] = orderedSections.flatMap(([, items]) => items)
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
@@ -178,20 +207,26 @@ export default async function LasVegasGuidesPage() {
     marginBottom: '0.5rem',
   } as const
 
-  const itemRow = (g: GuideItem) => (
-    <li key={g._id} style={{ padding: '0.875rem 0', borderBottom: '1px solid #f3f4f6' }}>
-      <a
-        href={`/${g.slug}`}
-        style={{ color: '#1f2937', fontWeight: 600, fontSize: '1.05rem', textDecoration: 'none', lineHeight: 1.4 }}
-      >
-        {g.title}
-      </a>
-      {g.seoDescription && (
-        <p style={{ margin: '0.25rem 0 0 0', color: '#6b7280', fontSize: '0.92rem', lineHeight: 1.5 }}>
-          {truncate(g.seoDescription)}
-        </p>
-      )}
-    </li>
+  const card = (g: GuideItem) => (
+    <a key={g._id} href={`/${g.slug}`} className="guides-card">
+      <div className="guides-card-img">
+        {g.heroImage?.asset ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={urlFor(g.heroImage).width(600).height(360).fit('crop').format('webp').quality(75).url()}
+            alt={g.heroImage.alt || g.title}
+            loading="lazy"
+            width={600}
+            height={360}
+          />
+        ) : null}
+        {g.isPillar && <span className="guides-card-tag">Overview</span>}
+      </div>
+      <div className="guides-card-body">
+        <h3>{g.title}</h3>
+        {g.seoDescription && <p>{truncate(g.seoDescription, 130)}</p>}
+      </div>
+    </a>
   )
 
   return (
@@ -243,10 +278,7 @@ export default async function LasVegasGuidesPage() {
           gap: '0.5rem',
           margin: '0 0 1rem 0',
         }}>
-          {[
-            { label: `The Research Program (${pillars.length + [...supportingsByPillar.values()].flat().length})`, id: 'the-research-program' },
-            ...orderedSections.map(([t, items]) => ({ label: `${t} (${items.length})`, id: anchorId(t) })),
-          ].map((s) => (
+          {orderedSections.map(([t, items]) => ({ label: `${t} (${items.length})`, id: anchorId(t) })).map((s) => (
             <a
               key={s.id}
               href={`#${s.id}`}
@@ -266,53 +298,47 @@ export default async function LasVegasGuidesPage() {
           ))}
         </nav>
 
-        {/* RESEARCH PROGRAM */}
-        <section id="the-research-program" style={{ margin: '3rem 0', scrollMarginTop: '90px' }}>
-          <h2 style={sectionHeadingStyle}>The Research Program</h2>
-          <p style={{ fontSize: '1rem', color: '#6b7280', marginBottom: '1rem', maxWidth: '760px' }}>
-            Articles built on rated reviews we collected and measured ourselves, not on what
-            the booking platforms show first.{' '}
-            <a href="/las-vegas-research" style={{ color: '#2563eb', textDecoration: 'none' }}>
-              About the program
-            </a>
-            {methodology && (
-              <>
-                {' · '}
-                <a href={`/${methodology.slug}`} style={{ color: '#2563eb', textDecoration: 'none' }}>
-                  Methodology
-                </a>
-              </>
-            )}
-          </p>
-          {pillars.map((pillar) => (
-            <div key={pillar._id} style={{ margin: '1.75rem 0' }}>
-              <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#1a1a1a', marginBottom: '0.25rem' }}>
-                <a href={`/${pillar.slug}`} style={{ color: '#1a1a1a', textDecoration: 'none' }}>
-                  {pillar.title}
-                </a>
-              </h3>
-              {pillar.seoDescription && (
-                <p style={{ margin: '0 0 0.5rem 0', color: '#6b7280', fontSize: '0.92rem', lineHeight: 1.5 }}>
-                  {truncate(pillar.seoDescription)}
-                </p>
-              )}
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, borderTop: '1px solid #f3f4f6' }}>
-                {(supportingsByPillar.get(pillar._id) || []).map(itemRow)}
-              </ul>
-            </div>
-          ))}
-        </section>
+        {/* EL RESEARCH, EN UNA LINEA: sus pilares ahora encabezan cada grupo */}
+        <p style={{ fontSize: '0.95rem', color: '#6b7280', margin: '0 0 1rem 0', maxWidth: '760px' }}>
+          Articles marked Overview open a research series built on rated reviews we collected and measured
+          ourselves.{' '}
+          <a href="/las-vegas-research" style={{ color: '#2563eb', textDecoration: 'none' }}>
+            About the program
+          </a>
+          {methodology && (
+            <>
+              {' · '}
+              <a href={`/${methodology.slug}`} style={{ color: '#2563eb', textDecoration: 'none' }}>
+                Methodology
+              </a>
+            </>
+          )}
+        </p>
 
-        {/* RESTO DE SECCIONES, POR CATEGORÍA */}
+        <style>{`
+          .guides-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+          @media (max-width: 1024px) { .guides-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+          @media (max-width: 640px) { .guides-grid { grid-template-columns: minmax(0, 1fr); } }
+          .guides-card { display: flex; flex-direction: column; background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; text-decoration: none; color: #1f2937; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: box-shadow .15s ease, transform .15s ease; }
+          .guides-card:hover { box-shadow: 0 6px 18px rgba(0,0,0,0.08); transform: translateY(-2px); }
+          .guides-card-img { position: relative; aspect-ratio: 5 / 3; background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%); }
+          .guides-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+          .guides-card-tag { position: absolute; top: 10px; left: 10px; background: #1f2937; color: #fff; font-size: 0.72rem; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; }
+          .guides-card-body { padding: 0.9rem 1rem 1.1rem; }
+          .guides-card-body h3 { font-size: 1.02rem; font-weight: 650; line-height: 1.35; margin: 0 0 0.4rem; color: #1a1a1a; }
+          .guides-card-body p { font-size: 0.88rem; line-height: 1.5; color: #6b7280; margin: 0; }
+        `}</style>
+
+        {/* SECCIONES POR VERTICAL */}
         {orderedSections.map(([sectionTitle, items]) => (
           <section key={sectionTitle} id={anchorId(sectionTitle)} style={{ margin: '3rem 0', scrollMarginTop: '90px' }}>
             <h2 style={sectionHeadingStyle}>{sectionTitle}</h2>
-            <p style={{ fontSize: '0.95rem', color: '#6b7280', marginBottom: '0.5rem' }}>
+            <p style={{ fontSize: '0.95rem', color: '#6b7280', marginBottom: '1rem' }}>
               {items.length} {items.length === 1 ? 'article' : 'articles'}
             </p>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, borderTop: '1px solid #f3f4f6' }}>
-              {items.map(itemRow)}
-            </ul>
+            <div className="guides-grid">
+              {items.map(card)}
+            </div>
           </section>
         ))}
 

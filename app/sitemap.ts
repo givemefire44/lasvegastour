@@ -101,6 +101,14 @@ sitemap.push({
   changeFrequency: 'weekly',
   priority: 0.9
 })
+// 📚 GUIDES LIBRARY: el indice de articulos. No estaba en el sitemap (medido el 26 oct 2026) y es el destino de la
+// categoria que redirige
+sitemap.push({
+  url: `${baseUrl}/las-vegas-guides`,
+  lastModified: new Date(),
+  changeFrequency: 'weekly',
+  priority: 0.85
+})
 
 
     // 🏛️ TOURS/POSTS
@@ -139,7 +147,9 @@ sitemap.push({
 
     // 📂 PAGE CATEGORIES (agrupadores de páginas estáticas)
     if (data.pageCategories) {
-      const validPageCategories = data.pageCategories.filter((pc: any) => pc.slug && pc.slug.trim() !== '')
+      // las-vegas-tours-and-tips redirige a /las-vegas-guides (next.config.js): un sitemap no lista URLs que redirigen
+      const REDIRECTED_PAGE_CATEGORIES = ['las-vegas-tours-and-tips']
+      const validPageCategories = data.pageCategories.filter((pc: any) => pc.slug && pc.slug.trim() !== '' && !REDIRECTED_PAGE_CATEGORIES.includes(pc.slug))
       console.log(`✅ Page Categories válidas: ${validPageCategories.length}`)
 
       validPageCategories.forEach((pageCat: any) => {

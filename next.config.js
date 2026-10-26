@@ -60,6 +60,13 @@ const nextConfig = {
         destination: '/contact-us',
         permanent: true,
       },
+      // La categoria listaba las mismas pages que /las-vegas-guides, sin canonical ni schema propio (26 oct 2026).
+      // Queda un solo indice: la biblioteca, agrupada por vertical.
+      {
+        source: '/pages/las-vegas-tours-and-tips',
+        destination: '/las-vegas-guides',
+        permanent: true,
+      },
     ];
   },
 
