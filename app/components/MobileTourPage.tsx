@@ -10,6 +10,8 @@ import RecommendedTours from './blog/RecommendedTours';
 import Breadcrumbs from './Breadcrumbs';
 import RatingDisplay from './RatingDisplay';
 import HubChips from './HubChips';
+import DriveTimeLine from './DriveTimeLine';
+import type { GeoDestination } from '@/lib/driveTimeLine';
 
 interface MobileTourPageProps {
   post: {
@@ -29,6 +31,7 @@ interface MobileTourPageProps {
       alt?: string;
     }>;
     body: any;
+    geo?: GeoDestination | null;
     getYourGuideTourId?: string;
     bookingUrl?: string;
     getYourGuideUrl?: string;
@@ -220,6 +223,7 @@ export default function MobileTourPage({
         
         {/* CONTENIDO SANITY - CON RELATEDTOURS */}
         <div className="mobile-tour-body">
+        <DriveTimeLine geo={post.geo} />
         <SanityContent post={post} relatedTours={relatedTours} />
         </div>
 

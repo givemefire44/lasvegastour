@@ -6,6 +6,7 @@ import { notFound, permanentRedirect } from 'next/navigation';
 import { findHubForTour } from '@/lib/tourHubs';
 import { orderTourBody } from '@/lib/orderTourBody';
 import { linkifyBlocks } from '@/app/utils/serverAutoLinker';
+import tourDestinations from '@/data/tour-destinations.json';
 
 // ========================================
 // CONFIGURACIÓN
@@ -311,6 +312,17 @@ export default async function TourPage({ params }: { params: Promise<{ slug: str
   // Interlinking automatico hacia las categorias de tours. En memoria, no toca
   // Sanity. Respeta los links que ya vengan persistidos del documento.
   if (post?.body) post.body = linkifyBlocks(post.body, 'tour', slug);
+
+  // Distancia desde el Strip: el vinculo tour -> destino vive en el repo (los tours no se tocan),
+  // las cifras en el documento geoDestination.
+  const destinationId = (tourDestinations as Record<string, { destination: string }>)[slug]?.destination;
+  post.geo = destinationId
+    ? await client.fetch(`
+        *[_type == "geoDestination" && destinationId.current == $destinationId][0]{
+          name, point, lat, lng, milesFromStrip, driveMinutesOneWay, direction, altRoute, measuredAt
+        }
+      `, { destinationId }, cacheConfig)
+    : null;
 
   const relatedPosts = await client.fetch(`
     *[_type == "post" && slug.current != $slug && discontinued != true && activeOnGyg != false && category->slug.current == $categorySlug] | order(getYourGuideData.reviewCount desc)[0...20]{

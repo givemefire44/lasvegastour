@@ -15,6 +15,7 @@ import MobileTourPage from '../../components/MobileTourPage';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import RatingDisplay from '../../components/RatingDisplay';
 import HubChips from '@/app/components/HubChips';
+import DriveTimeLine from '@/app/components/DriveTimeLine';
 
 
 
@@ -144,6 +145,8 @@ export default function TourPageClient({
             paddingRight: '20px'
           }}>
             
+            <DriveTimeLine geo={post.geo} />
+
             <section id="description">
             <SanityContent post={post} relatedTours={relatedPosts} />
             </section>

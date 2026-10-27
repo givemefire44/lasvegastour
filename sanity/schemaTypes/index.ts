@@ -8,6 +8,7 @@ import {pageType} from './page'
 import {homepageType} from './homepage' 
 import mosaicCard from './mosaicCard'
 import destinationCard from './destinationCard'
+import {geoDestinationType} from './geoDestination'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -20,5 +21,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     homepageType,
     mosaicCard,
     destinationCard,
+    geoDestinationType,
   ],
 }

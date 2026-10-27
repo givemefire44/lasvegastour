@@ -1,0 +1,881 @@
+{
+  "10-hour-west-rim-skywalk-luxury-mercedes-tour-from-vegas": {
+    "destination": "gc-west",
+    "rule": "title"
+  },
+  "12-hour-grand-canyon-west-skywalk-hoover-dam-small-group": {
+    "destination": "gc-west",
+    "also": [
+      "hoover-dam"
+    ],
+    "rule": "title"
+  },
+  "14-hour-south-rim-hoover-dam-route-66-combo-from-vegas": {
+    "destination": "gc-south",
+    "also": [
+      "hoover-dam"
+    ],
+    "rule": "title"
+  },
+  "17-hour-south-rim-antelope-canyon-horseshoe-bend-combo-vegas": {
+    "destination": "antelope",
+    "also": [
+      "gc-south",
+      "horseshoe-bend"
+    ],
+    "rule": "title"
+  },
+  "17-hour-south-rim-antelope-horseshoe-multi-park-vegas-trip": {
+    "destination": "antelope",
+    "also": [
+      "gc-south"
+    ],
+    "rule": "title"
+  },
+  "2-hour-nellis-dunes-atv-desert-adventure-las-vegas": {
+    "destination": "nellis-dunes",
+    "rule": "title"
+  },
+  "2-hour-nellis-dunes-atv-desert-experience-las-vegas": {
+    "destination": "nellis-dunes",
+    "rule": "title"
+  },
+  "2-hour-nellis-dunes-atv-desert-ride-from-las-vegas": {
+    "destination": "nellis-dunes",
+    "rule": "title"
+  },
+  "3-5-hour-willow-beach-emerald-cave-self-guided-kayak": {
+    "destination": "willow-beach",
+    "rule": "title"
+  },
+  "3-hour-emerald-cave-kayak-adventure-black-canyon-vegas": {
+    "destination": "willow-beach",
+    "also": [
+      "hoover-dam"
+    ],
+    "rule": "title"
+  },
+  "3-hour-hoover-dam-mini-tour-small-group-vegas-experience": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "3-hour-luxury-suv-hoover-dam-interior-tour-from-vegas": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "3-hour-west-rim-skywalk-tour-with-lunch-from-laughlin": {
+    "destination": "gc-west",
+    "rule": "title"
+  },
+  "4-hour-colorado-river-raft-hoover-dam-base-swim": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "4-hour-emerald-cave-kayak-with-wildlife-and-swim-stops": {
+    "destination": "willow-beach",
+    "rule": "title"
+  },
+  "4-hour-hoover-dam-top-walk-bridge-views-from-vegas": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "4-hour-triple-cave-kayak-adventure-emerald-cave-vegas": {
+    "destination": "willow-beach",
+    "rule": "title"
+  },
+  "4-hour-willow-beach-emerald-cave-guided-kayak-vegas": {
+    "destination": "willow-beach",
+    "rule": "title"
+  },
+  "5-hour-hoover-dam-emerald-cave-kayak-adventure": {
+    "destination": "willow-beach",
+    "also": [
+      "hoover-dam"
+    ],
+    "rule": "title"
+  },
+  "5-hour-hoover-dam-interior-seven-magic-mountains-vip-tour": {
+    "destination": "hoover-dam",
+    "also": [
+      "seven-magic"
+    ],
+    "rule": "title"
+  },
+  "5-hour-lake-mead-kayak-hoover-dam-water-views": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "5-hour-red-rock-canyon-horseback-desert-adventure-vegas": {
+    "destination": "red-rock",
+    "rule": "title"
+  },
+  "5-hour-small-group-hoover-dam-lake-mead-bridge-tour": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "5-stop-vegas-combo-red-rock-ghost-town-hoover-dam": {
+    "destination": "hoover-dam",
+    "also": [
+      "red-rock"
+    ],
+    "rule": "title"
+  },
+  "6-hour-emerald-cave-kayak-with-optional-vegas-shuttle": {
+    "destination": "willow-beach",
+    "rule": "title"
+  },
+  "6-hour-emerald-cave-kayak-with-strip-pickup-vegas": {
+    "destination": "willow-beach",
+    "rule": "title"
+  },
+  "6-hour-emerald-cave-self-guided-kayak-rental-vegas": {
+    "destination": "willow-beach",
+    "rule": "title"
+  },
+  "6-hour-grand-canyon-west-small-group-tour-from-laughlin": {
+    "destination": "gc-west",
+    "rule": "title"
+  },
+  "6-hour-hoover-dam-interior-bridge-experience-from-vegas": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "6-hour-small-group-hoover-dam-power-plant-interior-tour": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "7-hour-black-canyon-kayak-tour-with-emerald-cave-vegas": {
+    "destination": "willow-beach",
+    "also": [
+      "hoover-dam"
+    ],
+    "rule": "title"
+  },
+  "7-hour-mountain-bike-adventure-hoover-dam-from-vegas": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "8-hour-black-canyon-kayak-hot-springs-emerald-cave": {
+    "destination": "willow-beach",
+    "also": [
+      "hoover-dam"
+    ],
+    "rule": "title"
+  },
+  "8-hour-valley-of-fire-dune-buggy-desert-adventure-vegas": {
+    "destination": "valley-of-fire",
+    "rule": "title"
+  },
+  "9-hour-atv-valley-fire-dune-buggy-combo-vegas-adventure": {
+    "destination": "valley-of-fire",
+    "rule": "title"
+  },
+  "9-hour-west-rim-joshua-tree-hoover-dam-small-group-combo": {
+    "destination": "gc-west",
+    "also": [
+      "hoover-dam"
+    ],
+    "rule": "title"
+  },
+  "9-hour-willow-beach-colorado-river-kayak-with-lunch-vegas": {
+    "destination": "willow-beach",
+    "rule": "title"
+  },
+  "antelope-canyon-both-sections-day-trip-from-las-vegas": {
+    "destination": "antelope",
+    "rule": "title"
+  },
+  "antelope-canyon-horseshoe-bend-full-day-trip-las-vegas": {
+    "destination": "antelope",
+    "also": [
+      "horseshoe-bend"
+    ],
+    "rule": "title"
+  },
+  "antelope-canyon-horseshoe-bend-golden-hour-day-trip-vegas": {
+    "destination": "antelope",
+    "also": [
+      "horseshoe-bend"
+    ],
+    "rule": "title"
+  },
+  "antelope-canyon-x-horseshoe-bend-adventure-las-vegas": {
+    "destination": "antelope",
+    "also": [
+      "horseshoe-bend"
+    ],
+    "rule": "title"
+  },
+  "area15-escape-room-vegas-60-min-immersive-puzzle-game": {
+    "destination": "area15",
+    "rule": "title"
+  },
+  "black-canyon-emerald-cave-self-drive-kayak-experience": {
+    "destination": "willow-beach",
+    "also": [
+      "hoover-dam"
+    ],
+    "rule": "title"
+  },
+  "black-canyon-kayak-adventure-colorado-river-trip": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "black-canyon-raft-tour-hoover-dam-base-adventure": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "black-canyon-river-float-colorado-adventure": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "black-canyon-sunset-kayak-with-bonfire-and-stars-vegas": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "boulder-city-ghost-walk-ufo-hoover-dam-paranormal-tour": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "bryce-canyon-zion-combo-day-trip-small-group-las-vegas": {
+    "destination": "bryce",
+    "also": [
+      "zion"
+    ],
+    "rule": "title"
+  },
+  "bryce-yellowstone-tetons-7-day-camping-vegas-adventure": {
+    "destination": "bryce",
+    "rule": "title"
+  },
+  "bryce-zion-two-parks-day-trip-from-las-vegas": {
+    "destination": "bryce",
+    "also": [
+      "zion"
+    ],
+    "rule": "title"
+  },
+  "bryce-zion-utah-parks-adventure-las-vegas": {
+    "destination": "bryce",
+    "also": [
+      "zion"
+    ],
+    "rule": "title"
+  },
+  "comedy-hoover-dam-tour-interior-access-show-tickets": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "death-valley-family-desert-adventure-small-group-vegas": {
+    "destination": "death-valley",
+    "rule": "title"
+  },
+  "death-valley-guided-desert-excursion-las-vegas": {
+    "destination": "death-valley",
+    "rule": "title"
+  },
+  "death-valley-guided-small-group-adventure-from-las-vegas": {
+    "destination": "death-valley",
+    "rule": "title"
+  },
+  "death-valley-national-park-adventure-las-vegas": {
+    "destination": "death-valley",
+    "rule": "title"
+  },
+  "death-valley-rhyolite-ghost-town-small-group-day-trip-vegas": {
+    "destination": "death-valley",
+    "rule": "title"
+  },
+  "death-valley-small-group-day-trip-from-las-vegas": {
+    "destination": "death-valley",
+    "rule": "title"
+  },
+  "death-valley-stargazing-day-night-adventure-las-vegas": {
+    "destination": "death-valley",
+    "rule": "title"
+  },
+  "death-valley-sunset-stargazing-adventure-from-las-vegas": {
+    "destination": "death-valley",
+    "rule": "title"
+  },
+  "death-valley-sunset-stargazing-small-group-tour-las-vegas": {
+    "destination": "death-valley",
+    "rule": "title"
+  },
+  "death-valley-tour-trekker-adventure-las-vegas": {
+    "destination": "death-valley",
+    "rule": "title"
+  },
+  "death-valley-vip-small-group-desert-adventure-las-vegas": {
+    "destination": "death-valley",
+    "rule": "title"
+  },
+  "exclusive-grand-canyon-west-private-day-trip-vegas": {
+    "destination": "gc-west",
+    "rule": "title"
+  },
+  "extended-grand-canyon-west-rim-air-only-helicopter-tour": {
+    "destination": "gc-west",
+    "rule": "title"
+  },
+  "full-day-grand-canyon-west-eagle-point-guano-point-tour": {
+    "destination": "gc-west",
+    "rule": "title"
+  },
+  "ghost-town-gold-mine-adventure-with-hoover-dam-stop": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "grand-canyon-atv-horseback-combo-adventure-from-vegas": {
+    "destination": "gc-west",
+    "rule": "title+body"
+  },
+  "grand-canyon-floor-helicopter-landing-champagne-tour": {
+    "destination": "gc-west",
+    "rule": "title+body"
+  },
+  "grand-canyon-heli-colorado-river-adventure-combo": {
+    "destination": "gc-west",
+    "rule": "title+body"
+  },
+  "grand-canyon-heli-ranch-adventure-with-landing-tour": {
+    "destination": "gc-west",
+    "rule": "title+body"
+  },
+  "grand-canyon-heli-ranch-day-trip-from-las-vegas": {
+    "destination": "gc-west",
+    "rule": "title+body"
+  },
+  "grand-canyon-helicopter-landing-tour-from-las-vegas": {
+    "destination": "gc-west",
+    "rule": "title+body"
+  },
+  "grand-canyon-helicopter-wedding-with-limo-photos": {
+    "destination": "gc-west",
+    "rule": "title+body"
+  },
+  "grand-canyon-west-day-trip-with-skywalk-hoover-dam": {
+    "destination": "gc-west",
+    "also": [
+      "hoover-dam"
+    ],
+    "rule": "title"
+  },
+  "grand-canyon-west-eagle-point-bus-tour-optional-upgrades": {
+    "destination": "gc-west",
+    "rule": "title"
+  },
+  "grand-canyon-west-heli-flight-with-ground-time-skywalk": {
+    "destination": "gc-west",
+    "rule": "title"
+  },
+  "grand-canyon-west-helicopter-with-canyon-floor-landing": {
+    "destination": "gc-west",
+    "rule": "title"
+  },
+  "grand-canyon-west-hoover-dam-ihop-breakfast-combo": {
+    "destination": "gc-west",
+    "also": [
+      "hoover-dam"
+    ],
+    "rule": "title"
+  },
+  "grand-canyon-west-hoover-dam-small-group-combo-with-meals": {
+    "destination": "gc-west",
+    "also": [
+      "hoover-dam"
+    ],
+    "rule": "title"
+  },
+  "grand-canyon-west-hoover-dam-spanish-guide-day-trip-vegas": {
+    "destination": "gc-west",
+    "also": [
+      "hoover-dam"
+    ],
+    "rule": "title"
+  },
+  "grand-canyon-west-hoover-dam-wifi-combo-tour-from-vegas": {
+    "destination": "gc-west",
+    "also": [
+      "hoover-dam"
+    ],
+    "rule": "title"
+  },
+  "grand-canyon-west-multi-stop-vip-day-trip-from-las-vegas": {
+    "destination": "gc-west",
+    "rule": "title"
+  },
+  "grand-canyon-west-plane-heli-floor-landing-adventure": {
+    "destination": "gc-west",
+    "rule": "title"
+  },
+  "grand-canyon-west-rim-aerial-helicopter-flight": {
+    "destination": "gc-west",
+    "rule": "title"
+  },
+  "grand-canyon-west-rim-aerial-tour-from-vegas": {
+    "destination": "gc-west",
+    "rule": "title"
+  },
+  "grand-canyon-west-rim-airplane-tour-from-las-vegas": {
+    "destination": "gc-west",
+    "rule": "title"
+  },
+  "grand-canyon-west-rim-full-day-bus-tour-hoover-dam-vegas": {
+    "destination": "gc-west",
+    "also": [
+      "hoover-dam"
+    ],
+    "rule": "title"
+  },
+  "grand-canyon-west-skywalk-hoover-dam-day-trip-with-lunch": {
+    "destination": "gc-west",
+    "also": [
+      "hoover-dam"
+    ],
+    "rule": "title"
+  },
+  "grand-canyon-west-vip-coach-tour-meals-hoover-dam-vegas": {
+    "destination": "gc-west",
+    "also": [
+      "hoover-dam"
+    ],
+    "rule": "title"
+  },
+  "grand-canyon-west-vip-skywalk-heli-river-adventure": {
+    "destination": "gc-west",
+    "rule": "title"
+  },
+  "half-day-emerald-cave-kayak-with-hotel-pickup-vegas": {
+    "destination": "willow-beach",
+    "rule": "title"
+  },
+  "hoover-dam-bbq-experience-small-group-wildlife-tour": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "hoover-dam-bridge-walk-boulder-city-historic-tour": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "hoover-dam-generator-room-tour-hot-breakfast-from-vegas": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "hoover-dam-kayak-adventure-colorado-river-tour": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "hoover-dam-power-plant-interior-tour-from-las-vegas": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "hoover-dam-power-plant-interior-tour-vegas-generator-room": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "hoover-dam-slingshot-adventure-vegas-trike-tour": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "hoover-dam-strip-daytime-helicopter-flight": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "hoover-dam-triple-experience-walk-interior-river-float": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "hoover-dam-tunnels-power-plant-tour-from-vegas": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "hoover-dam-walk-on-top-tour-w-seven-magic-mountains": {
+    "destination": "hoover-dam",
+    "also": [
+      "seven-magic"
+    ],
+    "rule": "title"
+  },
+  "late-start-grand-canyon-west-small-group-day-trip-vegas": {
+    "destination": "gc-west",
+    "rule": "title"
+  },
+  "lower-antelope-canyon-horseshoe-bend-day-trip-las-vegas": {
+    "destination": "antelope",
+    "also": [
+      "horseshoe-bend"
+    ],
+    "rule": "title"
+  },
+  "lower-antelope-canyon-lake-powell-day-trip-vegas": {
+    "destination": "antelope",
+    "rule": "title"
+  },
+  "lower-antelope-horseshoe-bend-bilingual-day-trip-vegas": {
+    "destination": "antelope",
+    "also": [
+      "horseshoe-bend"
+    ],
+    "rule": "title"
+  },
+  "luxury-suv-grand-canyon-west-skywalk-day-trip-vegas": {
+    "destination": "gc-west",
+    "rule": "title"
+  },
+  "mount-charleston-escape-cool-mountain-day-trip": {
+    "destination": "mt-charleston",
+    "rule": "title"
+  },
+  "private-antelope-canyon-horseshoe-bend-exclusive-day-trip": {
+    "destination": "antelope",
+    "also": [
+      "horseshoe-bend"
+    ],
+    "rule": "title"
+  },
+  "private-grand-canyon-west-skywalk-hoover-dam-day-tour-vegas": {
+    "destination": "gc-west",
+    "also": [
+      "hoover-dam"
+    ],
+    "rule": "title"
+  },
+  "private-hoover-dam-boulder-city-historic-district-tour": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "private-hoover-dam-interior-tour-luxury-suv-from-vegas": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "private-hoover-dam-interior-vegas-city-tour": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "private-south-rim-grand-canyon-vegas-day-trip": {
+    "destination": "gc-south",
+    "rule": "title"
+  },
+  "private-valley-of-fire-hiking-day-trip-from-las-vegas": {
+    "destination": "valley-of-fire",
+    "rule": "title"
+  },
+  "private-vip-west-rim-canyon-tour-vegas-with-meals": {
+    "destination": "gc-west",
+    "rule": "title"
+  },
+  "private-zion-photography-day-trip-from-las-vegas": {
+    "destination": "zion",
+    "rule": "title"
+  },
+  "red-rock-canyon-electric-bike-half-day-adventure-vegas": {
+    "destination": "red-rock",
+    "rule": "title"
+  },
+  "red-rock-canyon-electric-scooter-adventure-las-vegas": {
+    "destination": "red-rock",
+    "rule": "title"
+  },
+  "red-rock-canyon-guided-ebike-adventure-from-las-vegas": {
+    "destination": "red-rock",
+    "rule": "title"
+  },
+  "red-rock-canyon-guided-hike-from-las-vegas": {
+    "destination": "red-rock",
+    "rule": "title"
+  },
+  "red-rock-canyon-guided-hiking-experience-las-vegas": {
+    "destination": "red-rock",
+    "rule": "title"
+  },
+  "red-rock-canyon-half-day-tour-3-route-options-vegas": {
+    "destination": "red-rock",
+    "rule": "title"
+  },
+  "red-rock-canyon-heli-tour-with-landing-champagne": {
+    "destination": "red-rock",
+    "rule": "title"
+  },
+  "red-rock-canyon-helicopter-flight-from-vegas": {
+    "destination": "red-rock",
+    "rule": "title"
+  },
+  "red-rock-canyon-horseback-ride-with-bbq-dinner-vegas": {
+    "destination": "red-rock",
+    "rule": "title"
+  },
+  "red-rock-canyon-mustang-trail-mountain-bike-tour-vegas": {
+    "destination": "red-rock",
+    "rule": "title"
+  },
+  "red-rock-canyon-private-wedding-limo-package-las-vegas": {
+    "destination": "red-rock",
+    "rule": "title"
+  },
+  "red-rock-canyon-road-bike-tour-from-las-vegas": {
+    "destination": "red-rock",
+    "rule": "title"
+  },
+  "red-rock-canyon-rocky-gap-4x4-off-road-jeep-adventure": {
+    "destination": "red-rock",
+    "rule": "title"
+  },
+  "red-rock-canyon-scenic-loop-small-group-tour-las-vegas": {
+    "destination": "red-rock",
+    "rule": "title"
+  },
+  "red-rock-canyon-self-drive-electric-car-adventure-vegas": {
+    "destination": "red-rock",
+    "rule": "title"
+  },
+  "red-rock-canyon-self-drive-gocar-tour-las-vegas": {
+    "destination": "red-rock",
+    "rule": "title"
+  },
+  "red-rock-canyon-self-guided-e-bike-experience-las-vegas": {
+    "destination": "red-rock",
+    "rule": "title"
+  },
+  "red-rock-canyon-small-group-desert-tour-las-vegas": {
+    "destination": "red-rock",
+    "rule": "title"
+  },
+  "red-rock-canyon-spring-mountain-ranch-combo-tour-vegas": {
+    "destination": "red-rock",
+    "rule": "title"
+  },
+  "red-rock-canyon-sunset-heli-flight-with-champagne-landing": {
+    "destination": "red-rock",
+    "rule": "title"
+  },
+  "red-rock-canyon-tour-trekker-experience-las-vegas": {
+    "destination": "red-rock",
+    "rule": "title"
+  },
+  "red-rock-slingshot-bbq-pawn-stars-vegas-adventure": {
+    "destination": "red-rock",
+    "rule": "title"
+  },
+  "red-rock-sunrise-self-guided-ebike-tour-las-vegas": {
+    "destination": "red-rock",
+    "rule": "title"
+  },
+  "self-drive-audio-tour-3-destinations-grand-canyon-west": {
+    "destination": "gc-west",
+    "rule": "title"
+  },
+  "self-guided-emerald-cave-kayak-adventure-colorado-river": {
+    "destination": "willow-beach",
+    "rule": "title"
+  },
+  "seven-magic-mountains-las-vegas-sign-desert-art-tour": {
+    "destination": "seven-magic",
+    "rule": "title"
+  },
+  "seven-magic-mountains-las-vegas-sign-desert-tour": {
+    "destination": "seven-magic",
+    "rule": "title"
+  },
+  "seven-magic-mountains-red-rock-desert-art-tour-vegas": {
+    "destination": "seven-magic",
+    "also": [
+      "red-rock"
+    ],
+    "rule": "title"
+  },
+  "slingshot-trike-strip-red-rock-bbq-pawn-stars-vegas-tour": {
+    "destination": "red-rock",
+    "rule": "title"
+  },
+  "small-group-colorado-river-emerald-cave-kayak-adventure": {
+    "destination": "willow-beach",
+    "rule": "title"
+  },
+  "small-group-grand-canyon-west-7-magic-mountains-day-trip": {
+    "destination": "gc-west",
+    "also": [
+      "seven-magic"
+    ],
+    "rule": "title"
+  },
+  "small-group-hoover-dam-seven-magic-mountains-day-trip": {
+    "destination": "hoover-dam",
+    "also": [
+      "seven-magic"
+    ],
+    "rule": "title"
+  },
+  "south-rim-national-park-day-trip-from-vegas": {
+    "destination": "gc-south",
+    "rule": "title"
+  },
+  "south-rim-national-park-full-day-bus-tour-from-vegas": {
+    "destination": "gc-south",
+    "rule": "title"
+  },
+  "south-rim-national-park-small-group-day-trip-from-vegas": {
+    "destination": "gc-south",
+    "rule": "title"
+  },
+  "spanish-grand-canyon-heli-boat-adventure-from-vegas": {
+    "destination": "gc-west",
+    "rule": "title+body"
+  },
+  "spanish-grand-canyon-west-skywalk-day-trip-with-lunch": {
+    "destination": "gc-west",
+    "rule": "title"
+  },
+  "spanish-grand-canyon-west-skywalk-hoover-dam-vip-day-tour": {
+    "destination": "gc-west",
+    "also": [
+      "hoover-dam"
+    ],
+    "rule": "title"
+  },
+  "sunset-grand-canyon-heli-tour-with-strip-flyover": {
+    "destination": "gc-west",
+    "rule": "title+body"
+  },
+  "upper-antelope-canyon-horseshoe-bend-vegas-trip": {
+    "destination": "antelope",
+    "also": [
+      "horseshoe-bend"
+    ],
+    "rule": "title"
+  },
+  "upper-antelope-lake-powell-day-trip-las-vegas": {
+    "destination": "antelope",
+    "rule": "title"
+  },
+  "utah-parks-shuttle-las-vegas-bryce-zion-st-george": {
+    "destination": "bryce",
+    "also": [
+      "zion"
+    ],
+    "rule": "title"
+  },
+  "valley-fire-atv-desert-adventure-with-lunch-las-vegas": {
+    "destination": "valley-of-fire",
+    "rule": "title"
+  },
+  "valley-fire-self-drive-rock-crawler-jeep-adventure": {
+    "destination": "valley-of-fire",
+    "rule": "title"
+  },
+  "valley-of-fire-2-person-utv-desert-adventure-las-vegas": {
+    "destination": "valley-of-fire",
+    "rule": "title"
+  },
+  "valley-of-fire-desert-adventure-from-las-vegas": {
+    "destination": "valley-of-fire",
+    "rule": "title"
+  },
+  "valley-of-fire-guided-hiking-adventure-from-las-vegas": {
+    "destination": "valley-of-fire",
+    "rule": "title"
+  },
+  "valley-of-fire-heli-landing-tour-with-strip-flyover": {
+    "destination": "valley-of-fire",
+    "rule": "title"
+  },
+  "valley-of-fire-lost-city-museum-day-trip-vegas": {
+    "destination": "valley-of-fire",
+    "rule": "title"
+  },
+  "valley-of-fire-photography-hiking-tour-small-group-vegas": {
+    "destination": "valley-of-fire",
+    "rule": "title"
+  },
+  "valley-of-fire-red-rock-canyon-combo-day-trip-las-vegas": {
+    "destination": "valley-of-fire",
+    "also": [
+      "red-rock"
+    ],
+    "rule": "title"
+  },
+  "valley-of-fire-single-seater-utv-adventure-vegas": {
+    "destination": "valley-of-fire",
+    "rule": "title"
+  },
+  "valley-of-fire-small-group-adventure-from-las-vegas": {
+    "destination": "valley-of-fire",
+    "rule": "title"
+  },
+  "valley-of-fire-small-group-day-trip-from-las-vegas": {
+    "destination": "valley-of-fire",
+    "rule": "title"
+  },
+  "valley-of-fire-small-group-desert-excursion-vegas": {
+    "destination": "valley-of-fire",
+    "rule": "title"
+  },
+  "valley-of-fire-small-group-hiking-experience-las-vegas": {
+    "destination": "valley-of-fire",
+    "rule": "title"
+  },
+  "valley-of-fire-sunset-photography-tour-las-vegas": {
+    "destination": "valley-of-fire",
+    "rule": "title"
+  },
+  "valley-of-fire-vip-desert-adventure-from-las-vegas": {
+    "destination": "valley-of-fire",
+    "rule": "title"
+  },
+  "vip-hoover-dam-interior-comedy-club-tour-from-vegas": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "vip-machine-gun-speedboat-combo-hoover-dam-water-views": {
+    "destination": "hoover-dam",
+    "rule": "title"
+  },
+  "vip-west-rim-skywalk-hoover-dam-luxury-limo-day-trip": {
+    "destination": "gc-west",
+    "also": [
+      "hoover-dam"
+    ],
+    "rule": "title"
+  },
+  "west-rim-airplane-tour-canyon-flight-from-vegas": {
+    "destination": "gc-west",
+    "rule": "title"
+  },
+  "west-rim-bus-tour-canyon-hoover-dam-experience": {
+    "destination": "gc-west",
+    "also": [
+      "hoover-dam"
+    ],
+    "rule": "title"
+  },
+  "west-rim-small-group-tour-with-optional-canyon-heli-flight": {
+    "destination": "gc-west",
+    "rule": "title"
+  },
+  "willow-beach-emerald-cave-guided-kayak-tour": {
+    "destination": "willow-beach",
+    "rule": "title"
+  },
+  "zion-bryce-canyon-small-group-day-trip-from-las-vegas": {
+    "destination": "bryce",
+    "also": [
+      "zion"
+    ],
+    "rule": "title"
+  },
+  "zion-canyon-small-group-day-trip-from-las-vegas": {
+    "destination": "zion",
+    "rule": "title"
+  },
+  "zion-national-park-hiking-adventure-from-las-vegas": {
+    "destination": "zion",
+    "rule": "title"
+  },
+  "zion-utah-red-rock-canyon-day-trip-from-las-vegas": {
+    "destination": "zion",
+    "also": [
+      "red-rock"
+    ],
+    "rule": "title"
+  }
+}

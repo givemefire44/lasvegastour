@@ -1,0 +1,210 @@
+{
+  "_about": "Validated by Mario 2026-10-26. Origin: 3600 S Las Vegas Blvd (Bellagio). Google Maps fastest route, light traffic, rounded to 5 min; distances cross-checked with OpenStreetMap. Source of truth for geoDestination docs: edit here, then run cargar-geo-destinos.mjs.",
+  "origin": {
+    "name": "the Strip",
+    "address": "3600 S Las Vegas Blvd, Las Vegas, NV 89109",
+    "lat": 36.1132999,
+    "lng": -115.1751596
+  },
+  "destinations": [
+    {
+      "id": "area15",
+      "name": "AREA15",
+      "point": "AREA15, 3215 S Rancho Dr",
+      "lat": 36.1317582,
+      "lng": -115.1815485,
+      "milesFromStrip": 2.5,
+      "driveMinutesOneWay": 10,
+      "direction": "north-northwest",
+      "measuredAt": "2026-10-26",
+      "source": "Google Maps 11 min"
+    },
+    {
+      "id": "red-rock",
+      "name": "Red Rock Canyon",
+      "point": "Red Rock Canyon Visitor Center",
+      "lat": 36.1356121,
+      "lng": -115.4278859,
+      "milesFromStrip": 18.5,
+      "driveMinutesOneWay": 40,
+      "direction": "west",
+      "measuredAt": "2026-10-26",
+      "source": "Google Maps 41-42 min"
+    },
+    {
+      "id": "seven-magic",
+      "name": "Seven Magic Mountains",
+      "point": "Seven Magic Mountains",
+      "lat": 35.8392389,
+      "lng": -115.270961,
+      "milesFromStrip": 21.2,
+      "driveMinutesOneWay": 25,
+      "direction": "south-southwest",
+      "measuredAt": "2026-10-26",
+      "source": "Google Maps 26 min"
+    },
+    {
+      "id": "nellis-dunes",
+      "name": "Nellis Dunes",
+      "point": "Nellis Dunes OHV Recreation Area",
+      "lat": 36.2845505,
+      "lng": -114.9593925,
+      "milesFromStrip": 24.1,
+      "driveMinutesOneWay": 40,
+      "direction": "northeast",
+      "measuredAt": "2026-10-26",
+      "source": "Google Maps 40 min (2a medicion; la 1a tenia trafico)"
+    },
+    {
+      "id": "mt-charleston",
+      "name": "Mount Charleston",
+      "point": "Spring Mountains Visitor Gateway",
+      "lat": 36.2707806,
+      "lng": -115.5885183,
+      "milesFromStrip": 38,
+      "driveMinutesOneWay": 50,
+      "direction": "west-northwest",
+      "measuredAt": "2026-10-26",
+      "source": "Google Maps 49 min (2a medicion)"
+    },
+    {
+      "id": "hoover-dam",
+      "name": "Hoover Dam",
+      "point": "Hoover Dam Visitor Center",
+      "lat": 36.0162072,
+      "lng": -114.7395923,
+      "milesFromStrip": 39.1,
+      "driveMinutesOneWay": 45,
+      "direction": "east-southeast",
+      "measuredAt": "2026-10-26",
+      "source": "Google Maps 45 min (2a medicion); ruta mas corta 35.3 mi / 46 min"
+    },
+    {
+      "id": "willow-beach",
+      "name": "Willow Beach",
+      "point": "Willow Beach Marina",
+      "lat": 35.870221,
+      "lng": -114.660509,
+      "milesFromStrip": 53.3,
+      "driveMinutesOneWay": 70,
+      "direction": "east-southeast",
+      "measuredAt": "2026-10-26",
+      "source": "Google Maps 1 h 10"
+    },
+    {
+      "id": "valley-of-fire",
+      "name": "Valley of Fire",
+      "point": "Valley of Fire Visitor Center",
+      "lat": 36.418367,
+      "lng": -114.5434968,
+      "milesFromStrip": 54,
+      "driveMinutesOneWay": 70,
+      "direction": "east-northeast",
+      "measuredAt": "2026-10-26",
+      "source": "Google 37.7 mi / 38 min hasta la salida de la I-15 + OSRM 16.2 mi / 30 min por Valley of Fire Hwy. Google no rutea por la entrada oeste mientras dure el cierre.",
+      "altRoute": {
+        "label": "Monday to Thursday, while the West Entrance is closed",
+        "miles": 83.3,
+        "minutes": 95,
+        "until": "2026-12-31"
+      },
+      "note": "Main figure is via the West Entrance (Fri-Sun) and is composite: Google to the I-15 exit + OpenStreetMap for the last 16.2 mi. West Entrance closed Mon-Thu since 2026-08-03 per parks.nv.gov, expected through end of 2026."
+    },
+    {
+      "id": "death-valley",
+      "name": "Death Valley",
+      "point": "Furnace Creek Visitor Center",
+      "lat": 36.4616157,
+      "lng": -116.8668201,
+      "milesFromStrip": 118,
+      "driveMinutesOneWay": 140,
+      "direction": "west-northwest",
+      "measuredAt": "2026-10-26",
+      "source": "Google Maps 2 h 19-2 h 21"
+    },
+    {
+      "id": "gc-west",
+      "name": "Grand Canyon West",
+      "point": "Grand Canyon Skywalk",
+      "lat": 36.011943,
+      "lng": -113.8108372,
+      "milesFromStrip": 130,
+      "driveMinutesOneWay": 145,
+      "direction": "east",
+      "measuredAt": "2026-10-26",
+      "source": "Google Maps 2 h 26-2 h 27"
+    },
+    {
+      "id": "zion",
+      "name": "Zion National Park",
+      "point": "Zion Canyon Visitor Center",
+      "lat": 37.2000925,
+      "lng": -112.9869847,
+      "milesFromStrip": 164,
+      "driveMinutesOneWay": 175,
+      "direction": "east-northeast",
+      "measuredAt": "2026-10-26",
+      "source": "Google Maps 2 h 54"
+    },
+    {
+      "id": "bryce",
+      "name": "Bryce Canyon",
+      "point": "Bryce Canyon Visitor Center",
+      "lat": 37.64,
+      "lng": -112.17,
+      "milesFromStrip": 253,
+      "driveMinutesOneWay": 260,
+      "direction": "east-northeast",
+      "measuredAt": "2026-10-26",
+      "source": "Google Maps 4 h 20; coords NPS"
+    },
+    {
+      "id": "horseshoe-bend",
+      "name": "Horseshoe Bend",
+      "point": "Horseshoe Bend",
+      "lat": 36.8790612,
+      "lng": -111.5103627,
+      "milesFromStrip": 279,
+      "driveMinutesOneWay": 280,
+      "direction": "east-northeast",
+      "measuredAt": "2026-10-26",
+      "source": "Google Maps 4 h 41"
+    },
+    {
+      "id": "gc-south",
+      "name": "Grand Canyon South Rim",
+      "point": "Grand Canyon Visitor Center",
+      "lat": 36.0591723,
+      "lng": -112.1092551,
+      "milesFromStrip": 281,
+      "driveMinutesOneWay": 290,
+      "direction": "east",
+      "measuredAt": "2026-10-26",
+      "source": "Google Maps 4 h 48"
+    },
+    {
+      "id": "antelope",
+      "name": "Antelope Canyon",
+      "point": "Upper Antelope Canyon",
+      "lat": 36.8625725,
+      "lng": -111.3746862,
+      "milesFromStrip": 283,
+      "driveMinutesOneWay": 295,
+      "direction": "east-northeast",
+      "measuredAt": "2026-10-26",
+      "source": "Google Maps 4 h 53"
+    },
+    {
+      "id": "monument-valley",
+      "name": "Monument Valley",
+      "point": "Monument Valley Tribal Park Visitor Center",
+      "lat": 36.9820968,
+      "lng": -110.1118615,
+      "milesFromStrip": 401,
+      "driveMinutesOneWay": 400,
+      "direction": "east-northeast",
+      "measuredAt": "2026-10-26",
+      "source": "Google Maps 6 h 39"
+    }
+  ]
+}
