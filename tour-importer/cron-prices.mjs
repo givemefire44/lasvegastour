@@ -12,6 +12,7 @@
 import dotenv from 'dotenv'; dotenv.config({ path: '.env.local' });
 import { createClient } from '@sanity/client';
 import { getProduct } from './corpus.js';   // ajustar ruta si corpus.js esta en otro lado
+import { replacePriceInText, replacePriceInBlocks } from './precio-en-texto.mjs';
 import fs from 'fs';
 
 // ── config ──────────────────────────────────────────────
@@ -81,19 +82,8 @@ async function fetchAlternatives(slug, cat) {
 }
 
 // ── reemplazo de precio en un body (preserva marks) ─────
-function replacePriceInBody(body, oldP, newP) {
-  const reOld = new RegExp('(\\$|USD )' + String(oldP).replace('.', '\\.') + '(?![\\d])', 'g');
-  const newStr = String(newP);
-  let changes = 0;
-  const nb = (body || []).map(b => {
-    if (!b.children) return b;
-    return { ...b, children: b.children.map(c => {
-      if (typeof c.text === 'string' && reOld.test(c.text)) { changes++; return { ...c, text: c.text.replace(reOld, (m, pre) => pre + newStr) }; }
-      return c;
-    }) };
-  });
-  return { body: nb, changes };
-}
+// La logica vive en precio-en-texto.mjs (regex corregida, sin lastIndex, montos redondeados).
+const replacePriceInBody = replacePriceInBlocks;
 
 // ── reemplazo de rating + reviews en un body (solo pagina propia) ──
 // formas: "X/5" para rating, "(N review" para reviews (cubre review/reviews)
@@ -168,6 +158,14 @@ async function aplicarCambio(tour, prod) {
     const r = replaceRatingInBody(bodyPropio, oldRating, oldReviews, newRating, newReviews);
     bodyPropio = r.body; log.push(`RATING/REVIEWS: ${r.changes} lugares (${oldRating}/5->${newRating}/5, ${oldReviews}->${newReviews})`);
   }
+  // La seoDescription cita el precio y es la meta description y el description del JSON-LD:
+  // si no se actualiza junto con tourInfo.price, el sitio publica dos precios para el mismo tour.
+  if (priceChanged && tour.seoDescription) {
+    const r = replacePriceInText(tour.seoDescription, oldPrice, newPrice);
+    if (r.changes) { setObj.seoDescription = r.text; log.push(`PRECIO seoDescription: ${r.changes} lugar(es)`); }
+    else if (/\$\d/.test(tour.seoDescription)) log.push(`AVISO seoDescription: cita un precio que no es ${oldPrice} -> revisar a mano`);
+  }
+
   if (EXECUTE && (priceChanged || ratingChanged)) {
     await sanity.patch(tour._id).set({ ...setObj, body: bodyPropio }).commit();
   }
@@ -270,8 +268,8 @@ async function main() {
   if (dead404.size) console.log(`Codigos muertos en Viator (404) detectados por el ingest: ${dead404.size}\n`);
 
   const q = slugArg
-    ? `*[_type=="post" && slug.current=="${slugArg}" && !(_id in path("drafts.**"))]{ _id, title, "slug":slug.current, "cat":category->slug.current, "oldPrice":tourInfo.price, "oldRating":getYourGuideData.rating, "oldReviews":getYourGuideData.reviewCount, "url":getYourGuideUrl, body }`
-    : `*[_type=="post" && defined(tourInfo.price) && defined(getYourGuideUrl) && (activeOnGyg != false) && !(_id in path("drafts.**"))]{ _id, title, "slug":slug.current, "cat":category->slug.current, "oldPrice":tourInfo.price, "oldRating":getYourGuideData.rating, "oldReviews":getYourGuideData.reviewCount, "url":getYourGuideUrl, body }`;
+    ? `*[_type=="post" && slug.current=="${slugArg}" && !(_id in path("drafts.**"))]{ _id, title, "slug":slug.current, "cat":category->slug.current, "oldPrice":tourInfo.price, "oldRating":getYourGuideData.rating, "oldReviews":getYourGuideData.reviewCount, "url":getYourGuideUrl, seoDescription, body }`
+    : `*[_type=="post" && defined(tourInfo.price) && defined(getYourGuideUrl) && (activeOnGyg != false) && !(_id in path("drafts.**"))]{ _id, title, "slug":slug.current, "cat":category->slug.current, "oldPrice":tourInfo.price, "oldRating":getYourGuideData.rating, "oldReviews":getYourGuideData.reviewCount, "url":getYourGuideUrl, seoDescription, body }`;
 
   const tours = await sanity.fetch(q);
   console.log(`${tours.length} tours a revisar\n`);
