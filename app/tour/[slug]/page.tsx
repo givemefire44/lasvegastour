@@ -7,6 +7,7 @@ import { findHubForTour } from '@/lib/tourHubs';
 import { orderTourBody } from '@/lib/orderTourBody';
 import { linkifyBlocks } from '@/app/utils/serverAutoLinker';
 import tourDestinations from '@/data/tour-destinations.json';
+import { destinationPlaceSchema } from '@/lib/driveTimeLine';
 
 // ========================================
 // CONFIGURACIÓN
@@ -381,7 +382,8 @@ export default async function TourPage({ params }: { params: Promise<{ slug: str
   // ========================================
   const productSchema = post.tourInfo ? {
     "@context": "https://schema.org",
-    "@type": "Product",
+    // Con destino medido el nodo es tambien TouristTrip, que es el que admite el Place (itinerary).
+    "@type": post.geo ? ["Product", "TouristTrip"] : "Product",
     "@id": `${SITE_URL}/tour/${post.slug.current}#product`,
     "name": post.seoTitle || post.title,
     "description": post.seoDescription || `Discover ${post.title} with expert guides`,
@@ -396,38 +398,35 @@ export default async function TourPage({ params }: { params: Promise<{ slug: str
       || post.mainImage?.asset?.url 
       || `${SITE_URL}/images/default-tour.jpg`,
 
+    // Solo lo que el feed respalda: precio y moneda (cron de Viator, lun y jue). Sin availability
+    // ni validFrom/priceValidUntil: no hay dato de plazas ni de vigencia detras.
     ...(post.tourInfo.price && post.tourInfo.currency && {
       "offers": {
         "@type": "Offer",
-        "availability": "https://schema.org/InStock",
         "price": Number(post.tourInfo.price),
         "priceCurrency": post.tourInfo.currency,
-        "validFrom": new Date().toISOString().split('T')[0],
-        "priceValidUntil": new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
         "url": `${SITE_URL}/tour/${post.slug.current}`
       }
     }),
 
-    "brand": {
-      "@type": "Organization",
-      "name": SITE_NAME
-    },
-
-    "provider": {
-      "@type": "Organization",
-      "name": SITE_NAME,
-      "url": SITE_URL
-    },
-
-    ...(post.tourInfo.location && {
-      "touristDestination": {
-        "@type": "Place",
-        "name": post.tourInfo.location,
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": post.tourInfo.location
-        }
+    // LasVegasTour es el editor, no el operador: brand y provider son la empresa que hace el tour.
+    ...(post.getYourGuideData?.provider && {
+      "brand": {
+        "@type": "Brand",
+        "name": post.getYourGuideData.provider
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": post.getYourGuideData.provider
       }
+    }),
+
+    ...(post.geo && {
+      "tripOrigin": {
+        "@type": "Place",
+        "name": "Las Vegas, Nevada"
+      },
+      "itinerary": destinationPlaceSchema(post.geo)
     }),
 
     ...(post.tourInfo.duration && formatDurationISO(post.tourInfo.duration) && {
@@ -589,9 +588,7 @@ export default async function TourPage({ params }: { params: Promise<{ slug: str
                     'offers': {
                       '@type': 'Offer',
                       'price': Number(tour.tourInfo.price),
-                      'priceCurrency': tour.tourInfo?.currency || 'USD',
-                  'availability': 'https://schema.org/InStock',
-                  'priceValidUntil': new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+                      'priceCurrency': tour.tourInfo?.currency || 'USD'
                     }
                   } : {}),
                   ...(tour.tourInfo?.duration ? {
