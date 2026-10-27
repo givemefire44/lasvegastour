@@ -134,8 +134,8 @@ export default function Footer() {
             </div>
             <p className="footer-description">
   LasVegasTour.com is an independent editorial site. We do not sell tickets or tours — 
-  all bookings are processed directly by the tour operator (Viator/GetYourGuide) at their listed prices 
-  with no added markup. 
+  bookings are processed by the booking platform (Viator or GetYourGuide) and the tours are run by the
+  tour operator, at their listed prices with no added markup.
 </p>
             <div className="footer-contact">
               <p>📧 info@lasvegastour.com</p>
