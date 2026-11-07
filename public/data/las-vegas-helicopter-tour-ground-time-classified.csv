@@ -1,0 +1,9 @@
+finding,reviews,base_reviews,stars_1,stars_2,stars_3,stars_4,stars_5,first_year,last_year
+"Cancellation or rescheduling",38,123,32,3,3,0,0,2014,2026
+"Seat, side of the aircraft, or party split by weight",28,123,16,9,3,0,0,2016,2026
+"Ground time: pickup, transfer, waiting, terminal",21,123,9,5,7,0,0,2015,2026
+"Extras and inclusions: surcharges, paid seats, picnic, photos, limousine",11,123,4,0,7,0,0,2018,2024
+"Price or length of the flight",7,123,1,1,5,0,0,2014,2024
+"Aircraft: condition, heat, audio",6,123,4,2,0,0,0,2018,2026
+"Pilot: manner or silence",6,123,2,2,2,0,0,2024,2025
+"Other: service, bookings, mobility, declared weight",6,123,4,1,1,0,0,2021,2025

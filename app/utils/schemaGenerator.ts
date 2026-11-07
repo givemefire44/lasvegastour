@@ -513,7 +513,7 @@ export function generateResearchSchema(
       });
       // noHeredan: soportes colgados del pilar que no salen de su recorte (ej. bodas bajo Fremont)
       const metaPilar = pillarDataset(pillarRef.slug.current);
-      if (metaPilar && !metaPilar.noHeredan?.includes(slug)) pillarDatasetUrl = `${baseUrl}/${pillarRef.slug.current}`;
+      if (metaPilar && !metaPilar.noHeredan?.includes(slug)) pillarDatasetUrl = `${baseUrl}/${pillarRef.slug.current}#dataset`;
     }
   }
 
@@ -559,12 +559,12 @@ export function generateResearchSchema(
 
     // Un pilar con CSV propio se basa en SU dataset (que se basa en el corpus); un soporte, en el
     // de su pilar si lo tiene; el resto, directo en el corpus. Lo que apunta a OTRA pagina va como
-    // URL, nunca como nodo tipado Dataset: Google evalua todo nodo Dataset como un dataset propio y
+    // {"@id"} sin @type, nunca como nodo tipado Dataset: Google evalua todo nodo Dataset como un dataset propio y
     // lo marca invalido por no tener description (Search Console, colosseumroman, 6 nov 2026).
-    isBasedOn: pillarDataset(slug)
+    isBasedOn: pillarDataset(slug) || (!isPillar && classifiedDataset(slug))
       ? [{ '@id': `${pageUrl}#dataset` }, { '@id': RESEARCH_DATASET_ID }]
       : pillarDatasetUrl
-        ? [pillarDatasetUrl, { '@id': RESEARCH_DATASET_ID }]
+        ? [{ '@id': pillarDatasetUrl }, { '@id': RESEARCH_DATASET_ID }]
         : { '@id': RESEARCH_DATASET_ID },
     isPartOf: isPartOf.length === 1 ? isPartOf[0] : isPartOf,
     ...(hasPart && hasPart.length > 0 && { hasPart }),
@@ -628,13 +628,24 @@ export function generatePillarDatasetSchema(pageData: ResearchPageData, baseUrl:
   const recorte = meta.verticales
     ? `corpus items from the ${meta.verticales.join(', ')} ${meta.verticales.length > 1 ? 'verticals' : 'vertical'}${meta.tags.length < 10 ? ` tagged ${meta.tags.join(' or ')}` : ''}`
     : `${meta.textoDescripcion || 'corpus items'}`;
+  // Pilar que ademas clasifico resenas a mano: segundo archivo del MISMO Dataset (una pagina, un Dataset)
+  const clas = classifiedDataset(slug);
+  const descClas = clas
+    ? ` A second file holds the hand classification behind the analysis: ${clas.base} ${clas.baseDescripcion}, one row per finding with the number of reviews, the star split and the first and last year.`
+    : '';
+  const archivoAgregados = {
+    '@type': 'DataDownload',
+    name: `${meta.tema}: aggregates by vertical, topic and source (CSV)`,
+    encodingFormat: 'text/csv',
+    contentUrl: `${SITE_URL}${meta.csv}`,
+  };
 
   return {
     '@context': 'https://schema.org',
     '@type': 'Dataset',
     '@id': `${pageUrl}#dataset`,
     name: `${meta.tema}: Corpus Aggregates by Topic and Source`,
-    description: `Aggregated counts behind the analysis "${pageData.title}", built from ${meta.itemsUnicos.toLocaleString('en-US')} ${recorte}. Each row gives, for one vertical, one topic and one source, the number of items that carry the topic and how many were classified negative, neutral, positive or mixed, plus the earliest and latest publication date. The corpus draws on Reddit, TripAdvisor, YouTube, Google Maps and Quora; a source with no items in this cut has no rows. Only the representative sample is counted: the TripAdvisor pass restricted to 1-3 star reviews is excluded, as the corpus documentation requires. An item can carry several topics, so rows do not add up to unique items. Contains derived counts only: no review text, no usernames and no star-rating averages. Derived from the Las Vegas Shows and Tours Research Corpus.`,
+    description: `Aggregated counts behind the analysis "${pageData.title}", built from ${meta.itemsUnicos.toLocaleString('en-US')} ${recorte}. Each row gives, for one vertical, one topic and one source, the number of items that carry the topic and how many were classified negative, neutral, positive or mixed, plus the earliest and latest publication date. The corpus draws on Reddit, TripAdvisor, YouTube, Google Maps and Quora; a source with no items in this cut has no rows. Only the representative sample is counted: the TripAdvisor pass restricted to 1-3 star reviews is excluded, as the corpus documentation requires. An item can carry several topics, so rows do not add up to unique items. Contains derived counts only: no review text, no usernames and no star-rating averages. Derived from the Las Vegas Shows and Tours Research Corpus.${descClas}`,
     url: pageUrl,
     creator: { '@type': 'Organization', '@id': INTERCOPER_ID, name: 'Intercoper', url: 'https://intercoper.com' },
     publisher: { '@type': 'Organization', name: 'LasVegasTour', url: SITE_URL },
@@ -642,12 +653,12 @@ export function generatePillarDatasetSchema(pageData: ResearchPageData, baseUrl:
     isAccessibleForFree: true,
     inLanguage: 'en',
     ...(pageData.publishedAt && { datePublished: pageData.publishedAt.slice(0, 10) }),
-    dateModified: researchDatasets.generado,
+    dateModified: clas ? (researchDatasets as any).generadoClasificaciones || researchDatasets.generado : researchDatasets.generado,
     keywords: ['Las Vegas', meta.tema, 'visitor reviews', 'tourism research', ...(meta.verticales || [])],
     spatialCoverage: { '@type': 'Place', name: 'Las Vegas, Nevada, USA' },
     temporalCoverage: meta.temporalCoverage,
-    // URL y no un nodo Dataset tipado: Google lo evaluaria como dataset incompleto.
-    isBasedOn: RESEARCH_PAGE_URL,
+    // Referencia {"@id"} sin @type al Dataset central: un nodo tipado Dataset lo evaluaria Google como dataset incompleto.
+    isBasedOn: { '@id': RESEARCH_DATASET_ID },
     measurementTechnique:
       'Items from five public sources, each tagged by topic and vertical and classified by sentiment in an automated enrichment pass; counts aggregated per vertical, topic tag and source over the representative sample only.',
     variableMeasured: [
@@ -662,9 +673,93 @@ export function generatePillarDatasetSchema(pageData: ResearchPageData, baseUrl:
       { '@type': 'PropertyValue', name: 'first_published', description: 'Earliest publication date' },
       { '@type': 'PropertyValue', name: 'last_published', description: 'Latest publication date' },
     ],
+    distribution: clas
+      ? [
+          archivoAgregados,
+          {
+            '@type': 'DataDownload',
+            name: `${clas.tema} (CSV)`,
+            encodingFormat: 'text/csv',
+            contentUrl: `${SITE_URL}${clas.csv}`,
+          },
+        ]
+      : archivoAgregados,
+  };
+}
+
+// ============================================================
+// DATASET DE LAS CLASIFICACIONES A MANO — soportes con evidencia propia
+// ============================================================
+// Articulos cuyas cifras salen de resenas leidas y clasificadas a mano, por id, en su script de
+// evidencia (articles/<carpeta>/evidencia-*.mjs del repo colosseumroman-blog). El CSV tiene un
+// hallazgo por fila con las resenas que lo sostienen y su reparto por estrellas. Lo genera
+// exportar-dataset-csv.mjs --hallazgos (data/research-datasets.json, clave "clasificaciones").
+// Un pilar con clasificacion la suma como segundo archivo de su Dataset (arriba); un soporte la
+// declara como Dataset propio (abajo).
+
+interface ClassifiedDatasetMeta {
+  tema: string;
+  esPilar: boolean;
+  csv: string;
+  hallazgos: number;
+  base?: number;
+  shows?: string[];
+  baseDescripcion: string;
+  lugar?: string;
+  keywords?: string[];
+  temporalCoverage: string;
+}
+
+function classifiedDataset(slug: string): ClassifiedDatasetMeta | undefined {
+  const c = (researchDatasets as { clasificaciones?: Record<string, ClassifiedDatasetMeta> }).clasificaciones;
+  return c?.[slug];
+}
+
+export function generateClassifiedDatasetSchema(pageData: ResearchPageData, baseUrl: string = SITE_URL) {
+  if (pageData.isPillar === true || !pageData.parentPillar?._ref) return null;
+  const slug = pageData.slug.current;
+  const meta = classifiedDataset(slug);
+  if (!meta || meta.esPilar) return null;
+  const pageUrl = `${baseUrl}/${slug}`;
+  const porShow = !!meta.shows?.length;
+  const base = porShow
+    ? `The base is ${meta.baseDescripcion}.`
+    : `The base is ${meta.base} ${meta.baseDescripcion}.`;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Dataset',
+    '@id': `${pageUrl}#dataset`,
+    name: `${meta.tema}: Hand-Classified Findings`,
+    description: `The counts behind the analysis "${pageData.title}". ${base} Each of the ${meta.hallazgos} rows is one finding${porShow ? ' for one show' : ''}, with how many reviews support it, ${porShow ? "how many rated reviews that show has in the representative sample, " : ''}how those reviews split by star rating and the first and last year. Only the representative sample is counted: reviews from the TripAdvisor pass restricted to 1-3 stars are quoted in the article but never counted. One review can support several findings, so rows do not add up. Contains counts only: no review text, no usernames and no review ids. Derived from the Las Vegas Shows and Tours Research Corpus.`,
+    url: pageUrl,
+    creator: { '@type': 'Organization', '@id': INTERCOPER_ID, name: 'Intercoper', url: 'https://intercoper.com' },
+    publisher: { '@type': 'Organization', name: 'LasVegasTour', url: SITE_URL },
+    license: 'https://creativecommons.org/licenses/by/4.0/',
+    isAccessibleForFree: true,
+    inLanguage: 'en',
+    ...(pageData.publishedAt && { datePublished: pageData.publishedAt.slice(0, 10) }),
+    ...((researchDatasets as any).generadoClasificaciones && { dateModified: (researchDatasets as any).generadoClasificaciones }),
+    keywords: meta.keywords || ['Las Vegas', 'visitor reviews', 'tourism research'],
+    spatialCoverage: { '@type': 'Place', name: meta.lugar || 'Las Vegas, Nevada, USA' },
+    ...(meta.temporalCoverage && { temporalCoverage: meta.temporalCoverage }),
+    // Referencia {"@id"} sin @type al Dataset central: un nodo tipado Dataset lo evaluaria Google como dataset incompleto.
+    isBasedOn: { '@id': RESEARCH_DATASET_ID },
+    measurementTechnique:
+      'Reviews on the topic were pulled from the Las Vegas Shows and Tours Research Corpus and every one was read and classified by hand, by review id, into findings; only the representative sample is counted, and a duplicate review under another id is set aside.',
+    variableMeasured: [
+      { '@type': 'PropertyValue', name: 'finding', description: 'What the reviewers say or did' },
+      ...(porShow ? [{ '@type': 'PropertyValue', name: 'show', description: 'Show the reviews are about' }] : []),
+      { '@type': 'PropertyValue', name: 'reviews', description: 'Reviews that support the finding' },
+      porShow
+        ? { '@type': 'PropertyValue', name: 'show_reviews_in_sample', description: 'Rated reviews of that show in the representative sample' }
+        : { '@type': 'PropertyValue', name: 'base_reviews', description: `Reviews read and classified for this analysis (${meta.base})` },
+      { '@type': 'PropertyValue', name: 'stars_1 / stars_2 / stars_3 / stars_4 / stars_5', description: 'Supporting reviews by star rating' },
+      { '@type': 'PropertyValue', name: 'first_year / last_year', description: 'Earliest and latest year among the supporting reviews' },
+    ],
     distribution: {
       '@type': 'DataDownload',
-      name: `${meta.tema}: aggregates by vertical, topic and source (CSV)`,
+      name: `${meta.tema} (CSV)`,
       encodingFormat: 'text/csv',
       contentUrl: `${SITE_URL}${meta.csv}`,
     },

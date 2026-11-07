@@ -232,5 +232,82 @@
       "tripadvisor"
     ],
     "conVertical": true
+  },
+  "generadoClasificaciones": "2026-11-06",
+  "clasificaciones": {
+    "las-vegas-helicopter-tour-ground-time": {
+      "tema": "Main Complaint in One- to Three-Star Las Vegas Helicopter Tour Reviews",
+      "esPilar": true,
+      "csv": "/data/las-vegas-helicopter-tour-ground-time-classified.csv",
+      "hallazgos": 8,
+      "base": 123,
+      "baseDescripcion": "one- to three-star TripAdvisor reviews of Papillon Grand Canyon Helicopters and Grand Canyon Helicopters - Las Vegas from the representative sample, each read and classified by hand by its main complaint in September 2026 (four reviews of another product and one duplicate were set aside)",
+      "temporalCoverage": "2014/2026"
+    },
+    "las-vegas-helicopter-pilot-commentary": {
+      "tema": "One- to Three-Star Las Vegas Helicopter Reviews That Mention the Pilot",
+      "esPilar": false,
+      "csv": "/data/las-vegas-helicopter-pilot-commentary.csv",
+      "hallazgos": 4,
+      "base": 42,
+      "baseDescripcion": "one- to three-star TripAdvisor reviews of Papillon Grand Canyon Helicopters and Grand Canyon Helicopters - Las Vegas from the representative sample that mention the pilot, each read and classified by hand in September 2026",
+      "lugar": "Las Vegas, Nevada, USA",
+      "keywords": [
+        "Las Vegas",
+        "helicopter tours",
+        "Grand Canyon helicopter",
+        "pilot",
+        "visitor reviews"
+      ],
+      "temporalCoverage": "2015/2025"
+    },
+    "las-vegas-show-seats-where-to-sit": {
+      "tema": "Where to Sit at Five Las Vegas Shows",
+      "esPilar": false,
+      "csv": "/data/las-vegas-show-seats-where-to-sit.csv",
+      "hallazgos": 15,
+      "shows": [
+        "O - Cirque du Soleil",
+        "Michael Jackson ONE by Cirque du Soleil",
+        "Shin Lim: LIMITLESS",
+        "Mystere by Cirque du Soleil",
+        "Blue Man Group"
+      ],
+      "baseDescripcion": "TripAdvisor reviews of O, Michael Jackson ONE, Shin Lim: LIMITLESS, Mystère and Blue Man Group from the representative sample that describe their seat, found by a wide search and each read and classified by hand in September 2026",
+      "lugar": "Las Vegas Strip, Nevada, USA",
+      "keywords": [
+        "Las Vegas shows",
+        "where to sit",
+        "Cirque du Soleil",
+        "Blue Man Group",
+        "Shin Lim",
+        "visitor reviews"
+      ],
+      "temporalCoverage": "2019/2026"
+    },
+    "las-vegas-shows-with-kids": {
+      "tema": "Las Vegas Shows With Children, From Parents' Reviews",
+      "esPilar": false,
+      "csv": "/data/las-vegas-shows-with-kids.csv",
+      "hallazgos": 10,
+      "shows": [
+        "Mystere by Cirque du Soleil",
+        "Michael Jackson ONE by Cirque du Soleil",
+        "Blue Man Group",
+        "O - Cirque du Soleil",
+        "Shin Lim: LIMITLESS"
+      ],
+      "baseDescripcion": "TripAdvisor reviews of Mystère, Michael Jackson ONE, Blue Man Group, O and Shin Lim: LIMITLESS from the representative sample written by people who took minors, found by a wide search and each read and classified by hand in September 2026 (adult children and unspecified ages excluded)",
+      "lugar": "Las Vegas Strip, Nevada, USA",
+      "keywords": [
+        "Las Vegas shows",
+        "shows with kids",
+        "family",
+        "Cirque du Soleil",
+        "Blue Man Group",
+        "visitor reviews"
+      ],
+      "temporalCoverage": "2019/2026"
+    }
   }
 }
