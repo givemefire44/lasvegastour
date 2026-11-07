@@ -286,11 +286,11 @@ export function generatePageSchema(pageData: PageData, baseUrl = 'https://lasveg
     name: pageData.title,
     description: description,
     url: pageUrl,
-    datePublished: pageData.publishedAt,
+    ...(pageData.publishedAt && { datePublished: pageData.publishedAt }),
     // dateModified importa sobre todo en el research: sus cifras son una medicion fechada, asi que
     // cuando se reviso es parte del dato. El campo ya estaba en la interfaz de salida y nunca se
     // emitia. Cae a datePublished mientras Sanity no registre una modificacion.
-    dateModified: pageData._updatedAt || pageData.publishedAt,
+    ...((pageData._updatedAt || pageData.publishedAt) && { dateModified: pageData._updatedAt || pageData.publishedAt }),
     author: getAuthorSchema(pageData.author),
     publisher: getPublisherSchema()
   };
@@ -549,7 +549,7 @@ export function generateResearchSchema(
     url: pageUrl,
     inLanguage: 'en',
     isAccessibleForFree: true,
-    datePublished: pageData.publishedAt,
+    ...(pageData.publishedAt && { datePublished: pageData.publishedAt }),
     ...(pageData._updatedAt && { dateModified: pageData._updatedAt }),
     author: getAuthorSchema(pageData.author),
     reviewedBy: getAuthorSchema('mario-dalo'),
@@ -577,13 +577,10 @@ export function generateResearchSchema(
       sameAs: 'https://en.wikipedia.org/wiki/Las_Vegas',
     },
 
-    // Cifra del corpus VIGENTE. Esto viaja al JSON-LD de TODOS los articulos del research, asi que
-    // cuando el corpus crece hay que tocarlo aca Y en app/las-vegas-research/page.tsx: si no, el
-    // articulo declara un numero en su nota de metodo y otro distinto en su schema, que es la
-    // contradiccion que un revisor busca primero. El 23 sep 2026 la pagina declaraba 27.066 items
-    // y 11 fichas cuando el corpus ya tenia 40.112 y 33; las dos cosas se corrigieron juntas.
-    citation:
-      'Based on the Las Vegas Shows and Tours Research Corpus 2026, version 2 (40,112 items aggregated from 5 independent sources, covering pre-purchase deliberation and post-visit reviews; 17,594 carry a star rating across 33 listings). See https://lasvegastour.com/las-vegas-research for the full dataset documentation and version history.',
+    // Cita el MISMO Dataset que isBasedOn, por @id y sin @type (un nodo tipado Dataset lo
+    // evaluaria Google como dataset incompleto). La cifra del corpus vive solo en la pagina del
+    // research: antes iba repetida aca en texto y quedaba vieja cuando el corpus crecia.
+    citation: { '@id': RESEARCH_DATASET_ID },
 
     ...(pageData.richSnippets?.wordCount && { wordCount: pageData.richSnippets.wordCount }),
     ...(pageData.richSnippets?.readingTime && {
