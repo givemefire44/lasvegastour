@@ -1,4 +1,5 @@
 // app/utils/schemaGenerator.ts
+import researchDatasets from '@/data/research-datasets.json';
 
 // ============================================================
 // CONSTANTS â€” Anclas canÃ³nicas del programa Research
@@ -499,6 +500,8 @@ export function generateResearchSchema(
   const isPartOf: any[] = [
     { '@type': 'CollectionPage', '@id': RESEARCH_COLLECTION_ID },
   ];
+  // Soporte cuyo pilar publica Dataset con CSV: se basa en el del pilar (por URL, ver abajo).
+  let pillarDatasetUrl: string | null = null;
   if (!isPillar && pageData.parentPillar?._ref) {
     const pillarRef = relatedArticles.find((a) => a._id === pageData.parentPillar?._ref);
     if (pillarRef) {
@@ -508,6 +511,9 @@ export function generateResearchSchema(
         url: `${baseUrl}/${pillarRef.slug.current}`,
         name: pillarRef.title,
       });
+      // noHeredan: soportes colgados del pilar que no salen de su recorte (ej. bodas bajo Fremont)
+      const metaPilar = pillarDataset(pillarRef.slug.current);
+      if (metaPilar && !metaPilar.noHeredan?.includes(slug)) pillarDatasetUrl = `${baseUrl}/${pillarRef.slug.current}`;
     }
   }
 
@@ -551,7 +557,15 @@ export function generateResearchSchema(
     mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
     ...(imageObject && { image: imageObject }),
 
-    isBasedOn: { '@id': RESEARCH_DATASET_ID },
+    // Un pilar con CSV propio se basa en SU dataset (que se basa en el corpus); un soporte, en el
+    // de su pilar si lo tiene; el resto, directo en el corpus. Lo que apunta a OTRA pagina va como
+    // URL, nunca como nodo tipado Dataset: Google evalua todo nodo Dataset como un dataset propio y
+    // lo marca invalido por no tener description (Search Console, colosseumroman, 6 nov 2026).
+    isBasedOn: pillarDataset(slug)
+      ? [{ '@id': `${pageUrl}#dataset` }, { '@id': RESEARCH_DATASET_ID }]
+      : pillarDatasetUrl
+        ? [pillarDatasetUrl, { '@id': RESEARCH_DATASET_ID }]
+        : { '@id': RESEARCH_DATASET_ID },
     isPartOf: isPartOf.length === 1 ? isPartOf[0] : isPartOf,
     ...(hasPart && hasPart.length > 0 && { hasPart }),
     ...(mentions && mentions.length > 0 && { mentions }),
@@ -578,4 +592,81 @@ export function generateResearchSchema(
   };
 
   return schema;
+}
+
+// ============================================================
+// DATASET PROPIO DE CADA PILAR — para Google Dataset Search
+// ============================================================
+// Google no sigue un isBasedOn {"@id"} hacia otra pagina: para que el pilar cuente como dataset
+// tiene que declarar el suyo, con un archivo descargable. Los metadatos y el CSV los genera
+// colosseumroman-blog/tour-importer/exportar-dataset-csv.mjs --sitio=lasvegas --pilares
+// --salida=<este repo> (data/research-datasets.json y public/data/<slug>.csv). El corpus de Las
+// Vegas esta partido en verticales y sus temas son genericos, asi que cada pilar se recorta por su
+// vertical o, si es de un lugar, por texto. Solo cuenta la muestra representativa.
+
+interface PillarDatasetMeta {
+  tema: string;
+  tags: string[];
+  verticales?: string[];
+  textoDescripcion?: string;
+  noHeredan?: string[];
+  csv: string;
+  itemsUnicos: number;
+  temporalCoverage: string;
+}
+
+function pillarDataset(slug: string): PillarDatasetMeta | undefined {
+  return (researchDatasets.pilares as Record<string, PillarDatasetMeta>)[slug];
+}
+
+export function generatePillarDatasetSchema(pageData: ResearchPageData, baseUrl: string = SITE_URL) {
+  if (pageData.isPillar !== true) return null;
+  const slug = pageData.slug.current;
+  const meta = pillarDataset(slug);
+  if (!meta) return null;
+  const pageUrl = `${baseUrl}/${slug}`;
+  const recorte = meta.verticales
+    ? `corpus items from the ${meta.verticales.join(', ')} ${meta.verticales.length > 1 ? 'verticals' : 'vertical'}${meta.tags.length < 10 ? ` tagged ${meta.tags.join(' or ')}` : ''}`
+    : `${meta.textoDescripcion || 'corpus items'}`;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Dataset',
+    '@id': `${pageUrl}#dataset`,
+    name: `${meta.tema}: Corpus Aggregates by Topic and Source`,
+    description: `Aggregated counts behind the analysis "${pageData.title}", built from ${meta.itemsUnicos.toLocaleString('en-US')} ${recorte}. Each row gives, for one vertical, one topic and one source, the number of items that carry the topic and how many were classified negative, neutral, positive or mixed, plus the earliest and latest publication date. The corpus draws on Reddit, TripAdvisor, YouTube, Google Maps and Quora; a source with no items in this cut has no rows. Only the representative sample is counted: the TripAdvisor pass restricted to 1-3 star reviews is excluded, as the corpus documentation requires. An item can carry several topics, so rows do not add up to unique items. Contains derived counts only: no review text, no usernames and no star-rating averages. Derived from the Las Vegas Shows and Tours Research Corpus.`,
+    url: pageUrl,
+    creator: { '@type': 'Organization', '@id': INTERCOPER_ID, name: 'Intercoper', url: 'https://intercoper.com' },
+    publisher: { '@type': 'Organization', name: 'LasVegasTour', url: SITE_URL },
+    license: 'https://creativecommons.org/licenses/by/4.0/',
+    isAccessibleForFree: true,
+    inLanguage: 'en',
+    ...(pageData.publishedAt && { datePublished: pageData.publishedAt.slice(0, 10) }),
+    dateModified: researchDatasets.generado,
+    keywords: ['Las Vegas', meta.tema, 'visitor reviews', 'tourism research', ...(meta.verticales || [])],
+    spatialCoverage: { '@type': 'Place', name: 'Las Vegas, Nevada, USA' },
+    temporalCoverage: meta.temporalCoverage,
+    // URL y no un nodo Dataset tipado: Google lo evaluaria como dataset incompleto.
+    isBasedOn: RESEARCH_PAGE_URL,
+    measurementTechnique:
+      'Items from five public sources, each tagged by topic and vertical and classified by sentiment in an automated enrichment pass; counts aggregated per vertical, topic tag and source over the representative sample only.',
+    variableMeasured: [
+      { '@type': 'PropertyValue', name: 'vertical', description: 'Product vertical of the item (all = every vertical, for a pillar cut by place)' },
+      { '@type': 'PropertyValue', name: 'topic_tag', description: 'Topic of the item' },
+      { '@type': 'PropertyValue', name: 'source', description: 'Source platform' },
+      { '@type': 'PropertyValue', name: 'items', description: 'Items carrying the topic in that vertical and source' },
+      { '@type': 'PropertyValue', name: 'sentiment_negative', description: 'Items classified negative' },
+      { '@type': 'PropertyValue', name: 'sentiment_neutral', description: 'Items classified neutral' },
+      { '@type': 'PropertyValue', name: 'sentiment_positive', description: 'Items classified positive' },
+      { '@type': 'PropertyValue', name: 'sentiment_mixed', description: 'Items classified mixed' },
+      { '@type': 'PropertyValue', name: 'first_published', description: 'Earliest publication date' },
+      { '@type': 'PropertyValue', name: 'last_published', description: 'Latest publication date' },
+    ],
+    distribution: {
+      '@type': 'DataDownload',
+      name: `${meta.tema}: aggregates by vertical, topic and source (CSV)`,
+      encodingFormat: 'text/csv',
+      contentUrl: `${SITE_URL}${meta.csv}`,
+    },
+  };
 }
