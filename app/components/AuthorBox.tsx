@@ -28,6 +28,7 @@ const AUTHORS: Record<string, AuthorInfo> = {
       blog: 'https://mariodalo.com'
     },
     sameAs: [
+      'https://orcid.org/0009-0003-7402-0338',
       'https://www.linkedin.com/in/mariodalo/',
       'https://mariodalo.com',
       'https://featured.com/p/mario-dalo-8288',

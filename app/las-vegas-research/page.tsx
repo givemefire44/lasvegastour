@@ -80,12 +80,22 @@ export default async function LasVegasResearchPage() {
     // a la ultima. El DOI de la version 2.0 puntual es 10.5281/zenodo.24061280.
     identifier: 'https://doi.org/10.5281/zenodo.24061279',
     sameAs: 'https://doi.org/10.5281/zenodo.24061279',
-    creator: {
-      '@type': 'Organization',
-      '@id': INTERCOPER_ID,
-      name: 'Intercoper',
-      url: 'https://intercoper.com',
-    },
+    // Mario Dalo figura como autor del deposito en Zenodo, con su ORCID; Intercoper sigue como organizacion.
+    creator: [
+      {
+        '@type': 'Person',
+        '@id': 'https://intercoper.com/author/mario-dalo#person',
+        name: 'Mario Dalo',
+        url: 'https://intercoper.com/author/mario-dalo',
+        sameAs: 'https://orcid.org/0009-0003-7402-0338',
+      },
+      {
+        '@type': 'Organization',
+        '@id': INTERCOPER_ID,
+        name: 'Intercoper',
+        url: 'https://intercoper.com',
+      },
+    ],
     publisher: {
       '@type': 'Organization',
       name: 'LasVegasTour',

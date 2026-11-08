@@ -139,6 +139,7 @@ function getAuthorSchema(authorType?: string): Person | Organization {
         url: 'https://intercoper.com/author/mario-dalo',
         jobTitle: 'Founder of Intercoper',
         sameAs: [
+          'https://orcid.org/0009-0003-7402-0338',
           'https://www.linkedin.com/in/mariodalo/',
           'https://mariodalo.com',
           'https://featured.com/p/mario-dalo-8288',
@@ -210,6 +211,7 @@ export function generatePageSchema(pageData: PageData, baseUrl = 'https://lasveg
             'Travel Planning'
           ],
           sameAs: [
+            'https://orcid.org/0009-0003-7402-0338',
             'https://www.linkedin.com/in/mariodalo/',
             'https://mariodalo.com',
             'https://featured.com/p/mario-dalo-8288',

@@ -229,6 +229,7 @@ export default async function HomePage() {
       "jobTitle": "Founder of Intercoper",
       "url": "https://intercoper.com/author/mario-dalo",
       "sameAs": [
+        "https://orcid.org/0009-0003-7402-0338",
         "https://www.linkedin.com/in/mariodalo/",
         "https://mariodalo.com",
         "https://featured.com/p/mario-dalo-8288",
