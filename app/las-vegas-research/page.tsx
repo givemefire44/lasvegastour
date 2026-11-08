@@ -118,7 +118,7 @@ export default async function LasVegasResearchPage() {
       '@type': 'Place',
       name: 'Las Vegas, Nevada, USA',
     },
-    temporalCoverage: '2008-12-15/2026-09-05',
+    temporalCoverage: '2008-08-02/2026-09-16',
     measurementTechnique:
       'Items from five public sources, each tagged by topic and vertical and classified by sentiment in an automated enrichment pass; counts aggregated per vertical, topic tag and source over the representative sample only.',
     // Las columnas del CSV descargable (public/data/lasvegas-research.csv, generado por
@@ -490,7 +490,7 @@ export default async function LasVegasResearchPage() {
             fontSize: '0.875rem',
             color: '#6b7280',
           }}>
-            Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', textDecoration: 'none' }}>CC BY 4.0</a>. Temporal coverage: December 2008 – September 2026. Archived on Zenodo with DOI <a href="https://doi.org/10.5281/zenodo.24061279" target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', textDecoration: 'none' }}>10.5281/zenodo.24061279</a>.
+            Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', textDecoration: 'none' }}>CC BY 4.0</a>. Temporal coverage: August 2008 – September 2026. Archived on Zenodo with DOI <a href="https://doi.org/10.5281/zenodo.24061279" target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', textDecoration: 'none' }}>10.5281/zenodo.24061279</a>.
           </p>
         </section>
 
