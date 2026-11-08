@@ -76,6 +76,10 @@ export default async function LasVegasResearchPage() {
     alternateName: 'Las Vegas Research Corpus',
     description: 'Curated corpus of 40,112 items related to Las Vegas shows, tours, day trips, weddings and food tours, gathered from five independent sources (Reddit, TripAdvisor, YouTube, Google Maps, Quora). Covers two stages of the traveler journey: pre-purchase deliberation from public forums, and post-visit reviews. 30,441 items were processed for topic, sentiment and claims; 17,594 carry a star rating, from TripAdvisor and Google Maps across 33 venue and operator listings. Reddit, YouTube and Quora carry no star ratings, so every comparison between what people expected and what they scored comes from the rated layer. Reviews were collected in two separate passes: 14,656 unfiltered, which are the only ones counted in any proportion, and 2,938 restricted to the 1-3 star tail, which are quoted but never counted. The two are never averaged together. Version 2, September 2026. The downloadable file aggregates the representative sample by vertical, topic and source: item counts, sentiment counts and date ranges, with no review text, no usernames and no star averages; the 1-3 star pass is left out of every count, and an item can carry several topics and verticals.',
     url: PAGE_URL,
+    // El mismo dataset archivado en Zenodo (8 nov 2026). Es el DOI "de todas las versiones": siempre resuelve
+    // a la ultima. El DOI de la version 2.0 puntual es 10.5281/zenodo.24061280.
+    identifier: 'https://doi.org/10.5281/zenodo.24061279',
+    sameAs: 'https://doi.org/10.5281/zenodo.24061279',
     creator: {
       '@type': 'Organization',
       '@id': INTERCOPER_ID,
@@ -476,7 +480,7 @@ export default async function LasVegasResearchPage() {
             fontSize: '0.875rem',
             color: '#6b7280',
           }}>
-            Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', textDecoration: 'none' }}>CC BY 4.0</a>. Temporal coverage: December 2008 – September 2026.
+            Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', textDecoration: 'none' }}>CC BY 4.0</a>. Temporal coverage: December 2008 – September 2026. Archived on Zenodo with DOI <a href="https://doi.org/10.5281/zenodo.24061279" target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', textDecoration: 'none' }}>10.5281/zenodo.24061279</a>.
           </p>
         </section>
 
