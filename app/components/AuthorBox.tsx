@@ -33,7 +33,6 @@ const AUTHORS: Record<string, AuthorInfo> = {
       'https://mariodalo.com',
       'https://featured.com/p/mario-dalo-8288',
       'https://intercoper.com/author/mario-dalo',
-      'https://www.reddit.com/user/Mario_Dalo/'
     ]
   
   },

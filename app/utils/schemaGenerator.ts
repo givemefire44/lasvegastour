@@ -144,7 +144,6 @@ function getAuthorSchema(authorType?: string): Person | Organization {
           'https://mariodalo.com',
           'https://featured.com/p/mario-dalo-8288',
           'https://intercoper.com/author/mario-dalo',
-          'https://www.reddit.com/user/Mario_Dalo/'
         ]
       };
     case 'curator-team':
@@ -216,7 +215,6 @@ export function generatePageSchema(pageData: PageData, baseUrl = 'https://lasveg
             'https://mariodalo.com',
             'https://featured.com/p/mario-dalo-8288',
             'https://intercoper.com/author/mario-dalo',
-            'https://www.reddit.com/user/Mario_Dalo/'
           ]
         },
 
