@@ -490,7 +490,7 @@ export default async function LasVegasResearchPage() {
             fontSize: '0.875rem',
             color: '#6b7280',
           }}>
-            Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', textDecoration: 'none' }}>CC BY 4.0</a>. Temporal coverage: August 2008 – September 2026. Archived on Zenodo with DOI <a href="https://doi.org/10.5281/zenodo.24061279" target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', textDecoration: 'none' }}>10.5281/zenodo.24061279</a>. Dataset compiled by Mario Dalo (ORCID <a href="https://orcid.org/0009-0003-7402-0338" target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', textDecoration: 'none' }}>0009-0003-7402-0338</a>).
+            Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', textDecoration: 'none' }}>CC BY 4.0</a>. Temporal coverage: August 2008 – September 2026. Archived on Zenodo with DOI <a href="https://doi.org/10.5281/zenodo.24061279" target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', textDecoration: 'none' }}>10.5281/zenodo.24061279</a>.<br />Dataset compiled by Mario Dalo (ORCID <a href="https://orcid.org/0009-0003-7402-0338" target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', textDecoration: 'none', whiteSpace: 'nowrap' }}>0009-0003-7402-0338</a>).
           </p>
         </section>
 
