@@ -69,14 +69,14 @@ export function HomeHero() {
   return (
     <section className={styles.hero}>
       <img
-        src={sized(IMG.hero, 1600)}
-        srcSet={`${sized(IMG.hero, 900)} 900w, ${sized(IMG.hero, 1400)} 1400w, ${sized(IMG.hero, 1600)} 1600w`}
+        src={sized(IMG.hero, 1800)}
+        srcSet={`${sized(IMG.hero, 900)} 900w, ${sized(IMG.hero, 1400)} 1400w, ${sized(IMG.hero, 2000)} 2000w, ${sized(IMG.hero, 2420)} 2420w`}
         sizes="100vw"
         alt={IMG.hero.alt}
         className={styles.heroImg}
         fetchPriority="high"
-        width={1600}
-        height={1200}
+        width={2420}
+        height={1414}
       />
       <div className={styles.heroShade} aria-hidden="true" />
       <div className={styles.heroInner}>
@@ -129,7 +129,9 @@ export function TrustStrip() {
   );
 }
 
-// El consejo, con la forma del Quick Answer de la ficha. Cada frase es un hallazgo publicado:
+// El consejo, con la forma del Quick Answer de la ficha. Sin nombrar plataformas ni sugerir que
+// sus notas no sirven (Mario, 15 nov 2026): dice que hacer, con la cifra que lo respalda.
+// Cada frase es un hallazgo publicado:
 // - shows: /las-vegas-show-ratings-what-they-hide (Absinthe y O, 3.98, ~20% de 1-2 estrellas)
 // - asientos: /las-vegas-show-seats-where-to-sit (O, balcon)
 // - helicoptero: /las-vegas-helicopter-tour-ground-time (123 reseñas <=3: vuelo 19 = 15%,
@@ -142,15 +144,23 @@ export function AdviceBox() {
         <span aria-hidden="true">💡</span> Our advice: what&apos;s worth paying for in Las Vegas?
       </h2>
       <div className={styles.adviceBody}>
+        {/* Texto del revisor externo (15 nov 2026), en tres bloques cortos. */}
         <p>
-          Don&apos;t pick a show by its stars: on TripAdvisor, Absinthe and O both average{' '}
-          <strong>3.98</strong> with the same share of bad reviews, and what their unhappy viewers
-          complain about does not overlap, so read the complaints. Where you sit matters too: at O,
-          reviewers in the balcony say they missed part of the show. On a helicopter tour, the flight
-          is rarely the problem: it drew <strong>15% of the complaints</strong> in the low-rated reviews
-          we read, while cancellations and seat assignment drew more, so check the rebooking policy
-          before the view. And price the Grand Canyon in hours: reviewers time a West Rim coach day at{' '}
-          <strong>10 to 12 hours</strong> and a South Rim day at 14 to 15.
+          <strong>For shows, choose the experience, not just the rating.</strong> Two Strip shows can
+          have the same average rating yet leave audiences with completely different impressions. And
+          choose your seat carefully: at O, some balcony reviewers reported missing parts of the
+          performance.
+        </p>
+        <p>
+          <strong>For helicopter tours, look beyond the flight.</strong> Flight-related issues
+          accounted for just 15% of the complaints in the low-rated reviews we analyzed. Cancellations
+          and seat assignments caused more frustration. Check the rebooking policy and seating
+          arrangements before paying.
+        </p>
+        <p>
+          <strong>For Grand Canyon trips, think in hours, not miles.</strong> Travelers report 10–12
+          hours for a West Rim coach tour and 14–15 hours for the South Rim. That difference can
+          determine whether the experience is worth your day.
         </p>
         <p className={styles.adviceFacts}>
           From 40,112 traveler items across five platforms ·{' '}
@@ -188,7 +198,7 @@ export function Decisions() {
       name: 'Which show, and where to sit?', img: IMG.cirque,
       badge: 'Cirque, magic, Sphere',
       for: 'You are choosing a type of show (Cirque, a residency, magic, comedy, the Sphere) for your group and budget.',
-      skip: 'You plan to choose by star rating alone: two shows with the same 3.98 draw opposite complaints.',
+      skip: 'You want a single number to decide: two shows can share the same average for very different reasons.',
       cta: { href: '/how-to-choose-las-vegas-shows', label: 'How to choose a show' },
       extra: { href: '/las-vegas-show-seats-where-to-sit', label: 'Where to sit' },
     },
@@ -282,7 +292,7 @@ export function FeaturedTours({ tours }: { tours: FeaturedTour[] }) {
 export function ResearchBlock() {
   // Cada tarjeta es un consejo con la cifra que lo respalda, tomada del pilar publicado.
   const studies = [
-    { href: '/las-vegas-show-ratings-what-they-hide', stat: '3.98', statNote: 'Absinthe and O, same average', title: 'Read the complaints, not the stars', text: 'In 3,755 TripAdvisor reviews of eight attractions, Absinthe and O share the same average and the same share of bad reviews. What their unhappy viewers describe does not overlap.' },
+    { href: '/las-vegas-show-ratings-what-they-hide', stat: '3.98', statNote: 'two Strip shows, same average', title: 'Read what reviewers describe', text: 'In 3,755 reviews of eight attractions, Absinthe and O share the same average and the same share of unhappy viewers, for reasons that do not overlap. What reviewers describe is what tells them apart.' },
     { href: '/las-vegas-helicopter-tour-ground-time', stat: '15%', statNote: 'of complaints were the flight', title: 'Check the rebooking policy first', text: 'Of 123 low-rated reviews of two helicopter operators, the flight itself led 19. Cancellations led 38, the seat 28 and the time on the ground 21.' },
     { href: '/grand-canyon-day-trip-from-las-vegas-how-long', stat: '10–12 h', statNote: 'a West Rim day, timed by reviewers', title: 'Price the canyon in hours', text: 'Seventy reviews state how long their day took. A West Rim coach day sits at 10 to 12 hours; a South Rim day, two hours further each way, at 14 to 15.' },
   ];
@@ -355,9 +365,9 @@ export function homeFaq() {
       link: { href: '/grand-canyon-west-vs-south-rim-from-las-vegas', label: 'West vs South Rim compared' },
     },
     {
-      q: 'Can I trust Las Vegas show ratings?',
-      a: 'Only as a first filter. In 3,755 TripAdvisor reviews, Absinthe and O have the same 3.98 average and the same share of one- and two-star reviews, yet their complaints do not overlap. Read what the unhappy reviewers describe.',
-      link: { href: '/las-vegas-show-ratings-what-they-hide', label: 'What show ratings hide' },
+      q: 'How do I choose between Las Vegas shows?',
+      a: 'Start with the type of show and who you are going with, then read what reviewers describe. In 3,755 reviews we read, Absinthe and O have the same 3.98 average and the same share of unhappy viewers, for reasons that do not overlap.',
+      link: { href: '/how-to-choose-las-vegas-shows', label: 'How to choose a show' },
     },
     {
       q: 'What goes wrong on Las Vegas helicopter tours?',

@@ -177,7 +177,7 @@ export default async function HomePage() {
       "url": "https://intercoper.com/author/mario-dalo"
     },
     "publisher": { "@id": ORG_ID },
-    "hasPart": { "@id": LIST_ID },
+    // Sin hasPart hacia la ItemList: hasPart espera un CreativeWork (error en validator.schema.org, 15 nov 2026).
     "dateModified": CHECKED_ISO,
     "isBasedOn": `https://doi.org/${DATASET_DOI}`,
     "citation": ["https://lasvegastour.com/las-vegas-research", `https://doi.org/${DATASET_DOI}`],

@@ -24,8 +24,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* La Sphere esta abajo en la foto: el encuadre baja para que entre */
-  object-position: center 78%;
+  /* Encuadre al centro del Strip (Eiffel, MGM) */
+  object-position: center 45%;
 }
 .heroShade {
   position: absolute;

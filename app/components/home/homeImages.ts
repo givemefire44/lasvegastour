@@ -11,9 +11,11 @@ export function sized(img: HomeImage, w: number, h?: number) {
 }
 
 export const IMG = {
+  // Hero cambiado el 15 nov 2026 (Mario: la anterior "no sirve"; era de 1600 px y casi toda
+  // negra). Esta es de 2420 px, abierta a 1400 antes de escribir el alt.
   hero: {
-    src: cdn('e6c6afd08349bd6cc37b74f3b50b5cf4fca00d89-1600x1200.avif'),
-    alt: 'The Las Vegas Strip at night seen from above, with the lit Sphere in the foreground and the Strat tower behind it',
+    src: cdn('2373ddd0d40264d3adaa7eb58e4224b6f135ce1d-2420x1414.jpg'),
+    alt: 'The Las Vegas Strip at night from above, with Excalibur, New York-New York, MGM Grand, the Paris Eiffel Tower and the High Roller wheel lit up',
   },
   skywalk: {
     src: cdn('13e7039bfe18aa8e9d10ac835033ec3e4e24b609-1600x1200.avif'),
