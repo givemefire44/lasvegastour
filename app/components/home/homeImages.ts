@@ -41,4 +41,26 @@ export const IMG = {
     src: cdn('6b4fde3cf3745d41f6f4fc3187caf67b27b5b2f5-1600x1200.avif'),
     alt: 'Hoover Dam with the Colorado River below and the Mike O’Callaghan–Pat Tillman Memorial Bridge arching behind it',
   },
+  // Grilla "Explore Las Vegas" (15 nov 2026): fotos de fichas de tour en 2420 px, abiertas en
+  // una hoja de contactos antes de escribir cada alt.
+  skywalkSunset: {
+    src: cdn('ccfabcc7e308961dff32fac57dae57944385143d-2420x1559.jpg'),
+    alt: 'The glass Skywalk jutting out over the Grand Canyon at sunset, with the canyon walls lit red below',
+  },
+  heliLanding: {
+    src: cdn('55519cdca8d189cad4bcdedb90ae025032b5b396-2420x1614.jpg'),
+    alt: 'A red tour helicopter parked on the floor of the Grand Canyon, with tall canyon walls behind it',
+  },
+  hooverTowers: {
+    src: cdn('b664068910cec10e8b3da192b5538ff43866e715-2420x1615.jpg'),
+    alt: 'Hoover Dam and its intake towers rising from green water, with the bypass bridge in the background',
+  },
+  kayak: {
+    src: cdn('0daea5f0463869691d108c1416f59b4f8ae80cc7-1600x1200.avif'),
+    alt: 'Kayakers paddling on bright green water between steep rock walls on the Colorado River',
+  },
+  desertRoad: {
+    src: cdn('4e9d510d58ff5f67795e991fac12a01c5e08a417-2420x1613.jpg'),
+    alt: 'A desert highway running through Joshua trees toward mountains lit by the setting sun',
+  },
 } satisfies Record<string, HomeImage>;

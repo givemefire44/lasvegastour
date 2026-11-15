@@ -289,6 +289,48 @@ export function FeaturedTours({ tours }: { tours: FeaturedTour[] }) {
   );
 }
 
+// La grilla de fotos que en ColosseumRoman es "Inside the park" (Mario, 15 nov 2026): ocho
+// experiencias, cada una hacia su hub o su guia. Cada texto sale de la page enlazada:
+// West/South Rim de grand-canyon-day-trip-...-how-long y west-vs-south; Cirque de
+// how-to-choose-las-vegas-shows; Sphere de sphere-las-vegas-seats-tickets-guide; Hoover de
+// hoover-dam-tour-from-las-vegas; kayak de emerald-cave-kayak-...; Red Rock y Valley of Fire de
+// sus guias.
+export function ExploreLasVegas() {
+  const areas = [
+    { name: 'Grand Canyon West Rim', img: IMG.skywalkSunset, href: '/grand-canyon-west-rim-tours', text: 'The rim closest to Las Vegas, with the glass Skywalk. Reviewers time the coach day at 10 to 12 hours.', tag: 'West Rim tours' },
+    { name: 'Grand Canyon South Rim', img: IMG.canyonAerial, href: '/grand-canyon-south-rim-tours', text: 'The classic postcard view, about two hours further each way: a 14-to-15-hour day by coach.', tag: 'South Rim tours' },
+    { name: 'Helicopter flights', img: IMG.heliLanding, href: '/grand-canyon-helicopter-tours', text: 'A flyover of the canyon, a landing below the rim, or a night flight over the Strip.', tag: 'Flyover or landing' },
+    { name: 'The Sphere', img: IMG.sphere, href: '/sphere-las-vegas-shows', text: 'The LED dome behind The Venetian, built for immersive films and concerts. The outside is free to see.', tag: 'Sphere shows' },
+    { name: 'Cirque du Soleil', img: IMG.cirque, href: '/cirque-du-soleil-shows-las-vegas', text: 'O at Bellagio, KÀ at MGM Grand, Mystère at Treasure Island and Michael Jackson ONE at Mandalay Bay.', tag: 'Cirque shows' },
+    { name: 'Hoover Dam', img: IMG.hooverTowers, href: '/hoover-dam-tour-from-las-vegas', text: 'Drive yourself or take a tour, then choose between the dam’s three official on-site tours.', tag: 'Half-day trip' },
+    { name: 'Kayaking the Colorado', img: IMG.kayak, href: '/emerald-cave-kayak-from-las-vegas-willow-beach-hoover-dam', text: 'The river below Hoover Dam, launching at the dam or at Willow Beach, with Emerald Cave two miles upriver.', tag: 'Below Hoover Dam' },
+    { name: 'Red Rock and Valley of Fire', img: IMG.desertRoad, href: '/las-vegas-nature-parks-tours', text: 'Desert scenery without a long day: Red Rock is under 30 minutes from the Strip, Valley of Fire about an hour.', tag: 'Close to the Strip' },
+  ];
+  return (
+    <section className={styles.section} aria-labelledby="explore-h">
+      <h2 id="explore-h" className={styles.h2}>Explore Las Vegas: shows, flights and day trips</h2>
+      <p className={styles.lead}>
+        Eight experiences most Las Vegas trips choose from. Each card opens the tours or the guide for that
+        experience.
+      </p>
+      <div className={styles.areaGrid}>
+        {areas.map((a) => (
+          <Link key={a.name} href={a.href} className={styles.area}>
+            <div className={styles.areaMedia}>
+              <img src={sized(a.img, 520, 340)} alt={a.img.alt} loading="lazy" width={520} height={340} />
+              <span className={styles.areaTag}>{a.tag}</span>
+            </div>
+            <div className={styles.areaBody}>
+              <h3 className={styles.h3}>{a.name}</h3>
+              <p>{a.text}</p>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export function ResearchBlock() {
   // Cada tarjeta es un consejo con la cifra que lo respalda, tomada del pilar publicado.
   const studies = [

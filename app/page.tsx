@@ -4,7 +4,7 @@ import Container from "./components/Container";
 import Footer from "./components/Footer";
 import HubChips from './components/HubChips';
 import {
-  HomeHero, TrustStrip, AdviceBox, Decisions, FeaturedTours, ResearchBlock, PlanYourTrip, HomeFaq, GuidesLibrary,
+  HomeHero, TrustStrip, AdviceBox, Decisions, FeaturedTours, ExploreLasVegas, ResearchBlock, PlanYourTrip, HomeFaq, GuidesLibrary,
   FEATURED, DATASET_DOI, homeFaq, type FeaturedTour,
 } from './components/home/HomeSections';
 import { IMG } from './components/home/homeImages';
@@ -228,6 +228,7 @@ export default async function HomePage() {
         <AdviceBox />
         <Decisions />
         <FeaturedTours tours={tours} />
+        <ExploreLasVegas />
         <ResearchBlock />
         <PlanYourTrip />
         <HubChips />
