@@ -248,7 +248,10 @@ export default async function ToursCategory({ params }: PageProps) {
           "position": index + 1,
           "url": `https://lasvegastour.com/tour/${post.slug.current}`,
           "item": {
-          "@type": "Product",
+          // TouristTrip, como decia el comentario de arriba (15 nov 2026). Con Product, el
+          // validador de schema.org daba 161 advertencias: Product no admite amenityFeature ni
+          // provider.
+          "@type": "TouristTrip",
             "name": post.title,
             "description": post.seoDescription || post.title,
             "url": `https://lasvegastour.com/tour/${post.slug.current}`,
@@ -270,37 +273,8 @@ export default async function ToursCategory({ params }: PageProps) {
             
 
             
-            "provider": {
-              "@type": "Organization",
-              "name": "LasVegasTour",
-              "url": "https://lasvegastour.com"
-            },
-            
-            // ✅ FIX: Cambiado filter(arr => arr.length > 0) por filter(Boolean)
-            ...(post.tourFeatures && {
-              "amenityFeature": [
-                ...(post.tourInfo?.duration ? [{
-                  "@type": "LocationFeatureSpecification",
-                  "name": "Duration",
-                  "value": post.tourInfo.duration
-                }] : []),
-                ...(post.tourFeatures?.skipTheLine ? [{
-                  "@type": "LocationFeatureSpecification",
-                  "name": "Skip the Line",
-                  "value": true
-                }] : []),
-                ...(post.tourFeatures?.freeCancellation ? [{
-                  "@type": "LocationFeatureSpecification",
-                  "name": "Free Cancellation",
-                  "value": true
-                }] : []),
-                ...(post.tourFeatures?.smallGroupAvailable ? [{
-                  "@type": "LocationFeatureSpecification",
-                  "name": "Small Group Available",
-                  "value": true
-                }] : [])
-              ].filter(Boolean)
-            })
+            // Sin "provider": declaraba a LasVegasTour como quien da el tour, y lo da el operador.
+            // Sin "amenityFeature": no existe en TouristTrip (ni en Product).
           }
         };
       })

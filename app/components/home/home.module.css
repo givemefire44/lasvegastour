@@ -81,6 +81,124 @@
 .answer strong {
   color: #f4c95d;
 }
+/* Hero en collage (15 nov 2026): helicoptero grande a la izquierda, 2x2 a la derecha */
+.heroCollage {
+  background: #000;
+}
+.collage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+.tileGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 4px;
+  min-height: 0;
+}
+.tile {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  min-height: 0;
+}
+.tile img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+.tile:hover img {
+  transform: scale(1.04);
+}
+.tileLabel {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  background: rgba(15, 23, 42, 0.78);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 5px 11px;
+  border-radius: 6px;
+}
+/* El texto va arriba, sobre el cielo de la foto grande y dentro de la mitad izquierda: abajo
+   esta el helicoptero y a la derecha las cuatro tarjetas, que quedan libres. Solo lo
+   interactivo recibe clics, asi las fotos siguen siendo enlaces. */
+.heroCollage {
+  min-height: 600px;
+  align-items: flex-start;
+}
+.heroCollage .heroInner {
+  pointer-events: none;
+  padding: 40px 40px 32px;
+  /* Alineado al borde de la pantalla, no centrado: asi el texto cae dentro de la foto grande */
+  max-width: none;
+  margin: 0;
+}
+.tileBig {
+  min-height: 0;
+}
+.heroCollage .heroInner > * {
+  max-width: calc(50vw - 64px);
+}
+.heroCollage .h1 {
+  font-size: 2.6rem;
+}
+.heroCollage .answer {
+  font-size: 1.12rem;
+  margin-bottom: 18px;
+}
+.heroCollage .heroInner::before {
+  top: 0;
+  bottom: auto;
+  height: 460px;
+  left: -40px;
+  width: calc(50vw + 40px);
+  background: radial-gradient(ellipse 75% 70% at 35% 40%, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.32) 50%, rgba(0, 0, 0, 0) 100%);
+}
+.heroCollage .heroInner a,
+.heroCollage .heroInner input,
+.heroCollage .heroInner button,
+.heroCollage .heroInner form,
+.heroCollage .search {
+  pointer-events: auto;
+}
+@media (max-width: 960px) {
+  /* Por debajo de 960 px, solo la foto grande: cinco fotos no se leen y el texto las tapa */
+  .collage {
+    grid-template-columns: 1fr;
+  }
+  .tileGrid {
+    display: none;
+  }
+  .heroCollage .heroInner > * {
+    max-width: 900px;
+  }
+  .heroCollage .heroInner::before {
+    width: calc(100% + 80px);
+  }
+}
+@media (max-width: 640px) {
+  .heroCollage {
+    min-height: 0;
+  }
+  .heroCollage .heroInner {
+    padding: 32px 16px 22px;
+  }
+  .heroCollage .h1 {
+    font-size: 1.8rem;
+  }
+  .heroCollage .answer {
+    font-size: 1.05rem;
+  }
+}
+
 /* Franja de confianza bajo el hero, a todo el ancho */
 /* Gris del sitio ("Tour at a Glance"): corta entre la foto y la caja navy del consejo */
 .trust {
@@ -688,6 +806,14 @@ a.trustV:hover {
 }
 .faqItem p {
   margin: 0 0 8px;
+}
+
+/* Descripcion de categoria: dos lineas como maximo para que las tarjetas queden parejas */
+.catDesc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* Botones hacia la biblioteca completa */

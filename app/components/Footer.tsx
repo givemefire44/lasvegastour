@@ -43,17 +43,20 @@ const FOOTER_COLUMNS: { title: string; links: [string, string][] }[] = [
     ],
   },
   {
-    title: 'Tours',
+    // Las ocho categorias del catalogo (15 nov 2026): no tenian ningun enlace en el header ni en
+    // el footer del HTML del servidor; ahora lo tienen desde cada pagina. Los hubs siguen en los
+    // chips de casi todas las paginas.
+    title: 'Tours by category',
     links: [
       ['/tours', 'All Las Vegas tours'],
-      ['/grand-canyon-west-rim-tours', 'West Rim tours'],
-      ['/grand-canyon-south-rim-tours', 'South Rim tours'],
-      ['/grand-canyon-helicopter-tours', 'Grand Canyon helicopter'],
-      ['/sphere-las-vegas-shows', 'The Sphere'],
-      ['/cirque-du-soleil-shows-las-vegas', 'Cirque du Soleil shows'],
-      ['/antelope-canyon-horseshoe-bend-tours', 'Antelope & Horseshoe Bend'],
-      ['/small-group-las-vegas-tours', 'Small group tours'],
-      ['/private-las-vegas-tours', 'Private tours'],
+      ['/tours/grand-canyon-tours', 'Grand Canyon tours'],
+      ['/tours/helicopter-tours', 'Helicopter tours'],
+      ['/tours/shows', 'Shows and entertainment'],
+      ['/tours/strip-tours', 'Strip and city tours'],
+      ['/tours/day-trips', 'Day trips and national parks'],
+      ['/tours/hoover-dam-tours', 'Hoover Dam tours'],
+      ['/tours/adventure-tours', 'Adventure and outdoor'],
+      ['/tours/nightlife', 'Nightlife and bar crawls'],
       ['/tour-finder', 'Tour finder'],
     ],
   },

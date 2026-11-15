@@ -4,8 +4,8 @@ import Container from "./components/Container";
 import Footer from "./components/Footer";
 import HubChips from './components/HubChips';
 import {
-  HomeHero, TrustStrip, AdviceBox, Decisions, FeaturedTours, ExploreLasVegas, ResearchBlock, PlanYourTrip, HomeFaq, GuidesLibrary,
-  FEATURED, DATASET_DOI, homeFaq, type FeaturedTour,
+  HomeHero, TrustStrip, AdviceBox, Decisions, FeaturedTours, CategoryGrid, ResearchBlock, PlanYourTrip, HomeFaq, GuidesLibrary,
+  FEATURED, DATASET_DOI, homeFaq, type FeaturedTour, type HomeCategory,
 } from './components/home/HomeSections';
 import { IMG } from './components/home/homeImages';
 
@@ -24,6 +24,18 @@ const getHomepage = async () => {
 }
 
 // Los tres tours elegidos (FEATURED). Solo se LEEN: precio, nota y reseñas son del feed.
+// Las ocho categorias con su cantidad de tours activos, en vivo (no se escribe a mano).
+const getCategories = async (): Promise<HomeCategory[]> => {
+  return (await client.fetch(`
+    *[_type == "category"]{
+      title,
+      "slug": slug.current,
+      description,
+      "count": count(*[_type == "post" && references(^._id) && discontinued != true && !(_id in path("drafts.**"))])
+    }
+  `, {}, { next: { revalidate: 300 } })) || []
+}
+
 const getFeaturedTours = async (): Promise<FeaturedTour[]> => {
   const slugs = FEATURED.map((f) => f.slug)
   const rows = await client.fetch(`
@@ -91,7 +103,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HomePage() {
-  const tours = await getFeaturedTours()
+  const [tours, categories] = await Promise.all([getFeaturedTours(), getCategories()])
 
   // Grafo enlazado por @id, como en ColosseumRoman (15 nov 2026). El logo apuntaba a /logo.png,
   // que da 404; el real es app/icon.png (192x192, servido en /icon.png).
@@ -225,10 +237,10 @@ export default async function HomePage() {
       <HomeHero />
       <TrustStrip />
       <Container>
+        <CategoryGrid categories={categories} />
         <AdviceBox />
         <Decisions />
         <FeaturedTours tours={tours} />
-        <ExploreLasVegas />
         <ResearchBlock />
         <PlanYourTrip />
         <HubChips />

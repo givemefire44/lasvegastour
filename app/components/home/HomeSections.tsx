@@ -10,7 +10,7 @@
 
 import Link from 'next/link';
 import CitySearch from '../CitySearch';
-import { IMG, sized } from './homeImages';
+import { IMG, sized, type HomeImage } from './homeImages';
 import styles from './home.module.css';
 
 export const DATASET_DOI = '10.5281/zenodo.24061279';
@@ -65,20 +65,41 @@ function money(price?: number, currency?: string) {
   return `${sym}${Number.isInteger(price) ? price : price.toFixed(2)}`;
 }
 
+// Hero en collage (Mario, 15 nov 2026, como luxorguide.com): el helicoptero grande a la
+// izquierda y cuatro experiencias a la derecha, cada una hacia su hub o guia. Una sola foto no
+// alcanzaba para un sitio con varios mercados (shows, cañon, vuelos).
+const HERO_TILES = [
+  { img: IMG.westViewpoint, label: 'Grand Canyon West', href: '/grand-canyon-west-rim-tours' },
+  { img: IMG.sphereDay, label: 'The Sphere', href: '/sphere-las-vegas-shows' },
+  { img: IMG.cirque, label: 'Cirque du Soleil', href: '/cirque-du-soleil-shows-las-vegas' },
+  { img: IMG.hero, label: 'The Strip at night', href: '/las-vegas-strip-night-helicopter-flight' },
+];
+
 export function HomeHero() {
   return (
-    <section className={styles.hero}>
-      <img
-        src={sized(IMG.hero, 1800)}
-        srcSet={`${sized(IMG.hero, 900)} 900w, ${sized(IMG.hero, 1400)} 1400w, ${sized(IMG.hero, 2000)} 2000w, ${sized(IMG.hero, 2420)} 2420w`}
-        sizes="100vw"
-        alt={IMG.hero.alt}
-        className={styles.heroImg}
-        fetchPriority="high"
-        width={2420}
-        height={1414}
-      />
-      <div className={styles.heroShade} aria-hidden="true" />
+    <section className={`${styles.hero} ${styles.heroCollage}`}>
+      <div className={styles.collage}>
+        <Link href="/grand-canyon-helicopter-tours" className={`${styles.tile} ${styles.tileBig}`} tabIndex={-1}>
+          <img
+            src={sized(IMG.heliLanding, 1400)}
+            srcSet={`${sized(IMG.heliLanding, 800)} 800w, ${sized(IMG.heliLanding, 1400)} 1400w, ${sized(IMG.heliLanding, 2000)} 2000w`}
+            sizes="(max-width: 640px) 100vw, 50vw"
+            alt={IMG.heliLanding.alt}
+            fetchPriority="high"
+            width={2420}
+            height={1614}
+          />
+          <span className={styles.tileLabel}>Helicopter landing</span>
+        </Link>
+        <div className={styles.tileGrid}>
+          {HERO_TILES.map((t) => (
+            <Link key={t.label} href={t.href} className={styles.tile} tabIndex={-1}>
+              <img src={sized(t.img, 800, 560)} alt={t.img.alt} width={800} height={560} />
+              <span className={styles.tileLabel}>{t.label}</span>
+            </Link>
+          ))}
+        </div>
+      </div>
       <div className={styles.heroInner}>
         <h1 className={styles.h1}>Las Vegas shows and tours: what&apos;s worth booking</h1>
         <p className={styles.answer}>
@@ -289,43 +310,52 @@ export function FeaturedTours({ tours }: { tours: FeaturedTour[] }) {
   );
 }
 
-// La grilla de fotos que en ColosseumRoman es "Inside the park" (Mario, 15 nov 2026): ocho
-// experiencias, cada una hacia su hub o su guia. Cada texto sale de la page enlazada:
-// West/South Rim de grand-canyon-day-trip-...-how-long y west-vs-south; Cirque de
-// how-to-choose-las-vegas-shows; Sphere de sphere-las-vegas-seats-tickets-guide; Hoover de
-// hoover-dam-tour-from-las-vegas; kayak de emerald-cave-kayak-...; Red Rock y Valley of Fire de
-// sus guias.
-export function ExploreLasVegas() {
-  const areas = [
-    { name: 'Grand Canyon West Rim', img: IMG.skywalkSunset, href: '/grand-canyon-west-rim-tours', text: 'The rim closest to Las Vegas, with the glass Skywalk. Reviewers time the coach day at 10 to 12 hours.', tag: 'West Rim tours' },
-    { name: 'Grand Canyon South Rim', img: IMG.canyonAerial, href: '/grand-canyon-south-rim-tours', text: 'The classic postcard view, about two hours further each way: a 14-to-15-hour day by coach.', tag: 'South Rim tours' },
-    { name: 'Helicopter flights', img: IMG.heliLanding, href: '/grand-canyon-helicopter-tours', text: 'A flyover of the canyon, a landing below the rim, or a night flight over the Strip.', tag: 'Flyover or landing' },
-    { name: 'The Sphere', img: IMG.sphere, href: '/sphere-las-vegas-shows', text: 'The LED dome behind The Venetian, built for immersive films and concerts. The outside is free to see.', tag: 'Sphere shows' },
-    { name: 'Cirque du Soleil', img: IMG.cirque, href: '/cirque-du-soleil-shows-las-vegas', text: 'O at Bellagio, KÀ at MGM Grand, Mystère at Treasure Island and Michael Jackson ONE at Mandalay Bay.', tag: 'Cirque shows' },
-    { name: 'Hoover Dam', img: IMG.hooverTowers, href: '/hoover-dam-tour-from-las-vegas', text: 'Drive yourself or take a tour, then choose between the dam’s three official on-site tours.', tag: 'Half-day trip' },
-    { name: 'Kayaking the Colorado', img: IMG.kayak, href: '/emerald-cave-kayak-from-las-vegas-willow-beach-hoover-dam', text: 'The river below Hoover Dam, launching at the dam or at Willow Beach, with Emerald Cave two miles upriver.', tag: 'Below Hoover Dam' },
-    { name: 'Red Rock and Valley of Fire', img: IMG.desertRoad, href: '/las-vegas-nature-parks-tours', text: 'Desert scenery without a long day: Red Rock is under 30 minutes from the Strip, Valley of Fire about an hour.', tag: 'Close to the Strip' },
-  ];
+// Las ocho categorias del catalogo, arriba en la home (Mario, 15 nov 2026). Estaban solo en
+// /tours: la home, el header y el footer no les daban ni un enlace en el HTML del servidor.
+// Nombre, descripcion y cantidad de tours se leen de Sanity en vivo (la cantidad no se escribe a
+// mano). Las fotos son de la biblioteca, abiertas antes del alt: siete categorias no tienen
+// imagen propia y /tours muestra la primera foto de algun tour (por ejemplo, un afiche).
+export type HomeCategory = { slug: string; title: string; description?: string; count: number };
+
+const CATEGORY_IMG: Record<string, HomeImage> = {
+  'grand-canyon-tours': IMG.skywalkSunset,
+  'helicopter-tours': IMG.helicopter,
+  shows: IMG.sphere,
+  'strip-tours': IMG.stripDusk,
+  'day-trips': IMG.desertRoad,
+  'hoover-dam-tours': IMG.hooverTowers,
+  'adventure-tours': IMG.kayak,
+  nightlife: IMG.hero,
+};
+// Orden: lo que mas se busca primero (canyon, helicopteros, shows), despues el resto.
+const CATEGORY_ORDER = ['grand-canyon-tours', 'helicopter-tours', 'shows', 'strip-tours', 'day-trips', 'hoover-dam-tours', 'adventure-tours', 'nightlife'];
+
+export function CategoryGrid({ categories }: { categories: HomeCategory[] }) {
+  const bySlug = new Map(categories.map((c) => [c.slug, c]));
+  const items = CATEGORY_ORDER.map((slug) => bySlug.get(slug)).filter(Boolean) as HomeCategory[];
+  if (items.length === 0) return null;
   return (
-    <section className={styles.section} aria-labelledby="explore-h">
-      <h2 id="explore-h" className={styles.h2}>Explore Las Vegas: shows, flights and day trips</h2>
-      <p className={styles.lead}>
-        Eight experiences most Las Vegas trips choose from. Each card opens the tours or the guide for that
-        experience.
-      </p>
+    <section className={styles.section} aria-labelledby="categories-h">
+      <div className={styles.sectionHead}>
+        <h2 id="categories-h" className={styles.h2}>Browse Las Vegas tours by category</h2>
+        <Link href="/tours" className={styles.moreBtn}>All Las Vegas tours →</Link>
+      </div>
       <div className={styles.areaGrid}>
-        {areas.map((a) => (
-          <Link key={a.name} href={a.href} className={styles.area}>
-            <div className={styles.areaMedia}>
-              <img src={sized(a.img, 520, 340)} alt={a.img.alt} loading="lazy" width={520} height={340} />
-              <span className={styles.areaTag}>{a.tag}</span>
-            </div>
-            <div className={styles.areaBody}>
-              <h3 className={styles.h3}>{a.name}</h3>
-              <p>{a.text}</p>
-            </div>
-          </Link>
-        ))}
+        {items.map((c) => {
+          const img = CATEGORY_IMG[c.slug] || IMG.hero;
+          return (
+            <Link key={c.slug} href={`/tours/${c.slug}`} className={styles.area}>
+              <div className={styles.areaMedia}>
+                <img src={sized(img, 520, 340)} alt={img.alt} loading="lazy" width={520} height={340} />
+                <span className={styles.areaTag}>{c.count} {c.slug === 'shows' ? 'shows' : 'tours'}</span>
+              </div>
+              <div className={styles.areaBody}>
+                <h3 className={styles.h3}>{c.title}</h3>
+                {c.description ? <p className={styles.catDesc}>{c.description}</p> : null}
+              </div>
+            </Link>
+          );
+        })}
       </div>
     </section>
   );

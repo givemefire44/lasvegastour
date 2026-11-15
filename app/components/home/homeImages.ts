@@ -63,4 +63,18 @@ export const IMG = {
     src: cdn('4e9d510d58ff5f67795e991fac12a01c5e08a417-2420x1613.jpg'),
     alt: 'A desert highway running through Joshua trees toward mountains lit by the setting sun',
   },
+  // Collage del hero (15 nov 2026): heros de articulos en 2420 px, abiertos a 1100 antes del
+  // alt. Se dejaron afuera los heros que son renders de IA.
+  westViewpoint: {
+    src: cdn('6c1075ecf14ff0ad0765de52262ab232657b1309-2420x1602.jpg'),
+    alt: 'The Colorado River winding through the Grand Canyon, seen from a rocky viewpoint at Grand Canyon West',
+  },
+  stripDusk: {
+    src: cdn('bb9e9a533c6c610e7273c75921964d37eac331ca-1600x1200.avif'),
+    alt: 'The Las Vegas Strip at dusk with the Bellagio fountains, the Paris balloon sign and Eiffel Tower, and Caesars Palace behind',
+  },
+  sphereDay: {
+    src: cdn('6e4794e2314023919ede313973dff4d7119fdc25-2420x1361.jpg'),
+    alt: 'The Sphere in Las Vegas showing a Wizard of Oz farmhouse on its outer screen, with the High Roller wheel behind it',
+  },
 } satisfies Record<string, HomeImage>;
