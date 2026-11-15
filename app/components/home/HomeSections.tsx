@@ -501,7 +501,8 @@ export function GuidesLibrary() {
     <section className={styles.section} aria-labelledby="library-h">
       <div className={styles.sectionHead}>
         <h2 id="library-h" className={styles.h2}>The Las Vegas guides library</h2>
-        <Link href="/las-vegas-guides" className={styles.more}>Every guide →</Link>
+        {/* La biblioteca completa merece boton, arriba y al cierre (Mario, 15 nov 2026). */}
+        <Link href="/las-vegas-guides" className={styles.moreBtn}>Every guide →</Link>
       </div>
       <div className={styles.libraryGrid}>
         {groups.map((g) => (
@@ -514,6 +515,9 @@ export function GuidesLibrary() {
             </ul>
           </div>
         ))}
+      </div>
+      <div className={styles.libraryCta}>
+        <Link href="/las-vegas-guides" className={styles.ctaBtn}>Browse all Las Vegas guides →</Link>
       </div>
     </section>
   );

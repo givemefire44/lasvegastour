@@ -690,6 +690,45 @@ a.trustV:hover {
   margin: 0 0 8px;
 }
 
+/* Botones hacia la biblioteca completa */
+.moreBtn {
+  display: inline-block;
+  border: 2px solid #e91e63;
+  color: #e91e63;
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding: 8px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+.moreBtn:hover {
+  background: #e91e63;
+  color: #fff;
+}
+.libraryCta {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+.ctaBtn {
+  display: inline-block;
+  background: #e91e63;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.05rem;
+  padding: 15px 32px;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 8px 22px rgba(233, 30, 99, 0.28);
+  transition: background 0.15s, transform 0.15s;
+}
+.ctaBtn:hover {
+  background: #c2185b;
+  transform: translateY(-2px);
+}
+
 /* Biblioteca */
 .libraryGrid {
   display: grid;
