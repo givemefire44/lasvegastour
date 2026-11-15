@@ -49,10 +49,11 @@ export default function HubChips({ activeSlug, tourTitle, tourFeatures }: HubChi
         {displayHubs.map((h: any) => (
           <Link key={h.slug} href={`/${h.slug}`} style={{
             padding: '8px 16px',
-            backgroundColor: h.slug === activeSlug ? '#e91e63' : '#f5f5f5',
-            color: h.slug === activeSlug ? '#fff' : '#333',
+            // Gris del sitio (#E8EDF3), como en ColosseumRoman (15 nov 2026).
+            backgroundColor: h.slug === activeSlug ? '#e91e63' : '#e8edf3',
+            color: h.slug === activeSlug ? '#fff' : '#1e3a5f',
             borderRadius: '20px', fontSize: '0.9rem', fontWeight: '500',
-            textDecoration: 'none', border: '1px solid #e9ecef'
+            textDecoration: 'none', border: '1px solid #d5dde8'
           }}>{h.icon} {h.shortTitle}</Link>
         ))}
       </div>

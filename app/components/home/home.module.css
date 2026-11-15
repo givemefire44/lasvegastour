@@ -1,0 +1,803 @@
+/* Home ordenada por el monumento (14 nov 2026). Paleta = la de la ficha de tour
+   (SanityContent.tsx), para que la home y el resto del sitio hablen igual (15 nov 2026):
+     navy     #1e3a5f  superficie fuerte (hero, research) — como el Quick Answer
+     amarillo #f4c95d  la cifra o el dato que importa sobre navy
+     rosa     #e91e63  acento, botones y enlaces; #c2185b al pasar el mouse
+     gris     #e8edf3  panel de seccion — como "Tour at a Glance"
+     crema    #fff8e1  resaltado puntual — como la fila del precio
+     verde    #2e7d32  "For you if"
+   Sin pasteles ni lilas: Mario, 15 nov 2026. */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: #1e3a5f;
+  /* 540 px (Mario, 15 nov 2026: a 760 quedaba demasiado alto) */
+  min-height: 540px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.heroImg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* La Sphere esta abajo en la foto: el encuadre baja para que entre */
+  object-position: center 78%;
+}
+.heroShade {
+  position: absolute;
+  inset: 0;
+  /* Sin filtro sobre la foto (Mario, 15 nov 2026). La sombra vive en .heroInner::before,
+     pegada al bloque de texto; el resto de la foto queda limpio. */
+  background: none;
+}
+.heroInner {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: 1240px;
+  padding: 90px 40px 40px;
+}
+.heroInner > * {
+  max-width: 900px;
+}
+/* Sombra sectorizada: un halo oscuro que sigue al bloque de texto y se desvanece hacia los
+   bordes, en vez de oscurecer toda la foto. */
+.heroInner {
+  isolation: isolate;
+}
+.heroInner::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 50px;
+  bottom: -10px;
+  left: -60px;
+  width: min(1080px, calc(100% + 120px));
+  background: radial-gradient(ellipse 58% 62% at 42% 56%, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.42) 45%, rgba(0, 0, 0, 0) 100%);
+  pointer-events: none;
+}
+.h1 {
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 4px 24px rgba(0, 0, 0, 0.55);
+  font-size: 3rem;
+  line-height: 1.15;
+  font-weight: 800;
+  margin: 0 0 16px;
+  text-wrap: balance;
+}
+.answer {
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6), 0 2px 14px rgba(0, 0, 0, 0.5);
+  font-size: 1.3rem;
+  line-height: 1.5;
+  margin: 0 0 22px;
+  max-width: 700px;
+}
+.answer strong {
+  color: #f4c95d;
+}
+/* Franja de confianza bajo el hero, a todo el ancho */
+/* Gris del sitio ("Tour at a Glance"): corta entre la foto y la caja navy del consejo */
+.trust {
+  background: #e8edf3;
+  border-bottom: 1px solid #d5dde8;
+  color: #1e3a5f;
+}
+.trustInner {
+  box-sizing: border-box;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 18px 40px;
+}
+.trustList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px 24px;
+}
+.trustList li {
+  position: relative;
+  padding-left: 34px;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+.trustList li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #1e3a5f;
+  color: #f4c95d;
+  font-weight: 900;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.trustK {
+  color: #5f6368;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.trustV {
+  color: #1e3a5f;
+  font-weight: 800;
+  font-size: 1rem;
+}
+a.trustV {
+  color: #c2185b;
+  text-decoration: none;
+}
+a.trustV:hover {
+  text-decoration: underline;
+}
+
+/* Consejo completo: misma forma que el Quick Answer de la ficha de tour */
+.advice {
+  margin-top: 40px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 22px rgba(30, 58, 95, 0.18);
+}
+.adviceHead {
+  margin: 0;
+  background: #1e3a5f;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 800;
+  padding: 18px 24px 6px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  line-height: 1.35;
+}
+.adviceBody {
+  background: #1e3a5f;
+  color: #eef2f7;
+  padding: 4px 24px 20px;
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+.adviceBody p {
+  margin: 0 0 12px;
+  max-width: 920px;
+}
+.adviceBody strong {
+  color: #f4c95d;
+}
+/* Gris del sitio dentro de la caja navy, para que los datos no se empasten (Mario, 15 nov 2026) */
+.adviceFacts {
+  display: inline-block;
+  background: #e8edf3;
+  color: #1e3a5f;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 0.92rem;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 0 !important;
+}
+.adviceFacts a {
+  color: #c2185b;
+  font-weight: 800;
+}
+.seal {
+  display: inline-block;
+  background: #e91e63;
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.search {
+  margin-bottom: 10px;
+}
+.finder {
+  display: inline-block;
+  color: #f4c95d;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+}
+.finder:hover {
+  text-decoration: underline;
+}
+
+.section {
+  padding: 48px 0 8px;
+}
+.sectionHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.h2 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin: 0 0 12px;
+  line-height: 1.25;
+}
+.h2::after {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 4px;
+  background: #e91e63;
+  border-radius: 2px;
+  margin-top: 10px;
+}
+.h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px;
+  line-height: 1.35;
+}
+.h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+.h3 a:hover {
+  color: #e91e63;
+}
+.lead {
+  color: #444;
+  margin: 0 0 20px;
+  line-height: 1.6;
+  max-width: 780px;
+}
+.more {
+  color: #e91e63;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.more:hover {
+  color: #c2185b;
+  text-decoration: underline;
+}
+.footnote {
+  color: #5f6368;
+  font-size: 0.85rem;
+  margin: 14px 0 0;
+}
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.factSmall {
+  color: #5f6368;
+  font-size: 0.85rem;
+}
+.factLink {
+  margin-top: auto;
+  padding-top: 4px;
+  color: #1e3a5f;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 0.88rem;
+}
+.factLink:hover {
+  text-decoration: underline;
+}
+
+/* Caminos de entrada */
+.waysGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+.way {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  overflow: hidden;
+  color: #444;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  box-shadow: 0 2px 10px rgba(30, 58, 95, 0.06);
+}
+.way p {
+  margin: 0 0 10px;
+}
+.wayMedia,
+.tourMedia {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+.wayMedia img,
+.tourMedia img {
+  transition: transform 0.3s;
+}
+.way:hover .wayMedia img,
+.tourCard:hover .tourMedia img {
+  transform: scale(1.04);
+}
+.wayMedia img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  height: auto;
+  object-fit: cover;
+}
+.wayPrice {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  background: #1e3a5f;
+  color: #f4c95d;
+  font-weight: 800;
+  font-size: 0.88rem;
+  padding: 5px 12px;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+.wayBody {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 16px;
+  border-top: 4px solid #e91e63;
+}
+.wayLinks {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.forLabel {
+  color: #2e7d32;
+}
+.skipLabel {
+  color: #c2185b;
+}
+
+/* Tours elegidos */
+.tourGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.tourCard {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(30, 58, 95, 0.08);
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+.tourCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(30, 58, 95, 0.16);
+}
+.tourImg {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+.level {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  background: #e91e63;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 5px 12px;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+.tourBody {
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+  flex: 1;
+}
+.why {
+  color: #444;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin: 0 0 10px;
+}
+.skipBox {
+  background: #fff8e1;
+  border-left: 4px solid #e91e63;
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: #444;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+.meta {
+  color: #5f6368;
+  font-size: 0.88rem;
+  margin: 0 0 14px;
+}
+.star {
+  color: #fbbf24;
+}
+.tourFoot {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 1px solid #e9ecef;
+}
+.price {
+  font-weight: 800;
+  color: #1e3a5f;
+  font-size: 1.05rem;
+}
+.priceNote {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #5f6368;
+  line-height: 1.3;
+  margin-top: 2px;
+  max-width: 170px;
+}
+.btn {
+  background: #e91e63;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 10px 18px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.btn:hover {
+  background: #c2185b;
+}
+
+/* Zonas del parque */
+.areaGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+.area {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #444;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+.area:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(30, 58, 95, 0.16);
+}
+.areaMedia {
+  position: relative;
+  overflow: hidden;
+}
+.areaMedia img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+.area:hover .areaMedia img {
+  transform: scale(1.05);
+}
+.areaTag {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  right: 10px;
+  width: fit-content;
+  background: #1e3a5f;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.76rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.areaBody {
+  padding: 14px 16px 16px;
+}
+.areaBody p {
+  margin: 0;
+}
+.areaIcon {
+  font-size: 1.5rem;
+  margin-bottom: 6px;
+}
+
+/* Plan: panel gris de la ficha ("Tour at a Glance") con tarjetas blancas */
+.planPanel {
+  background: #e8edf3;
+  border-radius: 24px;
+  padding: 32px 28px 28px;
+  margin-top: 48px;
+}
+.planGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+.plan {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 14px;
+  border-top: 4px solid #1e3a5f;
+  padding: 18px;
+  text-decoration: none;
+  color: #444;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  box-shadow: 0 2px 10px rgba(30, 58, 95, 0.08);
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+}
+.plan:hover {
+  border-top-color: #e91e63;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(30, 58, 95, 0.14);
+}
+.plan p {
+  margin: 0 0 10px;
+}
+
+/* Research: superficie navy como el Quick Answer de la ficha, cifras en amarillo */
+.research {
+  background: #1e3a5f;
+  border-radius: 24px;
+  padding: 36px 28px 28px;
+  margin-top: 48px;
+  color: #eef2f7;
+}
+.research .h2 {
+  color: #fff;
+}
+.research .h2::after {
+  background: #f4c95d;
+}
+.research .lead {
+  color: #eef2f7;
+}
+.research .more {
+  color: #f4c95d;
+}
+.studyGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+.study {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  text-decoration: none;
+  color: #444;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  border-top: 5px solid #f4c95d;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.study:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.25);
+}
+.study p {
+  margin: 0 0 10px;
+}
+.stat {
+  font-size: 2.7rem;
+  font-weight: 900;
+  line-height: 1;
+  color: #1e3a5f;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+.statNote {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.75rem;
+  color: #1e3a5f;
+  background: #fff8e1;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin: 8px 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 800;
+}
+.readMore {
+  margin-top: auto;
+  color: #e91e63;
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-decoration: none;
+}
+.readMore:hover {
+  color: #c2185b;
+}
+.byline {
+  margin: 20px 0 0;
+  color: #eef2f7;
+  font-size: 0.9rem;
+}
+.byline a {
+  color: #f4c95d;
+  font-weight: 700;
+}
+
+/* FAQ */
+.faqList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.faqItem {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-left: 4px solid #1e3a5f;
+  border-radius: 12px;
+  padding: 16px 18px;
+  color: #444;
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+.faqItem p {
+  margin: 0 0 8px;
+}
+
+/* Biblioteca */
+.libraryGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+}
+.libTitle {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #1e3a5f;
+  border-bottom: 2px solid #e91e63;
+  padding-bottom: 6px;
+  margin: 0 0 12px;
+}
+.libList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.libList li {
+  margin-bottom: 8px;
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+.libList a {
+  color: #202124;
+  text-decoration: none;
+}
+.libList a:hover {
+  color: #e91e63;
+  text-decoration: underline;
+}
+
+@media (max-width: 960px) {
+  .waysGrid,
+  .areaGrid,
+  .planGrid,
+  .libraryGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .tourGrid,
+  .studyGrid {
+    grid-template-columns: 1fr;
+  }
+  .trustList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 640px) {
+  /* Celular: el alto lo da el texto; antes 560 px con 120 de aire arriba (Mario, 15 nov 2026) */
+  .hero {
+    min-height: 0;
+  }
+  /* En celular el texto ocupa casi todo el ancho: el halo lo cubre entero */
+  .heroInner::before {
+    top: 20px;
+    left: -40px;
+    width: calc(100% + 80px);
+    background: radial-gradient(ellipse 70% 60% at 50% 55%, rgba(0, 0, 0, 0.62) 0%, rgba(0, 0, 0, 0.45) 50%, rgba(0, 0, 0, 0) 100%);
+  }
+  .heroInner {
+    padding: 56px 16px 22px;
+  }
+  .h1 {
+    font-size: 1.8rem;
+  }
+  .answer {
+    font-size: 1.08rem;
+  }
+  .trustInner {
+    padding: 14px 16px;
+  }
+  .trustList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 14px;
+  }
+  .trustV {
+    font-size: 0.9rem;
+  }
+  .adviceHead {
+    font-size: 1.08rem;
+    padding: 16px 16px 4px;
+  }
+  .adviceBody {
+    padding: 4px 16px 16px;
+    font-size: 0.97rem;
+  }
+  .h2 {
+    font-size: 1.4rem;
+  }
+  .section {
+    padding-top: 36px;
+  }
+  .faqList {
+    grid-template-columns: 1fr;
+  }
+  .research,
+  .planPanel {
+    padding: 24px 16px 20px;
+    border-radius: 18px;
+  }
+}
+@media (max-width: 420px) {
+  .waysGrid,
+  .areaGrid,
+  .planGrid,
+  .libraryGrid {
+    grid-template-columns: 1fr;
+  }
+}

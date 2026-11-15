@@ -1,124 +1,102 @@
-﻿'use client';
+'use client';
 
-import { useEffect, useState, useMemo, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { client } from '@/sanity/lib/client';
 
 interface FooterPage {
   title: string;
-  slug: string; // ← SIMPLIFICADO
+  slug: string;
   footerOrder?: number;
 }
 
+// Los links institucionales arrancan escritos aca para que salgan en el HTML del
+// servidor. Antes se pedian a Sanity recien en el navegador: un crawler veia cuatro
+// placeholders (skeleton) y ningun enlace a About Us. Son los mismos cuatro que devuelve
+// la query hoy (15 nov 2026); si en Sanity se agrega o saca uno, el fetch lo corrige en el
+// cliente, y conviene actualizar esta lista tambien.
+const FOOTER_PAGES_SSR: FooterPage[] = [
+  { title: 'About Us', slug: 'about-us' },
+  { title: 'Terms & Conditions', slug: 'terms-and-conditions' },
+  { title: 'Cookies & Privacy Policy', slug: 'cookies-and-privacy-policy' },
+  { title: 'Contact Us', slug: 'contact-us' },
+];
+
+// Columnas de navegacion en todo el sitio, en HTML plano (15 nov 2026): las guias de cada
+// vertical reciben un enlace desde cada pagina, siempre con el mismo texto. Los hubs ya salen
+// en los chips; aca van los de las decisiones grandes. Todo slug es una page o hub publicado:
+// verificado con HTTP 200 ese dia.
+const FOOTER_COLUMNS: { title: string; links: [string, string][] }[] = [
+  {
+    title: 'Grand Canyon & day trips',
+    links: [
+      ['/grand-canyon-west-vs-south-rim-from-las-vegas', 'West vs South Rim'],
+      ['/grand-canyon-day-trip-from-las-vegas-how-long', 'How long the day is'],
+      ['/is-the-grand-canyon-day-trip-from-las-vegas-worth-it', 'Is the day trip worth it'],
+      ['/grand-canyon-west-skywalk-eagle-point-guano-point', 'Skywalk and viewpoints'],
+      ['/hoover-dam-tour-from-las-vegas', 'Hoover Dam'],
+      ['/red-rock-canyon-from-las-vegas', 'Red Rock Canyon'],
+      ['/valley-of-fire-from-las-vegas', 'Valley of Fire'],
+      ['/antelope-canyon-tour-from-las-vegas-what-reviews-say', 'Antelope Canyon'],
+      ['/zion-national-park-from-las-vegas', 'Zion National Park'],
+    ],
+  },
+  {
+    title: 'Tours',
+    links: [
+      ['/tours', 'All Las Vegas tours'],
+      ['/grand-canyon-west-rim-tours', 'West Rim tours'],
+      ['/grand-canyon-south-rim-tours', 'South Rim tours'],
+      ['/grand-canyon-helicopter-tours', 'Grand Canyon helicopter'],
+      ['/sphere-las-vegas-shows', 'The Sphere'],
+      ['/cirque-du-soleil-shows-las-vegas', 'Cirque du Soleil shows'],
+      ['/antelope-canyon-horseshoe-bend-tours', 'Antelope & Horseshoe Bend'],
+      ['/small-group-las-vegas-tours', 'Small group tours'],
+      ['/private-las-vegas-tours', 'Private tours'],
+      ['/tour-finder', 'Tour finder'],
+    ],
+  },
+  {
+    title: 'Shows & planning',
+    links: [
+      ['/how-to-choose-las-vegas-shows', 'How to choose a show'],
+      ['/las-vegas-show-seats-where-to-sit', 'Where to sit'],
+      ['/las-vegas-helicopter-tours-which-worth-it', 'Which helicopter tour'],
+      ['/how-much-las-vegas-trip-costs', 'What the trip costs'],
+      ['/las-vegas-resort-fees-tipping-hidden-charges', 'Resort fees and tipping'],
+      ['/las-vegas-tour-pickup-and-meeting-point', 'Hotel pickup'],
+      ['/how-to-get-around-las-vegas', 'Getting around'],
+      ['/first-time-las-vegas-how-to-plan', 'First time in Las Vegas'],
+      ['/las-vegas-guides', 'Every guide'],
+    ],
+  },
+];
+
+const FOOTER_QUERY = `
+  *[_type == "page" && defined(showInFooter) && showInFooter == true] | order(coalesce(footerOrder, 999) asc, title asc) {
+    title,
+    "slug": slug.current,
+    footerOrder
+  }
+`;
+
 export default function Footer() {
-  const [footerPages, setFooterPages] = useState<FooterPage[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  // ✅ QUERY MEJORADA - Con mejor estructura
-  const footerQuery = useMemo(() => `
-    *[_type == "page" && defined(showInFooter) && showInFooter == true] | order(coalesce(footerOrder, 999) asc, title asc) {
-      title,
-      "slug": slug.current,
-      footerOrder
-    }
-  `, []);
-
-  // ✅ FETCH CON MEJOR ERROR HANDLING
-  const fetchFooterPages = useCallback(async () => {
-    try {
-      setIsLoading(true);
-      setError(null);
-      
-      // Verificar que el cliente esté configurado
-      if (!client) {
-        throw new Error('Sanity client not configured');
-      }
-
-      const pages = await client.fetch(footerQuery);
-      setFooterPages(Array.isArray(pages) ? pages : []);
-    } catch (error) {
-      console.error('Error fetching footer pages:', error);
-      setError(error instanceof Error ? error.message : 'Unknown error');
-      
-      // ✅ FALLBACK CORREGIDO - Estructura simplificada
-      setFooterPages([
-        { title: 'About Us', slug: 'about-us' },
-        { title: 'Privacy Policy', slug: 'cookies-and-privacy-policy' },
-        { title: 'Terms of Service', slug: 'terms-and-conditions' },
-        { title: 'Contact', slug: 'contact-us' }
-      ]);
-    } finally {
-      setIsLoading(false);
-    }
-  }, [footerQuery]);
+  const [footerPages, setFooterPages] = useState<FooterPage[]>(FOOTER_PAGES_SSR);
+  // El año se calcula: un "© 2024" fijo hacia parecer abandonado al sitio, y un año
+  // de inicio no se afirma (el WHOIS dice otra cosa).
+  const year = new Date().getFullYear();
 
   useEffect(() => {
-    // ✅ DELAY PARA EVITAR BLOQUEO EN HYDRATION
-    const timer = setTimeout(() => {
-      fetchFooterPages();
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, [fetchFooterPages]);
-
-  // ✅ RETRY FUNCTION
-  const retryFetch = useCallback(() => {
-    fetchFooterPages();
-  }, [fetchFooterPages]);
-
-  // ✅ LINKS CORREGIDOS
-  const footerLinks = useMemo(() => {
-    if (isLoading) {
-      return Array.from({ length: 4 }, (_, i) => (
-        <li key={`skeleton-${i}`} className="skeleton-link">
-          <div className="skeleton-text"></div>
-        </li>
-      ));
-    }
-
-    if (error) {
-      return (
-        <li className="error-state">
-          <span style={{ color: '#ff6b6b', fontSize: '12px' }}>
-            Unable to load links
-          </span>
-          <button 
-            onClick={retryFetch}
-            style={{
-              background: 'none',
-              border: '1px solid #e91e63',
-              color: '#e91e63',
-              padding: '4px 8px',
-              fontSize: '11px',
-              borderRadius: '4px',
-              cursor: 'pointer',
-              marginTop: '8px'
-            }}
-          >
-            Retry
-          </button>
-        </li>
-      );
-    }
-
-    return footerPages.map((page) => (
-      <li key={page.slug || page.title}>
-        <a 
-          href={`/${page.slug || '#'}`}
-          style={{
-            color: '#ffffff',
-            textDecoration: 'none',
-            fontSize: '14px',
-            fontWeight: '500'
-          }}
-        >
-          {page.title}
-        </a>
-      </li>
-    ));
-  }, [footerPages, isLoading, error, retryFetch]);
+    let vivo = true;
+    client
+      .fetch(FOOTER_QUERY)
+      .then((pages) => {
+        if (vivo && Array.isArray(pages) && pages.length > 0) setFooterPages(pages);
+      })
+      .catch((err) => console.error('Error fetching footer pages:', err));
+    return () => { vivo = false; };
+  }, []);
 
   return (
     <footer className="footer">
@@ -133,34 +111,76 @@ export default function Footer() {
               <h3>lasvegastour.com</h3>
             </div>
             <p className="footer-description">
-  LasVegasTour.com is an independent editorial site. We do not sell tickets or tours — 
+  LasVegasTour.com is an independent editorial site. We do not sell tickets or tours —
   bookings are processed by the booking platform (Viator or GetYourGuide) and the tours are run by the
-  tour operator, at their listed prices with no added markup.
+  tour operator, at their listed prices with no added markup. We may earn a commission when you book
+  through our links, at no extra cost to you.
 </p>
             <div className="footer-contact">
-              <p>📧 info@lasvegastour.com</p>
-             
+              {/* Sin la direccion en texto: Cloudflare la ofusca y en el HTML queda
+                  "[email protected]", que se lee como pagina rota. */}
+              <p>📧 <a href="/contact-us" style={{ color: '#ffffff' }}>Contact us</a></p>
+            </div>
+
+            {/* Quien esta detras, en HTML plano (sin fetch ni JS) para que lo lean los
+                crawlers en todas las paginas. Los links son los del About. La direccion
+                es la misma del schema Organization de la home. */}
+            <div className="footer-author">
+              <p className="footer-author-title">
+                Curated by <a href="https://www.intercoper.com/author/mario-dalo" target="_blank" rel="noopener">Mario Dalo</a>, founder of <a href="https://www.intercoper.com/about" target="_blank" rel="noopener">Intercoper</a>
+              </p>
+              <ul className="footer-author-links">
+                <li><a href="https://www.linkedin.com/in/mariodalo/" target="_blank" rel="noopener">LinkedIn</a></li>
+                <li><a href="https://orcid.org/0009-0003-7402-0338" target="_blank" rel="noopener">ORCID</a></li>
+                <li><a href="https://zenodo.org/communities/intercoper-research" target="_blank" rel="noopener">Research datasets on Zenodo</a></li>
+              </ul>
+              <address className="footer-address">
+                Intercoper · Larrea 1280, C1117 Buenos Aires, Argentina
+              </address>
             </div>
           </div>
+
+          {/* NAVEGACIÓN DEL SITIO, en HTML plano */}
+          {FOOTER_COLUMNS.map((col) => (
+            <nav key={col.title} className="footer-nav" aria-label={col.title}>
+              <h4>{col.title}</h4>
+              <ul>
+                {col.links.map(([href, label]) => (
+                  <li key={href}><a href={href}>{label}</a></li>
+                ))}
+              </ul>
+            </nav>
+          ))}
 
           {/* NAVEGACIÓN DE PÁGINAS */}
           <div className="footer-nav">
             <h4>Company</h4>
             <ul>
-              {/* El catalogo propio entra al footer el 25 oct 2026, cuando
-                  salio del widget del sidebar. Ahi era un boton de conversion
-                  que mandaba para adentro y le ganaba el click al que si sale
-                  a la OTA. Aca es lo que siempre fue: navegacion. Y la gana en
-                  todo el sitio, no solo en los articulos. */}
+              {/* El catalogo propio entra al footer el 25 oct 2026, cuando salio
+                  del widget del sidebar. Ahi era un boton de conversion que
+                  mandaba para adentro —en 103 de 121 articulos— y le ganaba el
+                  click al que si sale a la OTA. Aca es lo que siempre fue:
+                  navegacion. Y la gana en todo el sitio, no solo en articulos. */}
               <li>
                 <a href="/tours">All Las Vegas Tours</a>
               </li>
-              {footerLinks}
+              <li>
+                <a href="/las-vegas-research">The Research Program</a>
+              </li>
+              {/* El map va aca adentro: styled-jsx no le pone su clase al JSX armado
+                  fuera del return, y esos <li> quedaban sin estilo. */}
+              {footerPages.map((page) => (
+                <li key={page.slug || page.title}>
+                  <a href={`/${page.slug || '#'}`}>{page.title}</a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* PAYMENT METHODS */}
-          <div className="footer-payments-main">
+        </div>
+
+        {/* PAYMENT METHODS: bajan a una fila propia para dejarle las columnas a la navegacion */}
+        <div className="footer-payments-main">
             <h4>Secure Payment Methods</h4>
             <div className="payment-methods-image">
               <Image 
@@ -177,8 +197,6 @@ export default function Footer() {
                 blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
               />
             </div>
-          </div>
-
         </div>
 
         {/* FOOTER BOTTOM */}
@@ -203,7 +221,7 @@ export default function Footer() {
             </div>
 
             {/* COPYRIGHT */}
-            <p className="footer-copyright">&copy; 2024 lasvegastour.com. All rights reserved.</p>
+            <p className="footer-copyright">&copy; {year} lasvegastour.com. All rights reserved.</p>
 
           </div>
         </div>
@@ -232,8 +250,8 @@ export default function Footer() {
 
         .footer-main {
           display: grid;
-          grid-template-columns: 2fr 1fr 2fr;
-          gap: 40px;
+          grid-template-columns: 1.7fr repeat(4, minmax(0, 1fr));
+          gap: 32px;
           margin-bottom: 40px;
           width: 100%;
           box-sizing: border-box;
@@ -269,6 +287,33 @@ export default function Footer() {
           word-wrap: break-word;
         }
 
+        .footer-author {
+          margin-top: 16px;
+          font-size: 13px;
+          color: #b3b3b3;
+          line-height: 1.6;
+        }
+        .footer-author a {
+          color: #ffffff;
+          text-decoration: underline;
+          text-underline-offset: 2px;
+        }
+        .footer-author-title {
+          margin-bottom: 6px;
+        }
+        .footer-author-links {
+          list-style: none;
+          padding: 0;
+          margin: 0 0 8px;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 4px 14px;
+        }
+        .footer-address {
+          font-style: normal;
+          color: #8a8a8a;
+        }
+
         .footer-nav {
           min-width: 0;
         }
@@ -287,7 +332,17 @@ export default function Footer() {
         }
 
         .footer-nav li {
-          margin-bottom: 12px;
+          margin-bottom: 9px;
+          line-height: 1.35;
+        }
+
+        .footer-nav h4 {
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+          font-size: 13px !important;
+          color: #f4c95d !important;
+          border-bottom: 2px solid #e91e63;
+          padding-bottom: 8px;
         }
 
         /* ✅ ESPECIFICIDAD MÁXIMA PARA FORZAR COLORES */
@@ -305,7 +360,7 @@ export default function Footer() {
 
         .footer .footer-nav ul li a:hover,
         .footer .footer-nav ul li a:focus {
-          color: #00ff00 !important; /* ← VERDE NEÓN PARA TEST */
+          color: #f4c95d !important; /* era #00ff00 de prueba; amarillo de la paleta */
           text-decoration: underline !important;
           opacity: 1 !important;
         }
@@ -338,14 +393,22 @@ export default function Footer() {
 
         .footer-payments-main {
           display: flex;
-          flex-direction: column;
+          flex-direction: row;
           align-items: center;
+          justify-content: center;
+          gap: 20px;
+          flex-wrap: wrap;
           min-width: 0;
+          border-top: 1px solid #333;
+          padding: 20px 0;
         }
 
         .footer-payments-main h4 {
           text-align: center;
-          margin-bottom: 20px;
+          margin: 0;
+          font-size: 14px;
+          color: #b3b3b3;
+          font-weight: 600;
         }
 
         .payment-methods-image {
@@ -353,8 +416,17 @@ export default function Footer() {
           justify-content: center;
           align-items: center;
           width: 100%;
-          max-width: 300px;
+          max-width: 180px;
           contain: layout;
+        }
+
+        @media (max-width: 1024px) {
+          .footer-main {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+          .footer-brand {
+            grid-column: 1 / -1;
+          }
         }
 
         .footer-bottom {
@@ -448,8 +520,8 @@ export default function Footer() {
 
         @media (max-width: 768px) {
           .footer-main {
-            grid-template-columns: 1fr;
-            gap: 30px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 28px 20px;
           }
 
           .footer-brand {
