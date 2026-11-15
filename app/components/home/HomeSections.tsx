@@ -65,31 +65,31 @@ function money(price?: number, currency?: string) {
   return `${sym}${Number.isInteger(price) ? price : price.toFixed(2)}`;
 }
 
-// Hero en collage (Mario, 15 nov 2026, como luxorguide.com): el helicoptero grande a la
-// izquierda y cuatro experiencias a la derecha, cada una hacia su hub o guia. Una sola foto no
-// alcanzaba para un sitio con varios mercados (shows, cañon, vuelos).
+// Hero en collage (Mario, 15 nov 2026, como luxorguide.com): una foto grande a la izquierda
+// y cuatro experiencias a la derecha, cada una hacia su hub o guia. La grande es el Strip de
+// noche: en celular es la unica que se ve y con el helicoptero el texto tapaba el helicoptero.
 const HERO_TILES = [
-  { img: IMG.westViewpoint, label: 'Grand Canyon West', href: '/grand-canyon-west-rim-tours' },
-  { img: IMG.sphereDay, label: 'The Sphere', href: '/sphere-las-vegas-shows' },
   { img: IMG.cirque, label: 'Cirque du Soleil', href: '/cirque-du-soleil-shows-las-vegas' },
-  { img: IMG.hero, label: 'The Strip at night', href: '/las-vegas-strip-night-helicopter-flight' },
+  { img: IMG.sphereDay, label: 'The Sphere', href: '/sphere-las-vegas-shows' },
+  { img: IMG.heliLanding, label: 'Helicopter landing', href: '/grand-canyon-helicopter-tours' },
+  { img: IMG.westViewpoint, label: 'Grand Canyon West', href: '/grand-canyon-west-rim-tours' },
 ];
 
 export function HomeHero() {
   return (
     <section className={`${styles.hero} ${styles.heroCollage}`}>
       <div className={styles.collage}>
-        <Link href="/grand-canyon-helicopter-tours" className={`${styles.tile} ${styles.tileBig}`} tabIndex={-1}>
+        <Link href="/las-vegas-strip-night-helicopter-flight" className={`${styles.tile} ${styles.tileBig}`} tabIndex={-1}>
           <img
-            src={sized(IMG.heliLanding, 1400)}
-            srcSet={`${sized(IMG.heliLanding, 800)} 800w, ${sized(IMG.heliLanding, 1400)} 1400w, ${sized(IMG.heliLanding, 2000)} 2000w`}
+            src={sized(IMG.hero, 1400)}
+            srcSet={`${sized(IMG.hero, 800)} 800w, ${sized(IMG.hero, 1400)} 1400w, ${sized(IMG.hero, 2000)} 2000w`}
             sizes="(max-width: 640px) 100vw, 50vw"
-            alt={IMG.heliLanding.alt}
+            alt={IMG.hero.alt}
             fetchPriority="high"
             width={2420}
-            height={1614}
+            height={1414}
           />
-          <span className={styles.tileLabel}>Helicopter landing</span>
+          <span className={styles.tileLabel}>The Strip at night</span>
         </Link>
         <div className={styles.tileGrid}>
           {HERO_TILES.map((t) => (

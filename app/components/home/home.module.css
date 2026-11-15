@@ -144,6 +144,11 @@
 .tileBig {
   min-height: 0;
 }
+/* La etiqueta de la foto grande va abajo: arriba esta el titulo */
+.tileBig .tileLabel {
+  top: auto;
+  bottom: 14px;
+}
 .heroCollage .heroInner > * {
   max-width: calc(50vw - 64px);
 }
@@ -182,6 +187,10 @@
   }
   .heroCollage .heroInner::before {
     width: calc(100% + 80px);
+  }
+  /* Con una sola foto, el texto la ocupa entera: la etiqueta sobra */
+  .tileBig .tileLabel {
+    display: none;
   }
 }
 @media (max-width: 640px) {
