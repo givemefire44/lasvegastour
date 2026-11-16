@@ -165,12 +165,12 @@ export function AdviceBox() {
         <span aria-hidden="true">💡</span> Our advice: what&apos;s worth paying for in Las Vegas?
       </h2>
       <div className={styles.adviceBody}>
-        {/* Texto del revisor externo (15 nov 2026), en tres bloques cortos. */}
+        {/* Texto del revisor externo (15 nov 2026), en tres bloques cortos. Orden (16 nov 2026):
+            canyon, helicoptero, shows, como el H1 y el subtitulo; el sitio es de tours. */}
         <p>
-          <strong>For shows, choose the experience, not just the rating.</strong> Two Strip shows can
-          have the same average rating yet leave audiences with completely different impressions. And
-          choose your seat carefully: at O, some balcony reviewers reported missing parts of the
-          performance.
+          <strong>For Grand Canyon trips, think in hours, not miles.</strong> Travelers report 10–12
+          hours for a West Rim coach tour and 14–15 hours for the South Rim. That difference can
+          determine whether the experience is worth your day.
         </p>
         <p>
           <strong>For helicopter tours, look beyond the flight.</strong> Flight-related issues
@@ -179,9 +179,10 @@ export function AdviceBox() {
           arrangements before paying.
         </p>
         <p>
-          <strong>For Grand Canyon trips, think in hours, not miles.</strong> Travelers report 10–12
-          hours for a West Rim coach tour and 14–15 hours for the South Rim. That difference can
-          determine whether the experience is worth your day.
+          <strong>For shows, choose the experience, not just the rating.</strong> Two Strip shows can
+          have the same average rating yet leave audiences with completely different impressions. And
+          choose your seat carefully: at O, some balcony reviewers reported missing parts of the
+          performance.
         </p>
         <p className={styles.adviceFacts}>
           From 40,112 traveler items across five platforms ·{' '}

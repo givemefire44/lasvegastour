@@ -237,8 +237,8 @@ export default async function HomePage() {
       <HomeHero />
       <TrustStrip />
       <Container>
-        <CategoryGrid categories={categories} />
         <AdviceBox />
+        <CategoryGrid categories={categories} />
         <Decisions />
         <FeaturedTours tours={tours} />
         <ResearchBlock />
