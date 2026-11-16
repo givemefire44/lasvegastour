@@ -59,8 +59,8 @@ const getFeaturedTours = async (): Promise<FeaturedTour[]> => {
 
 export async function generateMetadata(): Promise<Metadata> {
   const homepage = await getHomepage()
-  const title = homepage?.seo?.title || 'Las Vegas Tours — What to Know Before You Book'
-  const description = homepage?.seo?.description || 'What do Las Vegas tour reviews really tell you? We analyze real traveler data, hidden trade-offs and booking details to help you choose the right tour.'
+  const title = homepage?.seo?.title || "Las Vegas Tours & Things to Do: What's Worth Booking"
+  const description = homepage?.seo?.description || 'Which Las Vegas tours and things to do are worth it: Grand Canyon trips, Hoover Dam, helicopter flights and shows, from traveler reviews and booking details.'
   const keywords = homepage?.seo?.keywords || ['Las Vegas tours', 'Grand Canyon tours', 'Las Vegas shows', 'helicopter tours']
   // Imagen social = la foto del hero (15 nov 2026). El homepage de Sanity no tiene imagen y el
   // fallback /images/default-social.webp daba 404: los links compartidos salian sin imagen.
@@ -120,7 +120,7 @@ export default async function HomePage() {
     "alternateName": ["Las Vegas Tour", "lasvegastour.com"],
     "url": "https://lasvegastour.com",
     "logo": LOGO,
-    "description": "Independent editorial guide to Las Vegas shows, helicopter flights and day trips. Advice comes from a research corpus of traveler reviews and from reading what each listing includes. Bookings are made through the booking platform at the listed price, with no added fee.",
+    "description": "Independent editorial guide to Las Vegas tours, day trips, helicopter flights and shows. Advice comes from a research corpus of traveler reviews and from reading what each listing includes. Bookings are made through the booking platform at the listed price, with no added fee.",
     "parentOrganization": { "@type": "Organization", "name": "Intercoper", "url": "https://www.intercoper.com" },
     "subjectOf": "https://intercoper.com/portfolio/lasvegastour-com",
     "founder": {
@@ -163,7 +163,7 @@ export default async function HomePage() {
     "alternateName": ["Las Vegas Tour", "lasvegastour.com"],
     "url": "https://lasvegastour.com",
     "inLanguage": "en",
-    "description": "Independent guide to Las Vegas shows and tours: which experiences are worth booking, where to sit, and how long the Grand Canyon day really is, from research on traveler reviews.",
+    "description": "Independent guide to Las Vegas tours and things to do: which Grand Canyon trip, helicopter flight or show is worth booking, from research on traveler reviews.",
     "publisher": { "@id": ORG_ID }
   };
 
@@ -174,7 +174,7 @@ export default async function HomePage() {
     "@type": "WebPage",
     "@id": "https://lasvegastour.com/#webpage",
     "url": "https://lasvegastour.com",
-    "name": "Las Vegas shows and tours: what's worth booking",
+    "name": "Las Vegas tours and things to do: what's worth booking",
     "inLanguage": "en",
     "isPartOf": { "@id": SITE_ID },
     "about": {

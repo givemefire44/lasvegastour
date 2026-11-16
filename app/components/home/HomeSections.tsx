@@ -101,10 +101,10 @@ export function HomeHero() {
         </div>
       </div>
       <div className={styles.heroInner}>
-        <h1 className={styles.h1}>Las Vegas shows and tours: what&apos;s worth booking</h1>
+        <h1 className={styles.h1}>Las Vegas tours and things to do: what&apos;s worth booking</h1>
         <p className={styles.answer}>
-          Which shows are worth the ticket, where to sit, and which <strong>Grand Canyon trip</strong> is
-          worth the long day, from traveler reviews and real booking details.
+          Which <strong>Grand Canyon trip</strong> is worth the long day, which helicopter flight is worth the money, and which shows are
+          worth the ticket, from traveler reviews and real booking details.
         </p>
         <div className={styles.search}>
           <CitySearch />
