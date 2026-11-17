@@ -3,6 +3,8 @@ import {
   generatePageSchema,
   generateFAQSchema,
   generateResearchSchema,
+  generatePillarDatasetSchema,
+  generateClassifiedDatasetSchema,
   isResearchArticle,
 } from '@/app/utils/schemaGenerator';
 interface RelatedArticleRef {
@@ -39,6 +41,11 @@ export default function SchemaOrgHead({
   const pageSchema = isResearch
     ? generateResearchSchema(pageData, relatedArticles, baseUrl)
     : generatePageSchema(pageData, baseUrl);
+  // Dataset propio del pilar, o del soporte con clasificacion a mano (solo los que tienen CSV en
+  // data/research-datasets.json)
+  const pillarDatasetSchema = isResearch
+    ? generatePillarDatasetSchema(pageData, baseUrl) ?? generateClassifiedDatasetSchema(pageData, baseUrl)
+    : null;
   // Obtener FAQs si existen
   const faqItems = pageData.richSnippets?.faqItems;
   const hasFAQs = faqItems && faqItems.length > 0;
@@ -58,6 +65,15 @@ export default function SchemaOrgHead({
           __html: JSON.stringify(pageSchema, null, 2),
         }}
       />
+      {/* Dataset del pilar, en bloque propio: Google Dataset Search lo lee de aca */}
+      {pillarDatasetSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(pillarDatasetSchema, null, 2),
+          }}
+        />
+      )}
       {/* FAQ Schema independiente cuando hay FAQs y el schema principal no es FAQPage */}
       {hasFAQs && !isFAQPageType && (
         <script

@@ -109,6 +109,14 @@ sitemap.push({
   changeFrequency: 'weekly',
   priority: 0.85
 })
+// 🔬 RESEARCH: la pagina del Dataset central (app/las-vegas-research). Es una ruta estatica, no una page de Sanity,
+// asi que no entra por la consulta de pages. Faltaba (medido el 8 nov 2026: Search Console "Google no reconoce esta URL")
+sitemap.push({
+  url: `${baseUrl}/las-vegas-research`,
+  lastModified: new Date(),
+  changeFrequency: 'monthly',
+  priority: 0.8
+})
 
 
     // 🏛️ TOURS/POSTS

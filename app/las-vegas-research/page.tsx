@@ -74,15 +74,28 @@ export default async function LasVegasResearchPage() {
     '@id': DATASET_ID,
     name: 'Las Vegas Shows and Tours Research Corpus',
     alternateName: 'Las Vegas Research Corpus',
-    description: 'Curated corpus of 40,112 items related to Las Vegas shows, tours, day trips, weddings and food tours, gathered from five independent sources (Reddit, TripAdvisor, YouTube, Google Maps, Quora). Covers two stages of the traveler journey: pre-purchase deliberation from public forums, and post-visit reviews. 30,441 items were processed for topic, sentiment and claims; 17,594 carry a star rating, from TripAdvisor and Google Maps across 33 venue and operator listings. Reddit, YouTube and Quora carry no star ratings, so every comparison between what people expected and what they scored comes from the rated layer. Reviews were collected in two separate passes: 14,656 unfiltered, which are the only ones counted in any proportion, and 2,938 restricted to the 1-3 star tail, which are quoted but never counted. The two are never averaged together. Version 2, September 2026.',
+    description: 'Curated corpus of 40,112 items related to Las Vegas shows, tours, day trips, weddings and food tours, gathered from five independent sources (Reddit, TripAdvisor, YouTube, Google Maps, Quora). Covers two stages of the traveler journey: pre-purchase deliberation from public forums, and post-visit reviews. 30,441 items were processed for topic, sentiment and claims; 17,594 carry a star rating, from TripAdvisor and Google Maps across 33 venue and operator listings. Reddit, YouTube and Quora carry no star ratings, so every comparison between what people expected and what they scored comes from the rated layer. Reviews were collected in two separate passes: 14,656 unfiltered, which are the only ones counted in any proportion, and 2,938 restricted to the 1-3 star tail, which are quoted but never counted. The two are never averaged together. Version 2, September 2026. The downloadable file aggregates the representative sample by vertical, topic and source: item counts, sentiment counts and date ranges, with no review text, no usernames and no star averages; the 1-3 star pass is left out of every count, and an item can carry several topics and verticals.',
     url: PAGE_URL,
-    sameAs: PAGE_URL,
-    creator: {
-      '@type': 'Organization',
-      '@id': INTERCOPER_ID,
-      name: 'Intercoper',
-      url: 'https://intercoper.com',
-    },
+    // El mismo dataset archivado en Zenodo (8 nov 2026). Es el DOI "de todas las versiones": siempre resuelve
+    // a la ultima. El DOI de la version 2.0 puntual es 10.5281/zenodo.24061280.
+    identifier: 'https://doi.org/10.5281/zenodo.24061279',
+    sameAs: 'https://doi.org/10.5281/zenodo.24061279',
+    // Mario Dalo figura como autor del deposito en Zenodo, con su ORCID; Intercoper sigue como organizacion.
+    creator: [
+      {
+        '@type': 'Person',
+        '@id': 'https://intercoper.com/author/mario-dalo#person',
+        name: 'Mario Dalo',
+        url: 'https://intercoper.com/author/mario-dalo',
+        sameAs: 'https://orcid.org/0009-0003-7402-0338',
+      },
+      {
+        '@type': 'Organization',
+        '@id': INTERCOPER_ID,
+        name: 'Intercoper',
+        url: 'https://intercoper.com',
+      },
+    ],
     publisher: {
       '@type': 'Organization',
       name: 'LasVegasTour',
@@ -105,22 +118,28 @@ export default async function LasVegasResearchPage() {
       '@type': 'Place',
       name: 'Las Vegas, Nevada, USA',
     },
-    temporalCoverage: '2008-12-15/2026-09-05',
+    temporalCoverage: '2008-08-02/2026-09-16',
+    measurementTechnique:
+      'Items from five public sources, each tagged by topic and vertical and classified by sentiment in an automated enrichment pass; counts aggregated per vertical, topic tag and source over the representative sample only.',
+    // Las columnas del CSV descargable (public/data/lasvegas-research.csv, generado por
+    // colosseumroman-blog/tour-importer/exportar-dataset-csv.mjs --sitio=lasvegas).
     variableMeasured: [
-      'Review rating (1-5)',
-      'Review sentiment',
-      'Topic tags',
-      'Pain points',
-      'Verifiable claims',
-      'Questions raised',
-      'Source platform',
-      'Publication date',
-      'Machine-translation flag',
+      { '@type': 'PropertyValue', name: 'vertical', description: 'Product vertical (shows, grandcanyon, helicopter, adventure, stripcity, daytrips, food, weddings, general)' },
+      { '@type': 'PropertyValue', name: 'topic_tag', description: 'Topic of the item' },
+      { '@type': 'PropertyValue', name: 'source', description: 'Source platform' },
+      { '@type': 'PropertyValue', name: 'items', description: 'Items carrying the topic in that vertical and source' },
+      { '@type': 'PropertyValue', name: 'sentiment_negative', description: 'Items classified negative' },
+      { '@type': 'PropertyValue', name: 'sentiment_neutral', description: 'Items classified neutral' },
+      { '@type': 'PropertyValue', name: 'sentiment_positive', description: 'Items classified positive' },
+      { '@type': 'PropertyValue', name: 'sentiment_mixed', description: 'Items classified mixed' },
+      { '@type': 'PropertyValue', name: 'first_published', description: 'Earliest publication date' },
+      { '@type': 'PropertyValue', name: 'last_published', description: 'Latest publication date' },
     ],
     distribution: {
       '@type': 'DataDownload',
-      encodingFormat: 'text/html',
-      contentUrl: PAGE_URL,
+      name: 'Las Vegas research corpus: aggregates by vertical, topic and source (CSV)',
+      encodingFormat: 'text/csv',
+      contentUrl: `${SITE_URL}/data/lasvegas-research.csv`,
     },
   }
 
@@ -471,7 +490,7 @@ export default async function LasVegasResearchPage() {
             fontSize: '0.875rem',
             color: '#6b7280',
           }}>
-            Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', textDecoration: 'none' }}>CC BY 4.0</a>. Temporal coverage: December 2008 – September 2026.
+            Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', textDecoration: 'none' }}>CC BY 4.0</a>. Temporal coverage: August 2008 – September 2026. Archived on Zenodo with DOI <a href="https://doi.org/10.5281/zenodo.24061279" target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', textDecoration: 'none' }}>10.5281/zenodo.24061279</a>.<br />Dataset compiled by Mario Dalo (ORCID <a href="https://orcid.org/0009-0003-7402-0338" target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', textDecoration: 'none', whiteSpace: 'nowrap' }}>0009-0003-7402-0338</a>).
           </p>
         </section>
 

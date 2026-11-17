@@ -1,0 +1,313 @@
+{
+  "_nota": "Generado por tour-importer/exportar-dataset-csv.mjs (--pilares, --soportes). No editar a mano.",
+  "generado": "2026-11-06",
+  "pilares": {
+    "las-vegas-helicopter-tour-ground-time": {
+      "tema": "Las Vegas Helicopter Tours",
+      "tags": [
+        "guide-quality",
+        "value",
+        "venue-view",
+        "price",
+        "transport",
+        "duration",
+        "booking-process",
+        "runtime",
+        "photography",
+        "kids-families",
+        "landing-tour",
+        "flight-time",
+        "pilot-narration",
+        "crowds",
+        "group-size",
+        "time-of-day",
+        "weather",
+        "seating",
+        "private-tour",
+        "cancellation",
+        "scam",
+        "meeting-point",
+        "accessibility",
+        "queue",
+        "resale",
+        "weather-cancellation",
+        "window-seat",
+        "age-restriction",
+        "skip-the-line"
+      ],
+      "verticales": [
+        "helicopter"
+      ],
+      "csv": "/data/las-vegas-helicopter-tour-ground-time.csv",
+      "itemsUnicos": 1861,
+      "temporalCoverage": "2009-04-21/2026-09-16"
+    },
+    "grand-canyon-day-trip-from-las-vegas-how-long": {
+      "tema": "Grand Canyon Day Trips from Las Vegas",
+      "tags": [
+        "guide-quality",
+        "value",
+        "venue-view",
+        "price",
+        "transport",
+        "duration",
+        "booking-process",
+        "runtime",
+        "photography",
+        "kids-families",
+        "landing-tour",
+        "flight-time",
+        "pilot-narration",
+        "crowds",
+        "group-size",
+        "time-of-day",
+        "weather",
+        "seating",
+        "private-tour",
+        "cancellation",
+        "scam",
+        "meeting-point",
+        "accessibility",
+        "queue",
+        "resale",
+        "weather-cancellation",
+        "window-seat",
+        "age-restriction",
+        "skip-the-line"
+      ],
+      "verticales": [
+        "grandcanyon"
+      ],
+      "csv": "/data/grand-canyon-day-trip-from-las-vegas-how-long.csv",
+      "itemsUnicos": 8540,
+      "temporalCoverage": "2010-11-29/2026-09-16"
+    },
+    "las-vegas-desert-adventure-tours-what-they-ask": {
+      "tema": "Las Vegas Desert Adventure Tours",
+      "tags": [
+        "guide-quality",
+        "value",
+        "venue-view",
+        "price",
+        "transport",
+        "duration",
+        "booking-process",
+        "runtime",
+        "photography",
+        "kids-families",
+        "landing-tour",
+        "flight-time",
+        "pilot-narration",
+        "crowds",
+        "group-size",
+        "time-of-day",
+        "weather",
+        "seating",
+        "private-tour",
+        "cancellation",
+        "scam",
+        "meeting-point",
+        "accessibility",
+        "queue",
+        "resale",
+        "weather-cancellation",
+        "window-seat",
+        "age-restriction",
+        "skip-the-line"
+      ],
+      "verticales": [
+        "adventure"
+      ],
+      "csv": "/data/las-vegas-desert-adventure-tours-what-they-ask.csv",
+      "itemsUnicos": 1501,
+      "temporalCoverage": "2012-10-15/2026-09-15"
+    },
+    "las-vegas-show-ratings-what-they-hide": {
+      "tema": "Las Vegas Shows",
+      "tags": [
+        "guide-quality",
+        "value",
+        "venue-view",
+        "price",
+        "transport",
+        "duration",
+        "booking-process",
+        "runtime",
+        "photography",
+        "kids-families",
+        "landing-tour",
+        "flight-time",
+        "pilot-narration",
+        "crowds",
+        "group-size",
+        "time-of-day",
+        "weather",
+        "seating",
+        "private-tour",
+        "cancellation",
+        "scam",
+        "meeting-point",
+        "accessibility",
+        "queue",
+        "resale",
+        "weather-cancellation",
+        "window-seat",
+        "age-restriction",
+        "skip-the-line"
+      ],
+      "verticales": [
+        "shows"
+      ],
+      "csv": "/data/las-vegas-show-ratings-what-they-hide.csv",
+      "itemsUnicos": 6519,
+      "temporalCoverage": "2009-09-18/2026-09-16"
+    },
+    "fremont-street-experience-what-reviews-say": {
+      "tema": "Fremont Street Experience",
+      "tags": [
+        "guide-quality",
+        "value",
+        "venue-view",
+        "price",
+        "transport",
+        "duration",
+        "booking-process",
+        "runtime",
+        "photography",
+        "kids-families",
+        "landing-tour",
+        "flight-time",
+        "pilot-narration",
+        "crowds",
+        "group-size",
+        "time-of-day",
+        "weather",
+        "seating",
+        "private-tour",
+        "cancellation",
+        "scam",
+        "meeting-point",
+        "accessibility",
+        "queue",
+        "resale",
+        "weather-cancellation",
+        "window-seat",
+        "age-restriction",
+        "skip-the-line"
+      ],
+      "textoDescripcion": "items whose text or reviewed listing names Fremont",
+      "noHeredan": [
+        "las-vegas-chapel-wedding-limo-and-transport",
+        "las-vegas-chapel-wedding-what-you-are-buying",
+        "las-vegas-food-tour-downtown-or-strip",
+        "las-vegas-food-tour-what-you-get",
+        "las-vegas-vow-renewal-what-reviews-say"
+      ],
+      "csv": "/data/fremont-street-experience-what-reviews-say.csv",
+      "itemsUnicos": 592,
+      "temporalCoverage": "2011-05-23/2026-09-16"
+    },
+    "las-vegas-tour-pickup-and-meeting-point": {
+      "tema": "Las Vegas Tour Pickup and Meeting Points",
+      "tags": [
+        "meeting-point",
+        "transport"
+      ],
+      "verticales": [
+        "grandcanyon",
+        "daytrips",
+        "adventure",
+        "helicopter"
+      ],
+      "csv": "/data/las-vegas-tour-pickup-and-meeting-point.csv",
+      "itemsUnicos": 2325,
+      "temporalCoverage": "2010-08-16/2026-09-15"
+    }
+  },
+  "corpus": {
+    "csv": "/data/lasvegas-research.csv",
+    "itemsMuestra": 19702,
+    "colaExcluida": 2938,
+    "fuentesDosCorridas": [
+      "tripadvisor"
+    ],
+    "conVertical": true
+  },
+  "generadoClasificaciones": "2026-11-06",
+  "clasificaciones": {
+    "las-vegas-helicopter-tour-ground-time": {
+      "tema": "Main Complaint in One- to Three-Star Las Vegas Helicopter Tour Reviews",
+      "esPilar": true,
+      "csv": "/data/las-vegas-helicopter-tour-ground-time-classified.csv",
+      "hallazgos": 8,
+      "base": 123,
+      "baseDescripcion": "one- to three-star TripAdvisor reviews of Papillon Grand Canyon Helicopters and Grand Canyon Helicopters - Las Vegas from the representative sample, each read and classified by hand by its main complaint in September 2026 (four reviews of another product and one duplicate were set aside)",
+      "temporalCoverage": "2014/2026"
+    },
+    "las-vegas-helicopter-pilot-commentary": {
+      "tema": "One- to Three-Star Las Vegas Helicopter Reviews That Mention the Pilot",
+      "esPilar": false,
+      "csv": "/data/las-vegas-helicopter-pilot-commentary.csv",
+      "hallazgos": 4,
+      "base": 42,
+      "baseDescripcion": "one- to three-star TripAdvisor reviews of Papillon Grand Canyon Helicopters and Grand Canyon Helicopters - Las Vegas from the representative sample that mention the pilot, each read and classified by hand in September 2026",
+      "lugar": "Las Vegas, Nevada, USA",
+      "keywords": [
+        "Las Vegas",
+        "helicopter tours",
+        "Grand Canyon helicopter",
+        "pilot",
+        "visitor reviews"
+      ],
+      "temporalCoverage": "2015/2025"
+    },
+    "las-vegas-show-seats-where-to-sit": {
+      "tema": "Where to Sit at Five Las Vegas Shows",
+      "esPilar": false,
+      "csv": "/data/las-vegas-show-seats-where-to-sit.csv",
+      "hallazgos": 15,
+      "shows": [
+        "O - Cirque du Soleil",
+        "Michael Jackson ONE by Cirque du Soleil",
+        "Shin Lim: LIMITLESS",
+        "Mystere by Cirque du Soleil",
+        "Blue Man Group"
+      ],
+      "baseDescripcion": "TripAdvisor reviews of O, Michael Jackson ONE, Shin Lim: LIMITLESS, Mystère and Blue Man Group from the representative sample that describe their seat, found by a wide search and each read and classified by hand in September 2026",
+      "lugar": "Las Vegas Strip, Nevada, USA",
+      "keywords": [
+        "Las Vegas shows",
+        "where to sit",
+        "Cirque du Soleil",
+        "Blue Man Group",
+        "Shin Lim",
+        "visitor reviews"
+      ],
+      "temporalCoverage": "2019/2026"
+    },
+    "las-vegas-shows-with-kids": {
+      "tema": "Las Vegas Shows With Children, From Parents' Reviews",
+      "esPilar": false,
+      "csv": "/data/las-vegas-shows-with-kids.csv",
+      "hallazgos": 10,
+      "shows": [
+        "Mystere by Cirque du Soleil",
+        "Michael Jackson ONE by Cirque du Soleil",
+        "Blue Man Group",
+        "O - Cirque du Soleil",
+        "Shin Lim: LIMITLESS"
+      ],
+      "baseDescripcion": "TripAdvisor reviews of Mystère, Michael Jackson ONE, Blue Man Group, O and Shin Lim: LIMITLESS from the representative sample written by people who took minors, found by a wide search and each read and classified by hand in September 2026 (adult children and unspecified ages excluded)",
+      "lugar": "Las Vegas Strip, Nevada, USA",
+      "keywords": [
+        "Las Vegas shows",
+        "shows with kids",
+        "family",
+        "Cirque du Soleil",
+        "Blue Man Group",
+        "visitor reviews"
+      ],
+      "temporalCoverage": "2019/2026"
+    }
+  }
+}

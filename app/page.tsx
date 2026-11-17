@@ -1,143 +1,79 @@
 import { client } from '@/sanity/lib/client'
-import { urlFor } from '@/sanity/lib/image'
 import { Metadata } from 'next'
-import { Suspense } from 'react'
 import Container from "./components/Container";
-import HeroHostel from "./components/HeroHostel";
-import TestimonialCarousel from "./components/TestimonialCarousel";
-import HostelGrid from "./components/HostelMosaic";
 import Footer from "./components/Footer";
-import ImpactBanner from "./components/ImpactBanner";
-import LugaresPopularesArg from "./components/LugaresPopularesArg";
-import RecommendedTours from "./components/blog/RecommendedTours";
 import HubChips from './components/HubChips';
-import { getRecommendedTours } from '@/lib/getRecommendedTours';
+import {
+  HomeHero, TrustStrip, AdviceBox, Decisions, FeaturedTours, CategoryGrid, ResearchBlock, PlanYourTrip, HomeFaq, GuidesLibrary,
+  FEATURED, DATASET_DOI, homeFaq, type FeaturedTour, type HomeCategory,
+} from './components/home/HomeSections';
+import { IMG } from './components/home/homeImages';
 
+// Fecha en que se reviso el contenido de la home contra las guias y pilares publicados.
+const CHECKED_ISO = '2026-11-15';
 
-
-// ========================================
-// 🚀 CONFIGURACIÓN EXTREMA DE PERFORMANCE
-// ========================================
-export const revalidate = 180; // 3 minutos - balance perfecto entre fresh/speed
+export const revalidate = 180;
 export const dynamic = 'force-static'
 export const dynamicParams = true
 export const fetchCache = 'default-cache'
 
-// ========================================
-// 📊 QUERIES ULTRA-OPTIMIZADAS
-// ========================================
 const getHomepage = async () => {
   return await client.fetch(`
-    *[_type == "homepage"][0]{
-      seo{
-        title,
-        description,
-        keywords,
-        socialImage{
-          asset->{
-            _id,
-            url,
-            metadata {
-              dimensions {
-                width,
-                height
-              }
-            }
-          },
-          alt
-        }
-      },
-      structuredData{
-        organizationName,
-        organizationType,
-        description,
-        contactInfo
-      }
-    }
-  `, {}, {
-    next: { revalidate: 300 }
-  })
+    *[_type == "homepage"][0]{ seo{ title, description, keywords } }
+  `, {}, { next: { revalidate: 300 } })
 }
 
-
-
-const getMosaicData = async () => {
-  return await client.fetch(`
-    *[_type == "mosaicCard" && active == true] | order(order asc)[0...9]{
-      name,
-      location,
-      image{
-        asset->{
-          _id,
-          url,
-          metadata {
-            dimensions {
-              width,
-              height
-            }
-          }
-        },
-        alt
-      },
-      url,
-      order
+// Los tres tours elegidos (FEATURED). Solo se LEEN: precio, nota y reseñas son del feed.
+// Las ocho categorias con su cantidad de tours activos, en vivo (no se escribe a mano).
+const getCategories = async (): Promise<HomeCategory[]> => {
+  return (await client.fetch(`
+    *[_type == "category"]{
+      title,
+      "slug": slug.current,
+      description,
+      "count": count(*[_type == "post" && references(^._id) && discontinued != true && !(_id in path("drafts.**"))])
     }
-  `, {}, {
-    next: { revalidate: 300 }
-  })
+  `, {}, { next: { revalidate: 300 } })) || []
 }
 
-const getDestinations = async () => {
-  return await client.fetch(`
-    *[_type == "destinationCard" && active == true] | order(order asc)[0...8]{
-      nombre,
-      image{
-        asset->{
-          _id,
-          url,
-          metadata {
-            dimensions {
-              width,
-              height
-            }
-          }
-        },
-        alt
-      },
-      url,
-      order
+const getFeaturedTours = async (): Promise<FeaturedTour[]> => {
+  const slugs = FEATURED.map((f) => f.slug)
+  const rows = await client.fetch(`
+    *[_type == "post" && slug.current in $slugs && discontinued != true && !(_id in path("drafts.**"))]{
+      "slug": slug.current,
+      title,
+      "image": coalesce(mainImage.asset->url, heroGallery[0].asset->url),
+      "imageAlt": coalesce(mainImage.alt, heroGallery[0].alt),
+      "price": tourInfo.price,
+      "currency": tourInfo.currency,
+      "duration": tourInfo.duration,
+      "rating": getYourGuideData.rating,
+      "reviewCount": getYourGuideData.reviewCount
     }
-  `, {}, {
-    next: { revalidate: 300 }
-  })
+  `, { slugs }, { next: { revalidate: 180 } })
+  return (rows || []).map((t: FeaturedTour) => ({
+    ...t,
+    image: t.image ? `${t.image}?w=720&h=540&fit=crop&auto=format` : undefined,
+  }))
 }
 
-// ========================================
-// 🔍 METADATA ULTRA-SEO OPTIMIZADO
-// ========================================
 export async function generateMetadata(): Promise<Metadata> {
   const homepage = await getHomepage()
-  
-  const title = homepage?.seo?.title || 'Las Vegas Tours, Shows & Day Trips | LasVegasTour'
-  const description = homepage?.seo?.description || 'Discover the best of Las Vegas with top-rated tours, shows, and day trips to the Grand Canyon and Hoover Dam. Book your perfect Vegas experience today.'
-  const keywords = homepage?.seo?.keywords || ['Las Vegas tours', 'Grand Canyon tours', 'Hoover Dam tours', 'Las Vegas shows', 'things to do in Las Vegas']
-  
-  // Imagen social optimizada
-  const socialImage = homepage?.seo?.socialImage 
-    ? urlFor(homepage.seo.socialImage).width(1200).height(630).format('webp').quality(90).url()
-    : 'https://lasvegastour.com/images/default-social.webp'
-
+  const title = homepage?.seo?.title || "Las Vegas Tours & Things to Do: What's Worth Booking"
+  const description = homepage?.seo?.description || 'Which Las Vegas tours and things to do are worth it: Grand Canyon trips, Hoover Dam, helicopter flights and shows, from traveler reviews and booking details.'
+  const keywords = homepage?.seo?.keywords || ['Las Vegas tours', 'Grand Canyon tours', 'Las Vegas shows', 'helicopter tours']
+  // Imagen social = la foto del hero (15 nov 2026). El homepage de Sanity no tiene imagen y el
+  // fallback /images/default-social.webp daba 404: los links compartidos salian sin imagen.
+  const socialImage = `${IMG.hero.src}?w=1200&h=630&fit=crop&fm=jpg&q=80`
   const baseUrl = 'https://lasvegastour.com'
 
   return {
     title,
     description,
     keywords,
-    authors: [{ name: 'LasVegasTour' }],
+    authors: [{ name: 'Mario Dalo', url: 'https://intercoper.com/author/mario-dalo' }],
     creator: 'LasVegasTour',
     publisher: 'LasVegasTour',
-    
-    // Open Graph PRO
     openGraph: {
       type: 'website',
       locale: 'en_US',
@@ -145,83 +81,48 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       siteName: 'LasVegasTour',
-      images: [
-        {
-          url: socialImage,
-          width: 1200,
-          height: 630,
-          alt: homepage?.seo?.socialImage?.alt || title,
-          type: 'image/webp'
-        },
-      ],
+      images: [{ url: socialImage, width: 1200, height: 630, alt: IMG.hero.alt, type: 'image/jpeg' }],
     },
-    
-    // Twitter optimizado
     twitter: {
       card: 'summary_large_image',
-      site: '@LasVegasTour',
-      creator: '@LasVegasTour',
       title,
       description,
       images: [socialImage],
     },
-    
-    // URLs y alternativas
     alternates: {
       canonical: baseUrl,
-      languages: {
-        'en': baseUrl,
-        'x-default': baseUrl,
-      },
+      languages: { 'en': baseUrl, 'x-default': baseUrl },
     },
-    
-    // Robots ultra-optimizado
     robots: {
       index: true,
       follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
-      },
+      googleBot: { index: true, follow: true, 'max-video-preview': -1, 'max-image-preview': 'large', 'max-snippet': -1 },
     },
-    
-    // Verificaciones
-    verification: {
-      google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
-    }
+    verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION },
   }
 }
 
-// ========================================
-// 🏆 HOMEPAGE ULTRA-PERFORMANCE
-// ========================================
 export default async function HomePage() {
-  // 🚀 FETCH PARALELO EXTREMO - TODO AL MISMO TIEMPO
-  const [homepage, tours, mosaicData, destinations] = await Promise.all([
-    getHomepage(),
-    getRecommendedTours(),
-    getMosaicData(),
-    getDestinations()
-  ])
-  
-  // 🆕 SCHEMA.ORG COMPLETO PARA HOMEPAGE
+  const [tours, categories] = await Promise.all([getFeaturedTours(), getCategories()])
+
+  // Grafo enlazado por @id, como en ColosseumRoman (15 nov 2026). El logo apuntaba a /logo.png,
+  // que da 404; el real es app/icon.png (192x192, servido en /icon.png).
+  const ORG_ID = "https://lasvegastour.com/#organization";
+  const SITE_ID = "https://lasvegastour.com/#website";
+  const LIST_ID = "https://lasvegastour.com/#featured-tours";
+  const LOGO = { "@type": "ImageObject", "url": "https://lasvegastour.com/icon.png", "width": 192, "height": 192 };
+
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": ORG_ID,
     "name": "LasVegasTour",
-    "alternateName": "lasvegastour.com",
+    "alternateName": ["Las Vegas Tour", "lasvegastour.com"],
     "url": "https://lasvegastour.com",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://lasvegastour.com/logo.png",
-      "width": 250,
-      "height": 60
-    },
-    "description": "Expert curators of the best Las Vegas tours, shows, and day trips.",
-    
+    "logo": LOGO,
+    "description": "Independent editorial guide to Las Vegas tours, day trips, helicopter flights and shows. Advice comes from a research corpus of traveler reviews and from reading what each listing includes. Bookings are made through the booking platform at the listed price, with no added fee.",
+    "parentOrganization": { "@type": "Organization", "name": "Intercoper", "url": "https://www.intercoper.com" },
+    "subjectOf": "https://intercoper.com/portfolio/lasvegastour-com",
     "founder": {
       "@type": "Person",
       "@id": "https://intercoper.com/author/mario-dalo#person",
@@ -229,14 +130,13 @@ export default async function HomePage() {
       "jobTitle": "Founder of Intercoper",
       "url": "https://intercoper.com/author/mario-dalo",
       "sameAs": [
+        "https://orcid.org/0009-0003-7402-0338",
         "https://www.linkedin.com/in/mariodalo/",
         "https://mariodalo.com",
         "https://featured.com/p/mario-dalo-8288",
-        "https://intercoper.com/author/mario-dalo",
-        "https://www.reddit.com/user/Mario_Dalo/"
+        "https://intercoper.com/author/mario-dalo"
       ]
     },
-
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Larrea 1280",
@@ -245,113 +145,107 @@ export default async function HomePage() {
       "postalCode": "C1117",
       "addressCountry": "AR"
     },
-
     "contactPoint": {
       "@type": "ContactPoint",
       "email": "hello@lasvegastour.com",
       "contactType": "Customer Service",
       "availableLanguage": ["English", "Spanish"]
     },
-     
-   "knowsAbout": [
-      "Grand Canyon Tours",
-      "Las Vegas Tourism",
-      "Hoover Dam",
-      "Antelope Canyon",
-      "Day Trips from Las Vegas",
-      "Travel Planning"
-    ]
+    "knowsAbout": ["Las Vegas shows", "Grand Canyon tours", "Las Vegas helicopter tours", "Hoover Dam", "Day trips from Las Vegas"]
   };
 
+  // Sin SearchAction: /search?q= da 404 (el buscador del sitio abre la plataforma de reservas).
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": SITE_ID,
     "name": "LasVegasTour",
-    "alternateName": "lasvegastour.com",
+    "alternateName": ["Las Vegas Tour", "lasvegastour.com"],
     "url": "https://lasvegastour.com",
-    "description": "Your expert guide to Las Vegas tours, shows, and day trips",
-    "publisher": {
-      "@type": "Organization",
-      "name": "LasVegasTour",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://lasvegastour.com/logo.png"
-      }
-    }
+    "inLanguage": "en",
+    "description": "Independent guide to Las Vegas tours and things to do: which Grand Canyon trip, helicopter flight or show is worth booking, from research on traveler reviews.",
+    "publisher": { "@id": ORG_ID }
   };
 
-  // 🆕 ITEMLIST CON FEATURED TOURS (primeros 10)
+  // WebPage: de que trata la home (la ciudad, desambiguada con Wikipedia y Wikidata Q23768,
+  // verificado el 15 nov 2026), quien la firma y en que se basa (el dataset del research).
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://lasvegastour.com/#webpage",
+    "url": "https://lasvegastour.com",
+    "name": "Las Vegas tours and things to do: what's worth booking",
+    "inLanguage": "en",
+    "isPartOf": { "@id": SITE_ID },
+    "about": {
+      "@type": "City",
+      "name": "Las Vegas",
+      "sameAs": ["https://en.wikipedia.org/wiki/Las_Vegas", "https://www.wikidata.org/wiki/Q23768"]
+    },
+    "author": {
+      "@type": "Person",
+      "@id": "https://intercoper.com/author/mario-dalo#person",
+      "name": "Mario Dalo",
+      "url": "https://intercoper.com/author/mario-dalo"
+    },
+    "publisher": { "@id": ORG_ID },
+    // Sin hasPart hacia la ItemList: hasPart espera un CreativeWork (error en validator.schema.org, 15 nov 2026).
+    "dateModified": CHECKED_ISO,
+    "isBasedOn": `https://doi.org/${DATASET_DOI}`,
+    "citation": ["https://lasvegastour.com/las-vegas-research", `https://doi.org/${DATASET_DOI}`],
+    "primaryImageOfPage": { "@type": "ImageObject", "url": `${IMG.hero.src}?w=1600&auto=format`, "caption": IMG.hero.alt }
+  };
+
+  // ItemList con los tres tours que la pagina MUESTRA, en el mismo orden. Antes declaraba diez
+  // que no coincidian con los visibles.
+  const ordered = FEATURED.map((f) => tours.find((t) => t.slug === f.slug)).filter(Boolean) as FeaturedTour[]
   const featuredToursSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "name": "Featured Las Vegas Tours",
-    "description": "Top-rated Las Vegas tours handpicked by our experts",
-    "numberOfItems": Math.min(tours.length, 10),
-    "itemListElement": tours.slice(0, 10).map((tour: any, index: number) => ({
+    "@id": LIST_ID,
+    "name": "Las Vegas tours we would book first",
+    "description": "One Las Vegas tour per big decision: the Grand Canyon by coach, a helicopter landing and the Sphere.",
+    "numberOfItems": ordered.length,
+    "itemListElement": ordered.map((tour, index) => ({
       "@type": "ListItem",
       "position": index + 1,
-      "url": `https://lasvegastour.com/tour/${tour.slug.current}`,
-      "name": tour.title
+      "url": `https://lasvegastour.com/tour/${tour.slug}`,
+      "name": tour.title.trim()
     }))
   };
-  
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": homeFaq().map((f) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  };
+
   return (
     <>
-      {/* 🆕 SCHEMAS EN <script> TAGS */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(organizationSchema)
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(websiteSchema)
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(featuredToursSchema)
-        }}
-      />
+      {[organizationSchema, websiteSchema, webPageSchema, featuredToursSchema, faqSchema].map((schema, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      ))}
 
-      {/* Hero - Crítico, renderizado inmediato */}
-     
-        <HeroHostel />
-      
-      
-      {/* Above the fold - Datos pre-cargados */}
+      {/* Home ordenada por las decisiones del viaje (15 nov 2026). Salieron el mosaico y los
+          destinos, que repetian las categorias de los chips; el carrusel de testimonios (citas
+          sin fuente, como "Jason M., Dallas"); el banner; y la lista de tours con "5/5" escrito
+          a mano, "Not specified" y "N/A people". */}
+      <HomeHero />
+      <TrustStrip />
       <Container>
-      <HostelGrid mosaicData={mosaicData} />
-      </Container>
-      
-      {/* Below the fold - Con Suspense para loading progresivo */}
-      <Suspense fallback={<div className="h-32 bg-gray-100 animate-pulse rounded-lg" />}>
-        <Container>
-          <TestimonialCarousel />
-        </Container>
-      </Suspense>
-      
-      <Suspense fallback={<div className="h-24 bg-gray-100 animate-pulse rounded-lg" />}>
-        <Container>
-          <ImpactBanner />
-        </Container>
-      </Suspense>
-      
-      <Container>
-      <LugaresPopularesArg destinations={destinations} />
-      </Container>
-
-      <Container>
-      <HubChips />
-      </Container>
-
-     
-
-      <Container>
-        <RecommendedTours tours={tours} />
+        <AdviceBox />
+        <CategoryGrid categories={categories} />
+        <Decisions />
+        <FeaturedTours tours={tours} />
+        <ResearchBlock />
+        <PlanYourTrip />
+        <HubChips />
+        <HomeFaq />
+        <GuidesLibrary />
       </Container>
 
       <Footer />
@@ -359,8 +253,4 @@ export default async function HomePage() {
   )
 }
 
-// ========================================
-// 🎯 PERFORMANCE MONITORING
-// ========================================
 export const runtime = 'nodejs'
-export const preferredRegion = 'auto' // Vercel Edge optimizado

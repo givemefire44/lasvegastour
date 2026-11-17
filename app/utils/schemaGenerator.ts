@@ -1,5 +1,6 @@
 // app/utils/schemaGenerator.ts
 import { placesAbout, type GeoDestination } from '@/lib/driveTimeLine';
+import researchDatasets from '@/data/research-datasets.json';
 
 // ============================================================
 // CONSTANTS â€” Anclas canÃ³nicas del programa Research
@@ -150,11 +151,11 @@ function getAuthorSchema(authorType?: string): Person | Organization {
         url: 'https://intercoper.com/author/mario-dalo',
         jobTitle: 'Founder of Intercoper',
         sameAs: [
+          'https://orcid.org/0009-0003-7402-0338',
           'https://www.linkedin.com/in/mariodalo/',
           'https://mariodalo.com',
           'https://featured.com/p/mario-dalo-8288',
           'https://intercoper.com/author/mario-dalo',
-          'https://www.reddit.com/user/Mario_Dalo/'
         ]
       };
     case 'curator-team':
@@ -221,11 +222,11 @@ export function generatePageSchema(pageData: PageData, baseUrl = 'https://lasveg
             'Travel Planning'
           ],
           sameAs: [
+            'https://orcid.org/0009-0003-7402-0338',
             'https://www.linkedin.com/in/mariodalo/',
             'https://mariodalo.com',
             'https://featured.com/p/mario-dalo-8288',
             'https://intercoper.com/author/mario-dalo',
-            'https://www.reddit.com/user/Mario_Dalo/'
           ]
         },
 
@@ -297,11 +298,11 @@ export function generatePageSchema(pageData: PageData, baseUrl = 'https://lasveg
     name: pageData.title,
     description: description,
     url: pageUrl,
-    datePublished: pageData.publishedAt,
+    ...(pageData.publishedAt && { datePublished: pageData.publishedAt }),
     // dateModified importa sobre todo en el research: sus cifras son una medicion fechada, asi que
     // cuando se reviso es parte del dato. El campo ya estaba en la interfaz de salida y nunca se
     // emitia. Cae a datePublished mientras Sanity no registre una modificacion.
-    dateModified: pageData._updatedAt || pageData.publishedAt,
+    ...((pageData._updatedAt || pageData.publishedAt) && { dateModified: pageData._updatedAt || pageData.publishedAt }),
     author: getAuthorSchema(pageData.author),
     publisher: getPublisherSchema()
   };
@@ -501,6 +502,8 @@ export function generateResearchSchema(
   const isPartOf: any[] = [
     { '@type': 'CollectionPage', '@id': RESEARCH_COLLECTION_ID },
   ];
+  // Soporte cuyo pilar publica Dataset con CSV: se basa en el del pilar (por URL, ver abajo).
+  let pillarDatasetUrl: string | null = null;
   if (!isPillar && pageData.parentPillar?._ref) {
     const pillarRef = relatedArticles.find((a) => a._id === pageData.parentPillar?._ref);
     if (pillarRef) {
@@ -510,6 +513,9 @@ export function generateResearchSchema(
         url: `${baseUrl}/${pillarRef.slug.current}`,
         name: pillarRef.title,
       });
+      // noHeredan: soportes colgados del pilar que no salen de su recorte (ej. bodas bajo Fremont)
+      const metaPilar = pillarDataset(pillarRef.slug.current);
+      if (metaPilar && !metaPilar.noHeredan?.includes(slug)) pillarDatasetUrl = `${baseUrl}/${pillarRef.slug.current}#dataset`;
     }
   }
 
@@ -545,7 +551,7 @@ export function generateResearchSchema(
     url: pageUrl,
     inLanguage: 'en',
     isAccessibleForFree: true,
-    datePublished: pageData.publishedAt,
+    ...(pageData.publishedAt && { datePublished: pageData.publishedAt }),
     ...(pageData._updatedAt && { dateModified: pageData._updatedAt }),
     author: getAuthorSchema(pageData.author),
     reviewedBy: getAuthorSchema('mario-dalo'),
@@ -553,7 +559,15 @@ export function generateResearchSchema(
     mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
     ...(imageObject && { image: imageObject }),
 
-    isBasedOn: { '@id': RESEARCH_DATASET_ID },
+    // Un pilar con CSV propio se basa en SU dataset (que se basa en el corpus); un soporte, en el
+    // de su pilar si lo tiene; el resto, directo en el corpus. Lo que apunta a OTRA pagina va como
+    // {"@id"} sin @type, nunca como nodo tipado Dataset: Google evalua todo nodo Dataset como un dataset propio y
+    // lo marca invalido por no tener description (Search Console, colosseumroman, 6 nov 2026).
+    isBasedOn: pillarDataset(slug) || (!isPillar && classifiedDataset(slug))
+      ? [{ '@id': `${pageUrl}#dataset` }, { '@id': RESEARCH_DATASET_ID }]
+      : pillarDatasetUrl
+        ? [{ '@id': pillarDatasetUrl }, { '@id': RESEARCH_DATASET_ID }]
+        : { '@id': RESEARCH_DATASET_ID },
     isPartOf: isPartOf.length === 1 ? isPartOf[0] : isPartOf,
     ...(hasPart && hasPart.length > 0 && { hasPart }),
     ...(mentions && mentions.length > 0 && { mentions }),
@@ -569,13 +583,10 @@ export function generateResearchSchema(
           sameAs: 'https://en.wikipedia.org/wiki/Las_Vegas',
         },
 
-    // Cifra del corpus VIGENTE. Esto viaja al JSON-LD de TODOS los articulos del research, asi que
-    // cuando el corpus crece hay que tocarlo aca Y en app/las-vegas-research/page.tsx: si no, el
-    // articulo declara un numero en su nota de metodo y otro distinto en su schema, que es la
-    // contradiccion que un revisor busca primero. El 23 sep 2026 la pagina declaraba 27.066 items
-    // y 11 fichas cuando el corpus ya tenia 40.112 y 33; las dos cosas se corrigieron juntas.
-    citation:
-      'Based on the Las Vegas Shows and Tours Research Corpus 2026, version 2 (40,112 items aggregated from 5 independent sources, covering pre-purchase deliberation and post-visit reviews; 17,594 carry a star rating across 33 listings). See https://lasvegastour.com/las-vegas-research for the full dataset documentation and version history.',
+    // Cita el MISMO Dataset que isBasedOn, por @id y sin @type (un nodo tipado Dataset lo
+    // evaluaria Google como dataset incompleto). La cifra del corpus vive solo en la pagina del
+    // research: antes iba repetida aca en texto y quedaba vieja cuando el corpus crecia.
+    citation: { '@id': RESEARCH_DATASET_ID },
 
     ...(pageData.richSnippets?.wordCount && { wordCount: pageData.richSnippets.wordCount }),
     ...(pageData.richSnippets?.readingTime && {
@@ -584,4 +595,176 @@ export function generateResearchSchema(
   };
 
   return schema;
+}
+
+// ============================================================
+// DATASET PROPIO DE CADA PILAR — para Google Dataset Search
+// ============================================================
+// Google no sigue un isBasedOn {"@id"} hacia otra pagina: para que el pilar cuente como dataset
+// tiene que declarar el suyo, con un archivo descargable. Los metadatos y el CSV los genera
+// colosseumroman-blog/tour-importer/exportar-dataset-csv.mjs --sitio=lasvegas --pilares
+// --salida=<este repo> (data/research-datasets.json y public/data/<slug>.csv). El corpus de Las
+// Vegas esta partido en verticales y sus temas son genericos, asi que cada pilar se recorta por su
+// vertical o, si es de un lugar, por texto. Solo cuenta la muestra representativa.
+
+interface PillarDatasetMeta {
+  tema: string;
+  tags: string[];
+  verticales?: string[];
+  textoDescripcion?: string;
+  noHeredan?: string[];
+  csv: string;
+  itemsUnicos: number;
+  temporalCoverage: string;
+}
+
+function pillarDataset(slug: string): PillarDatasetMeta | undefined {
+  return (researchDatasets.pilares as Record<string, PillarDatasetMeta>)[slug];
+}
+
+export function generatePillarDatasetSchema(pageData: ResearchPageData, baseUrl: string = SITE_URL) {
+  if (pageData.isPillar !== true) return null;
+  const slug = pageData.slug.current;
+  const meta = pillarDataset(slug);
+  if (!meta) return null;
+  const pageUrl = `${baseUrl}/${slug}`;
+  const recorte = meta.verticales
+    ? `corpus items from the ${meta.verticales.join(', ')} ${meta.verticales.length > 1 ? 'verticals' : 'vertical'}${meta.tags.length < 10 ? ` tagged ${meta.tags.join(' or ')}` : ''}`
+    : `${meta.textoDescripcion || 'corpus items'}`;
+  // Pilar que ademas clasifico resenas a mano: segundo archivo del MISMO Dataset (una pagina, un Dataset)
+  const clas = classifiedDataset(slug);
+  const descClas = clas
+    ? ` A second file holds the hand classification behind the analysis: ${clas.base} ${clas.baseDescripcion}, one row per finding with the number of reviews, the star split and the first and last year.`
+    : '';
+  const archivoAgregados = {
+    '@type': 'DataDownload',
+    name: `${meta.tema}: aggregates by vertical, topic and source (CSV)`,
+    encodingFormat: 'text/csv',
+    contentUrl: `${SITE_URL}${meta.csv}`,
+  };
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Dataset',
+    '@id': `${pageUrl}#dataset`,
+    name: `${meta.tema}: Corpus Aggregates by Topic and Source`,
+    description: `Aggregated counts behind the analysis "${pageData.title}", built from ${meta.itemsUnicos.toLocaleString('en-US')} ${recorte}. Each row gives, for one vertical, one topic and one source, the number of items that carry the topic and how many were classified negative, neutral, positive or mixed, plus the earliest and latest publication date. The corpus draws on Reddit, TripAdvisor, YouTube, Google Maps and Quora; a source with no items in this cut has no rows. Only the representative sample is counted: the TripAdvisor pass restricted to 1-3 star reviews is excluded, as the corpus documentation requires. An item can carry several topics, so rows do not add up to unique items. Contains derived counts only: no review text, no usernames and no star-rating averages. Derived from the Las Vegas Shows and Tours Research Corpus.${descClas}`,
+    url: pageUrl,
+    creator: { '@type': 'Organization', '@id': INTERCOPER_ID, name: 'Intercoper', url: 'https://intercoper.com' },
+    publisher: { '@type': 'Organization', name: 'LasVegasTour', url: SITE_URL },
+    license: 'https://creativecommons.org/licenses/by/4.0/',
+    isAccessibleForFree: true,
+    inLanguage: 'en',
+    ...(pageData.publishedAt && { datePublished: pageData.publishedAt.slice(0, 10) }),
+    dateModified: clas ? (researchDatasets as any).generadoClasificaciones || researchDatasets.generado : researchDatasets.generado,
+    keywords: ['Las Vegas', meta.tema, 'visitor reviews', 'tourism research', ...(meta.verticales || [])],
+    spatialCoverage: { '@type': 'Place', name: 'Las Vegas, Nevada, USA' },
+    temporalCoverage: meta.temporalCoverage,
+    // Referencia {"@id"} sin @type al Dataset central: un nodo tipado Dataset lo evaluaria Google como dataset incompleto.
+    isBasedOn: { '@id': RESEARCH_DATASET_ID },
+    measurementTechnique:
+      'Items from five public sources, each tagged by topic and vertical and classified by sentiment in an automated enrichment pass; counts aggregated per vertical, topic tag and source over the representative sample only.',
+    variableMeasured: [
+      { '@type': 'PropertyValue', name: 'vertical', description: 'Product vertical of the item (all = every vertical, for a pillar cut by place)' },
+      { '@type': 'PropertyValue', name: 'topic_tag', description: 'Topic of the item' },
+      { '@type': 'PropertyValue', name: 'source', description: 'Source platform' },
+      { '@type': 'PropertyValue', name: 'items', description: 'Items carrying the topic in that vertical and source' },
+      { '@type': 'PropertyValue', name: 'sentiment_negative', description: 'Items classified negative' },
+      { '@type': 'PropertyValue', name: 'sentiment_neutral', description: 'Items classified neutral' },
+      { '@type': 'PropertyValue', name: 'sentiment_positive', description: 'Items classified positive' },
+      { '@type': 'PropertyValue', name: 'sentiment_mixed', description: 'Items classified mixed' },
+      { '@type': 'PropertyValue', name: 'first_published', description: 'Earliest publication date' },
+      { '@type': 'PropertyValue', name: 'last_published', description: 'Latest publication date' },
+    ],
+    distribution: clas
+      ? [
+          archivoAgregados,
+          {
+            '@type': 'DataDownload',
+            name: `${clas.tema} (CSV)`,
+            encodingFormat: 'text/csv',
+            contentUrl: `${SITE_URL}${clas.csv}`,
+          },
+        ]
+      : archivoAgregados,
+  };
+}
+
+// ============================================================
+// DATASET DE LAS CLASIFICACIONES A MANO — soportes con evidencia propia
+// ============================================================
+// Articulos cuyas cifras salen de resenas leidas y clasificadas a mano, por id, en su script de
+// evidencia (articles/<carpeta>/evidencia-*.mjs del repo colosseumroman-blog). El CSV tiene un
+// hallazgo por fila con las resenas que lo sostienen y su reparto por estrellas. Lo genera
+// exportar-dataset-csv.mjs --hallazgos (data/research-datasets.json, clave "clasificaciones").
+// Un pilar con clasificacion la suma como segundo archivo de su Dataset (arriba); un soporte la
+// declara como Dataset propio (abajo).
+
+interface ClassifiedDatasetMeta {
+  tema: string;
+  esPilar: boolean;
+  csv: string;
+  hallazgos: number;
+  base?: number;
+  shows?: string[];
+  baseDescripcion: string;
+  lugar?: string;
+  keywords?: string[];
+  temporalCoverage: string;
+}
+
+function classifiedDataset(slug: string): ClassifiedDatasetMeta | undefined {
+  const c = (researchDatasets as { clasificaciones?: Record<string, ClassifiedDatasetMeta> }).clasificaciones;
+  return c?.[slug];
+}
+
+export function generateClassifiedDatasetSchema(pageData: ResearchPageData, baseUrl: string = SITE_URL) {
+  if (pageData.isPillar === true || !pageData.parentPillar?._ref) return null;
+  const slug = pageData.slug.current;
+  const meta = classifiedDataset(slug);
+  if (!meta || meta.esPilar) return null;
+  const pageUrl = `${baseUrl}/${slug}`;
+  const porShow = !!meta.shows?.length;
+  const base = porShow
+    ? `The base is ${meta.baseDescripcion}.`
+    : `The base is ${meta.base} ${meta.baseDescripcion}.`;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Dataset',
+    '@id': `${pageUrl}#dataset`,
+    name: `${meta.tema}: Hand-Classified Findings`,
+    description: `The counts behind the analysis "${pageData.title}". ${base} Each of the ${meta.hallazgos} rows is one finding${porShow ? ' for one show' : ''}, with how many reviews support it, ${porShow ? "how many rated reviews that show has in the representative sample, " : ''}how those reviews split by star rating and the first and last year. Only the representative sample is counted: reviews from the TripAdvisor pass restricted to 1-3 stars are quoted in the article but never counted. One review can support several findings, so rows do not add up. Contains counts only: no review text, no usernames and no review ids. Derived from the Las Vegas Shows and Tours Research Corpus.`,
+    url: pageUrl,
+    creator: { '@type': 'Organization', '@id': INTERCOPER_ID, name: 'Intercoper', url: 'https://intercoper.com' },
+    publisher: { '@type': 'Organization', name: 'LasVegasTour', url: SITE_URL },
+    license: 'https://creativecommons.org/licenses/by/4.0/',
+    isAccessibleForFree: true,
+    inLanguage: 'en',
+    ...(pageData.publishedAt && { datePublished: pageData.publishedAt.slice(0, 10) }),
+    ...((researchDatasets as any).generadoClasificaciones && { dateModified: (researchDatasets as any).generadoClasificaciones }),
+    keywords: meta.keywords || ['Las Vegas', 'visitor reviews', 'tourism research'],
+    spatialCoverage: { '@type': 'Place', name: meta.lugar || 'Las Vegas, Nevada, USA' },
+    ...(meta.temporalCoverage && { temporalCoverage: meta.temporalCoverage }),
+    // Referencia {"@id"} sin @type al Dataset central: un nodo tipado Dataset lo evaluaria Google como dataset incompleto.
+    isBasedOn: { '@id': RESEARCH_DATASET_ID },
+    measurementTechnique:
+      'Reviews on the topic were pulled from the Las Vegas Shows and Tours Research Corpus and every one was read and classified by hand, by review id, into findings; only the representative sample is counted, and a duplicate review under another id is set aside.',
+    variableMeasured: [
+      { '@type': 'PropertyValue', name: 'finding', description: 'What the reviewers say or did' },
+      ...(porShow ? [{ '@type': 'PropertyValue', name: 'show', description: 'Show the reviews are about' }] : []),
+      { '@type': 'PropertyValue', name: 'reviews', description: 'Reviews that support the finding' },
+      porShow
+        ? { '@type': 'PropertyValue', name: 'show_reviews_in_sample', description: 'Rated reviews of that show in the representative sample' }
+        : { '@type': 'PropertyValue', name: 'base_reviews', description: `Reviews read and classified for this analysis (${meta.base})` },
+      { '@type': 'PropertyValue', name: 'stars_1 / stars_2 / stars_3 / stars_4 / stars_5', description: 'Supporting reviews by star rating' },
+      { '@type': 'PropertyValue', name: 'first_year / last_year', description: 'Earliest and latest year among the supporting reviews' },
+    ],
+    distribution: {
+      '@type': 'DataDownload',
+      name: `${meta.tema} (CSV)`,
+      encodingFormat: 'text/csv',
+      contentUrl: `${SITE_URL}${meta.csv}`,
+    },
+  };
 }

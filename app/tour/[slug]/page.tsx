@@ -429,44 +429,23 @@ export default async function TourPage({ params }: { params: Promise<{ slug: str
       "itinerary": destinationPlaceSchema(post.geo)
     }),
 
-    ...(post.tourInfo.duration && formatDurationISO(post.tourInfo.duration) && {
-      "duration": formatDurationISO(post.tourInfo.duration)
-    }),
-
-    ...(post.tourFeatures && {
-      "amenityFeature": [
-        ...(post.tourFeatures.freeCancellation ? [{
-          "@type": "LocationFeatureSpecification",
-          "name": "Free Cancellation",
-          "value": true
+    // Duracion y caracteristicas como additionalProperty (15 nov 2026): "duration" y
+    // "amenityFeature" no existen en Product ni en TouristTrip, y validator.schema.org las
+    // marcaba como advertencias. additionalProperty con PropertyValue si lo admite Product.
+    ...((() => {
+      const props = [
+        ...(post.tourInfo.duration && formatDurationISO(post.tourInfo.duration) ? [{
+          "@type": "PropertyValue", "name": "Duration", "value": formatDurationISO(post.tourInfo.duration)
         }] : []),
-        ...(post.tourFeatures.skipTheLine ? [{
-          "@type": "LocationFeatureSpecification",
-          "name": "Skip the Line Access",
-          "value": true
-        }] : []),
-        ...(post.tourFeatures.wheelchairAccessible ? [{
-          "@type": "LocationFeatureSpecification",
-          "name": "Wheelchair Accessible",
-          "value": true
-        }] : []),
-        ...(post.tourFeatures.smallGroupAvailable ? [{
-          "@type": "LocationFeatureSpecification",
-          "name": "Small Group Available",
-          "value": true
-        }] : []),
-        ...(post.tourFeatures.hostGuide ? [{
-          "@type": "LocationFeatureSpecification",
-          "name": "Guide Languages",
-          "value": post.tourFeatures.hostGuide
-        }] : []),
-        ...(post.tourFeatures.audioGuide ? [{
-          "@type": "LocationFeatureSpecification",
-          "name": "Audio Guide Languages",
-          "value": post.tourFeatures.audioGuide
-        }] : [])
-      ].filter(Boolean)
-    })
+        ...(post.tourFeatures?.freeCancellation ? [{ "@type": "PropertyValue", "name": "Free Cancellation", "value": true }] : []),
+        ...(post.tourFeatures?.skipTheLine ? [{ "@type": "PropertyValue", "name": "Skip the Line Access", "value": true }] : []),
+        ...(post.tourFeatures?.wheelchairAccessible ? [{ "@type": "PropertyValue", "name": "Wheelchair Accessible", "value": true }] : []),
+        ...(post.tourFeatures?.smallGroupAvailable ? [{ "@type": "PropertyValue", "name": "Small Group Available", "value": true }] : []),
+        ...(post.tourFeatures?.hostGuide ? [{ "@type": "PropertyValue", "name": "Guide Languages", "value": post.tourFeatures.hostGuide }] : []),
+        ...(post.tourFeatures?.audioGuide ? [{ "@type": "PropertyValue", "name": "Audio Guide Languages", "value": post.tourFeatures.audioGuide }] : []),
+      ];
+      return props.length ? { "additionalProperty": props } : {};
+    })())
   } : null;
 
   const finalProductSchema = productSchema ? cleanSchema(productSchema) : null;
@@ -591,8 +570,9 @@ export default async function TourPage({ params }: { params: Promise<{ slug: str
                       'priceCurrency': tour.tourInfo?.currency || 'USD'
                     }
                   } : {}),
-                  ...(tour.tourInfo?.duration ? {
-                    'duration': formatDurationISO(tour.tourInfo.duration)
+                  // Duracion como additionalProperty: "duration" no existe en Product (15 nov 2026).
+                  ...(tour.tourInfo?.duration && formatDurationISO(tour.tourInfo.duration) ? {
+                    'additionalProperty': [{ '@type': 'PropertyValue', 'name': 'Duration', 'value': formatDurationISO(tour.tourInfo.duration) }]
                   } : {})
                 }
               }))

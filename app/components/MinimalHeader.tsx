@@ -932,6 +932,18 @@ export default function MinimalHeader() {
             flex-direction: column !important;
             align-items: flex-start !important;
             gap: 5px !important;
+            /* Que el logo y el sello cedan ancho: con nowrap empujaban los botones de
+               compartir y menu 22 px fuera de la pantalla (medido el 15 nov 2026). */
+            min-width: 0 !important;
+            flex: 1 1 auto !important;
+          }
+          .curator-badge-mobile {
+            white-space: normal !important;
+            flex-wrap: wrap !important;
+          }
+          .mobile-actions {
+            flex-shrink: 0 !important;
+            gap: 4px !important;
           }
         }
 
