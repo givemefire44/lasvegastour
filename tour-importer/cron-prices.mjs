@@ -165,6 +165,22 @@ async function aplicarCambio(tour, prod) {
     if (r.changes) { setObj.seoDescription = r.text; log.push(`PRECIO seoDescription: ${r.changes} lugar(es)`); }
     else if (/\$\d/.test(tour.seoDescription)) log.push(`AVISO seoDescription: cita un precio que no es ${oldPrice} -> revisar a mano`);
   }
+  // editorialReview va al reviewBody del Review, y las faqs al FAQPage: mismo motivo.
+  // Solo se reemplaza el precio anterior exacto (o su redondeo): una tasa de $20 o una opcion de $259 no se tocan,
+  // por eso aca no hay AVISO cuando no coincide.
+  if (priceChanged && tour.editorialReview) {
+    const r = replacePriceInText(tour.editorialReview, oldPrice, newPrice);
+    if (r.changes) { setObj.editorialReview = r.text; log.push(`PRECIO editorialReview: ${r.changes} lugar(es)`); }
+  }
+  if (priceChanged && Array.isArray(tour.faqs)) {
+    let n = 0;
+    const faqs = tour.faqs.map((f) => {
+      const q = replacePriceInText(f.question, oldPrice, newPrice), a = replacePriceInText(f.answer, oldPrice, newPrice);
+      n += q.changes + a.changes;
+      return q.changes || a.changes ? { ...f, question: q.text, answer: a.text } : f;
+    });
+    if (n) { setObj.faqs = faqs; log.push(`PRECIO faqs: ${n} lugar(es)`); }
+  }
 
   if (EXECUTE && (priceChanged || ratingChanged)) {
     await sanity.patch(tour._id).set({ ...setObj, body: bodyPropio }).commit();
@@ -268,8 +284,8 @@ async function main() {
   if (dead404.size) console.log(`Codigos muertos en Viator (404) detectados por el ingest: ${dead404.size}\n`);
 
   const q = slugArg
-    ? `*[_type=="post" && slug.current=="${slugArg}" && !(_id in path("drafts.**"))]{ _id, title, "slug":slug.current, "cat":category->slug.current, "oldPrice":tourInfo.price, "oldRating":getYourGuideData.rating, "oldReviews":getYourGuideData.reviewCount, "url":getYourGuideUrl, seoDescription, body }`
-    : `*[_type=="post" && defined(tourInfo.price) && defined(getYourGuideUrl) && (activeOnGyg != false) && !(_id in path("drafts.**"))]{ _id, title, "slug":slug.current, "cat":category->slug.current, "oldPrice":tourInfo.price, "oldRating":getYourGuideData.rating, "oldReviews":getYourGuideData.reviewCount, "url":getYourGuideUrl, seoDescription, body }`;
+    ? `*[_type=="post" && slug.current=="${slugArg}" && !(_id in path("drafts.**"))]{ _id, title, "slug":slug.current, "cat":category->slug.current, "oldPrice":tourInfo.price, "oldRating":getYourGuideData.rating, "oldReviews":getYourGuideData.reviewCount, "url":getYourGuideUrl, seoDescription, editorialReview, faqs, body }`
+    : `*[_type=="post" && defined(tourInfo.price) && defined(getYourGuideUrl) && (activeOnGyg != false) && !(_id in path("drafts.**"))]{ _id, title, "slug":slug.current, "cat":category->slug.current, "oldPrice":tourInfo.price, "oldRating":getYourGuideData.rating, "oldReviews":getYourGuideData.reviewCount, "url":getYourGuideUrl, seoDescription, editorialReview, faqs, body }`;
 
   const tours = await sanity.fetch(q);
   console.log(`${tours.length} tours a revisar\n`);
