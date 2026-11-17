@@ -10,6 +10,7 @@ import Breadcrumbs from '@/app/components/Breadcrumbs';
 import CategoryFAQ from '@/app/components/CategoryFAQ';
 import HubChips from '@/app/components/HubChips';
 import { getRecommendedTours } from '@/lib/getRecommendedTours';
+import { GEO_DESTINATIONS_QUERY, destinationIdsForCategory, orderedGeo, placesAbout } from '@/lib/geoPlaces';
 
 // ✅ CONFIGURACIÓN DE CACHE CONSISTENTE
 const cacheConfig = {
@@ -198,6 +199,10 @@ export default async function ToursCategory({ params }: PageProps) {
   const posts = await getPostsByCategory(categorySlug);
   const heroMosaicImages = (posts || []).map((p: any) => p.heroGallery?.[0]).filter(Boolean).slice(0, 5);
   const recommendedTours = await getRecommendedTours();
+  const geoIds = destinationIdsForCategory(categorySlug);
+  const categoryGeo = geoIds.length
+    ? orderedGeo(geoIds, await client.fetch(GEO_DESTINATIONS_QUERY, { ids: geoIds }, cacheConfig))
+    : [];
 
   // FAQs desde Sanity (con fallback vacío)
   const categoryFAQs = category.faqs || [];
@@ -224,7 +229,8 @@ export default async function ToursCategory({ params }: PageProps) {
       }
     },
     
-    "about": {
+    // Categoria de destino (data/hub-destinations.json): el Place de su ficha. Las de actividad, como antes.
+    "about": categoryGeo.length ? placesAbout(categoryGeo) : {
       "@type": "TouristDestination",
       "name": category.title,
       "description": category.longDescription || category.description,

@@ -1,0 +1,27 @@
+{
+  "_nota": "Que ficha geoDestination (por destinationId) describe cada page publicada. Solo ids: las coordenadas viven en Sanity, nunca aca. Una ficha = articulo de destino; dos = comparativo. Lo que no esta aca no lleva geo (genericos, research transversal, venues del Strip sin ficha). Armado a mano el 27 oct 2026 leyendo slug y titulo de las 90 pages.",
+  "pages": {
+    "valley-of-fire-from-las-vegas": ["valley-of-fire"],
+    "red-rock-canyon-from-las-vegas": ["red-rock"],
+    "red-rock-canyon-scooter-tour-what-reviews-say": ["red-rock"],
+    "death-valley-from-las-vegas": ["death-valley"],
+    "zion-national-park-from-las-vegas": ["zion"],
+    "hoover-dam-tour-from-las-vegas": ["hoover-dam"],
+    "hoover-dam-from-las-vegas-photo-stop-or-dam-tour": ["hoover-dam"],
+    "hoover-dam-helicopter-tour-from-las-vegas": ["hoover-dam"],
+    "hoover-dam-lake-mead-boulder-city-day": ["hoover-dam"],
+    "emerald-cave-kayak-from-las-vegas-willow-beach-hoover-dam": ["willow-beach"],
+    "grand-canyon-skywalk-tickets-price-phone-rule": ["gc-west"],
+    "grand-canyon-west-coach-day-hour-by-hour": ["gc-west"],
+    "grand-canyon-west-helicopter-boat-add-on-from-las-vegas": ["gc-west"],
+    "grand-canyon-west-skywalk-eagle-point-guano-point": ["gc-west"],
+    "grand-canyon-west-zip-line-what-reviews-say": ["gc-west"],
+    "grand-canyon-south-rim-tour-from-las-vegas-what-reviews-say": ["gc-south"],
+    "antelope-canyon-tour-from-las-vegas-what-reviews-say": ["antelope"],
+    "horseshoe-bend-from-las-vegas-what-reviews-say": ["horseshoe-bend"],
+
+    "grand-canyon-west-vs-south-rim-from-las-vegas": ["gc-west", "gc-south"],
+    "bryce-canyon-zion-day-trip-from-las-vegas": ["bryce", "zion"],
+    "las-vegas-atv-tours-nellis-dunes-valley-of-fire": ["nellis-dunes", "valley-of-fire"]
+  }
+}

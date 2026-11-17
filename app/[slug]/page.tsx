@@ -11,6 +11,14 @@ import hubRelatedArticlesRaw from '@/data/hubRelatedArticles.json';
 import { linkifyText, createLinkState, linkifyBlocks } from '@/app/utils/serverAutoLinker';
 import Footer from '@/app/components/Footer';
 import { getRecommendedTours } from '@/lib/getRecommendedTours';
+import { GEO_DESTINATIONS_QUERY, destinationIdsForPage, destinationIdsForHub, orderedGeo, placesAbout } from '@/lib/geoPlaces';
+
+// Fichas geoDestination de una page o hub, en el orden del mapeo. Sin ids no consulta.
+async function getGeo(ids: string[]) {
+  if (!ids.length) return [];
+  const docs = await client.fetch(GEO_DESTINATIONS_QUERY, { ids }, { next: { revalidate: 3600 } });
+  return orderedGeo(ids, docs);
+}
 
 const hubContent = hubContentRaw as Record<string, any>;
 const hubRelatedArticles = hubRelatedArticlesRaw as Record<string, { slug: string; text: string }[]>;
@@ -26,6 +34,7 @@ interface SanityPage {
   pageType?: string; // ← NUEVO: 'simple' | 'hero'
   isPillar?: boolean;
   parentPillar?: { _ref: string; _id?: string };
+  geoPlaces?: any[]; // fichas geoDestination (data/page-destinations.json)
   
   // Hero fields
   heroImage?: {
@@ -553,6 +562,7 @@ export default async function StaticPage({ params }: { params: Promise<{ slug: s
     const hub = getHubBySlug(slug);
     if (hub) {
       const tours = await getToursByHub(hub);
+      const hubGeo = await getGeo(destinationIdsForHub(hub.slug));
       const rawContent = hubContent[hub.slug] || null;
       // 🔗 AutoLinks SERVER-SIDE en los intros/FAQs del hub → guías (HTML inicial,
       // crawleable). Estado compartido entre párrafos para respetar el cap por página.
@@ -635,7 +645,8 @@ export default async function StaticPage({ params }: { params: Promise<{ slug: s
           name: 'LasVegasTour',
           url: SITE_URL
         },
-        about: {
+        // Hub de destino: el Place de su ficha. Hub de actividad: la ciudad, como antes.
+        about: hubGeo.length ? placesAbout(hubGeo) : {
           '@type': 'TouristDestination',
           name: 'Las Vegas',
           description: `${hub.shortTitle} in Las Vegas`,
@@ -693,6 +704,9 @@ export default async function StaticPage({ params }: { params: Promise<{ slug: s
   // Interlinking automatico hacia las categorias de tours. En memoria, no toca
   // Sanity. Respeta los links que ya vengan persistidos del documento.
   page.content = linkifyBlocks(page.content, 'article', slug);
+
+  // Articulo de destino o comparativo: las fichas que nombra (data/page-destinations.json).
+  page.geoPlaces = await getGeo(destinationIdsForPage(slug));
 
   // Obtener tours recomendados si están habilitados
   const recommendedTours = page.pageSettings?.showRecommendedTours 

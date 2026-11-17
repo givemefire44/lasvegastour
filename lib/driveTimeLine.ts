@@ -2,6 +2,7 @@
 // Es la misma cifra que va al JSON-LD: no redondear ni reescribir aca, se redondea al medir.
 
 export interface GeoDestination {
+  id?: string; // destinationId de la ficha
   name: string;
   point?: string;
   lat: number;
@@ -34,10 +35,12 @@ export function activeAltRoute(geo: GeoDestination, today = new Date()) {
 }
 
 // El destino como Place de schema.org. Mismas cifras y misma frase que la linea visible.
-// Va en "itinerary" de un TouristTrip: Product no tiene ninguna propiedad valida para un lugar.
+// Va en "itinerary" de un TouristTrip (Product no tiene ninguna propiedad valida para un lugar) y en
+// "about" de articulos y hubs. El @id es el mismo en todo el sitio: es una sola entidad por destino.
 export function destinationPlaceSchema(geo: GeoDestination, today = new Date()) {
   return {
     '@type': 'Place',
+    ...(geo.id && { '@id': `https://lasvegastour.com/#place-${geo.id}` }),
     name: geo.name,
     ...(geo.point && geo.point !== geo.name && { alternateName: geo.point }),
     description: driveTimeSentences(geo, today).join(' '),
@@ -47,6 +50,12 @@ export function destinationPlaceSchema(geo: GeoDestination, today = new Date()) 
       { '@type': 'PropertyValue', name: 'Drive time each way from the Las Vegas Strip', value: geo.driveMinutesOneWay, unitCode: 'MIN', unitText: 'minutes' },
     ],
   };
+}
+
+// Valor de "about" de un articulo o un hub: un Place solo como objeto, dos o mas como lista.
+export function placesAbout(geos: GeoDestination[], today = new Date()) {
+  const places = geos.map((g) => destinationPlaceSchema(g, today));
+  return places.length === 1 ? places[0] : places;
 }
 
 export function driveTimeSentences(geo: GeoDestination, today = new Date()): string[] {

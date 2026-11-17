@@ -1,4 +1,5 @@
 // app/utils/schemaGenerator.ts
+import { placesAbout, type GeoDestination } from '@/lib/driveTimeLine';
 
 // ============================================================
 // CONSTANTS â€” Anclas canÃ³nicas del programa Research
@@ -123,6 +124,17 @@ interface PageData {
   listItems?: any[];
   reviewRating?: any;
   itemReviewed?: any;
+  geoPlaces?: GeoDestination[];
+}
+
+// "about" de una page del cluster: el Place de su ficha geoDestination si es de destino (pisa el
+// richSnippets.about cargado a mano, que no tiene coordenadas), si no el richSnippets.about.
+function pageAbout(pageData: PageData) {
+  if (pageData.geoPlaces?.length) return { about: placesAbout(pageData.geoPlaces) };
+  if (pageData.richSnippets?.about) {
+    return { about: { '@type': pageData.richSnippets.about.type, name: pageData.richSnippets.about.name } };
+  }
+  return {};
 }
 
 // ========================================
@@ -314,12 +326,7 @@ export function generatePageSchema(pageData: PageData, baseUrl = 'https://lasveg
         ...(pageData.richSnippets?.readingTime && {
           timeRequired: `PT${pageData.richSnippets.readingTime}M`
         }),
-        ...(pageData.richSnippets?.about && {
-          about: {
-            '@type': pageData.richSnippets.about.type,
-            name: pageData.richSnippets.about.name
-          }
-        })
+        ...pageAbout(pageData)
       } as ArticleSchema;
 
     case 'HowTo':
@@ -397,12 +404,7 @@ export function generatePageSchema(pageData: PageData, baseUrl = 'https://lasveg
         ...baseProperties,
         '@type': 'WebPage',
         ...(imageObject && { image: imageObject }),
-        ...(pageData.richSnippets?.about && {
-          about: {
-            '@type': pageData.richSnippets.about.type,
-            name: pageData.richSnippets.about.name
-          }
-        })
+        ...pageAbout(pageData)
       } as WebPageSchema;
   }
 }
@@ -556,12 +558,16 @@ export function generateResearchSchema(
     ...(hasPart && hasPart.length > 0 && { hasPart }),
     ...(mentions && mentions.length > 0 && { mentions }),
 
-    about: {
-      '@type': 'City',
-      '@id': LAS_VEGAS_ENTITY_ID,
-      name: 'Las Vegas',
-      sameAs: 'https://en.wikipedia.org/wiki/Las_Vegas',
-    },
+    // Soporte de destino: el Place de su ficha geoDestination. El resto del research (transversal:
+    // pickup, tamano de grupo, shows...) sigue con la ciudad.
+    about: pageData.geoPlaces?.length
+      ? placesAbout(pageData.geoPlaces)
+      : {
+          '@type': 'City',
+          '@id': LAS_VEGAS_ENTITY_ID,
+          name: 'Las Vegas',
+          sameAs: 'https://en.wikipedia.org/wiki/Las_Vegas',
+        },
 
     // Cifra del corpus VIGENTE. Esto viaja al JSON-LD de TODOS los articulos del research, asi que
     // cuando el corpus crece hay que tocarlo aca Y en app/las-vegas-research/page.tsx: si no, el

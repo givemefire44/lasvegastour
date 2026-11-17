@@ -320,7 +320,7 @@ export default async function TourPage({ params }: { params: Promise<{ slug: str
   post.geo = destinationId
     ? await client.fetch(`
         *[_type == "geoDestination" && destinationId.current == $destinationId][0]{
-          name, point, lat, lng, milesFromStrip, driveMinutesOneWay, direction, altRoute, measuredAt
+          "id": destinationId.current, name, point, lat, lng, milesFromStrip, driveMinutesOneWay, direction, altRoute, measuredAt
         }
       `, { destinationId }, cacheConfig)
     : null;

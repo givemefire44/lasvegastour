@@ -1,0 +1,12 @@
+{
+  "_nota": "Que fichas geoDestination (por destinationId) describe cada hub de destino. Solo ids: las coordenadas viven en Sanity. Los hubs de actividad (helicoptero, shows, ATV, supercar...) no llevan geo salvo que la actividad pase en un unico lugar. hubs = data/tourHubs.json (ruta /{slug}); categories = Sanity category (ruta /tours/{slug}). Armado el 27 oct 2026.",
+  "hubs": {
+    "grand-canyon-west-rim-tours": ["gc-west"],
+    "grand-canyon-south-rim-tours": ["gc-south"],
+    "antelope-canyon-horseshoe-bend-tours": ["antelope", "horseshoe-bend"]
+  },
+  "categories": {
+    "hoover-dam-tours": ["hoover-dam"],
+    "grand-canyon-tours": ["gc-west", "gc-south"]
+  }
+}

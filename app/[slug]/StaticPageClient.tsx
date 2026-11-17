@@ -11,6 +11,7 @@ import Container from '@/app/components/Container'
 import Breadcrumbs from '@/app/components/Breadcrumbs'
 import ResearchBadge from '@/app/components/ResearchBadge'
 import SchemaOrgHead from '@/app/components/SchemaOrgHead'
+import type { GeoDestination } from '@/lib/driveTimeLine'
 import SidebarTours, { elegirTours } from '@/app/components/SidebarTours';
 import TableOfContents from '@/app/components/TableOfContents';
 import AuthorBox from '@/app/components/AuthorBox';
@@ -24,6 +25,7 @@ interface SanityPage {
   };
   isPillar?: boolean;
   parentPillar?: { _ref?: string; _id?: string };
+  geoPlaces?: GeoDestination[]; // fichas geoDestination, las pone page.tsx
   
   author?: 'mario-dalo' | 'curator-team' | 'none';
 
@@ -244,7 +246,8 @@ export default function StaticPageClient({
     richSnippets: page.richSnippets,
     author: page.author,
     isPillar: page.isPillar,
-    parentPillar: page.parentPillar
+    parentPillar: page.parentPillar,
+    geoPlaces: page.geoPlaces
   };
 
   // PORTABLE TEXT COMPONENTS COMPLETOS CON GALERÍAS
